@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    [SerializeField] private Animator panelAnimator;
+    [SerializeField] private Animator cameraAnimator;
     
     private static readonly int Main = Animator.StringToHash("main");
     private static readonly int Play = Animator.StringToHash("play");
@@ -10,19 +11,22 @@ public class MainMenu : MonoBehaviour
 
     public void TransitionMain()
     {
-        animator.SetTrigger(Main);
+        panelAnimator.SetTrigger(Main);
+        cameraAnimator.SetTrigger(Main);
         AudioManager.Instance.ui.Select01();
     }
     
     public void TransitionPlay()
     {
-        animator.SetTrigger(Play);
+        panelAnimator.SetTrigger(Play);
+        cameraAnimator.SetTrigger(Play);
         AudioManager.Instance.ui.Select01();
     }
     
     public void TransitionSettings()
     {
-        animator.SetTrigger(Settings);
+        panelAnimator.SetTrigger(Settings);
+        cameraAnimator.SetTrigger(Settings);
         AudioManager.Instance.ui.Select01();
     }
 }
