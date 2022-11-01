@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
 {
     InputManager inputManager;
     GravityControl gravityControl;
+    GravityAttractor gravityAttractor;
 
-    public float gravity = -10f;
+
 
 
     public float mouseSensitivityX = 1;
@@ -30,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     {
         inputManager = GetComponent<InputManager>();
         gravityControl = GetComponent<GravityControl>();
+
+
+
+
         rb = GetComponent<Rigidbody>();
         cameraTransform = Camera.main.transform;
 
@@ -38,48 +43,56 @@ public class PlayerMovement : MonoBehaviour
         //hides mouse cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-       
+
     }
 
     private void Update()
     {
+        Move();
+
+        //groundCheck
+        isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
+
+        if (inputManager.jump_Input == true)
+        {
+            Jump();
+
+        }
+
+
+
+    }
+
+    void FixedUpdate()
+    {
+
+
+        // Apply movement to rigidbody
+        Vector3 localMove = transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + localMove);
+    }
+    private void Move()
+    {
         //References Input Manager and rotates player based on where mouse or right joystick dictates
         transform.Rotate(Vector3.up * inputManager.cameraInput.x * mouseSensitivityX);
         verticalLookRotation += inputManager.cameraInput.y * mouseSensitivityY;
-        verticalLookRotation = Mathf.Clamp(verticalLookRotation, -30, -5);
+        verticalLookRotation = Mathf.Clamp(verticalLookRotation, -45, -25);
         cameraTransform.localEulerAngles = Vector3.left * verticalLookRotation;
 
         //references InputManager and moves player based on Input System
         Vector3 moveDirection = new Vector3(inputManager.horizontalInput, 0, inputManager.verticalInput).normalized;
         Vector3 targetMoveAmount = moveDirection * walkSpeed;
         moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, .15f);
+    }
+    private void Jump()
+    {
 
-
-        //groundCheck
-        isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
-        //References Input Manager Jump bool and applies upward force if grounded
-        if (inputManager.jump_Input == true)
+        if (isGrounded)
         {
-            if (isGrounded)
-            {
-                rb.AddForce(transform.up * jumpForce);
-                inputManager.jump_Input = false;
-
-            }
+            rb.AddForce(transform.up * jumpForce);
+            inputManager.jump_Input = false;
 
         }
-
-       
-
-    }
-
-    void FixedUpdate()
-    {
-        
-
-        // Apply movement to rigidbody
-        Vector3 localMove = transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + localMove);
     }
 
 

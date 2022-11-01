@@ -8,6 +8,8 @@ public class GravityControl : MonoBehaviour
     PlayerMovement playerMovement;
     Rigidbody rb;
 
+    bool shouldRotate = true;
+
 
     //this Script goes on the player and tells the planet what to attract
     void Awake()
@@ -23,16 +25,26 @@ public class GravityControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+
         // Allow this body to be influenced by planet's gravity
         planet.Attract(rb);
+        if (shouldRotate) planet.Rotate(rb);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (!playerMovement.isGrounded && other.CompareTag("Gravity")) //While player is in the air, if hits trigger for other planet, gravity switches
         {
             planet = other.GetComponentInParent<GravityAttractor>();
-            
+            planet.rotationSpeed = 1;
+            shouldRotate = true;
+
+
+
+        }
+        if (other.CompareTag("InnerGravity"))
+        {
+            shouldRotate = true;
+            planet.rotationSpeed = 10;
         }
     }
     private void OnTriggerExit(Collider other)  //if player exits the boundary, he gets pulled back in to the center
@@ -40,6 +52,10 @@ public class GravityControl : MonoBehaviour
         if (other.CompareTag("Boundary"))
         {
             planet = other.GetComponentInParent<GravityAttractor>();
+        }
+        if (other.CompareTag("InnerGravity"))
+        {
+            shouldRotate = false;
         }
     }
 
