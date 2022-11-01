@@ -32,16 +32,14 @@ public class GravityControl : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!playerMovement.isGrounded && other.CompareTag("Gravity")) //While player is in the air, if hits trigger for other planet, gravity switches
+        if (!playerMovement.isGrounded && other.CompareTag("Gravity")) //While player is in the air, if hits trigger for other planet, gravity switches and player slowly rotates
         {
             planet = other.GetComponentInParent<GravityAttractor>();
             planet.rotationSpeed = 1;
             shouldRotate = true;
 
-
-
         }
-        if (other.CompareTag("InnerGravity"))
+        if (other.CompareTag("InnerGravity")) //When Player hits trigger closer to the planet, the rotation speed incresses, snappin him upright in relation to planet
         {
             shouldRotate = true;
             planet.rotationSpeed = 10;
@@ -53,7 +51,7 @@ public class GravityControl : MonoBehaviour
         {
             planet = other.GetComponentInParent<GravityAttractor>();
         }
-        if (other.CompareTag("InnerGravity"))
+        if (other.CompareTag("InnerGravity")) //When player leaves the ground, his rotation is no longer dependent on the planet while gravity is still enacted on him
         {
             shouldRotate = false;
         }
