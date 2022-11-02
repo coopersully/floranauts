@@ -43,14 +43,15 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Gravity\GravityAttractor.cs" />
-     <Compile Include="Assets\Scripts\UIAudioManager.cs" />
+     <Compile Include="Assets\Scripts\Audio\UIAudioManager.cs" />
      <Compile Include="Assets\Scripts\Gravity\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\SettingsMenu.cs" />
-     <Compile Include="Assets\Scripts\AudioManager.cs" />
+     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Gravity\InputManager.cs" />
      <Compile Include="Assets\Scripts\Gravity\GravityControl.cs" />
      <Compile Include="Assets\Scripts\Gravity\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PersistentObject.cs" />
+     <Compile Include="Assets\Scripts\PauseManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

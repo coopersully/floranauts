@@ -1,61 +1,73 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityControl : MonoBehaviour
+namespace Gravity
 {
-    GravityAttractor planet;
-    PlayerMovement playerMovement;
-    Rigidbody rb;
-
-    bool shouldRotate = true;
-
-
-    //this Script goes on the player and tells the planet what to attract
-    void Awake()
+    // This Script goes on the player and tells the planet what to attract.
+    public class GravityControl : MonoBehaviour
     {
-        planet = GameObject.FindGameObjectWithTag("Planet1").GetComponent<GravityAttractor>();
-        playerMovement = GetComponent<PlayerMovement>();
-        rb = GetComponent<Rigidbody>();
+        private GravityAttractor _planet;
+        private PlayerMovement _playerMovement;
+        private Rigidbody _rigidbody;
 
-        // disable rigidbody built in gravity and freezes rotations so planet can add that itself
-        rb.useGravity = false;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-    }
-
-    void FixedUpdate()
-    {
-
-        // Allow this body to be influenced by planet's gravity
-        planet.Attract(rb);
-        if (shouldRotate) planet.Rotate(rb);
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!playerMovement.isGrounded && other.CompareTag("Gravity")) //While player is in the air, if hits trigger for other planet, gravity switches and player slowly rotates
+        private bool _shouldRotate = true;
+        
+        private void Awake()
         {
-            planet = other.GetComponentInParent<GravityAttractor>();
-            planet.rotationSpeed = 1;
-            shouldRotate = true;
+            _planet = GameObject.FindGameObjectWithTag("Planet1").GetComponent<GravityAttractor>();
+            _playerMovement = GetComponent<PlayerMovement>();
+            _rigidbody = GetComponent<Rigidbody>();
 
+            // Disable rigidbody built in gravity and freezes rotations so planet can add that itself
+            _rigidbody.useGravity = false;
+            _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         }
-        if (other.CompareTag("InnerGravity")) //When Player hits trigger closer to the planet, the rotation speed incresses, snappin him upright in relation to planet
+
+        private void FixedUpdate()
         {
-            shouldRotate = true;
-            planet.rotationSpeed = 10;
+            // Allow this body to be influenced by planet's gravity
+            _planet.Attract(_rigidbody);
+            if (_shouldRotate) _planet.Rotate(_rigidbody);
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            /* While player is in the air, if hits trigger
+             for other planet, gravity switches and player
+             slowly rotates. */
+            if (!_playerMovement.isGrounded && other.CompareTag("Gravity"))
+            {
+                _planet = other.GetComponentInParent<GravityAttractor>();
+                _planet.rotationSpeed = 1;
+                _shouldRotate = true;
+
+            }
+            
+            /* When Player hits trigger closer to the planet,
+             the rotation speed increases, snapping him upright
+             in relation to planet. */
+            if (other.CompareTag("InnerGravity"))
+            {
+                _shouldRotate = true;
+                _planet.rotationSpeed = 10;
+            }
+        }
+        
+        // If a player exits the boundary, he gets pulled back in to the center.
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("Boundary"))
+            {
+                _planet = other.GetComponentInParent<GravityAttractor>();
+            }
+            
+            /* When a player leaves the ground, his rotation
+             is no longer dependent on the planet while gravity
+             is still enacted on them. */
+            if (other.CompareTag("InnerGravity"))
+            {
+                _shouldRotate = false;
+            }
+        }
+
+
     }
-    private void OnTriggerExit(Collider other)  //if player exits the boundary, he gets pulled back in to the center
-    {
-        if (other.CompareTag("Boundary"))
-        {
-            planet = other.GetComponentInParent<GravityAttractor>();
-        }
-        if (other.CompareTag("InnerGravity")) //When player leaves the ground, his rotation is no longer dependent on the planet while gravity is still enacted on him
-        {
-            shouldRotate = false;
-        }
-    }
-
-
 }
