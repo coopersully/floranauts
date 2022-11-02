@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 namespace Gravity
@@ -48,7 +49,7 @@ namespace Gravity
             //groundCheck
             isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
 
-            if (inputManager.jump_Input == true)
+            if (inputManager.jumpInput == true)
             {
                 Jump();
 
@@ -85,7 +86,7 @@ namespace Gravity
             if (isGrounded)
             {
                 rb.AddForce(transform.up * jumpForce);
-                inputManager.jump_Input = false;
+                inputManager.jumpInput = false;
 
             }
         }
