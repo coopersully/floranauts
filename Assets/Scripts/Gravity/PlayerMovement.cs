@@ -50,6 +50,9 @@ namespace Gravity
 
             //groundCheck
             isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
+            this.anim.SetBool("isGrounded", isGrounded);
+           
+
 
             if (inputManager.jumpInput == true)
             {
@@ -76,6 +79,9 @@ namespace Gravity
             verticalLookRotation += inputManager.cameraInput.y * mouseSensitivityY;
             verticalLookRotation = Mathf.Clamp(verticalLookRotation, -45, -25);
             cameraTransform.localEulerAngles = Vector3.left * verticalLookRotation;
+            anim.SetFloat("Horizontal", inputManager.horizontalInput);
+            anim.SetFloat("Vertical", inputManager.verticalInput);
+
 
             //references InputManager and moves player based on Input System
             Vector3 moveDirection = new Vector3(inputManager.horizontalInput, 0, inputManager.verticalInput).normalized;
@@ -87,6 +93,8 @@ namespace Gravity
 
             if (isGrounded)
             {
+                this.anim.SetTrigger("Jump");
+
                 rb.AddForce(transform.up * jumpForce);
 
                 inputManager.jumpInput = false;
