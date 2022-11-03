@@ -1,15 +1,16 @@
-using Player;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Gravity
 {
     public class PlayerMovement : MonoBehaviour
     {
-        InputManager inputManager;
-        GravityControl gravityControl;
-        GravityAttractor gravityAttractor;
-        Animator anim;
+        public Vector2 movementInput;
+        public Vector2 cameraInput;
 
+        private GravityAttractor _gravityAttractor;
+        private Animator _anim;
+        
         public float mouseSensitivityX = 1;
         public float mouseSensitivityY = 1;
         public float walkSpeed = 10;
@@ -18,92 +19,86 @@ namespace Gravity
         public Transform groundCheck;
 
         public bool isGrounded;
-        Vector3 moveAmount;
-        Vector3 smoothMoveVelocity;
-        float verticalLookRotation;
-        Transform cameraTransform;
-        Rigidbody rb;
+        private Vector3 _moveAmount;
+        private Vector3 _smoothMoveVelocity;
+        private float _verticalLookRotation;
+        private Transform _cameraTransform;
+        private Rigidbody _rigidbody;
+        private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
+        private static readonly int Horizontal = Animator.StringToHash("Horizontal");
+        private static readonly int Vertical = Animator.StringToHash("Vertical");
+        private static readonly int Jump1 = Animator.StringToHash("Jump");
 
         private void Awake()
         {
-            inputManager = GetComponent<InputManager>();
-            gravityControl = GetComponent<GravityControl>();
-            anim = GetComponent<Animator>();
+            _anim = GetComponent<Animator>();
 
-
-
-
-            rb = GetComponent<Rigidbody>();
-            cameraTransform = Camera.main.transform;
-
-
-
+            _rigidbody = GetComponent<Rigidbody>();
+            _cameraTransform = GetComponentInChildren<Camera>().transform;
+            
             //hides mouse cursor
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-
         }
 
         private void Update()
         {
-            Move();
+            UpdateGroundedValue();
+            ApplyMovement();
+        }
 
-            //groundCheck
+        /* Check for if the player is on the ground
+         and apply the appropriate animation effect(s). */
+        private void UpdateGroundedValue()
+        {
             isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
-            this.anim.SetBool("isGrounded", isGrounded);
-           
-
-
-            if (inputManager.jumpInput == true)
-            {
-                Jump();
-
-            }
-
-
-
+            _anim.SetBool(IsGrounded, isGrounded);
         }
 
-        void FixedUpdate()
+        
+        private void FixedUpdate()
         {
-
-
             // Apply movement to rigidbody
-            Vector3 localMove = transform.TransformDirection(moveAmount) * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + localMove);
+            var localMove = transform.TransformDirection(_moveAmount) * Time.fixedDeltaTime;
+            _rigidbody.MovePosition(_rigidbody.position + localMove);
         }
-        private void Move()
+
+        public void Camera(InputAction.CallbackContext context)
         {
-            //References Input Manager and rotates player based on where mouse or right joystick dictates
-            transform.Rotate(Vector3.up * inputManager.cameraInput.x * mouseSensitivityX);
-            verticalLookRotation += inputManager.cameraInput.y * mouseSensitivityY;
-            verticalLookRotation = Mathf.Clamp(verticalLookRotation, -45, -25);
-            cameraTransform.localEulerAngles = Vector3.left * verticalLookRotation;
-            anim.SetFloat("Horizontal", inputManager.horizontalInput);
-            anim.SetFloat("Vertical", inputManager.verticalInput);
-
-
-            //references InputManager and moves player based on Input System
-            Vector3 moveDirection = new Vector3(inputManager.horizontalInput, 0, inputManager.verticalInput).normalized;
-            Vector3 targetMoveAmount = moveDirection * walkSpeed;
-            moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, .15f);
+            Debug.Log("Camera moved.");
+            cameraInput = context.ReadValue<Vector2>();
         }
-        private void Jump()
+
+        private void ApplyMovement()
         {
+            // Rotate player based on where mouse or right joystick dictates
+            transform.Rotate(Vector3.up * (cameraInput.x * mouseSensitivityX));
+            _verticalLookRotation += cameraInput.y * mouseSensitivityY;
+            _verticalLookRotation = Mathf.Clamp(_verticalLookRotation, -45, -25);
+            _cameraTransform.localEulerAngles = Vector3.left * _verticalLookRotation;
+            _anim.SetFloat(Horizontal, movementInput.x);
+            _anim.SetFloat(Vertical, movementInput.y);
 
-            if (isGrounded)
-            {
-                this.anim.SetTrigger("Jump");
-
-                rb.AddForce(transform.up * jumpForce);
-
-                inputManager.jumpInput = false;
-
-            }
+            // Move player based on Input System
+            var moveDirection = new Vector3(movementInput.x, 0, movementInput.y).normalized;
+            var targetMoveAmount = moveDirection * walkSpeed;
+            _moveAmount = Vector3.SmoothDamp(_moveAmount, targetMoveAmount, ref _smoothMoveVelocity, .15f);
         }
-
-
-
-
+        
+        public void Move(InputAction.CallbackContext context)
+        {
+            Debug.Log("Player moved.");
+            movementInput = context.ReadValue<Vector2>();
+        }
+        
+        public void Jump(InputAction.CallbackContext context)
+        {
+            Debug.Log("Player jumped.");
+            // If the player is not grounded, ignore the jump event.
+            if (!isGrounded) return;
+            
+            _anim.SetTrigger(Jump1);
+            _rigidbody.AddForce(transform.up * jumpForce);
+        }
     }
 }
