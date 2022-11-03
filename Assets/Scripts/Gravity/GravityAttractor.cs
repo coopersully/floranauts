@@ -9,9 +9,10 @@ namespace Gravity
         private GravityControl _gravityControl;
 
         [Range(1, 5)]
-        public readonly int planetGravity = 1;
+        public int planetGravity = 1;
         public Quaternion targetRotation;
-        public float rotationSpeed = 10;
+        [HideInInspector]
+        public float rotationSpeed;
 
         private Vector3 _gravityUp;
         private Vector3 _localUp;
