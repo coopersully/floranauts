@@ -21,6 +21,7 @@ namespace Gravity
             _rigidbody.useGravity = false;
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         }
+        
 
         private void FixedUpdate()
         {
