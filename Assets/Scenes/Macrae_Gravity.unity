@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.010962329, g: 0.010229441, b: 0.012652658, a: 1}
+  m_IndirectSpecularColor: {r: 0.99999905, g: 0, b: 0.99999905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8714,6 +8714,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86d766b2a69e8b48ad5e3e5b805c47d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementInput: {x: 0, y: 0}
+  cameraInput: {x: 0, y: 0}
   mouseSensitivityX: 0.1
   mouseSensitivityY: 0.1
   walkSpeed: 10
