@@ -7,7 +7,7 @@ public class PlanetSpawner : MonoBehaviour
     public float radius;
     public GameObject planetPrefab;
 
-    private void Start()
+    private void Awake()
     {
         var center = transform.position;
         for (var i = 0; i < numObjects; i++)

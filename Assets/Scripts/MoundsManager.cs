@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 /*Written by Thomas Walker
@@ -72,7 +73,7 @@ public class MoundsManager : MonoBehaviour
                 
                     planetTree.SetActive(true);
 
-                    PlayerScoreManager.bluePlayerPlanetsCount++;
+                    PlayerScoreManager.BluePlayerPlanetsCount++;
                 
                     planet.GetComponent<MeshRenderer> ().material = bluePlanet;
                     planetTreeLeaves.GetComponent<MeshRenderer> ().material = bluePlanet;
@@ -115,7 +116,7 @@ public class MoundsManager : MonoBehaviour
                 
                     planetTree.SetActive(true);
 
-                    PlayerScoreManager.redPlayerPlanetsCount++;
+                    PlayerScoreManager.RedPlayerPlanetsCount++;
                 
                     planet.GetComponent<MeshRenderer> ().material = redPlanet;
                     planetTreeLeaves.GetComponent<MeshRenderer> ().material = redPlanet;
