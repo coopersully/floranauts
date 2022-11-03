@@ -8,6 +8,7 @@ namespace Gravity
         InputManager inputManager;
         GravityControl gravityControl;
         GravityAttractor gravityAttractor;
+        Animator anim;
 
         public float mouseSensitivityX = 1;
         public float mouseSensitivityY = 1;
@@ -27,6 +28,7 @@ namespace Gravity
         {
             inputManager = GetComponent<InputManager>();
             gravityControl = GetComponent<GravityControl>();
+            anim = GetComponent<Animator>();
 
 
 
@@ -86,6 +88,7 @@ namespace Gravity
             if (isGrounded)
             {
                 rb.AddForce(transform.up * jumpForce);
+
                 inputManager.jumpInput = false;
 
             }
