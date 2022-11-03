@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Join",
+                    "type": "Button",
+                    "id": "9fe85cd9-504e-4109-b5c5-942313b69d68",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -51,7 +60,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse and Keyboard",
                     "action": "HorizontalMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -62,7 +71,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse and Keyboard",
                     "action": "HorizontalMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -73,7 +82,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse and Keyboard",
                     "action": "HorizontalMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -84,7 +93,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse and Keyboard",
                     "action": "HorizontalMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -106,7 +115,7 @@
                     "path": "<Gamepad>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "HorizontalMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -117,7 +126,7 @@
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "HorizontalMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -128,7 +137,7 @@
                     "path": "<Gamepad>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "HorizontalMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -139,7 +148,7 @@
                     "path": "<Gamepad>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "HorizontalMovement",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -150,7 +159,7 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse and Keyboard",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -161,7 +170,7 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -172,7 +181,7 @@
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Mouse and Keyboard",
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -194,7 +203,7 @@
                     "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -205,7 +214,7 @@
                     "path": "<Gamepad>/rightStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -213,10 +222,10 @@
                 {
                     "name": "left",
                     "id": "d1ef96ad-add3-484e-8b0b-459885842864",
-                    "path": "<Gamepad>/leftStick/left",
+                    "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -224,16 +233,66 @@
                 {
                     "name": "right",
                     "id": "3618542f-6ace-4867-af7d-5d73bbaacd21",
-                    "path": "<Gamepad>/leftStick/right",
+                    "path": "<Gamepad>/rightStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Controller",
                     "action": "Camera",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "b793b80a-0b41-453b-8d08-87e73ff9cef9",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and Keyboard",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5658ac5-9fdd-4de5-8a37-e79011d7a12e",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Join",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Mouse and Keyboard",
+            "bindingGroup": "Mouse and Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Controller",
+            "bindingGroup": "Controller",
+            "devices": [
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

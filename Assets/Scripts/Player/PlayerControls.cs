@@ -53,6 +53,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Join"",
+                    ""type"": ""Button"",
+                    ""id"": ""9fe85cd9-504e-4109-b5c5-942313b69d68"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -73,7 +82,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""HorizontalMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -84,7 +93,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""HorizontalMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -95,7 +104,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""HorizontalMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -106,7 +115,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""HorizontalMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -128,7 +137,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""HorizontalMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -139,7 +148,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""HorizontalMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -150,7 +159,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""HorizontalMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -161,7 +170,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""HorizontalMovement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -172,7 +181,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -183,7 +192,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -194,7 +203,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -216,7 +225,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -227,7 +236,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -235,10 +244,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""d1ef96ad-add3-484e-8b0b-459885842864"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -246,24 +255,75 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""3618542f-6ace-4867-af7d-5d73bbaacd21"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Camera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b793b80a-0b41-453b-8d08-87e73ff9cef9"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f5658ac5-9fdd-4de5-8a37-e79011d7a12e"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Join"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Mouse and Keyboard"",
+            ""bindingGroup"": ""Mouse and Keyboard"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Controller"",
+            ""bindingGroup"": ""Controller"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // PlayerMovement
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_HorizontalMovement = m_PlayerMovement.FindAction("HorizontalMovement", throwIfNotFound: true);
         m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMovement_Camera = m_PlayerMovement.FindAction("Camera", throwIfNotFound: true);
+        m_PlayerMovement_Join = m_PlayerMovement.FindAction("Join", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -326,6 +386,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_HorizontalMovement;
     private readonly InputAction m_PlayerMovement_Jump;
     private readonly InputAction m_PlayerMovement_Camera;
+    private readonly InputAction m_PlayerMovement_Join;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -333,6 +394,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @HorizontalMovement => m_Wrapper.m_PlayerMovement_HorizontalMovement;
         public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
         public InputAction @Camera => m_Wrapper.m_PlayerMovement_Camera;
+        public InputAction @Join => m_Wrapper.m_PlayerMovement_Join;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -351,6 +413,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Camera.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCamera;
                 @Camera.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCamera;
                 @Camera.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCamera;
+                @Join.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJoin;
+                @Join.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJoin;
+                @Join.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJoin;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -364,14 +429,36 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Camera.started += instance.OnCamera;
                 @Camera.performed += instance.OnCamera;
                 @Camera.canceled += instance.OnCamera;
+                @Join.started += instance.OnJoin;
+                @Join.performed += instance.OnJoin;
+                @Join.canceled += instance.OnJoin;
             }
         }
     }
     public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
+    private int m_MouseandKeyboardSchemeIndex = -1;
+    public InputControlScheme MouseandKeyboardScheme
+    {
+        get
+        {
+            if (m_MouseandKeyboardSchemeIndex == -1) m_MouseandKeyboardSchemeIndex = asset.FindControlSchemeIndex("Mouse and Keyboard");
+            return asset.controlSchemes[m_MouseandKeyboardSchemeIndex];
+        }
+    }
+    private int m_ControllerSchemeIndex = -1;
+    public InputControlScheme ControllerScheme
+    {
+        get
+        {
+            if (m_ControllerSchemeIndex == -1) m_ControllerSchemeIndex = asset.FindControlSchemeIndex("Controller");
+            return asset.controlSchemes[m_ControllerSchemeIndex];
+        }
+    }
     public interface IPlayerMovementActions
     {
         void OnHorizontalMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
+        void OnJoin(InputAction.CallbackContext context);
     }
 }
