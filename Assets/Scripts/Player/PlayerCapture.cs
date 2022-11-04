@@ -9,8 +9,9 @@ namespace Player
     {
         private bool _canCapture;
         private PlayerInput _playerInput;
-        
-        public CapturePoint capturePoint;
+
+        public List<CapturePoint> inventory;
+        public CapturePoint currentCapturePoint;
         public Color playerColor;
 
         private void Awake()
@@ -29,7 +30,7 @@ namespace Player
         public void Capture(InputAction.CallbackContext context)
         {
             if (!context.started) return;
-            capturePoint.CaptureAction(this);
+            currentCapturePoint.CaptureAction(this);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -37,7 +38,7 @@ namespace Player
             // If the entered trigger is not a capture point, ignore it.
             if (!other.CompareTag("Planet1")) return;
 
-            capturePoint = other.GetComponent<CapturePoint>();
+            currentCapturePoint = other.GetComponent<CapturePoint>();
         }
 
         private void OnTriggerExit(Collider other)
@@ -45,7 +46,7 @@ namespace Player
             // If the entered trigger is not a capture point, ignore it.
             if (!other.CompareTag("Planet1")) return;
 
-            capturePoint = null;
+            currentCapturePoint = null;
         }
     }
 }
