@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6998766515489882802}
   - component: {fileID: 6998766515489882798}
   - component: {fileID: 6998766515489882796}
+  - component: {fileID: 8466629248505694014}
   - component: {fileID: 6998766515489882803}
   m_Layer: 0
   m_Name: Player
@@ -125,6 +126,18 @@ MonoBehaviour:
     m_Bits: 8
   groundCheck: {fileID: 6998766516217002576}
   isGrounded: 0
+--- !u!114 &8466629248505694014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998766515489882797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcfb5f8ab9aa39c4cbc55cecfc499446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6998766515489882803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +212,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 09c49bb8-e34b-4e18-bec1-76d3e458c5fd
     m_ActionName: PlayerMovement/Camera[/Mouse/delta,/SwitchProControllerHID/rightStick/up,/SwitchProControllerHID/rightStick/down,/SwitchProControllerHID/leftStick/left,/SwitchProControllerHID/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9fe85cd9-504e-4109-b5c5-942313b69d68
+    m_ActionName: PlayerMovement/Join[/Keyboard/anyKey,/SwitchProControllerHID/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8466629248505694014}
+        m_TargetAssemblyTypeName: Player.PlayerControlsMisc, Assembly-CSharp
+        m_MethodName: PauseButtonPressed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 49213a8e-318a-4a43-a62e-68a09f081d08
+    m_ActionName: PlayerMovement/Pause[/Keyboard/escape,/SwitchProControllerHID/rightStickPress]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement

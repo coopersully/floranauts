@@ -1,7 +1,9 @@
+using Gravity;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Gravity
+namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -24,6 +26,7 @@ namespace Gravity
         private float _verticalLookRotation;
         private Transform _cameraTransform;
         private Rigidbody _rigidbody;
+        
         private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int Vertical = Animator.StringToHash("Vertical");
@@ -43,6 +46,8 @@ namespace Gravity
 
         private void Update()
         {
+            if (PauseManager.Instance.isPaused) return;
+            
             UpdateGroundedValue();
             ApplyMovement();
         }

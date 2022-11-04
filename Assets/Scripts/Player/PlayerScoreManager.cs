@@ -21,7 +21,7 @@ namespace Player
         public static int BluePlayerPlanetsCount;
         public static int RedPlayerPlanetsCount;
 
-        //Player Scores
+        // Player scores
         private int _bluePlayerScore;
         private int _redPlayerScore;
 
@@ -46,7 +46,7 @@ namespace Player
         
             UpdateScoreUI();
         
-            //Keeps the blue player's score from going below zero and activates a win if they reach 100 points
+            // Keeps the blue player's score from going below zero and activates a win if they reach 100 points
             if (_bluePlayerScore < 0)
             {
                 _bluePlayerScore = 0;
@@ -55,7 +55,7 @@ namespace Player
                 BlueWin();
             }
         
-            //Keeps the red player's score from going below zero and activates a win if they reach 100 points
+            // Keeps the red player's score from going below zero and activates a win if they reach 100 points
             if (_redPlayerScore < 0)
             {
                 _redPlayerScore = 0;
@@ -65,14 +65,14 @@ namespace Player
             }
         }
 
-        //Updates the score UI
+        // Updates the score UI
         private void UpdateScoreUI()
         {
             bluePlayerScoreUI.SetText("Score: " + BluePlayerPlanetsCount);
             redPlayerScoreUI.SetText("Score: " + RedPlayerPlanetsCount);
         }
     
-        //Adds total planets captured to each players' score
+        // Adds total planets captured to each players' score
         private IEnumerator IterateScore()
         {
             while (true)

@@ -21,7 +21,7 @@ namespace Player
 
         private void OnEnable()
         {
-            if(_playerControls == null)
+            if (_playerControls == null)
             {
                 _playerControls = new PlayerControls();
 
@@ -35,6 +35,7 @@ namespace Player
 
             _playerControls.Enable();
         }
+        
         private void OnDisable()
         {
             _playerControls.Disable();
