@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6998766515489882798}
   - component: {fileID: 6998766515489882796}
   - component: {fileID: 8466629248505694014}
+  - component: {fileID: 2854984843103496503}
   - component: {fileID: 6998766515489882803}
   m_Layer: 0
   m_Name: Player
@@ -138,6 +139,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfb5f8ab9aa39c4cbc55cecfc499446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2854984843103496503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998766515489882797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d10a7fa6e83e46f895a4adc167ad4631, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  capturePoint: {fileID: 0}
+  playerColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &6998766515489882803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +247,62 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 49213a8e-318a-4a43-a62e-68a09f081d08
     m_ActionName: PlayerMovement/Pause[/Keyboard/escape,/SwitchProControllerHID/rightStickPress]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2854984843103496503}
+        m_TargetAssemblyTypeName: Player.PlayerCapture, Assembly-CSharp
+        m_MethodName: Capture
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c24f5399-72af-4709-9ab4-e0fe0b039849
+    m_ActionName: PlayerMovement/Capture[/Keyboard/f,/SwitchProControllerHID/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a3d386d6-c5f1-4a2a-ac0f-27f4c9c8fc05
+    m_ActionName: UI/Navigate[/SwitchProControllerHID/leftStick/up,/SwitchProControllerHID/rightStick/up,/SwitchProControllerHID/leftStick/down,/SwitchProControllerHID/rightStick/down,/SwitchProControllerHID/leftStick/left,/SwitchProControllerHID/rightStick/left,/SwitchProControllerHID/leftStick/right,/SwitchProControllerHID/rightStick/right,/SwitchProControllerHID/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f45cf703-4015-49d0-9e84-927e2dad01bf
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: abf11b50-09ae-4ceb-8f92-f0b03f9a341d
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 029d8255-0fb5-41bf-8bb2-261727e4d253
+    m_ActionName: UI/Point[/Mouse/position,/Pen/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 469d43b6-4b19-4737-a27d-2e78bf3e54f9
+    m_ActionName: UI/Click[/Mouse/leftButton,/Pen/tip]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f11126bc-380a-4056-bcd9-073da7f207f0
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 00d2d1a3-599f-4a26-96fd-ef060d43ee21
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 28f9bd9d-1b6b-4183-bb01-477ff2b903fc
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 963684ef-812a-4b39-be9a-2adec0990b3c
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1100b2f6-afa2-40b9-99ab-f8667fe02f71
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement

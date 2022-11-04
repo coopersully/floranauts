@@ -71,6 +71,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Capture"",
+                    ""type"": ""Button"",
+                    ""id"": ""c24f5399-72af-4709-9ab4-e0fe0b039849"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -313,6 +322,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e402163-57f2-4cd4-a08c-a82920f1407e"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Capture"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b2495e5-7222-46d7-9b02-42ee9153306b"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Capture"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -872,6 +903,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Camera = m_PlayerMovement.FindAction("Camera", throwIfNotFound: true);
         m_PlayerMovement_Join = m_PlayerMovement.FindAction("Join", throwIfNotFound: true);
         m_PlayerMovement_Pause = m_PlayerMovement.FindAction("Pause", throwIfNotFound: true);
+        m_PlayerMovement_Capture = m_PlayerMovement.FindAction("Capture", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -948,6 +980,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Camera;
     private readonly InputAction m_PlayerMovement_Join;
     private readonly InputAction m_PlayerMovement_Pause;
+    private readonly InputAction m_PlayerMovement_Capture;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -957,6 +990,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Camera => m_Wrapper.m_PlayerMovement_Camera;
         public InputAction @Join => m_Wrapper.m_PlayerMovement_Join;
         public InputAction @Pause => m_Wrapper.m_PlayerMovement_Pause;
+        public InputAction @Capture => m_Wrapper.m_PlayerMovement_Capture;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -981,6 +1015,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnPause;
+                @Capture.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCapture;
+                @Capture.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCapture;
+                @Capture.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCapture;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -1000,6 +1037,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Capture.started += instance.OnCapture;
+                @Capture.performed += instance.OnCapture;
+                @Capture.canceled += instance.OnCapture;
             }
         }
     }
@@ -1134,6 +1174,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnCamera(InputAction.CallbackContext context);
         void OnJoin(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnCapture(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

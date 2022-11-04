@@ -8,6 +8,8 @@ namespace Player
     {
         public void PauseButtonPressed(InputAction.CallbackContext context)
         {
+            if (!context.started) return;
+            
             if (PauseManager.Instance.isPaused)
             {
                 Cursor.lockState = CursorLockMode.Locked;

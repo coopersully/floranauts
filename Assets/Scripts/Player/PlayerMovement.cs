@@ -25,7 +25,7 @@ namespace Player
         private Vector3 _smoothMoveVelocity;
         private float _verticalLookRotation;
         private Transform _cameraTransform;
-        private Rigidbody _rigidbody;
+        [HideInInspector] public Rigidbody rb;
         
         private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
@@ -36,7 +36,7 @@ namespace Player
         {
             _anim = GetComponent<Animator>();
 
-            _rigidbody = GetComponent<Rigidbody>();
+            rb = GetComponent<Rigidbody>();
             _cameraTransform = GetComponentInChildren<Camera>().transform;
             
             //hides mouse cursor
@@ -65,12 +65,11 @@ namespace Player
         {
             // Apply movement to rigidbody
             var localMove = transform.TransformDirection(_moveAmount) * Time.fixedDeltaTime;
-            _rigidbody.MovePosition(_rigidbody.position + localMove);
+            rb.MovePosition(rb.position + localMove);
         }
 
         public void Camera(InputAction.CallbackContext context)
         {
-            Debug.Log("Camera moved.");
             cameraInput = context.ReadValue<Vector2>();
         }
 
@@ -92,18 +91,16 @@ namespace Player
         
         public void Move(InputAction.CallbackContext context)
         {
-            Debug.Log("Player moved.");
             movementInput = context.ReadValue<Vector2>();
         }
         
         public void Jump(InputAction.CallbackContext context)
         {
-            Debug.Log("Player jumped.");
             // If the player is not grounded, ignore the jump event.
             if (!isGrounded) return;
             
             _anim.SetTrigger(Jump1);
-            _rigidbody.AddForce(transform.up * jumpForce);
+            rb.AddForce(transform.up * jumpForce);
         }
     }
 }
