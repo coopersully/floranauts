@@ -29,7 +29,7 @@ public class CapturePoint : MonoBehaviour
             _captureIndicatorMaterial.color = planet.unclaimedColor;
             
             // Add point to player's inventory
-            playerCapture.inventory.Remove(this);
+            currentCaptor.inventory.Remove(this);
             
             // Change the current captor for this CapturePoint
             currentCaptor = null;
