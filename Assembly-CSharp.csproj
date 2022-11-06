@@ -47,6 +47,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerScoreManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\PlanetSpawner.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\PlayerPairing.cs" />
      <Compile Include="Assets\Scripts\CapturePoint.cs" />
      <Compile Include="Assets\Scripts\Interfaces\SettingsMenu.cs" />
      <Compile Include="Assets\Scripts\PlanetType.cs" />
@@ -55,13 +56,12 @@
      <Compile Include="Assets\Scripts\Player\InputManager.cs" />
      <Compile Include="Assets\Scripts\Gravity\GravityControl.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerControlsMisc.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\PlayerCard.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PauseManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerCapture.cs" />
      <Compile Include="Assets\Scripts\PersistentObject.cs" />
      <Compile Include="Assets\Scripts\BlackHole.cs" />
-     <Compile Include="Assets\Scripts\Interfaces\PlayerPairing.cs" />
-     <Compile Include="Assets\Scripts\Interfaces\PlayerCard.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

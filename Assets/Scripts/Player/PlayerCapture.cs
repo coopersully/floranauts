@@ -36,7 +36,7 @@ namespace Player
             playerAccents.material.color = playerColor;
             
             // Start incrementing the player's score every second
-            //StartCoroutine(IncrementScore());
+            StartCoroutine(IncrementScore());
         }
         
         // Called every time a player presses the 'Capture' binding.
@@ -76,6 +76,7 @@ namespace Player
             {
                 score += inventory.Count;
                 Debug.Log(name + " has a score of " + score);
+                yield return new WaitForSeconds(1.0f);
             }
         }
     }
