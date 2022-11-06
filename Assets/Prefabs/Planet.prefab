@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 5941251540567562467}
   m_Layer: 3
   m_Name: Tree
-  m_TagString: Planet1
+  m_TagString: CapturePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

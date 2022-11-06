@@ -53,7 +53,7 @@ namespace Player
         private void OnTriggerEnter(Collider other)
         {
             // If the entered trigger is not a capture point, ignore it.
-            if (!other.CompareTag("Planet1")) return;
+            if (!other.CompareTag("CapturePoint")) return;
 
             currentCapturePoint = other.GetComponent<CapturePoint>();
         }
@@ -63,7 +63,7 @@ namespace Player
         private void OnTriggerExit(Collider other)
         {
             // If the entered trigger is not a capture point, ignore it.
-            if (!other.CompareTag("Planet1")) return;
+            if (!other.CompareTag("CapturePoint")) return;
 
             currentCapturePoint = null;
         }

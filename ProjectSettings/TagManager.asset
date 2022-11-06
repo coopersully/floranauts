@@ -8,6 +8,8 @@ TagManager:
   - Planet1
   - Gravity
   - Boundary
+  - InnerGravity
+  - CapturePoint
   layers:
   - Default
   - TransparentFX
