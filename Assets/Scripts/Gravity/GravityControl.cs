@@ -1,5 +1,6 @@
 using Player;
 using UnityEngine;
+using UnityEngine.LowLevel;
 
 namespace Gravity
 {
@@ -14,7 +15,18 @@ namespace Gravity
         
         private void Awake()
         {
-            _planet = GameObject.FindGameObjectWithTag("Planet1").GetComponent<GravityAttractor>();
+            var planetObj = GameObject.FindGameObjectWithTag("Planet1");
+            if (planetObj == null)
+            {
+                Debug.LogError("Could not find object with tag 'Planet1'");
+            }
+            
+            _planet = planetObj.GetComponent<GravityAttractor>();
+            if (_planet == null)
+            {
+                Debug.LogError("Could not find component 'GravityAttractor' on Planet1 object.");
+            }
+            
             _playerMovement = GetComponent<PlayerMovement>();
             _rigidbody = GetComponent<Rigidbody>();
 
