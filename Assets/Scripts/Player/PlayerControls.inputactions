@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "JetPack",
+                    "type": "Button",
+                    "id": "5feb5fc6-3f19-40cf-a9db-a7e72cf55a45",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -322,6 +331,28 @@
                     "processors": "",
                     "groups": "Controller",
                     "action": "Capture",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d3531075-b3f1-4a08-a6bc-07958185570a",
+                    "path": "<NimbusGamepadHid>/buttonSouth",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "JetPack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fad53654-3b43-4359-9dc7-11da4b8b021a",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Mouse and Keyboard",
+                    "action": "JetPack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

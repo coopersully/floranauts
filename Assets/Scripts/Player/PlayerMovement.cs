@@ -32,6 +32,10 @@ namespace Player
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int Jump1 = Animator.StringToHash("Jump");
 
+        public bool jetPack = false;
+        public bool doubleJump = false;
+        private int jumpCount = 2;
+
         private void Awake()
         {
             _anim = GetComponent<Animator>();
@@ -58,6 +62,7 @@ namespace Player
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
             _anim.SetBool(IsGrounded, isGrounded);
+            jumpCount = 2;
         }
 
         
@@ -96,11 +101,26 @@ namespace Player
         
         public void Jump(InputAction.CallbackContext context)
         {
-            // If the player is not grounded, ignore the jump event.
-            if (!isGrounded) return;
-            
-            _anim.SetTrigger(Jump1);
-            rb.AddForce(transform.up * jumpForce);
+            if (!doubleJump)
+            {
+                // If the player is not grounded, ignore the jump event.
+                if (!isGrounded) return;
+
+                _anim.SetTrigger(Jump1);
+                rb.AddForce(transform.up * jumpForce);
+            }
+            else if(jumpCount > 0)
+            {
+                rb.AddForce(transform.up * jumpForce);
+                jumpCount--;
+
+            }
+        }
+        public void JetPack(InputAction.CallbackContext context)
+        {
+           //apply force while jetpack input is activated
+            if(jetPack) 
+                rb.AddForce(transform.up * jumpForce);
         }
     }
 }

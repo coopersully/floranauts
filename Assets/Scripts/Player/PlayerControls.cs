@@ -80,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""JetPack"",
+                    ""type"": ""Button"",
+                    ""id"": ""5feb5fc6-3f19-40cf-a9db-a7e72cf55a45"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -344,6 +353,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Capture"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3531075-b3f1-4a08-a6bc-07958185570a"",
+                    ""path"": ""<NimbusGamepadHid>/buttonSouth"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""JetPack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fad53654-3b43-4359-9dc7-11da4b8b021a"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""JetPack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -904,6 +935,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Join = m_PlayerMovement.FindAction("Join", throwIfNotFound: true);
         m_PlayerMovement_Pause = m_PlayerMovement.FindAction("Pause", throwIfNotFound: true);
         m_PlayerMovement_Capture = m_PlayerMovement.FindAction("Capture", throwIfNotFound: true);
+        m_PlayerMovement_JetPack = m_PlayerMovement.FindAction("JetPack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -981,6 +1013,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Join;
     private readonly InputAction m_PlayerMovement_Pause;
     private readonly InputAction m_PlayerMovement_Capture;
+    private readonly InputAction m_PlayerMovement_JetPack;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -991,6 +1024,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Join => m_Wrapper.m_PlayerMovement_Join;
         public InputAction @Pause => m_Wrapper.m_PlayerMovement_Pause;
         public InputAction @Capture => m_Wrapper.m_PlayerMovement_Capture;
+        public InputAction @JetPack => m_Wrapper.m_PlayerMovement_JetPack;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1018,6 +1052,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Capture.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCapture;
                 @Capture.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCapture;
                 @Capture.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCapture;
+                @JetPack.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJetPack;
+                @JetPack.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJetPack;
+                @JetPack.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJetPack;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -1040,6 +1077,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Capture.started += instance.OnCapture;
                 @Capture.performed += instance.OnCapture;
                 @Capture.canceled += instance.OnCapture;
+                @JetPack.started += instance.OnJetPack;
+                @JetPack.performed += instance.OnJetPack;
+                @JetPack.canceled += instance.OnJetPack;
             }
         }
     }
@@ -1175,6 +1215,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnJoin(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnCapture(InputAction.CallbackContext context);
+        void OnJetPack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

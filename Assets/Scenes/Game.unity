@@ -514,7 +514,7 @@ GameObject:
   - component: {fileID: 170466774}
   m_Layer: 3
   m_Name: Planet(Clone).02
-  m_TagString: Planet
+  m_TagString: Planet1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
