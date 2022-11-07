@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10a7fa6e83e46f895a4adc167ad4631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: 0
   inventory: []
   currentCapturePoint: {fileID: 0}
   playerColor: {r: 0, g: 0, b: 0, a: 0}
@@ -216,23 +217,23 @@ MonoBehaviour:
     m_ActionId: d6c9882d-247b-4230-b726-63f29d322ff9
     m_ActionName: PlayerMovement/Jump[/Keyboard/space]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 09c49bb8-e34b-4e18-bec1-76d3e458c5fd
+    m_ActionName: PlayerMovement/Camera[/Mouse/delta,/SwitchProControllerHID/rightStick/up,/SwitchProControllerHID/rightStick/down,/SwitchProControllerHID/leftStick/left,/SwitchProControllerHID/leftStick/right]
+  - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6998766515489882796}
-        m_TargetAssemblyTypeName: Gravity.PlayerMovement, Assembly-CSharp
-        m_MethodName: Camera
-        m_Mode: 0
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 09c49bb8-e34b-4e18-bec1-76d3e458c5fd
-    m_ActionName: PlayerMovement/Camera[/Mouse/delta,/SwitchProControllerHID/rightStick/up,/SwitchProControllerHID/rightStick/down,/SwitchProControllerHID/leftStick/left,/SwitchProControllerHID/leftStick/right]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 9fe85cd9-504e-4109-b5c5-942313b69d68
     m_ActionName: PlayerMovement/Join[/Keyboard/anyKey,/SwitchProControllerHID/start]
   - m_PersistentCalls:
