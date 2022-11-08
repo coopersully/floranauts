@@ -10,12 +10,17 @@ public class KnockBack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.attachedRigidbody)
+        if (other.CompareTag("Player"))
         {
-            _otherRb = other.attachedRigidbody;
-            _direction = _otherRb.position - transform.position;
-            _direction.y = 2;
-            _otherRb.AddForce(_direction * _knockbackForce * Time.deltaTime, ForceMode.Impulse);
+
+
+            if (other.attachedRigidbody)
+            {
+                _otherRb = other.attachedRigidbody;
+                _direction = _otherRb.position - transform.position;
+                _direction.y = 2;
+                _otherRb.AddForce(_direction * _knockbackForce * Time.deltaTime, ForceMode.Impulse);
+            }
         }
     }
 

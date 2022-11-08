@@ -8,8 +8,6 @@ public class Teleport : MonoBehaviour
     private Transform playerTransform;
     public GameObject[] teleportPoints;
     private int randNum;
-    
-   
 
     void Awake()
     {
@@ -18,18 +16,13 @@ public class Teleport : MonoBehaviour
 
     }
 
-  
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("BlackHole"))
         {
             //Teleports player to random teleport point
-            randNum = Random.Range(0, teleportPoints.Length);
+            randNum = Random.Range(0, teleportPoints.Length + 1);
             gameObject.transform.position = teleportPoints[randNum].transform.position;
-
         }
-
     }
-    
 }

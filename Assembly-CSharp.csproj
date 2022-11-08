@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerScoreManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerControls.cs" />
     <Compile Include="Assets\Scripts\PlanetSpawner.cs" />
+    <Compile Include="Assets\Scripts\Attack\KnockBack.cs" />
     <Compile Include="Assets\Scripts\Interfaces\PlayerPairing.cs" />
     <Compile Include="Assets\Scripts\CapturePoint.cs" />
     <Compile Include="Assets\Scripts\Interfaces\SettingsMenu.cs" />
@@ -72,14 +73,13 @@
     <Compile Include="Assets\Scripts\Gravity\GravityControl.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerControlsMisc.cs" />
     <Compile Include="Assets\Scripts\Interfaces\PlayerCard.cs" />
+    <Compile Include="Assets\Scripts\Gravity\ObjectGravityControl.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Interfaces\PauseManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCapture.cs" />
     <Compile Include="Assets\Scripts\PersistentObject.cs" />
     <Compile Include="Assets\Scripts\BlackHole\Teleport.cs" />
     <Compile Include="Assets\Scripts\BlackHole.cs" />
-    <Compile Include="Assets\Scripts\Attack\KnockBack.cs" />
-    <Compile Include="Assets\Scripts\Gravity\ObjectGravityControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -20,10 +20,10 @@ namespace Gravity
         {
             //creates array out of all the planets
             allPlanets = GameObject.FindGameObjectsWithTag("Planet");
-            randNum = Random.Range(0, allPlanets.Length);
+            randNum = Random.Range(0, allPlanets.Length + 1);
 
             //set first planet to random planet in the array
-            randNum = Random.Range(0, allPlanets.Length);
+            randNum = Random.Range(0, allPlanets.Length + 1);
             _planet = allPlanets[randNum].GetComponent<GravityAttractor>();
            
             
@@ -70,7 +70,7 @@ namespace Gravity
                 //resets gravity and has player attracted to random planet
                 _shouldRotate = true;
                 _planet.rotationSpeed = 10;
-                randNum = Random.Range(0, allPlanets.Length);
+                randNum = Random.Range(0, allPlanets.Length + 1);
                 _planet = allPlanets[randNum].GetComponent<GravityAttractor>();
 
             }
