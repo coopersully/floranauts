@@ -67,6 +67,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwingAttack",
+                    "type": "Button",
+                    "id": "23330450-6289-4a8b-9d0a-048d01e44486",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -353,6 +362,28 @@
                     "processors": "",
                     "groups": "Mouse and Keyboard",
                     "action": "JetPack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf52c5e3-1fa0-4996-9101-3cb20abb485b",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and Keyboard",
+                    "action": "SwingAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9da4ca9f-a36e-4d1a-8c3a-adcce9c3dff9",
+                    "path": "<NimbusGamepadHid>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "SwingAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

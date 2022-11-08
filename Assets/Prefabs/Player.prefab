@@ -1,5 +1,103 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4995709867492863977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9020664005261083923}
+  - component: {fileID: 6959177600645230836}
+  - component: {fileID: 922332090869252465}
+  - component: {fileID: 2225078142391419952}
+  m_Layer: 0
+  m_Name: Stick
+  m_TagString: Stick
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9020664005261083923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4995709867492863977}
+  m_LocalRotation: {x: -0.04236232, y: 0.028786143, z: -0.5613029, w: 0.8260242}
+  m_LocalPosition: {x: -0.24400084, y: 0.04200305, z: 0.049997345}
+  m_LocalScale: {x: 0.049714647, y: 0.28724757, z: 0.049714647}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7295454575249401667}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -2.159, y: 5.462, z: -68.497}
+--- !u!33 &6959177600645230836
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4995709867492863977}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &922332090869252465
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4995709867492863977}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &2225078142391419952
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4995709867492863977}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &6998766515489882797
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,10 +112,11 @@ GameObject:
   - component: {fileID: 6998766515489882802}
   - component: {fileID: 6998766515489882798}
   - component: {fileID: 6998766515489882796}
+  - component: {fileID: 8034908242868956949}
+  - component: {fileID: 4626641240122338924}
   - component: {fileID: 8466629248505694014}
   - component: {fileID: 2854984843103496503}
   - component: {fileID: 6998766515489882803}
-  - component: {fileID: 4626641240122338924}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -105,6 +204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79b22a4553df0c46be716e3f845ca6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allPlanets: []
 --- !u!114 &6998766515489882796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +230,34 @@ MonoBehaviour:
   isGrounded: 0
   rb: {fileID: 0}
   jetPack: 0
+  stick: 1
+  stickObj: {fileID: 4995709867492863977}
+--- !u!114 &8034908242868956949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998766515489882797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07437367757c56448389c40c883b19a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockbackForce: 200
+--- !u!114 &4626641240122338924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998766515489882797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc6a7aa16d88af4b916e7b6acd61e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPoints: []
 --- !u!114 &8466629248505694014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,24 +454,27 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5feb5fc6-3f19-40cf-a9db-a7e72cf55a45
     m_ActionName: PlayerMovement/JetPack[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6998766515489882796}
+        m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
+        m_MethodName: SwingAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 23330450-6289-4a8b-9d0a-048d01e44486
+    m_ActionName: PlayerMovement/SwingAttack[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 6998766516845241719}
---- !u!114 &4626641240122338924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6998766515489882797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fc6a7aa16d88af4b916e7b6acd61e9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  teleportPoint1: {fileID: 0}
 --- !u!1 &6998766516217002577
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +729,12 @@ Transform:
 --- !u!137 &4834193395923760515 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 4583965977951464712, guid: 74d0f918bb0c2e241a85ca8b2ca9b090,
+    type: 3}
+  m_PrefabInstance: {fileID: 8974272741756033163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7295454575249401667 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 74d0f918bb0c2e241a85ca8b2ca9b090,
     type: 3}
   m_PrefabInstance: {fileID: 8974272741756033163}
   m_PrefabAsset: {fileID: 0}

@@ -27,6 +27,7 @@ public class Teleport : MonoBehaviour
             //Teleports player to random teleport point
             randNum = Random.Range(0, teleportPoints.Length);
             gameObject.transform.position = teleportPoints[randNum].transform.position;
+
         }
 
     }

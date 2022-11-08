@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: d2b52c61dd7adf548b3633748081b45f
+guid: fe5209c6b592b414ebb1b08b4cb70611
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: Jumping
+    second: SwingAttack2
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Jumping
+      name: SwingAttack2
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 30
+      lastFrame: 48
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

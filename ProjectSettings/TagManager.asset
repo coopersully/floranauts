@@ -11,6 +11,7 @@ TagManager:
   - InnerGravity
   - CapturePoint
   - BlackHole
+  - Stick
   layers:
   - Default
   - TransparentFX

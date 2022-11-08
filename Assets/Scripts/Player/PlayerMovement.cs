@@ -1,5 +1,6 @@
 using Gravity;
 using Interfaces;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,13 +33,19 @@ namespace Player
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int Jump1 = Animator.StringToHash("Jump");
 
-        public bool jetPack = true;
+        public bool jetPack = false;
+        public bool stick = true;
+        public GameObject stickObj;
+        private float attackTimer;
 
+     
         
 
         private void Awake()
         {
-              jetPack = true;
+            jetPack = true;
+            stick = true;
+            stickObj.SetActive(false);
 
             _anim = GetComponent<Animator>();
 
@@ -53,7 +60,7 @@ namespace Player
         private void Update()
         {
             if (PauseManager.Instance.isPaused) return;
-            
+
             UpdateGroundedValue();
             ApplyMovement();
 
@@ -95,6 +102,7 @@ namespace Player
             // Move player based on Input System
             var moveDirection = new Vector3(movementInput.x, 0, movementInput.y).normalized;
             var targetMoveAmount = moveDirection * walkSpeed;
+        
             _moveAmount = Vector3.SmoothDamp(_moveAmount, targetMoveAmount, ref _smoothMoveVelocity, .15f);
         }
         
@@ -122,6 +130,25 @@ namespace Player
             }
         }
 
-        
+        public void SwingAttack(InputAction.CallbackContext context)
+        {
+            if (stick)
+            {
+                StartCoroutine(SwingAnimation());
+            }
+        }
+        IEnumerator SwingAnimation()
+        {
+            //activates stick and deactivates after the animation plays out
+            stickObj.SetActive(true);
+            _anim.SetTrigger("SwingAttack");
+
+            yield return new WaitForSeconds(2f);
+            stickObj.SetActive(false);
+
+        }
+
+
+
     }
 }
