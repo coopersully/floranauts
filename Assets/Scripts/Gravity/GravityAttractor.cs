@@ -11,6 +11,7 @@ namespace Gravity
 
         [Range(1, 5)]
         public int planetGravity = 1;
+        public int playerGravity = -10;
         public Quaternion targetRotation;
         [HideInInspector]
         public float rotationSpeed;
@@ -29,7 +30,7 @@ namespace Gravity
             _gravityUp = (body.position - transform.position).normalized;
             
             // Apply downwards gravity to body
-            body.AddForce(_gravityUp * (planetGravity * -10));
+            body.AddForce(_gravityUp * (planetGravity * playerGravity));
         }
         public void Rotate(Rigidbody body)
         {

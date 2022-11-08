@@ -10,6 +10,7 @@ TagManager:
   - Boundary
   - InnerGravity
   - CapturePoint
+  - BlackHole
   layers:
   - Default
   - TransparentFX

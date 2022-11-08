@@ -11,21 +11,21 @@ namespace Gravity
         private PlayerMovement _playerMovement;
         private Rigidbody _rigidbody;
 
+        public GameObject[] allPlanets;
+        private int randNum;
+
         private bool _shouldRotate = true;
         
         private void Awake()
         {
-            var planetObj = GameObject.FindGameObjectWithTag("Planet1");
-            if (planetObj == null)
-            {
-                Debug.LogError("Could not find object with tag 'Planet1'");
-            }
-            
-            _planet = planetObj.GetComponent<GravityAttractor>();
-            if (_planet == null)
-            {
-                Debug.LogError("Could not find component 'GravityAttractor' on Planet1 object.");
-            }
+            //creates array out of all the planets
+            allPlanets = GameObject.FindGameObjectsWithTag("Planet");
+            randNum = Random.Range(0, allPlanets.Length);
+
+            //set first planet to random planet in the array
+            randNum = Random.Range(0, allPlanets.Length);
+            _planet = allPlanets[randNum].GetComponent<GravityAttractor>();
+           
             
             _playerMovement = GetComponent<PlayerMovement>();
             _rigidbody = GetComponent<Rigidbody>();
@@ -51,6 +51,7 @@ namespace Gravity
             {
                 _planet = other.GetComponentInParent<GravityAttractor>();
                 _planet.rotationSpeed = 1;
+
                 _shouldRotate = true;
 
             }
@@ -62,6 +63,16 @@ namespace Gravity
             {
                 _shouldRotate = true;
                 _planet.rotationSpeed = 10;
+            }
+
+            if (other.CompareTag("BlackHole"))
+            {
+                //resets gravity and has player attracted to random planet
+                _shouldRotate = true;
+                _planet.rotationSpeed = 10;
+                randNum = Random.Range(0, allPlanets.Length);
+                _planet = allPlanets[randNum].GetComponent<GravityAttractor>();
+
             }
         }
         
@@ -79,6 +90,7 @@ namespace Gravity
             if (other.CompareTag("InnerGravity"))
             {
                 _shouldRotate = false;
+
             }
         }
 

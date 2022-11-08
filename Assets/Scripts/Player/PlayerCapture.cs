@@ -75,7 +75,7 @@ namespace Player
             while (true)
             {
                 score += inventory.Count;
-                Debug.Log(name + " has a score of " + score);
+                //Debug.Log(name + " has a score of " + score);
                 yield return new WaitForSeconds(1.0f);
             }
         }

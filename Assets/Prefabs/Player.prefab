@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8466629248505694014}
   - component: {fileID: 2854984843103496503}
   - component: {fileID: 6998766515489882803}
+  - component: {fileID: 4626641240122338924}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -129,7 +130,6 @@ MonoBehaviour:
   isGrounded: 0
   rb: {fileID: 0}
   jetPack: 0
-  doubleJump: 0
 --- !u!114 &8466629248505694014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +331,19 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 6998766516845241719}
+--- !u!114 &4626641240122338924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998766515489882797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc6a7aa16d88af4b916e7b6acd61e9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPoint1: {fileID: 0}
 --- !u!1 &6998766516217002577
 GameObject:
   m_ObjectHideFlags: 0

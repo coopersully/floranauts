@@ -32,12 +32,14 @@ namespace Player
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int Jump1 = Animator.StringToHash("Jump");
 
-        public bool jetPack = false;
-        public bool doubleJump = false;
-        private int jumpCount = 2;
+        public bool jetPack = true;
+
+        
 
         private void Awake()
         {
+              jetPack = true;
+
             _anim = GetComponent<Animator>();
 
             rb = GetComponent<Rigidbody>();
@@ -54,6 +56,7 @@ namespace Player
             
             UpdateGroundedValue();
             ApplyMovement();
+
         }
 
         /* Check for if the player is on the ground
@@ -62,10 +65,11 @@ namespace Player
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
             _anim.SetBool(IsGrounded, isGrounded);
-            jumpCount = 2;
+            
         }
-
         
+
+
         private void FixedUpdate()
         {
             // Apply movement to rigidbody
@@ -101,26 +105,23 @@ namespace Player
         
         public void Jump(InputAction.CallbackContext context)
         {
-            if (!doubleJump)
-            {
-                // If the player is not grounded, ignore the jump event.
-                if (!isGrounded) return;
+             // If the player is not grounded, ignore the jump event.
+             if (!isGrounded) return;
 
-                _anim.SetTrigger(Jump1);
-                rb.AddForce(transform.up * jumpForce);
-            }
-            else if(jumpCount > 0)
-            {
-                rb.AddForce(transform.up * jumpForce);
-                jumpCount--;
-
-            }
+             _anim.SetTrigger(Jump1);
+             rb.AddForce(transform.up * jumpForce);
         }
-        public void JetPack(InputAction.CallbackContext context)
+
+        public void JetPack(InputAction.CallbackContext context) // callbackcontext is not working for a hold function
         {
-           //apply force while jetpack input is activated
-            if(jetPack) 
+            //apply force while jetpack input is activated
+            if (jetPack)
+            {
                 rb.AddForce(transform.up * jumpForce);
+                Debug.Log("jetpack");
+            }
         }
+
+        
     }
 }
