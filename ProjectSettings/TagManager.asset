@@ -12,6 +12,7 @@ TagManager:
   - CapturePoint
   - BlackHole
   - Stick
+  - KnockBack
   layers:
   - Default
   - TransparentFX

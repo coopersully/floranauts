@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2225078142391419952}
   m_Layer: 0
   m_Name: Stick
-  m_TagString: Stick
+  m_TagString: KnockBack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,9 +228,15 @@ MonoBehaviour:
   groundCheck: {fileID: 6998766516217002576}
   isGrounded: 0
   rb: {fileID: 0}
-  jetPack: 0
-  stick: 1
+  _jetPack: 0
+  _stick: 0
   stickObj: {fileID: 4995709867492863977}
+  _freezeRay: 0
+  _rocketLauncher: 0
+  moveDirection: {x: 0, y: 0, z: 0}
+  knockBackForce: 0
+  knockBackTime: 0
+  knockBackCounter: 0
 --- !u!114 &4626641240122338924
 MonoBehaviour:
   m_ObjectHideFlags: 0

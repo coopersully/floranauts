@@ -33,33 +33,57 @@ namespace Player
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int Jump1 = Animator.StringToHash("Jump");
 
-        public bool jetPack = false;
-        public bool stick = true;
+        [Header("Objects")]
+        public bool _jetPack = false;
+        public bool _stick = false;
         public GameObject stickObj;
-        private float attackTimer;
+        public bool _freezeRay = false;
+        public bool _rocketLauncher = false;
+
+
+        public Vector3 moveDirection;
+        private bool inKnockBack = false;
+        public float knockBackForce;
+        public float knockBackTime;
+        public float knockBackCounter;
+
 
      
         
 
         private void Awake()
         {
-            jetPack = true;
-            stick = true;
-            stickObj.SetActive(false);
-
             _anim = GetComponent<Animator>();
-
             rb = GetComponent<Rigidbody>();
             _cameraTransform = GetComponentInChildren<Camera>().transform;
             
             //hides mouse cursor
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
+            //etObject Defaults
+            _jetPack = true;
+            _stick = true;
+            stickObj.SetActive(false);
+
+            _freezeRay = false;
+            _rocketLauncher = false;
+
+            knockBackTime = .25f;
+            knockBackForce = 10f;
         }
 
         private void Update()
         {
             if (PauseManager.Instance.isPaused) return;
+
+            //Checks if player is in knockback sequence, sets Bool, and counts down if inKnockBack
+            if (knockBackCounter > 0)
+            {
+                inKnockBack = true;
+                knockBackCounter -= Time.deltaTime;
+            }
+            else inKnockBack = false;
 
             UpdateGroundedValue();
             ApplyMovement();
@@ -72,6 +96,8 @@ namespace Player
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
             _anim.SetBool(IsGrounded, isGrounded);
+
+            
             
         }
         
@@ -96,13 +122,19 @@ namespace Player
             _verticalLookRotation += cameraInput.y * mouseSensitivityY;
             _verticalLookRotation = Mathf.Clamp(_verticalLookRotation, -45, -25);
             _cameraTransform.localEulerAngles = Vector3.left * _verticalLookRotation;
-            _anim.SetFloat(Horizontal, movementInput.x);
-            _anim.SetFloat(Vertical, movementInput.y);
+            
 
-            // Move player based on Input System
-            var moveDirection = new Vector3(movementInput.x, 0, movementInput.y).normalized;
+            if (!inKnockBack)
+            {
+                // If player is not in knockBack, Move player based on Input System
+                moveDirection = new Vector3(movementInput.x, 0, movementInput.y).normalized;
+                _anim.SetFloat(Horizontal, movementInput.x);
+                _anim.SetFloat(Vertical, movementInput.y);
+            }
+           
             var targetMoveAmount = moveDirection * walkSpeed;
-        
+
+
             _moveAmount = Vector3.SmoothDamp(_moveAmount, targetMoveAmount, ref _smoothMoveVelocity, .15f);
         }
         
@@ -113,17 +145,18 @@ namespace Player
         
         public void Jump(InputAction.CallbackContext context)
         {
-             // If the player is not grounded, ignore the jump event.
-             if (!isGrounded) return;
-
+             // If the player is not grounded or is in Knock Back sequence, ignore the jump event.
+            if (!isGrounded || inKnockBack) return;
+            
              _anim.SetTrigger(Jump1);
              rb.AddForce(transform.up * jumpForce);
+            
         }
 
         public void JetPack(InputAction.CallbackContext context) // callbackcontext is not working for a hold function
         {
             //apply force while jetpack input is activated
-            if (jetPack)
+            if (_jetPack && !inKnockBack)
             {
                 rb.AddForce(transform.up * jumpForce);
                 Debug.Log("jetpack");
@@ -132,10 +165,18 @@ namespace Player
 
         public void SwingAttack(InputAction.CallbackContext context)
         {
-            if (stick)
+            if (_stick && !inKnockBack)
             {
                 StartCoroutine(SwingAnimation());
             }
+        }
+        public Vector3 KnockBack(Vector3 direction)
+        {
+            
+            knockBackCounter = knockBackTime;
+            moveDirection = direction * knockBackForce;
+            moveDirection.y = knockBackForce;
+            return moveDirection;
         }
         IEnumerator SwingAnimation()
         {
@@ -146,6 +187,17 @@ namespace Player
             yield return new WaitForSeconds(2f);
             stickObj.SetActive(false);
 
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            //Checks Trigger, and starts knockback sequence
+            if(other.gameObject.tag == "KnockBack")
+            {
+                Vector3 hitDirection = other.transform.position - transform.position;
+                hitDirection = hitDirection.normalized;
+                KnockBack(hitDirection);
+            }
         }
 
 

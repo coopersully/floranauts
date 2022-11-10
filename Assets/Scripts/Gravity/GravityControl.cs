@@ -39,7 +39,8 @@ namespace Gravity
         private void FixedUpdate()
         {
             // Allow this body to be influenced by planet's gravity
-            _planet.Attract(_rigidbody);
+             _planet.Attract(_rigidbody);
+
             if (_shouldRotate) _planet.Rotate(_rigidbody);
         }
         private void OnTriggerEnter(Collider other)
@@ -81,6 +82,7 @@ namespace Gravity
         {
             if (other.CompareTag("Boundary"))
             {
+                _shouldRotate = false;
                 _planet = other.GetComponentInParent<GravityAttractor>();
             }
             
