@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 79641809}
   m_Layer: 0
   m_Name: BlackHoleRespawn.03
-  m_TagString: Respawn
+  m_TagString: BlackHoleSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 325757593}
   m_Layer: 0
   m_Name: BlackHoleRespawn.02
-  m_TagString: Respawn
+  m_TagString: BlackHoleSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2170,7 +2170,7 @@ PrefabInstance:
     - target: {fileID: 1626730735562451880, guid: 5aca4c5fa3343e04689c16fa51438c1d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42.1
+      value: -41.1
       objectReference: {fileID: 0}
     - target: {fileID: 1626730735562451880, guid: 5aca4c5fa3343e04689c16fa51438c1d,
         type: 3}
@@ -2180,7 +2180,7 @@ PrefabInstance:
     - target: {fileID: 1626730735562451880, guid: 5aca4c5fa3343e04689c16fa51438c1d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -63.206657
+      value: -58.3
       objectReference: {fileID: 0}
     - target: {fileID: 1626730735562451880, guid: 5aca4c5fa3343e04689c16fa51438c1d,
         type: 3}
@@ -3452,7 +3452,7 @@ GameObject:
   - component: {fileID: 1317526134}
   m_Layer: 0
   m_Name: BlackHoleRespawn.01
-  m_TagString: Respawn
+  m_TagString: BlackHoleSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4157,7 +4157,7 @@ PrefabInstance:
     - target: {fileID: 1204145194863960781, guid: 96362c5ee19b4c64c9aa53e9a99c4e25,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 68.2
+      value: 66.5
       objectReference: {fileID: 0}
     - target: {fileID: 1204145194863960781, guid: 96362c5ee19b4c64c9aa53e9a99c4e25,
         type: 3}
@@ -4167,7 +4167,7 @@ PrefabInstance:
     - target: {fileID: 1204145194863960781, guid: 96362c5ee19b4c64c9aa53e9a99c4e25,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -106.6
+      value: -112.5
       objectReference: {fileID: 0}
     - target: {fileID: 1204145194863960781, guid: 96362c5ee19b4c64c9aa53e9a99c4e25,
         type: 3}
@@ -5189,7 +5189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856160787}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25.6, y: 0, z: 56.3}
+  m_LocalPosition: {x: -28.7, y: 0, z: 50.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5302,7 +5302,7 @@ PrefabInstance:
     - target: {fileID: 8648140027207366481, guid: b230650805b5b9e4ca4222cc46ffc891,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 8648140027207366481, guid: b230650805b5b9e4ca4222cc46ffc891,
         type: 3}
@@ -5819,7 +5819,7 @@ GameObject:
   - component: {fileID: 2118933575}
   m_Layer: 0
   m_Name: BlackHoleRespawn
-  m_TagString: Respawn
+  m_TagString: BlackHoleSpawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6004,7 +6004,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139334907}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -960, y: -340, z: 0}
+  m_LocalPosition: {x: -1046, y: -340, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

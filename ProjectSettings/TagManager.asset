@@ -12,6 +12,7 @@ TagManager:
   - BlackHole
   - Stick
   - KnockBack
+  - BlackHoleSpawn
   layers:
   - Default
   - TransparentFX

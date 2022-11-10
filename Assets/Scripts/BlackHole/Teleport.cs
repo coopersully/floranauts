@@ -12,7 +12,7 @@ public class Teleport : MonoBehaviour
     void Awake()
     {
         // finds all objects with "respawn' tag and adds them to an array
-        teleportPoints = GameObject.FindGameObjectsWithTag("Respawn");
+        teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
 
     }
 
