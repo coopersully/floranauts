@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\Interfaces\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Gravity\GravityAttractor.cs" />
     <Compile Include="Assets\Scripts\Audio\UIAudioManager.cs" />
+    <Compile Include="Assets\Scripts\Emission_Incremint.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerControls.cs" />
     <Compile Include="Assets\Scripts\PlanetSpawner.cs" />
@@ -81,7 +82,6 @@
     <Compile Include="Assets\Scripts\PersistentObject.cs" />
     <Compile Include="Assets\Scripts\BlackHole\Teleport.cs" />
     <Compile Include="Assets\Scripts\BlackHole.cs" />
-    <Compile Include="Assets\Scripts\Emission_Incremint.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

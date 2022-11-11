@@ -9,7 +9,7 @@ namespace Gravity
         private PlayerMovement _playerMovement;
         private GravityControl _gravityControl;
 
-        [Range(1, 5)]
+        [Range(1, 10)]
         public int planetGravity = 1;
         public int playerGravity = -10;
         public Quaternion targetRotation;
