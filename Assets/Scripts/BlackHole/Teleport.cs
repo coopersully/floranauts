@@ -21,7 +21,7 @@ public class Teleport : MonoBehaviour
         if (other.CompareTag("BlackHole"))
         {
             //Teleports player to random teleport point
-            randNum = Random.Range(0, teleportPoints.Length + 1);
+            randNum = Random.Range(0, teleportPoints.Length);
             gameObject.transform.position = teleportPoints[randNum].transform.position;
         }
     }
