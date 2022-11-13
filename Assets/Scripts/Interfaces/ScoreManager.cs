@@ -1,19 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using Player;
 using TMPro;
 using UnityEngine;
 
-public class ScoreManager : MonoBehaviour
+namespace Interfaces
 {
-    [Header("-Score UI-")]
-    public TextMeshProUGUI bluePlayerScoreUI;
-    public TextMeshProUGUI redPlayerScoreUI;
-
-    public void Awake()
+    public class ScoreManager : MonoBehaviour
     {
-        bluePlayerScoreUI.SetText("Score: 000");
-        redPlayerScoreUI.SetText("Score: 000");
-    }
+        [Header("-Players-")]
+        public PlayerCapture bluePlayer;
+        public PlayerCapture redPlayer;
     
+        [Header("-Score UI-")]
+        public TextMeshProUGUI bluePlayerScoreUI;
+        public TextMeshProUGUI redPlayerScoreUI;
+
+        public void RefreshPlayers()
+        {
+            // Initialize players
+            var allPlayers = FindObjectsOfType<PlayerCapture>();
+            foreach (var player in allPlayers)
+            {
+                switch (player.playerInput.playerIndex)
+                {
+                    case 0: // First player
+                        bluePlayer = player;
+                        break;
+                    case 1: // Second player
+                        redPlayer = player;
+                        break;
+                }
+            }
+        }
+
+        public void Update()
+        {
+            bluePlayerScoreUI.SetText("Score: " + bluePlayer.score.ToString("N0"));
+            redPlayerScoreUI.SetText("Score: " + redPlayer.score.ToString("N0"));
+        }
+    }
 }

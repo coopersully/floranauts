@@ -8,7 +8,7 @@ namespace Player
     public class PlayerCapture : MonoBehaviour
     {
         private bool _canCapture;
-        private PlayerInput _playerInput;
+        public PlayerInput playerInput;
 
         public int score;
 
@@ -21,13 +21,13 @@ namespace Player
         
         private void Awake()
         {
-            _playerInput = GetComponent<PlayerInput>();
-            playerColor = _playerInput.playerIndex switch
+            playerInput = GetComponent<PlayerInput>();
+            playerColor = playerInput.playerIndex switch
             {
-                0 => Color.yellow,
-                1 => Color.green,
-                3 => Color.magenta,
-                4 => Color.blue,
+                0 => Color.blue,
+                1 => Color.red,
+                3 => Color.green,
+                4 => Color.yellow,
                 _ => playerColor
             };
             
