@@ -1,6 +1,7 @@
 using Player;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Interfaces
 {
@@ -12,7 +13,9 @@ namespace Interfaces
     
         [Header("-Score UI-")]
         public TextMeshProUGUI bluePlayerScoreUI;
+        public Slider bluePlayerScoreBar;
         public TextMeshProUGUI redPlayerScoreUI;
+        public Slider redPlayerScoreBar;
 
         public void RefreshPlayers()
         {
@@ -35,7 +38,9 @@ namespace Interfaces
         public void Update()
         {
             bluePlayerScoreUI.SetText("Score: " + bluePlayer.score.ToString("N0"));
+            bluePlayerScoreBar.value = bluePlayer.score;
             redPlayerScoreUI.SetText("Score: " + redPlayer.score.ToString("N0"));
+            redPlayerScoreBar.value = redPlayer.score;
         }
     }
 }

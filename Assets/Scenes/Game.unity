@@ -7619,7 +7619,9 @@ MonoBehaviour:
   bluePlayer: {fileID: 0}
   redPlayer: {fileID: 0}
   bluePlayerScoreUI: {fileID: 732307}
+  bluePlayerScoreBar: {fileID: 233588636}
   redPlayerScoreUI: {fileID: 1176467349}
+  redPlayerScoreBar: {fileID: 74573016}
 --- !u!1001 &924340756
 PrefabInstance:
   m_ObjectHideFlags: 0
