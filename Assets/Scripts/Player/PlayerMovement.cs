@@ -167,6 +167,8 @@ namespace Player
         {
             if (_stick && !inKnockBack)
             {
+                _anim.SetTrigger("SwingAttack");
+                Debug.Log("attack");
                 StartCoroutine(SwingAnimation());
             }
         }
@@ -182,8 +184,6 @@ namespace Player
         {
             //activates stick and deactivates after the animation plays out
             stickObj.SetActive(true);
-            _anim.SetTrigger("SwingAttack");
-
             yield return new WaitForSeconds(2f);
             stickObj.SetActive(false);
 
