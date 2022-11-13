@@ -2,7 +2,7 @@ using Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class BlackHole : MonoBehaviour
+public class BHController : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {

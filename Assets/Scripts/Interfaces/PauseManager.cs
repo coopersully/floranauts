@@ -1,3 +1,4 @@
+using Audio;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,44 +8,79 @@ namespace Interfaces
     {
         public static PauseManager Instance;
         public bool isPaused;
+
+        public Restrictions restrictions;
         
+        [Header("Panels")]
         public GameObject hud;
-        
-        public GameObject overlay;
         public GameObject mainPanel;
+        public GameObject overlay;
 
         private void Awake()
         {
             if (Instance == null) Instance = this;
         }
-
-        public void Resume()
-        {
-            isPaused = false;
-            Time.timeScale = 1.0f;
-            
-            if (hud != null) hud.SetActive(true);
-            
-            overlay.SetActive(false);
-            mainPanel.SetActive(false);
-        }
         
+        /* PAUSES the game universally, plays an audio-cue,
+         and disables the heads-up-display for all users. */
         public void Pause()
         {
+            if (restrictions.IsRestricted())
+            {
+                Debug.Log("Pause was attempted & blocked because of restrictions.");
+                AudioManager.Instance.ui.Click01();
+                return;
+            }
+            
             isPaused = true;
+            
             Time.timeScale = 0.0f;
-
-            if (hud != null) hud.SetActive(false);
+            
+            Cursor.lockState = CursorLockMode.None;
+            
+            SetHUDVisibility(false);
             
             overlay.SetActive(true);
             mainPanel.SetActive(true);
         }
 
+        /* UN-PAUSES/RESUMES the game universally, plays an audio-cue,
+         and re-enables the heads-up-display for all users. */
+        public void Resume()
+        {
+            if (restrictions.IsRestricted())
+            {
+                Debug.Log("Resume was attempted & blocked because of restrictions.");
+                AudioManager.Instance.ui.Click01();
+                return;
+            }
+
+            isPaused = false;
+            
+            Time.timeScale = 1.0f;
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            
+            SetHUDVisibility(true);
+            
+            overlay.SetActive(false);
+            mainPanel.SetActive(false);
+        }
+        
+        // Enable/disable all H.U.D. elements at once
+        public void SetHUDVisibility(bool isVisible)
+        {
+            if (hud == null) return;
+            hud.SetActive(isVisible);
+        }
+        
+        // "Main Menu" button
         public void MainMenu()
         {
             SceneManager.LoadScene(0);
         }
 
+        // "Exit Game" button
         public void ExitGame()
         {
             Application.Quit();

@@ -6687,7 +6687,7 @@ PrefabInstance:
     - target: {fileID: 5830003732339406871, guid: c044214bfbb3b144db8d6659db0f9569,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5830003732339406871, guid: c044214bfbb3b144db8d6659db0f9569,
         type: 3}
@@ -6997,7 +6997,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &823664644
 MonoBehaviour:
@@ -8915,6 +8915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389511394}
   - component: {fileID: 1389511395}
+  - component: {fileID: 1389511396}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -8957,9 +8958,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
+  restrictions: {fileID: 1389511396}
   hud: {fileID: 883706056}
-  overlay: {fileID: 1389270410}
   mainPanel: {fileID: 696172744}
+  overlay: {fileID: 1389270410}
+--- !u!114 &1389511396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389511393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b127cd678f53a445a7aaac550f93c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1424492055
 GameObject:
   m_ObjectHideFlags: 0
@@ -10113,7 +10127,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1666706838
 RectTransform:
@@ -10130,7 +10144,7 @@ RectTransform:
   - {fileID: 1389511394}
   - {fileID: 883706057}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0.088, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -15829,7 +15843,7 @@ PrefabInstance:
     - target: {fileID: 6998766515489882797, guid: bf8816164f7ca83478ce55adfac0d6ab,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf8816164f7ca83478ce55adfac0d6ab, type: 3}

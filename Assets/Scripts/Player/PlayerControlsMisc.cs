@@ -9,17 +9,9 @@ namespace Player
         public void PauseButtonPressed(InputAction.CallbackContext context)
         {
             if (!context.started) return;
-            
-            if (PauseManager.Instance.isPaused)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                PauseManager.Instance.Resume();
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.None;
-                PauseManager.Instance.Pause();
-            }
+
+            if (PauseManager.Instance.isPaused) PauseManager.Instance.Resume();
+            else PauseManager.Instance.Pause();
         }
     }
 }

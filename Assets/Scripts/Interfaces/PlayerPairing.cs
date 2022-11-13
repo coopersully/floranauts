@@ -27,7 +27,19 @@ namespace Interfaces
 
         private int _maxPlayers;
         private int _players;
-        
+
+        private void OnEnable()
+        {
+            // Disable HUD
+            PauseManager.Instance.SetHUDVisibility(false);
+            
+            // Restrict from using pause menu controls
+            PauseManager.Instance.restrictions.Add(gameObject);
+            
+            // Allow new players to join
+            PlayerInputManager.instance.EnableJoining();
+        }
+
         private void Update()
         {
             RefreshUI();
@@ -41,7 +53,7 @@ namespace Interfaces
                 pairingSection.SetActive(true);
                 return;
             }
-            
+
             // If all players have connected to the game
             if (!_countingDown) StartCoroutine(Dismiss());
         }
@@ -79,6 +91,9 @@ namespace Interfaces
             _countingDown = true;
             countdownOverlay.SetActive(true);
             
+            // Restrict new players from joining
+            PlayerInputManager.instance.DisableJoining();
+
             // Count down each second and set the timer's text
             for (int i = countdownStart; i > 0; i--)
             {
@@ -90,6 +105,13 @@ namespace Interfaces
             // Disable everything including this component
             _countingDown = false;
             pairingSection.SetActive(false);
+            
+            // Enable HUD
+            PauseManager.Instance.SetHUDVisibility(true);
+            
+            // Remove restriction from using pause menu
+            PauseManager.Instance.restrictions.Remove(gameObject);
+
             gameObject.SetActive(false); // Disable this script
         }
     }
