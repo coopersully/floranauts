@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.019509222, g: 0.012197712, b: 0.034406867, a: 1}
+  m_IndirectSpecularColor: {r: 0.019603191, g: 0.01219525, b: 0.034573972, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8957,7 +8957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPaused: 0
-  hud: {fileID: 1597519292}
+  hud: {fileID: 883706056}
   overlay: {fileID: 1389270410}
   mainPanel: {fileID: 696172744}
 --- !u!1 &1424492055
@@ -9907,8 +9907,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2139334911}
+  m_Children: []
   m_Father: {fileID: 883706057}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15263,6 +15262,7 @@ Transform:
   - {fileID: 325757596}
   - {fileID: 79641812}
   - {fileID: 486541707}
+  - {fileID: 2139334911}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16478,10 +16478,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 1
-  far clip plane: 145
+  far clip plane: 500
   field of view: 60
   orthographic: 1
-  orthographic size: 124.68262
+  orthographic size: 125
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -16505,12 +16505,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2139334907}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1046, y: -340, z: -1}
+  m_LocalPosition: {x: 0, y: 50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1597519293}
-  m_RootOrder: 0
+  m_Father: {fileID: 1785364218}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &104512658960279485
 PrefabInstance:
