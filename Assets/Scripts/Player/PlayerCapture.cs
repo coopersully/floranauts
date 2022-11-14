@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace Player
 {
@@ -72,10 +74,13 @@ namespace Player
          score by the amount of Capture Points they currently own. */
         private IEnumerator IncrementScore()
         {
-            while (true)
+            while (!ScoreManager.Instance.hasWon)
             {
                 score += inventory.Count;
+                if (score >= 100) GameOver.Instance.Trigger(playerInput.playerIndex);
+                
                 //Debug.Log(name + " has a score of " + score);
+                
                 yield return new WaitForSeconds(1.0f);
             }
         }

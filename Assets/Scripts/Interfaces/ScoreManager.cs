@@ -1,21 +1,32 @@
+using System;
 using Player;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Interfaces
 {
     public class ScoreManager : MonoBehaviour
     {
-        [Header("-Players-")]
-        public PlayerCapture bluePlayer;
-        public PlayerCapture redPlayer;
-    
+
+        public static ScoreManager Instance;
+
+        [HideInInspector] public bool hasWon;
+
+        [HideInInspector] public PlayerCapture playerOne;
+        [HideInInspector] public PlayerCapture playerTwo;
+        
         [Header("-Score UI-")]
-        public TextMeshProUGUI bluePlayerScoreUI;
-        public Slider bluePlayerScoreBar;
-        public TextMeshProUGUI redPlayerScoreUI;
-        public Slider redPlayerScoreBar;
+        [FormerlySerializedAs("bluePlayerScoreUI")] public TextMeshProUGUI playerOneText;
+        [FormerlySerializedAs("bluePlayerScoreBar")] public Slider playerOneProgress;
+        [FormerlySerializedAs("redPlayerScoreUI")] public TextMeshProUGUI playerTwoText;
+        [FormerlySerializedAs("redPlayerScoreBar")] public Slider playerTwoProgress;
+
+        private void Awake()
+        {
+            if (Instance == null) Instance = this;
+        }
 
         public void RefreshPlayers()
         {
@@ -26,10 +37,10 @@ namespace Interfaces
                 switch (player.playerInput.playerIndex)
                 {
                     case 0: // First player
-                        bluePlayer = player;
+                        playerOne = player;
                         break;
                     case 1: // Second player
-                        redPlayer = player;
+                        playerTwo = player;
                         break;
                 }
             }
@@ -37,10 +48,11 @@ namespace Interfaces
 
         public void Update()
         {
-            bluePlayerScoreUI.SetText("Score: " + bluePlayer.score.ToString("N0"));
-            bluePlayerScoreBar.value = bluePlayer.score;
-            redPlayerScoreUI.SetText("Score: " + redPlayer.score.ToString("N0"));
-            redPlayerScoreBar.value = redPlayer.score;
+            playerOneText.SetText("Score: " + playerOne.score.ToString("N0"));
+            playerOneProgress.value = playerOne.score;
+            
+            playerTwoText.SetText("Score: " + playerTwo.score.ToString("N0"));
+            playerTwoProgress.value = playerTwo.score;
         }
     }
 }
