@@ -474,6 +474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetGravity: 1
+  playerGravity: -10
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
   rotationSpeed: 10
 --- !u!114 &7822777894290332569
@@ -488,6 +489,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc73d8b5c8c44459382cb112d3ae9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPrimaries:
+  - {fileID: 4801282925136268514}
+  canvasAccents: []
   unclaimedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &4801282925185434940
 GameObject:

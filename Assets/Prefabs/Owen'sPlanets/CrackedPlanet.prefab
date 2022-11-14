@@ -216,6 +216,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc73d8b5c8c44459382cb112d3ae9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasPrimaries:
+  - {fileID: 3070309328867858907}
+  - {fileID: 5364711018939350584}
+  canvasAccents:
+  - {fileID: 3021514250559100693}
   unclaimedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &355361171575665952
 MonoBehaviour:
@@ -880,7 +885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de9d107c4bdb3604a925a012496ba380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: {fileID: 0}
+  planet: {fileID: 355361171575665953}
   planetType: 0
   currentCaptor: {fileID: 0}
   captureIndicator: {fileID: 7411647012414125456}

@@ -38,7 +38,7 @@ public class CapturePoint : MonoBehaviour
         
         // Change planet color to player's color
         planet.Claim(playerCapture);
-        _captureIndicatorMaterial.color = playerCapture.playerColor;
+        _captureIndicatorMaterial.color = playerCapture.primaryColor;
         
         // Add point to player's inventory
         playerCapture.inventory.Add(this);
