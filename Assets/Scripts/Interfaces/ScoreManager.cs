@@ -48,10 +48,10 @@ namespace Interfaces
 
         public void Update()
         {
-            playerOneText.SetText("Score: " + playerOne.score.ToString("N0"));
+            playerOneText.SetText(playerOne.score.ToString("N0"));
             playerOneProgress.value = playerOne.score;
             
-            playerTwoText.SetText("Score: " + playerTwo.score.ToString("N0"));
+            playerTwoText.SetText(playerTwo.score.ToString("N0"));
             playerTwoProgress.value = playerTwo.score;
         }
     }
