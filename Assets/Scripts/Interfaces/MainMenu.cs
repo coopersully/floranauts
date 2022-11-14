@@ -8,6 +8,8 @@ namespace Interfaces
     {
         [SerializeField] private Animator panelAnimator;
         [SerializeField] private Animator cameraAnimator;
+
+        public GameObject window;
     
         private static readonly int Main = Animator.StringToHash("main");
         private static readonly int Play = Animator.StringToHash("play");
@@ -36,7 +38,7 @@ namespace Interfaces
 
         public void ExitGame()
         {
-            Application.Quit();
+            window.SetActive(true);
         }
 
         public void StartGame()
