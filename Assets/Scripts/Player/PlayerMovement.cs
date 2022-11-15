@@ -46,10 +46,8 @@ namespace Player
         public float knockBackForce;
         public float knockBackTime;
         public float knockBackCounter;
+        private static readonly int Attack = Animator.StringToHash("SwingAttack");
 
-
-     
-        
 
         private void Awake()
         {
@@ -87,7 +85,6 @@ namespace Player
 
             UpdateGroundedValue();
             ApplyMovement();
-
         }
 
         /* Check for if the player is on the ground
@@ -96,12 +93,7 @@ namespace Player
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
             _anim.SetBool(IsGrounded, isGrounded);
-
-            
-            
         }
-        
-
 
         private void FixedUpdate()
         {
@@ -150,37 +142,40 @@ namespace Player
             
              _anim.SetTrigger(Jump1);
              rb.AddForce(transform.up * jumpForce);
-            
         }
 
         public void JetPack(InputAction.CallbackContext context) // callbackcontext is not working for a hold function
         {
-            //apply force while jetpack input is activated
-            if (_jetPack && !inKnockBack)
-            {
-                rb.AddForce(transform.up * jumpForce);
-                Debug.Log("jetpack");
-            }
+            // Apply force while jetpack input is activated
+            if (!_jetPack || inKnockBack) return;
+            
+            rb.AddForce(transform.up * jumpForce);
+            Debug.Log("jetpack");
         }
 
         public void SwingAttack(InputAction.CallbackContext context)
         {
-            if (_stick && !inKnockBack)
-            {
-                _anim.SetTrigger("SwingAttack");
-                Debug.Log("attack");
-                StartCoroutine(SwingAnimation());
-            }
-        }
-        public Vector3 KnockBack(Vector3 direction)
-        {
+            // If the key was not pressed this frame, ignore it.
+            if (!context.started) return;
+
+            /* If the player doesn't have a stick OR is currently
+             in knockback, ignore this event. */
+            if (!_stick || inKnockBack) return;
             
+            _anim.SetTrigger(Attack);
+            Debug.Log("attack");
+            StartCoroutine(SwingAnimation());
+        }
+
+        private Vector3 KnockBack(Vector3 direction)
+        {
             knockBackCounter = knockBackTime;
             moveDirection = direction * knockBackForce;
             moveDirection.y = knockBackForce;
             return moveDirection;
         }
-        IEnumerator SwingAnimation()
+
+        private IEnumerator SwingAnimation()
         {
             //activates stick and deactivates after the animation plays out
             stickObj.SetActive(true);
@@ -191,13 +186,13 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            //Checks Trigger, and starts knockback sequence
-            if(other.gameObject.tag == "KnockBack")
-            {
-                Vector3 hitDirection = other.transform.position - transform.position;
-                hitDirection = hitDirection.normalized;
-                KnockBack(hitDirection);
-            }
+            /* Checks Trigger, and starts knockback sequence.
+             If it doesn't have the correct tag, ignore the event. */
+            if (!other.gameObject.CompareTag("KnockBack")) return;
+            
+            Vector3 hitDirection = other.transform.position - transform.position;
+            hitDirection = hitDirection.normalized;
+            KnockBack(hitDirection);
         }
 
 
