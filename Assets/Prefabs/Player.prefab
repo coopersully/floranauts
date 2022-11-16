@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 6998766515489882796}
   - component: {fileID: 4626641240122338924}
   - component: {fileID: 8466629248505694014}
+  - component: {fileID: 5631841255276435831}
   - component: {fileID: 2854984843103496503}
   - component: {fileID: 6998766515489882803}
   m_Layer: 0
@@ -228,11 +229,11 @@ MonoBehaviour:
   groundCheck: {fileID: 6998766516217002576}
   isGrounded: 0
   rb: {fileID: 0}
-  _jetPack: 0
-  _stick: 0
+  hasJetpack: 0
+  hasStick: 0
   stickObj: {fileID: 4995709867492863977}
-  _freezeRay: 0
-  _rocketLauncher: 0
+  hasFreezeRay: 0
+  hasRocketLauncher: 0
   moveDirection: {x: 0, y: 0, z: 0}
   knockBackForce: 0
   knockBackTime: 0
@@ -249,6 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc6a7aa16d88af4b916e7b6acd61e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  portal: {fileID: 0}
   teleportPoints: []
 --- !u!114 &8466629248505694014
 MonoBehaviour:
@@ -262,6 +264,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfb5f8ab9aa39c4cbc55cecfc499446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5631841255276435831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998766515489882797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99bed7e0886a4c9b90509a51e042d2ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  primary: {r: 0, g: 0, b: 0, a: 0}
+  secondary: {r: 0, g: 0, b: 0, a: 0}
+  skinPrimary: {fileID: 7848909963481032650}
+  skinSecondary: {fileID: 4834193395923760515}
 --- !u!114 &2854984843103496503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,12 +292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10a7fa6e83e46f895a4adc167ad4631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
   score: 0
   inventory: []
   currentCapturePoint: {fileID: 0}
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
-  playerSkin: {fileID: 7848909963481032650}
-  playerAccents: {fileID: 4834193395923760515}
+  color: {fileID: 0}
 --- !u!114 &6998766515489882803
 MonoBehaviour:
   m_ObjectHideFlags: 0

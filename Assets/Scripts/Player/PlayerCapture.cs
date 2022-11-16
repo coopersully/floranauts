@@ -1,9 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -16,35 +16,11 @@ namespace Player
 
         public List<CapturePoint> inventory;
         public CapturePoint currentCapturePoint;
-        
-        public Color primaryColor;
-        public Color accentColor;
-        
-        public SkinnedMeshRenderer playerSkin;
-        public SkinnedMeshRenderer playerAccents;
-        
+
+        public PlayerColor color;
+
         private void Awake()
         {
-            playerInput = GetComponent<PlayerInput>();
-            if (playerInput.playerIndex == 0)
-            {
-                // primaryColor = new Color(57, 161, 243, 100); // Blue
-                // accentColor = new Color(8, 235, 173, 100);   // Teal
-                primaryColor = Color.cyan;
-                accentColor = Color.green;
-            }
-            else
-            {
-                // primaryColor = new Color(231, 89, 78, 100); // Red
-                // accentColor = new Color(251, 193, 50, 100); // Yellow
-                primaryColor = Color.red;
-                accentColor = Color.yellow;
-            }
-
-            // Colorize the player model
-            playerSkin.material.color = primaryColor;
-            playerAccents.material.color = accentColor;
-            
             // Start incrementing the player's score every second
             StartCoroutine(IncrementScore());
         }

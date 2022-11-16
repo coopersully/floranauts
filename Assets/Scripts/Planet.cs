@@ -48,11 +48,11 @@ public class Planet: MonoBehaviour
     {
         foreach (var canvasPrimary in _canvasPrimaries)
         {
-            canvasPrimary.color = playerCapture.primaryColor;
+            canvasPrimary.color = playerCapture.color.primary;
         }
         foreach (var canvasAccent in _canvasAccents)
         {
-            canvasAccent.color = playerCapture.accentColor;
+            canvasAccent.color = playerCapture.color.primary;
         }
     }
   

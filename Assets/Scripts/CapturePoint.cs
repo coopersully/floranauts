@@ -4,8 +4,6 @@ using UnityEngine;
 public class CapturePoint : MonoBehaviour
 {
     public Planet planet;
-    public PlanetType planetType;
-    
     public PlayerCapture currentCaptor;
     public GameObject captureIndicator;
     private Material _captureIndicatorMaterial;
@@ -38,7 +36,7 @@ public class CapturePoint : MonoBehaviour
         
         // Change planet color to player's color
         planet.Claim(playerCapture);
-        _captureIndicatorMaterial.color = playerCapture.primaryColor;
+        _captureIndicatorMaterial.color = playerCapture.color.primary;
         
         // Add point to player's inventory
         playerCapture.inventory.Add(this);
