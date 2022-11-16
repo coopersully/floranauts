@@ -7,10 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ring1Dead
+  m_Name: Ring 2
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_ValidKeywords:
-  - _DETAIL_MULX2
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -35,11 +34,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailMask:
-        m_Texture: {fileID: 2800000, guid: ef1fabc72b30c6747bea14aa0c462010, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailNormalMap:
-        m_Texture: {fileID: 2800000, guid: 200db4e09cbe1364bac7d80dd930a550, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -109,10 +108,10 @@ Material:
     m_Colors:
     - _BaseColor: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
     - _Color: {r: 0.57547164, g: 0.57547164, b: 0.57547164, a: 1}
-    - _EmissionColor: {r: 0, g: 0.5943396, b: 0.5943396, a: 1}
+    - _EmissionColor: {r: 0.5754717, g: 0.054500446, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &2422751845087472527
+--- !u!114 &1358923032470829206
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

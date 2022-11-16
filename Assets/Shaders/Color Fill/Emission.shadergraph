@@ -206,7 +206,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "d45e3699e5084397b9b15b83e56c437a"
+                    "m_Id": "fd77577f99cd4dda8ea84e7dd0a394c3"
                 },
                 "m_SlotId": 0
             }
@@ -250,7 +250,7 @@
                 "m_Node": {
                     "m_Id": "fd77577f99cd4dda8ea84e7dd0a394c3"
                 },
-                "m_SlotId": 0
+                "m_SlotId": 1
             }
         },
         {
@@ -388,7 +388,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "c1a837710e964ea98821109ebdab073d"
+                    "m_Id": "d45e3699e5084397b9b15b83e56c437a"
                 },
                 "m_SlotId": 0
             }
@@ -1743,9 +1743,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -292.0,
-            "y": 328.0000305175781,
-            "width": 132.00001525878907,
+            "x": -671.0,
+            "y": -208.0,
+            "width": 131.0,
             "height": 34.0
         }
     },
@@ -2034,9 +2034,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -660.0,
-            "y": -129.0000457763672,
-            "width": 107.0,
+            "x": -671.0,
+            "y": -76.0,
+            "width": 105.0,
             "height": 34.0
         }
     },
@@ -2665,13 +2665,13 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.0,
-        "g": 0.0,
-        "b": 0.0,
+        "r": 0.07141145318746567,
+        "g": 0.5754716992378235,
+        "b": 0.008143452927470208,
         "a": 0.0
     },
     "isMainColor": false,
-    "m_ColorMode": 1
+    "m_ColorMode": 0
 }
 
 {
@@ -2769,10 +2769,10 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0,
-        "w": 0.0
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0,
+        "w": 1.0
     },
     "m_DefaultValue": {
         "x": 0.0,

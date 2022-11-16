@@ -696,6 +696,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrackedPlanet
       objectReference: {fileID: 0}
+    - target: {fileID: 4060911154913763984, guid: 8d766c87c78c2cd499e571aff543dae4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7254588218292111399, guid: 8d766c87c78c2cd499e571aff543dae4,
         type: 3}
       propertyPath: m_RootOrder
