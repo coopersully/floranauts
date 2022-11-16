@@ -9,9 +9,7 @@ public class Emission_Incremint : MonoBehaviour
     public Material fillmaterial;
 
     float capturerate = 0.1f;
-
-
-
+    private static readonly int Fill = Shader.PropertyToID("_Fill");
 
 
     // Start is called before the first frame update
@@ -19,7 +17,7 @@ public class Emission_Incremint : MonoBehaviour
     {
         fillmaterial = new Material(Shader.Find("Shader Graphs/EmissionShader"));
         gameObject.GetComponent<Renderer>().material = fillmaterial;
-        fillmaterial.SetFloat("_Fill", fillrate);
+        fillmaterial.SetFloat(Fill, fillrate);
     }
 
     IEnumerator Colorfill()
@@ -28,7 +26,7 @@ public class Emission_Incremint : MonoBehaviour
         while (fillrate < 1.5f)
         {
             fillrate += capturerate;
-            fillmaterial.SetFloat("_Fill", fillrate);
+            fillmaterial.SetFloat(Fill, fillrate);
             yield return new WaitForSeconds(.1f);
         }
     }

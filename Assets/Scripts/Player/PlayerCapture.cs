@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -12,10 +11,10 @@ namespace Player
         private bool _canCapture;
         public PlayerInput playerInput;
 
-        public int score;
+        [HideInInspector] public int score;
 
-        public List<CapturePoint> inventory;
-        public CapturePoint currentCapturePoint;
+        [HideInInspector] public List<CapturePoint> inventory;
+        [HideInInspector] public CapturePoint currentCapturePoint;
 
         public PlayerColor color;
 

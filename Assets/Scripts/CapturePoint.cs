@@ -1,3 +1,4 @@
+using System;
 using Player;
 using UnityEngine;
 
@@ -5,12 +6,31 @@ public class CapturePoint : MonoBehaviour
 {
     public Planet planet;
     public PlayerCapture currentCaptor;
-    public GameObject captureIndicator;
-    private Material _captureIndicatorMaterial;
 
+    public bool ghost;
+    
+    [Header("Tree Elements")]
+    public MeshRenderer mound;
+    public MeshRenderer trunk;
+    public MeshRenderer fruit;
+    public MeshRenderer leaves;
+    
+    private Material _moundMaterial;
+    private Material _trunkMaterial;
+    private Material _fruitMaterial;
+    private Material _leavesMaterial;
+    
     private void Awake()
     {
-        _captureIndicatorMaterial = captureIndicator.GetComponent<MeshRenderer>().material;
+        _moundMaterial = mound.material;
+        _trunkMaterial = trunk.material;
+        _fruitMaterial = fruit.material;
+        _leavesMaterial = leaves.material;
+    }
+
+    private void Update()
+    {
+        if (ghost) Ghost();
     }
 
     public void CaptureAction(PlayerCapture playerCapture)
@@ -24,8 +44,9 @@ public class CapturePoint : MonoBehaviour
         {
             // Change planet color to unclaimed
             planet.Unclaim();
-            _captureIndicatorMaterial.color = planet.unclaimedColor;
-            
+            _fruitMaterial.color = planet.unclaimedColor;
+            _leavesMaterial.color = planet.unclaimedColor;
+
             // Add point to player's inventory
             currentCaptor.inventory.Remove(this);
             
@@ -36,13 +57,21 @@ public class CapturePoint : MonoBehaviour
         
         // Change planet color to player's color
         planet.Claim(playerCapture);
-        _captureIndicatorMaterial.color = playerCapture.color.primary;
-        
+        _fruitMaterial.color = playerCapture.color.primary;
+        _leavesMaterial.color = playerCapture.color.secondary;
+
         // Add point to player's inventory
         playerCapture.inventory.Add(this);
         
         // Change the current captor for this CapturePoint
         currentCaptor = playerCapture;
+    }
+
+    private void Ghost()
+    {
+        trunk.gameObject.SetActive(false);
+        fruit.gameObject.SetActive(false);
+        leaves.gameObject.SetActive(false);
     }
     
 }
