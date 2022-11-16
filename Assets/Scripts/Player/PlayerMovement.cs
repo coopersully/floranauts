@@ -75,7 +75,7 @@ namespace Player
         {
             if (PauseManager.Instance.isPaused) return;
 
-            //Checks if player is in knockback sequence, sets Bool, and counts down if inKnockBack
+            // Checks if player is in knockback sequence, sets Bool, and counts down if inKnockBack
             if (knockBackCounter > 0)
             {
                 _inKnockBack = true;
@@ -181,7 +181,6 @@ namespace Player
             stickObj.SetActive(true);
             yield return new WaitForSeconds(2f);
             stickObj.SetActive(false);
-
         }
 
         private void OnTriggerEnter(Collider other)
