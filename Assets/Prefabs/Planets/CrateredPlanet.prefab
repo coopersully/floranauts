@@ -115,7 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetGravity: 1
-  playerGravity: -10
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
   rotationSpeed: 0
 --- !u!114 &4657699880730706791
@@ -282,9 +281,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planet: {fileID: 4657699880730706791}
-  planetType: 0
   currentCaptor: {fileID: 0}
-  captureIndicator: {fileID: 8417488091930299341}
+  ghost: 0
+  mound: {fileID: 0}
+  trunk: {fileID: 0}
+  fruit: {fileID: 0}
+  leaves: {fileID: 0}
 --- !u!65 &8417488091393666711
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -16,8 +16,8 @@ namespace Player
         
         public float mouseSensitivityX = 1;
         public float mouseSensitivityY = 1;
-        public float walkSpeed = 10;
-        public float jumpForce = 500;
+        private float walkSpeed = 13;
+        private float jumpForce = 1000;
         public LayerMask groundMask;
         public Transform groundCheck;
 

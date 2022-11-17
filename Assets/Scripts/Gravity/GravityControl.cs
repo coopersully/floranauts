@@ -12,7 +12,7 @@ namespace Gravity
         private Rigidbody _rigidbody;
 
         public GameObject[] allPlanets;
-        private int randNum;
+        private int randNum = 1;
 
         private bool _shouldRotate = true;
         
@@ -20,11 +20,9 @@ namespace Gravity
         {
             //creates array out of all the planets
             allPlanets = GameObject.FindGameObjectsWithTag("Planet");
-            randNum = Random.Range(0, allPlanets.Length);
 
             //set first planet to random planet in the array
-            randNum = Random.Range(0, allPlanets.Length);
-            _planet = allPlanets[randNum].GetComponent<GravityAttractor>();
+            RandomGravity();
            
             
             _playerMovement = GetComponent<PlayerMovement>();
@@ -71,9 +69,14 @@ namespace Gravity
                 //resets gravity and has player attracted to random planet
                 _shouldRotate = true;
                 _planet.rotationSpeed = 10;
-                randNum = Random.Range(0, allPlanets.Length);
-                _planet = allPlanets[randNum].GetComponent<GravityAttractor>();
+                NearestPlanet();
 
+            }
+
+            if (other.CompareTag("KnockBack"))
+            {
+                _shouldRotate = false;
+                NearestPlanet();
             }
         }
         
@@ -84,8 +87,9 @@ namespace Gravity
             {
                 _shouldRotate = false;
                 _planet = other.GetComponentInParent<GravityAttractor>();
+
             }
-            
+
             /* When a player leaves the ground, his rotation
              is no longer dependent on the planet while gravity
              is still enacted on them. */
@@ -94,6 +98,33 @@ namespace Gravity
                 _shouldRotate = false;
 
             }
+        }
+        private void RandomGravity()
+        {
+            //chooses random planet and attracts player to that
+            randNum = Random.Range(0, allPlanets.Length);
+            _planet = allPlanets[randNum].GetComponent<GravityAttractor>();
+
+        }
+        private void NearestPlanet()
+        {
+            //Finds closest planet to player and attracts player
+            var closestPlanet = allPlanets[0];
+            var distance = Vector3.Distance(transform.position, allPlanets[0].transform.position);
+
+            //goes through array and if the next planet in array is closer, sets that to closest planet
+            for (int i = 0; i < allPlanets.Length; i++)
+            {
+                var tempDistance = Vector3.Distance(transform.position, allPlanets[i].transform.position);
+                if (tempDistance < distance)
+                {
+                    closestPlanet = allPlanets[i];
+                    distance = tempDistance;
+                }
+      
+            }
+
+            _planet = closestPlanet.GetComponent<GravityAttractor>();
         }
 
 

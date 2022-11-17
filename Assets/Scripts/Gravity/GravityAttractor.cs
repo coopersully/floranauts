@@ -11,7 +11,7 @@ namespace Gravity
 
         [Range(1, 10)]
         public int planetGravity = 1;
-        public int playerGravity = -10;
+        private int playerGravity = -15;
         public Quaternion targetRotation;
         [HideInInspector]
         public float rotationSpeed;
