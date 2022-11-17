@@ -14,6 +14,9 @@ TagManager:
   - KnockBack
   - BlackHoleSpawn
   - Portal
+  - WalkingParticles
+  - JumpingParticles
+  - LandingParticles
   layers:
   - Default
   - TransparentFX

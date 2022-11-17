@@ -48,12 +48,20 @@ namespace Player
         public float knockBackCounter;
         private static readonly int Attack = Animator.StringToHash("SwingAttack");
 
+        [Header("Particles")]
+        public ParticleSystem landParticles;
+        public ParticleSystem jumpParticles;
+        public ParticleSystem walkParticles;
+
+
 
         private void Awake()
         {
             _anim = GetComponent<Animator>();
             rb = GetComponent<Rigidbody>();
             _cameraTransform = GetComponentInChildren<Camera>().transform;
+
+            
             
             //hides mouse cursor
             Cursor.lockState = CursorLockMode.Locked;
@@ -126,10 +134,16 @@ namespace Player
            
             var targetMoveAmount = moveDirection * walkSpeed;
 
-
             _moveAmount = Vector3.SmoothDamp(_moveAmount, targetMoveAmount, ref _smoothMoveVelocity, .15f);
+
+            //Plays walking particles if palyer is on a planet and moving
+            if(movementInput.magnitude > 0.3 && isGrounded)
+                walkParticles.Play();
+            else 
+                walkParticles.Stop();
+
         }
-        
+
         public void Move(InputAction.CallbackContext context)
         {
             movementInput = context.ReadValue<Vector2>();
@@ -141,6 +155,8 @@ namespace Player
             if (!isGrounded || _inKnockBack) return;
             
              _anim.SetTrigger(Jump1);
+             jumpParticles.Play();
+
              rb.AddForce(transform.up * jumpForce);
              rb.AddForce(transform.forward * jumpForce);
         }
@@ -171,15 +187,6 @@ namespace Player
             
             StartCoroutine(SwingAnimation());
         }
-
-        private Vector3 KnockBack(Vector3 direction)
-        {
-            knockBackCounter = knockBackTime;
-            moveDirection = direction * knockBackForce;
-            moveDirection.y = knockBackForce / 2;
-            return moveDirection;
-        }
-
         private IEnumerator SwingAnimation()
         {
             //activates stick and deactivates after the animation plays out
@@ -189,6 +196,14 @@ namespace Player
             stickObj.SetActive(true);
             yield return new WaitForSeconds(1f);
             stickObj.SetActive(false);
+        }
+
+        private Vector3 KnockBack(Vector3 direction)
+        {
+            knockBackCounter = knockBackTime;
+            moveDirection = direction * knockBackForce;
+            moveDirection.y = knockBackForce / 2;
+            return moveDirection;
         }
 
         private void OnTriggerEnter(Collider other)
