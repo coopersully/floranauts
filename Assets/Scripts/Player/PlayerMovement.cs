@@ -68,8 +68,8 @@ namespace Player
             Cursor.visible = false;
 
             //etObject Defaults
-            //hasJetpack = true;
-            hasStick = true;
+            hasJetpack = true;
+            //hasStick = true;
             stickObj.SetActive(false);
 
             hasFreezeRay = false;
@@ -174,8 +174,10 @@ namespace Player
             // Apply force while jetpack input is activated
             if (!hasJetpack || _inKnockBack) return;
 
+            _anim.SetBool(IsGrounded, isGrounded);
             rb.AddForce(transform.up * jumpForce);
             rb.AddForce(transform.forward * jumpForce);
+            
             Debug.Log("jetpack");
         }
 
@@ -208,14 +210,21 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            /* Checks Trigger, and starts knockback sequence.
-             If it doesn't have the correct tag, ignore the event. */
-            if (!other.gameObject.CompareTag("KnockBack")) return;
-            
-            Vector3 hitDirection = other.transform.position - transform.position;
-            hitDirection = hitDirection.normalized;
-            KnockBack(hitDirection);
+            // Checks Trigger, and starts knockback sequence.
+            if (other.gameObject.CompareTag("KnockBack"))
+            {
+                Vector3 hitDirection = other.transform.position - transform.position;
+                hitDirection = hitDirection.normalized;
+                KnockBack(hitDirection);
+            }
+
+           
+
+
         }
+
+       
+
 
 
 

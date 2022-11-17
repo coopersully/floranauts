@@ -267,7 +267,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: fe5209c6b592b414ebb1b08b4cb70611,
+  m_Motion: {fileID: -203655887218126122, guid: 0e4087d3e5cb143498511a2fa44e57d6,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -297,7 +297,7 @@ AnimatorStateMachine:
     m_Position: {x: 520, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -883587197117567530}
-    m_Position: {x: 740, y: 170, z: 0}
+    m_Position: {x: 780, y: 170, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 736138741203481833}
@@ -377,18 +377,6 @@ AnimatorController:
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
     m_DefaultWeight: 0
-    m_IKPass: 0
-    m_SyncedLayerAffectsTiming: 0
-    m_Controller: {fileID: 9100000}
-  - serializedVersion: 5
-    m_Name: Attack
-    m_StateMachine: {fileID: 3853065931537263710}
-    m_Mask: {fileID: 31900000, guid: bee7ca78c5d7cf4448ffb7f4a690d6f4, type: 2}
-    m_Motions: []
-    m_Behaviours: []
-    m_BlendingMode: 0
-    m_SyncedLayerIndex: 0
-    m_DefaultWeight: 1
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}

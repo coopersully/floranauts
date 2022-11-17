@@ -89,6 +89,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c074e8e-a41f-4e03-a7d7-b08c4577374c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -397,6 +406,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec74b994-b55a-499e-95ff-da5aba41b0e1"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""ChangeItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e8b619f-972e-4598-976f-4d480265aaea"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ChangeItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -815,6 +846,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Pause = m_PlayerMovement.FindAction("Pause", throwIfNotFound: true);
         m_PlayerMovement_Capture = m_PlayerMovement.FindAction("Capture", throwIfNotFound: true);
         m_PlayerMovement_UseItem = m_PlayerMovement.FindAction("UseItem", throwIfNotFound: true);
+        m_PlayerMovement_ChangeItem = m_PlayerMovement.FindAction("ChangeItem", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -893,6 +925,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Pause;
     private readonly InputAction m_PlayerMovement_Capture;
     private readonly InputAction m_PlayerMovement_UseItem;
+    private readonly InputAction m_PlayerMovement_ChangeItem;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -904,6 +937,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_PlayerMovement_Pause;
         public InputAction @Capture => m_Wrapper.m_PlayerMovement_Capture;
         public InputAction @UseItem => m_Wrapper.m_PlayerMovement_UseItem;
+        public InputAction @ChangeItem => m_Wrapper.m_PlayerMovement_ChangeItem;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -934,6 +968,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @UseItem.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnUseItem;
                 @UseItem.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnUseItem;
                 @UseItem.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnUseItem;
+                @ChangeItem.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnChangeItem;
+                @ChangeItem.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnChangeItem;
+                @ChangeItem.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnChangeItem;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -959,6 +996,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @UseItem.started += instance.OnUseItem;
                 @UseItem.performed += instance.OnUseItem;
                 @UseItem.canceled += instance.OnUseItem;
+                @ChangeItem.started += instance.OnChangeItem;
+                @ChangeItem.performed += instance.OnChangeItem;
+                @ChangeItem.canceled += instance.OnChangeItem;
             }
         }
     }
@@ -1095,6 +1135,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnCapture(InputAction.CallbackContext context);
         void OnUseItem(InputAction.CallbackContext context);
+        void OnChangeItem(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
