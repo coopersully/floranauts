@@ -164,7 +164,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6998766515489882797}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 1
   m_AngularDrag: 10
   m_UseGravity: 0
@@ -221,8 +221,6 @@ MonoBehaviour:
   cameraInput: {x: 0, y: 0}
   mouseSensitivityX: 0.1
   mouseSensitivityY: 0.1
-  walkSpeed: 10
-  jumpForce: 700
   groundMask:
     serializedVersion: 2
     m_Bits: 8
@@ -451,7 +449,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6998766515489882796}
         m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
-        m_MethodName: JetPack
+        m_MethodName: UseItem
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -463,22 +461,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5feb5fc6-3f19-40cf-a9db-a7e72cf55a45
     m_ActionName: PlayerMovement/JetPack[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6998766515489882796}
-        m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
-        m_MethodName: SwingAttack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 23330450-6289-4a8b-9d0a-048d01e44486
-    m_ActionName: PlayerMovement/SwingAttack[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement

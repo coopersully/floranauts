@@ -17,7 +17,7 @@ namespace Player
         public float mouseSensitivityX = 1;
         public float mouseSensitivityY = 1;
         private float walkSpeed = 13;
-        private float jumpForce = 1000;
+        private float jumpForce = 1200;
         public LayerMask groundMask;
         public Transform groundCheck;
 
@@ -60,7 +60,7 @@ namespace Player
             Cursor.visible = false;
 
             //etObject Defaults
-            hasJetpack = true;
+            //hasJetpack = true;
             hasStick = true;
             stickObj.SetActive(false);
 
@@ -142,28 +142,33 @@ namespace Player
             
              _anim.SetTrigger(Jump1);
              rb.AddForce(transform.up * jumpForce);
+             rb.AddForce(transform.forward * jumpForce);
         }
 
-        public void JetPack(InputAction.CallbackContext context) // callbackcontext is not working for a hold function
+        public void UseItem(InputAction.CallbackContext context)
+        {
+            if (hasJetpack)
+                JetPack();
+            else if (hasStick && context.started)  // If the key was not pressed this frame, ignore it.
+                SwingAttack();
+        }
+
+        public void JetPack() 
         {
             // Apply force while jetpack input is activated
             if (!hasJetpack || _inKnockBack) return;
-            
+
             rb.AddForce(transform.up * jumpForce);
+            rb.AddForce(transform.forward * jumpForce);
             Debug.Log("jetpack");
         }
 
-        public void SwingAttack(InputAction.CallbackContext context)
+        public void SwingAttack()
         {
-            // If the key was not pressed this frame, ignore it.
-            if (!context.started) return;
-
             /* If the player doesn't have a stick OR is currently
              in knockback, ignore this event. */
             if (!hasStick || _inKnockBack) return;
             
-            _anim.SetTrigger(Attack);
-            Debug.Log("attack");
             StartCoroutine(SwingAnimation());
         }
 
@@ -178,8 +183,11 @@ namespace Player
         private IEnumerator SwingAnimation()
         {
             //activates stick and deactivates after the animation plays out
+            _anim.SetTrigger(Attack);
+            yield return new WaitForSeconds(.75f);
+
             stickObj.SetActive(true);
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1f);
             stickObj.SetActive(false);
         }
 

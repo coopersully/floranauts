@@ -49,7 +49,7 @@ namespace Gravity
             if (!_playerMovement.isGrounded && other.CompareTag("Gravity"))
             {
                 _planet = other.GetComponentInParent<GravityAttractor>();
-                _planet.rotationSpeed = 1;
+                _planet.rotationSpeed = 3;
 
                 _shouldRotate = true;
 
@@ -61,7 +61,7 @@ namespace Gravity
             if (other.CompareTag("InnerGravity"))
             {
                 _shouldRotate = true;
-                _planet.rotationSpeed = 10;
+                _planet.rotationSpeed = 8;
             }
 
             if (other.CompareTag("BlackHole"))

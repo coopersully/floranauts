@@ -60,18 +60,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "JetPack",
+                    "name": "UseItem",
                     "type": "Button",
                     "id": "5feb5fc6-3f19-40cf-a9db-a7e72cf55a45",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "SwingAttack",
-                    "type": "Button",
-                    "id": "23330450-6289-4a8b-9d0a-048d01e44486",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -368,44 +359,22 @@
                 {
                     "name": "",
                     "id": "d3531075-b3f1-4a08-a6bc-07958185570a",
-                    "path": "<NimbusGamepadHid>/buttonSouth",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "JetPack",
+                    "action": "UseItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "fad53654-3b43-4359-9dc7-11da4b8b021a",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "Hold",
                     "processors": "",
                     "groups": "Mouse and Keyboard",
-                    "action": "JetPack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bf52c5e3-1fa0-4996-9101-3cb20abb485b",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse and Keyboard",
-                    "action": "SwingAttack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9da4ca9f-a36e-4d1a-8c3a-adcce9c3dff9",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "SwingAttack",
+                    "action": "UseItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

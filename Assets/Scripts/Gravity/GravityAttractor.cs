@@ -1,4 +1,5 @@
 using Player;
+using System.Collections;
 using UnityEngine;
 
 namespace Gravity
@@ -11,7 +12,7 @@ namespace Gravity
 
         [Range(1, 10)]
         public int planetGravity = 1;
-        private int playerGravity = -15;
+        private int playerGravity = -25;
         public Quaternion targetRotation;
         [HideInInspector]
         public float rotationSpeed;
@@ -27,10 +28,12 @@ namespace Gravity
         
         public void Attract(Rigidbody body)
         {
+            StartCoroutine(RotationSpeed());
             _gravityUp = (body.position - transform.position).normalized;
             
             // Apply downwards gravity to body
             body.AddForce(_gravityUp * (planetGravity * playerGravity));
+
         }
         public void Rotate(Rigidbody body)
         {
@@ -42,6 +45,16 @@ namespace Gravity
             var startRotation = body.rotation;
             var endRotation = Quaternion.FromToRotation(_localUp, _gravityUp) * body.rotation;
             body.rotation = Quaternion.Lerp(startRotation, endRotation, rotationSpeed * Time.deltaTime);
+        }
+        
+        //gradually increases rotation speed for smoother transition between planets
+        IEnumerator RotationSpeed()
+        {
+            while(rotationSpeed < 10)
+            {
+                yield return new WaitForSeconds(.5f);
+                rotationSpeed += 3f;
+            }
         }
     }
 }

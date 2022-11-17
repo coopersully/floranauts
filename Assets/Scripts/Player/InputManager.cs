@@ -30,7 +30,7 @@ namespace Player
                 _playerControls.PlayerMovement.HorizontalMovement.performed += i => movementInput = i.ReadValue<Vector2>();
                 _playerControls.PlayerMovement.Camera.performed += i => cameraInput = i.ReadValue<Vector2>();
                 _playerControls.PlayerMovement.Jump.performed += i => jumpInput = true;
-                _playerControls.PlayerMovement.JetPack.performed += i => jumpInput = true;
+                _playerControls.PlayerMovement.UseItem.performed += i => jumpInput = true;
 
             }
 

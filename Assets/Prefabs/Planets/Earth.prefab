@@ -133,9 +133,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planet: {fileID: 1204145194863960779}
-  planetType: 0
   currentCaptor: {fileID: 0}
-  captureIndicator: {fileID: 5506612712724144716}
+  ghost: 0
+  mound: {fileID: 0}
+  trunk: {fileID: 0}
+  fruit: {fileID: 0}
+  leaves: {fileID: 0}
 --- !u!65 &5506612712125304613
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -567,7 +570,7 @@ Transform:
   m_GameObject: {fileID: 5506612713548622510}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.018022982, y: 0.018022982, z: 0.021627579}
+  m_LocalScale: {x: 0.01855135, y: 0.01855135, z: 0.02226162}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1204145194863960781}
@@ -836,7 +839,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetGravity: 1
-  playerGravity: -10
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
   rotationSpeed: 0
 --- !u!114 &1204145194863960779
