@@ -171,7 +171,7 @@ namespace Player
         {
             knockBackCounter = knockBackTime;
             moveDirection = direction * knockBackForce;
-            moveDirection.y = knockBackForce;
+            moveDirection.y = knockBackForce / 2;
             return moveDirection;
         }
 

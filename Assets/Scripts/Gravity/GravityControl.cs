@@ -22,7 +22,7 @@ namespace Gravity
             allPlanets = GameObject.FindGameObjectsWithTag("Planet");
 
             //set first planet to random planet in the array
-            RandomGravity();
+            RandomPlanet();
            
             
             _playerMovement = GetComponent<PlayerMovement>();
@@ -69,7 +69,7 @@ namespace Gravity
                 //resets gravity and has player attracted to random planet
                 _shouldRotate = true;
                 _planet.rotationSpeed = 10;
-                NearestPlanet();
+               RandomPlanet();
 
             }
 
@@ -99,7 +99,7 @@ namespace Gravity
 
             }
         }
-        private void RandomGravity()
+        private void RandomPlanet()
         {
             //chooses random planet and attracts player to that
             randNum = Random.Range(0, allPlanets.Length);
@@ -125,6 +125,8 @@ namespace Gravity
             }
 
             _planet = closestPlanet.GetComponent<GravityAttractor>();
+
+            //need to find a way to exclude the planet player was just on
         }
 
 
