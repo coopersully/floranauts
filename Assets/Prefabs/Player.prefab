@@ -433,6 +433,7 @@ MonoBehaviour:
     m_Bits: 8
   groundCheck: {fileID: 6998766516217002576}
   isGrounded: 0
+  playerGravity: 0
   hasJetpack: 0
   jetPack: {fileID: 5044002236530911524}
   hasStick: 0
@@ -1239,6 +1240,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1806023130869006201}
     m_Modifications:
+    - target: {fileID: 709987293010617728, guid: 2fe4b4d8584488843806a1fae481b940,
+        type: 3}
+      propertyPath: ShapeModule.m_Position.y
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 709987293010617728, guid: 2fe4b4d8584488843806a1fae481b940,
+        type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 709987293010617730, guid: 2fe4b4d8584488843806a1fae481b940,
         type: 3}
       propertyPath: m_Name

@@ -260,6 +260,12 @@ namespace Player
                 _anim.SetTrigger("Falling");
             }
 
+            if (other.gameObject.CompareTag("InnerGravity"))
+            {
+                //landing particles
+                landParticles.Play();
+            }
+
         }
     }
 }
