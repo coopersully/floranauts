@@ -30,9 +30,10 @@ namespace Gravity
         {
             StartCoroutine(RotationSpeed());
             _gravityUp = (body.position - transform.position).normalized;
-            
+
+            _playerMovement = body.GetComponentInParent<PlayerMovement>();
             // Apply downwards gravity to body
-            body.AddForce(_gravityUp * (planetGravity * playerGravity));
+            body.AddForce(_gravityUp * (planetGravity * _playerMovement.playerGravity));
 
         }
         public void Rotate(Rigidbody body)
@@ -50,10 +51,10 @@ namespace Gravity
         //gradually increases rotation speed for smoother transition between planets
         IEnumerator RotationSpeed()
         {
-            while(rotationSpeed < 10)
+            while(rotationSpeed <= 8)
             {
-                yield return new WaitForSeconds(.5f);
-                rotationSpeed += 3f;
+                yield return new WaitForSeconds(.2f);
+                rotationSpeed += .25f;
             }
         }
     }

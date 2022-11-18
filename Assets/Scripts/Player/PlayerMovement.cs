@@ -31,6 +31,7 @@ namespace Player
         public LayerMask groundMask;
         public Transform groundCheck;
         public bool isGrounded;
+        public float playerGravity;
         
         //animation
         private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
@@ -68,6 +69,7 @@ namespace Player
         {
             _anim = GetComponent<Animator>();
             rb = GetComponent<Rigidbody>();
+            playerGravity = -25f;
             _cameraTransform = GetComponentInChildren<Camera>().transform;
 
             
@@ -80,7 +82,7 @@ namespace Player
             //hasJetpack = true;
             jetParticles.Stop();
             //hasStick = true;
-            hasSpeedIncrease = true;
+            //hasSpeedIncrease = true;
             //hasFreezeRay = true;
             //hasRocketLauncher = true;
 
@@ -113,8 +115,7 @@ namespace Player
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
             _anim.SetBool(IsGrounded, isGrounded);
-            Debug.Log("isGrounded" + isGrounded);
-           
+            //Debug.Log("isGrounded" + isGrounded);
         }
 
         private void FixedUpdate()
@@ -156,6 +157,14 @@ namespace Player
             else 
                 walkParticles.Stop();
 
+            /**Sets player gravity which accelerates over time if not grounded
+             * (accesed by gravityAttractor script)**/
+            if (isGrounded)
+                playerGravity = -25;
+            else
+                playerGravity -= 20 * Time.deltaTime;
+            Debug.Log("Player Gravity: " + playerGravity);
+
         }
 
         public void Move(InputAction.CallbackContext context)
@@ -195,6 +204,8 @@ namespace Player
             _anim.SetBool(IsGrounded, isGrounded);
             rb.AddForce(transform.up * jumpForce);
             rb.AddForce(transform.forward * jumpForce);
+
+            _anim.SetTrigger("Falling"); //Transitions walking animation to falling without having to go through Jump
             
             Debug.Log("jetpack");
         }
@@ -219,6 +230,7 @@ namespace Player
         }
         private IEnumerator Sprint()
         {
+            //doubles player speed for short period, then has cooldown period before can be used again
             canSprint = false;
             walkSpeed *= 2;
             yield return new WaitForSeconds(10f);
@@ -226,7 +238,6 @@ namespace Player
             yield return new WaitForSeconds(20f);
             canSprint = true;
             Debug.Log("can Sprint");
-
         }
 
         private Vector3 KnockBack(Vector3 direction)
@@ -246,18 +257,9 @@ namespace Player
                 Vector3 hitDirection = other.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
                 KnockBack(hitDirection);
-                _anim.SetTrigger("KnockBack");
+                _anim.SetTrigger("Falling");
             }
 
-           
-
-
         }
-
-       
-
-
-
-
     }
 }
