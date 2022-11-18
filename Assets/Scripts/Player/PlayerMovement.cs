@@ -13,21 +13,26 @@ namespace Player
 
         private GravityAttractor _gravityAttractor;
         private Animator _anim;
-        
-        public float mouseSensitivityX = 1;
-        public float mouseSensitivityY = 1;
-        private float walkSpeed = 13;
-        private float jumpForce = 1200;
-        public LayerMask groundMask;
-        public Transform groundCheck;
+        [HideInInspector] public Rigidbody rb;
 
-        public bool isGrounded;
-        private Vector3 _moveAmount;
-        private Vector3 _smoothMoveVelocity;
         private float _verticalLookRotation;
         private Transform _cameraTransform;
-        [HideInInspector] public Rigidbody rb;
+        //movement
+        public float mouseSensitivityX = 1;
+        public float mouseSensitivityY = 1;
+        private Vector3 _moveAmount;
+        private Vector3 _smoothMoveVelocity;
+        private Vector3 moveDirection;
+
+        private float walkSpeed = 13;
+        private float jumpForce = 1200;
+
+        //groundCheck
+        public LayerMask groundMask;
+        public Transform groundCheck;
+        public bool isGrounded;
         
+        //animation
         private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int Vertical = Animator.StringToHash("Vertical");
@@ -37,15 +42,17 @@ namespace Player
         public bool hasJetpack = false;
         public bool hasStick = false;
         public GameObject stickObj;
+        public GameObject stickKnockBack;
         public bool hasFreezeRay = false;
         public bool hasRocketLauncher = false;
+        public bool hasSpeedIncrease = false;
+        private bool canSprint = true;
 
-
-        public Vector3 moveDirection;
+        //KnockBack
         private bool _inKnockBack = false;
-        public float knockBackForce;
-        public float knockBackTime;
-        public float knockBackCounter;
+        private float knockBackForce = 10f;
+        private float knockBackTime = .75f;
+        private float knockBackCounter;
         private static readonly int Attack = Animator.StringToHash("SwingAttack");
 
         [Header("Particles")]
@@ -67,27 +74,27 @@ namespace Player
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            //etObject Defaults
-            hasJetpack = true;
+            //Object Defaults
+            //hasJetpack = true;
             //hasStick = true;
-            stickObj.SetActive(false);
+            hasSpeedIncrease = true;
+            //hasFreezeRay = true;
+            //hasRocketLauncher = true;
 
-            hasFreezeRay = false;
-            hasRocketLauncher = false;
-
-            knockBackTime = .25f;
-            knockBackForce = 10f;
+            
         }
 
         private void Update()
         {
+            stickObj.SetActive(hasStick); //Shows physical stick if item is activated
+            
             if (PauseManager.Instance.isPaused) return;
 
             // Checks if player is in knockback sequence, sets Bool, and counts down if inKnockBack
             if (knockBackCounter > 0)
             {
                 _inKnockBack = true;
-                knockBackCounter -= Time.deltaTime;
+                knockBackCounter -= Time.deltaTime * 2;
             }
             else _inKnockBack = false;
 
@@ -167,6 +174,8 @@ namespace Player
                 JetPack();
             else if (hasStick && context.started)  // If the key was not pressed this frame, ignore it.
                 SwingAttack();
+            else if (hasSpeedIncrease && canSprint)
+                StartCoroutine(Sprint());
         }
 
         public void JetPack() 
@@ -199,9 +208,21 @@ namespace Player
             yield return new WaitForSeconds(1f);
             stickObj.SetActive(false);
         }
+        private IEnumerator Sprint()
+        {
+            canSprint = false;
+            walkSpeed *= 2;
+            yield return new WaitForSeconds(10f);
+            walkSpeed /= 2;
+            yield return new WaitForSeconds(20f);
+            canSprint = true;
+            Debug.Log("can Sprint");
+
+        }
 
         private Vector3 KnockBack(Vector3 direction)
         {
+            //takes in direction value, applies force
             knockBackCounter = knockBackTime;
             moveDirection = direction * knockBackForce;
             moveDirection.y = knockBackForce / 2;

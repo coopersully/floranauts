@@ -12,6 +12,7 @@ namespace Gravity
         private Rigidbody _rigidbody;
 
         public GameObject[] allPlanets;
+        public GameObject currPlanet;
         private int randNum = 1;
 
         private bool _shouldRotate = true;
@@ -53,6 +54,7 @@ namespace Gravity
 
                 _shouldRotate = true;
 
+                currPlanet = other.transform.parent.gameObject;
             }
             
             /* When Player hits trigger closer to the planet,
@@ -116,7 +118,7 @@ namespace Gravity
             for (int i = 0; i < allPlanets.Length; i++)
             {
                 var tempDistance = Vector3.Distance(transform.position, allPlanets[i].transform.position);
-                if (tempDistance < distance)
+                if (tempDistance < distance && allPlanets[i] != currPlanet) //sets closest planet but excludes current planet
                 {
                     closestPlanet = allPlanets[i];
                     distance = tempDistance;

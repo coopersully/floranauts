@@ -66,7 +66,6 @@
     <Compile Include="Assets\Scripts\Interfaces\Popup\ExitGamePopup.cs" />
     <Compile Include="Assets\Scripts\PlanetSpawner.cs" />
     <Compile Include="Assets\Scripts\Restrictions.cs" />
-    <Compile Include="Assets\Scripts\Attack\KnockBack.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\PlayerPairing.cs" />
     <Compile Include="Assets\Scripts\CapturePoint.cs" />
