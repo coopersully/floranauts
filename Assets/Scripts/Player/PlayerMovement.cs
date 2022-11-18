@@ -40,6 +40,7 @@ namespace Player
 
         [Header("Objects")]
         public bool hasJetpack = false;
+        public GameObject jetPack;
         public bool hasStick = false;
         public GameObject stickObj;
         public GameObject stickKnockBack;
@@ -59,6 +60,7 @@ namespace Player
         public ParticleSystem landParticles;
         public ParticleSystem jumpParticles;
         public ParticleSystem walkParticles;
+        public ParticleSystem jetParticles;
 
 
 
@@ -76,6 +78,7 @@ namespace Player
 
             //Object Defaults
             //hasJetpack = true;
+            jetParticles.Stop();
             //hasStick = true;
             hasSpeedIncrease = true;
             //hasFreezeRay = true;
@@ -86,7 +89,9 @@ namespace Player
 
         private void Update()
         {
+            
             stickObj.SetActive(hasStick); //Shows physical stick if item is activated
+            jetPack.SetActive(hasJetpack);
             
             if (PauseManager.Instance.isPaused) return;
 
@@ -108,6 +113,8 @@ namespace Player
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
             _anim.SetBool(IsGrounded, isGrounded);
+            Debug.Log("isGrounded" + isGrounded);
+           
         }
 
         private void FixedUpdate()
@@ -170,7 +177,7 @@ namespace Player
 
         public void UseItem(InputAction.CallbackContext context)
         {
-            if (hasJetpack)
+            if (hasJetpack && context.started)
                 JetPack();
             else if (hasStick && context.started)  // If the key was not pressed this frame, ignore it.
                 SwingAttack();
@@ -182,6 +189,8 @@ namespace Player
         {
             // Apply force while jetpack input is activated
             if (!hasJetpack || _inKnockBack) return;
+
+            jetParticles.Play(); // needs edits based on hold
 
             _anim.SetBool(IsGrounded, isGrounded);
             rb.AddForce(transform.up * jumpForce);
@@ -225,7 +234,7 @@ namespace Player
             //takes in direction value, applies force
             knockBackCounter = knockBackTime;
             moveDirection = direction * knockBackForce;
-            moveDirection.y = knockBackForce / 2;
+            moveDirection.y = 2f;
             return moveDirection;
         }
 
@@ -237,6 +246,7 @@ namespace Player
                 Vector3 hitDirection = other.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
                 KnockBack(hitDirection);
+                _anim.SetTrigger("KnockBack");
             }
 
            
