@@ -46,6 +46,7 @@ namespace Player
         public GameObject stickObj;
         public GameObject stickKnockBack;
         public bool hasFreezeRay = false;
+        public GameObject freezeRay;
         public bool hasRocketLauncher = false;
         public bool hasSpeedIncrease = false;
         private bool canSprint = true;
@@ -69,7 +70,7 @@ namespace Player
         {
             _anim = GetComponent<Animator>();
             rb = GetComponent<Rigidbody>();
-            playerGravity = -25f;
+            playerGravity = -10f;
             _cameraTransform = GetComponentInChildren<Camera>().transform;
 
             
@@ -94,6 +95,7 @@ namespace Player
             
             stickObj.SetActive(hasStick); //Shows physical stick if item is activated
             jetPack.SetActive(hasJetpack);
+            freezeRay.SetActive(hasFreezeRay);
             
             if (PauseManager.Instance.isPaused) return;
 
@@ -160,9 +162,9 @@ namespace Player
             /**Sets player gravity which accelerates over time if not grounded
              * (accesed by gravityAttractor script)**/
             if (isGrounded)
-                playerGravity = -25;
+                playerGravity = -10;
             else
-                playerGravity -= 20 * Time.deltaTime;
+                playerGravity -= 50 * Time.deltaTime;
             Debug.Log("Player Gravity: " + playerGravity);
 
         }
@@ -180,8 +182,9 @@ namespace Player
              _anim.SetTrigger(Jump1);
              jumpParticles.Play();
 
+            //applies upward force and directional force depending on direction player is moving
              rb.AddForce(transform.up * jumpForce);
-             rb.AddForce(transform.forward * jumpForce);
+             rb.AddForce(transform.forward * jumpForce * movementInput);
         }
 
         public void UseItem(InputAction.CallbackContext context)
@@ -202,8 +205,9 @@ namespace Player
             jetParticles.Play(); // needs edits based on hold
 
             _anim.SetBool(IsGrounded, isGrounded);
-            rb.AddForce(transform.up * jumpForce);
-            rb.AddForce(transform.forward * jumpForce);
+            rb.AddForce(transform.up * jumpForce );
+            rb.AddForce(transform.forward * jumpForce * movementInput * 5f);
+
 
             _anim.SetTrigger("Falling"); //Transitions walking animation to falling without having to go through Jump
             
