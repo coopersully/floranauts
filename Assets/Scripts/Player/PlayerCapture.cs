@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Interfaces;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,9 @@ namespace Player
         [HideInInspector] public CapturePoint currentCapturePoint;
 
         public PlayerColor color;
+
+        public TextMeshProUGUI BlueCaptureTextPrompt;
+        public TextMeshProUGUI RedCaptureTextPrompt;
 
         private void Awake()
         {
@@ -38,11 +42,21 @@ namespace Player
         private void OnTriggerEnter(Collider other)
         {
             // If the entered trigger is not a capture point, ignore it.
-            if (!other.CompareTag("CapturePoint")) return;
+            if (!other.CompareTag("CapturePoint")) return;           
 
             currentCapturePoint = other.GetComponent<CapturePoint>();
+
+            //Shows capture planet text prompt
+            if (CaptureTextPrompt.promptName== "BlueCaptureTextPrompt")
+            {
+                BlueCaptureTextPrompt.gameObject.SetActive(true);
+            }
+            else
+            {
+                RedCaptureTextPrompt.gameObject.SetActive(true);
+            }
         }
-        
+
         /* When a player exits a 'CapturePoint' on a
          planet, nullify their current capture point. */
         private void OnTriggerExit(Collider other)
@@ -52,7 +66,7 @@ namespace Player
 
             currentCapturePoint = null;
         }
-        
+
         /* Called once every second. Increments the player's
          score by the amount of Capture Points they currently own. */
         private IEnumerator IncrementScore()
