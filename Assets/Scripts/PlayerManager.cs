@@ -1,4 +1,5 @@
 using System;
+using Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,10 +9,10 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Players")]
     public GameObject playerOne;
-    public int playerOneScore;
-    
     public GameObject playerTwo;
-    public int playerTwoScore;
+
+    [Header("Scoring System")]
+    public PlayerScoreManager scoreboard;
 
     private void Awake()
     {

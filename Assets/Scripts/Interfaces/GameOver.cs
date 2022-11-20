@@ -21,7 +21,7 @@ namespace Interfaces
         public void Trigger(int winnerIndex)
         {
             // Alert ScoreManager singleton of winner
-            PlayerScoreManager.Instance.maxScoreAchieved = true;
+            PlayerManager.Instance.scoreboard.maxScoreAchieved = true;
             
             // Fix pause menu
             PauseManager.Instance.SetHUDVisibility(false);

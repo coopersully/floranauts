@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,8 +5,7 @@ namespace Player
 {
     public class PlayerScoreManager : MonoBehaviour
     {
-        public static PlayerScoreManager Instance;
-        
+        [Header("Scoring System")]
         public int maxScore = 100;
         public bool maxScoreAchieved;
         
@@ -17,8 +15,6 @@ namespace Player
         
         private void Awake()
         {
-            if (Instance == null) Instance = this;
-            
             playerOne = PlayerManager.Instance.playerOne.GetComponent<PlayerCapture>();
             playerTwo = PlayerManager.Instance.playerTwo.GetComponent<PlayerCapture>();
             StartCoroutine(IncrementScores());

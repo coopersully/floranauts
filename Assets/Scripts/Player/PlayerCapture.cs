@@ -68,7 +68,7 @@ namespace Player
             score += inventory.Count;
             
             // If the player achieves the maximum score
-            if (score >= PlayerScoreManager.Instance.maxScore)
+            if (score >= PlayerManager.Instance.scoreboard.maxScore)
             {
                 GameOver.Instance.Trigger(playerInput.playerIndex);
             }
