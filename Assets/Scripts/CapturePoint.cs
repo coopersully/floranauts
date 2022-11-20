@@ -49,6 +49,10 @@ public class CapturePoint : MonoBehaviour
             
             // Change the current captor for this CapturePoint
             currentCaptor = null;
+            
+            // Refresh everyone's action bars
+            PlayerManager.Instance.scoreboard.playerOne.RefreshActionBar();
+            PlayerManager.Instance.scoreboard.playerTwo.RefreshActionBar();
             return;
         }
         
@@ -65,6 +69,10 @@ public class CapturePoint : MonoBehaviour
         
         // Change the current captor for this CapturePoint
         currentCaptor = playerCapture;
+        
+        // Refresh everyone's action bars
+        PlayerManager.Instance.scoreboard.playerOne.RefreshActionBar();
+        PlayerManager.Instance.scoreboard.playerTwo.RefreshActionBar();
     }
 
     private void SetTreeVisibility(bool isVisible)
