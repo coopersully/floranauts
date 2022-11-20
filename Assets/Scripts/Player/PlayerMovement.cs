@@ -43,6 +43,7 @@ namespace Player
         public bool hasJetpack = false;
         public GameObject jetPack;
         public bool hasStick = false;
+        private bool canSwingStick = true;
         public GameObject stickObj;
         public GameObject stickKnockBack;
         public bool hasFreezeRay = false;
@@ -191,7 +192,7 @@ namespace Player
         {
             if (hasJetpack && context.started)
                 JetPack();
-            else if (hasStick && context.started)  // If the key was not pressed this frame, ignore it.
+            else if (hasStick && context.started && canSwingStick)  // If the key was not pressed this frame, ignore it.
                 SwingAttack();
             else if (hasSpeedIncrease && canSprint)
                 StartCoroutine(Sprint());
@@ -216,21 +217,23 @@ namespace Player
 
         public void SwingAttack()
         {
-            /* If the player doesn't have a stick OR is currently
-             in knockback, ignore this event. */
-            if (!hasStick || _inKnockBack) return;
+            // If the player is currently in knockback, ignore this event. 
+            if ( _inKnockBack ) return;
             
             StartCoroutine(SwingAnimation());
         }
         private IEnumerator SwingAnimation()
         {
-            //activates stick and deactivates after the animation plays out
+            //player cannot swing stick again until animation plays through
+            canSwingStick = false;
             _anim.SetTrigger(Attack);
             yield return new WaitForSeconds(.75f);
 
+            //activates stick and deactivates after the animation plays out
             stickObj.SetActive(true);
             yield return new WaitForSeconds(1f);
             stickObj.SetActive(false);
+            canSwingStick = true;
         }
         private IEnumerator Sprint()
         {

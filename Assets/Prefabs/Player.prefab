@@ -434,9 +434,9 @@ MonoBehaviour:
   groundCheck: {fileID: 6998766516217002576}
   isGrounded: 0
   playerGravity: 0
-  hasJetpack: 1
+  hasJetpack: 0
   jetPack: {fileID: 5044002236530911524}
-  hasStick: 0
+  hasStick: 1
   stickObj: {fileID: 4995709867492863977}
   stickKnockBack: {fileID: 1285710406208205830}
   hasFreezeRay: 0
@@ -506,6 +506,8 @@ MonoBehaviour:
   inventory: []
   currentCapturePoint: {fileID: 0}
   color: {fileID: 5631841255276435831}
+  BlueCaptureTextPrompt: {fileID: 0}
+  RedCaptureTextPrompt: {fileID: 0}
 --- !u!114 &6998766515489882803
 MonoBehaviour:
   m_ObjectHideFlags: 0
