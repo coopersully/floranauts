@@ -166,7 +166,7 @@ namespace Player
                 playerGravity = -10;
             else
                 playerGravity -= 50 * Time.deltaTime;
-            Debug.Log("Player Gravity: " + playerGravity);
+            //Debug.Log("Player Gravity: " + playerGravity);
 
         }
 

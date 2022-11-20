@@ -26,6 +26,7 @@ namespace Player
         public void Capture(InputAction.CallbackContext context)
         {
             if (!context.started) return;
+            if (currentCapturePoint == null) return;
             currentCapturePoint.CaptureAction(this);
         }
 
@@ -66,6 +67,7 @@ namespace Player
         public void IncrementScore()
         {
             score += inventory.Count;
+            Debug.Log(name + "'s score changed to " + score);
             
             // If the player achieves the maximum score
             if (score >= PlayerManager.Instance.scoreboard.maxScore)

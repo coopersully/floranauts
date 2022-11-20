@@ -111,14 +111,14 @@ namespace Interfaces
             _countingDown = false;
             pairingSection.SetActive(false);
             
+            // Begin counting scores
+            PlayerManager.Instance.scoreboard.RestartScoreTicking();
+            
             // Enable HUD
             PauseManager.Instance.SetHUDVisibility(true);
             
             // Remove restriction from using pause menu
             PauseManager.Instance.restrictions.Remove(gameObject);
-            
-            // Refresh player count for score manager
-            FindObjectOfType<ScoreManager>().RefreshPlayers();
 
             gameObject.SetActive(false); // Disable this script
         }

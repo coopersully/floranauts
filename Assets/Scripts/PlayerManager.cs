@@ -25,9 +25,11 @@ public class PlayerManager : MonoBehaviour
         {
             case 0:
                 playerOne = playerInput.gameObject;
+                scoreboard.playerOne = playerOne.GetComponent<PlayerCapture>();
                 break;
             case 1:
                 playerTwo = playerInput.gameObject;
+                scoreboard.playerTwo = playerTwo.GetComponent<PlayerCapture>();
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

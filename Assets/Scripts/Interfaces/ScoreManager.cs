@@ -12,7 +12,7 @@ namespace Interfaces
         public TextMeshProUGUI playerTwoText;
         public Slider playerTwoProgress;
         
-        public void Update()
+        public void Refresh()
         {
             playerOneText.SetText(PlayerManager.Instance.scoreboard.playerOne.score.ToString("N0"));
             playerOneProgress.value = PlayerManager.Instance.scoreboard.playerOne.score;
