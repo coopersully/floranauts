@@ -1,13 +1,11 @@
-using System;
 using Player;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class CapturePoint : MonoBehaviour
 {
     public Planet planet;
-    public PlayerCapture currentCaptor;
-
-    public bool ghost;
+    [HideInInspector] public PlayerCapture currentCaptor;
     
     [Header("Tree Elements")]
     public MeshRenderer mound;
@@ -26,11 +24,6 @@ public class CapturePoint : MonoBehaviour
         _trunkMaterial = trunk.material;
         _fruitMaterial = fruit.material;
         _leavesMaterial = leaves.material;
-    }
-
-    private void Update()
-    {
-        if (ghost) Ghost();
     }
 
     public void CaptureAction(PlayerCapture playerCapture)
@@ -67,11 +60,22 @@ public class CapturePoint : MonoBehaviour
         currentCaptor = playerCapture;
     }
 
-    private void Ghost()
+    private void SetVisibility(bool isVisible)
     {
-        trunk.gameObject.SetActive(false);
-        fruit.gameObject.SetActive(false);
-        leaves.gameObject.SetActive(false);
+        trunk.gameObject.SetActive(isVisible);
+        fruit.gameObject.SetActive(isVisible);
+        leaves.gameObject.SetActive(isVisible);
     }
-    
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        SetVisibility(true);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+        SetVisibility(false);
+    }
 }
