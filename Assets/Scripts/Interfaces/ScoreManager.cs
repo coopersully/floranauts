@@ -11,8 +11,6 @@ namespace Interfaces
 
         public static ScoreManager Instance;
 
-        [HideInInspector] public bool hasWon;
-
         [HideInInspector] public PlayerCapture playerOne;
         [HideInInspector] public PlayerCapture playerTwo;
         

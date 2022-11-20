@@ -1,3 +1,4 @@
+using Player;
 using UnityEngine;
 
 namespace Interfaces
@@ -20,7 +21,7 @@ namespace Interfaces
         public void Trigger(int winnerIndex)
         {
             // Alert ScoreManager singleton of winner
-            ScoreManager.Instance.hasWon = true;
+            PlayerScoreManager.Instance.maxScoreAchieved = true;
             
             // Fix pause menu
             PauseManager.Instance.SetHUDVisibility(false);

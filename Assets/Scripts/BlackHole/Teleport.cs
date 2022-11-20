@@ -6,12 +6,12 @@ namespace BlackHole
     public class Teleport : MonoBehaviour
     {
         public GameObject portal;
-        private Transform playerTransform;
+        private Transform _playerTransform;
         public GameObject[] teleportPoints;
-        private int randNum = 1;
+        private int _randomInt = 1;
 
 
-        void Awake()
+        private void Awake()
         {
             // finds all objects with "respawn' tag and adds them to an array
             teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
@@ -19,18 +19,18 @@ namespace BlackHole
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("BlackHole"))
-            {
-                //Teleports player to random teleport point
-                randNum = Random.Range(0, teleportPoints.Length);
-                gameObject.transform.position = teleportPoints[randNum].transform.position;
-                StartCoroutine(OpenPortal());
-            }
+            if (!other.CompareTag("BlackHole")) return;
+            
+            // Teleports player to random teleport point
+            _randomInt = Random.Range(0, teleportPoints.Length);
+            gameObject.transform.position = teleportPoints[_randomInt].transform.position;
+            StartCoroutine(OpenPortal());
         }
-        IEnumerator OpenPortal()
+
+        private IEnumerator OpenPortal()
         {
             portal.SetActive(true);
-            portal.transform.position = teleportPoints[randNum].transform.position;
+            portal.transform.position = teleportPoints[_randomInt].transform.position;
 
             yield return new WaitForSeconds(3f);
             portal.SetActive(false);

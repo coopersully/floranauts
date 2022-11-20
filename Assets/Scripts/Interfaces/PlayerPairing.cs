@@ -61,11 +61,14 @@ namespace Interfaces
         public void OnPlayerJoined(PlayerInput playerInput)
         {
             AudioManager.Instance.ui.Select03();
+
+            var title = "Player " + (playerInput.playerIndex + 1);
             
             var newPlayer = Instantiate(playerCard, playersReady, false);
-            newPlayer.title.SetText("Player " + (playerInput.playerIndex + 1));
+            newPlayer.title.SetText(title);
             newPlayer.subtitle.SetText(playerInput.currentControlScheme);
 
+            playerInput.gameObject.name = title;
             var playerColor = playerInput.playerIndex switch
             {
                 0 => Color.yellow,
@@ -76,6 +79,8 @@ namespace Interfaces
             };
 
             newPlayer.background.color = playerColor;
+            
+            PlayerManager.Instance.AddPlayer(playerInput);
         }
 
         private void RefreshUI()

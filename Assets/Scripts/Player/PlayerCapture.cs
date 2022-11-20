@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Interfaces;
 using TMPro;
@@ -19,15 +18,10 @@ namespace Player
 
         public PlayerColor color;
 
-        public TextMeshProUGUI BlueCaptureTextPrompt;
-        public TextMeshProUGUI RedCaptureTextPrompt;
-
-        private void Awake()
-        {
-            // Start incrementing the player's score every second
-            StartCoroutine(IncrementScore());
-        }
+        public TextMeshProUGUI blueCaptureTextPrompt;
+        public TextMeshProUGUI redCaptureTextPrompt;
         
+
         // Called every time a player presses the 'Capture' binding.
         public void Capture(InputAction.CallbackContext context)
         {
@@ -49,11 +43,11 @@ namespace Player
             //Shows capture planet text prompt
             if (CaptureTextPrompt.promptName== "BlueCaptureTextPrompt")
             {
-                BlueCaptureTextPrompt.gameObject.SetActive(true);
+                blueCaptureTextPrompt.gameObject.SetActive(true);
             }
             else
             {
-                RedCaptureTextPrompt.gameObject.SetActive(true);
+                redCaptureTextPrompt.gameObject.SetActive(true);
             }
         }
 
@@ -69,16 +63,14 @@ namespace Player
 
         /* Called once every second. Increments the player's
          score by the amount of Capture Points they currently own. */
-        private IEnumerator IncrementScore()
+        public void IncrementScore()
         {
-            while (!ScoreManager.Instance.hasWon)
+            score += inventory.Count;
+            
+            // If the player achieves the maximum score
+            if (score >= PlayerScoreManager.Instance.maxScore)
             {
-                score += inventory.Count;
-                if (score >= 100) GameOver.Instance.Trigger(playerInput.playerIndex);
-                
-                //Debug.Log(name + " has a score of " + score);
-                
-                yield return new WaitForSeconds(3.0f);
+                GameOver.Instance.Trigger(playerInput.playerIndex);
             }
         }
     }
