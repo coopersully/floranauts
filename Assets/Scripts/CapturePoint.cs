@@ -12,6 +12,7 @@ public class CapturePoint : MonoBehaviour
     public MeshRenderer trunk;
     public MeshRenderer fruit;
     public MeshRenderer leaves;
+    public ParticleSystem claimParticles;
     
     private Material _moundMaterial;
     private Material _trunkMaterial;
@@ -43,6 +44,9 @@ public class CapturePoint : MonoBehaviour
             // Add point to player's inventory
             currentCaptor.inventory.Remove(this);
             
+            // Set the tree's visibility
+            SetTreeVisibility(false);
+            
             // Change the current captor for this CapturePoint
             currentCaptor = null;
             return;
@@ -56,26 +60,19 @@ public class CapturePoint : MonoBehaviour
         // Add point to player's inventory
         playerCapture.inventory.Add(this);
         
+        // Set the tree's visibility
+        SetTreeVisibility(true);
+        
         // Change the current captor for this CapturePoint
         currentCaptor = playerCapture;
     }
 
-    private void SetVisibility(bool isVisible)
+    private void SetTreeVisibility(bool isVisible)
     {
+        claimParticles.Play();
+        
         trunk.gameObject.SetActive(isVisible);
         fruit.gameObject.SetActive(isVisible);
         leaves.gameObject.SetActive(isVisible);
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
-        SetVisibility(true);
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
-        SetVisibility(false);
     }
 }
