@@ -134,12 +134,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planet: {fileID: 0}
-  currentCaptor: {fileID: 0}
   mound: {fileID: 5041274728737715244}
   trunk: {fileID: 3696884906273023055}
   fruit: {fileID: 6586735935064526937}
   leaves: {fileID: 2989370585390076253}
   claimParticles: {fileID: 342735121696442423}
+  currentCaptor: {fileID: 0}
+  health: 0
+  maxHealth: 10
 --- !u!135 &1243119945194938372
 SphereCollider:
   m_ObjectHideFlags: 0

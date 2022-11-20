@@ -66,8 +66,7 @@ public class CapturePoint : MonoBehaviour
     {
         // Change planet color to unclaimed
         planet.Unclaim();
-        _fruitMaterial.color = planet.unclaimedColor;
-        _leavesMaterial.color = planet.unclaimedColor;
+        SetTreeColor(null);
 
         // Add point to player's inventory
         currentCaptor.inventory.Remove(this);
@@ -88,8 +87,7 @@ public class CapturePoint : MonoBehaviour
     {
         // Change planet color to player's color
         planet.Claim(playerCapture);
-        _fruitMaterial.color = playerCapture.color.primary;
-        _leavesMaterial.color = playerCapture.color.secondary;
+        SetTreeColor(playerCapture);
 
         // Add point to player's inventory
         playerCapture.inventory.Add(this);
@@ -112,5 +110,19 @@ public class CapturePoint : MonoBehaviour
         trunk.gameObject.SetActive(isVisible);
         fruit.gameObject.SetActive(isVisible);
         leaves.gameObject.SetActive(isVisible);
+    }
+
+    private void SetTreeColor(PlayerCapture playerCapture)
+    {
+        if (playerCapture != null)
+        {
+            fruit.material.color = playerCapture.color.primary;
+            leaves.material.color = playerCapture.color.secondary;
+        }
+        else
+        {
+            fruit.material.color = planet.unclaimedColor;
+            leaves.material.color = planet.unclaimedColor;
+        }
     }
 }
