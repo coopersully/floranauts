@@ -17,15 +17,17 @@ namespace Player
         [HideInInspector] public CapturePoint currentCapturePoint;
 
         public PlayerColor color;
-
+        
+        [Header("Interface Elements")]
         public TextMeshProUGUI actionBar;
+        public TextMeshProUGUI captureHealth;
 
         // Called every time a player presses the 'Capture' binding.
         public void Capture(InputAction.CallbackContext context)
         {
             if (!context.started) return;
             if (currentCapturePoint == null) return;
-            currentCapturePoint.CaptureAction(this);
+            currentCapturePoint.AttemptCapture(this);
         }
 
         /* When a player enters a 'CapturePoint' on a planet, set it
@@ -36,7 +38,7 @@ namespace Player
         {
             // If the entered trigger is not a capture point, ignore it.
             if (!other.CompareTag("CapturePoint")) return;
-            RefreshActionBar();
+            RefreshInterfaceElements();
             
             currentCapturePoint = other.GetComponent<CapturePoint>();
         }
@@ -49,13 +51,21 @@ namespace Player
             if (!other.CompareTag("CapturePoint")) return;
             
             actionBar.gameObject.SetActive(false);
+            captureHealth.gameObject.SetActive(false);
 
             currentCapturePoint = null;
         }
 
-        public void RefreshActionBar()
+        public void RefreshInterfaceElements()
         {
-            if (currentCapturePoint == null) return;
+            if (currentCapturePoint == null)
+            {
+                captureHealth.gameObject.SetActive(false);
+                return;
+            }
+            
+            captureHealth.SetText(currentCapturePoint.health.ToString("N0"));
+            captureHealth.gameObject.SetActive(true);
             
             if (currentCapturePoint.currentCaptor == this)
             {
@@ -67,8 +77,7 @@ namespace Player
                 // If the planet's owner is NOT the current player
                 // but it HAS one
                 actionBar.SetText("Destroy Host Tree [F]");
-                actionBar.gameObject.SetActive(true);
-            }
+                actionBar.gameObject.SetActive(true); }
             else
             {
                 // If the planet's owner is NOT the current player
