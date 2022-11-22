@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Audio;
+using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -69,16 +70,9 @@ namespace Interfaces
             newPlayer.subtitle.SetText(playerInput.currentControlScheme);
 
             playerInput.gameObject.name = title;
-            var playerColor = playerInput.playerIndex switch
-            {
-                0 => Color.yellow,
-                1 => Color.green,
-                3 => Color.magenta,
-                4 => Color.blue,
-                _ => throw new ArgumentOutOfRangeException()
-            };
 
-            newPlayer.background.color = playerColor;
+            newPlayer.background.color = PlayerColor.GetPrimary(playerInput.playerIndex);
+            newPlayer.icon.color = PlayerColor.GetSecondary(playerInput.playerIndex);
             
             PlayerManager.Instance.AddPlayer(playerInput);
         }

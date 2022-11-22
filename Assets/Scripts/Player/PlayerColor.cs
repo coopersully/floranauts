@@ -18,25 +18,25 @@ namespace Player
         private void Awake()
         {
             _playerInput = GetComponent<PlayerInput>();
-            if (_playerInput.playerIndex == 0)
-            {
-                // primary = new Color(57, 161, 243, 100); // Blue
-                // secondary = new Color(8, 235, 173, 100);   // Teal
-                primary = Color.cyan;
-                secondary = Color.green;
-            }
-            else
-            {
-                // primary = new Color(231, 89, 78, 100); // Red
-                // secondary = new Color(251, 193, 50, 100); // Yellow
-                primary = Color.red;
-                secondary = Color.yellow;
-            }
+            primary = GetPrimary(_playerInput.playerIndex);
+            secondary = GetSecondary(_playerInput.playerIndex);
             
             /* Re-color individual player models to represent
              each player's primary and secondary colors. */
             skinPrimary.material.color = primary;
             skinSecondary.material.color = secondary;
+        }
+
+        public static Color GetPrimary(int index)
+        {
+            if (index == 0) return new Color32(57, 161, 243, 255); // Blue
+            return new Color32(231, 89, 78, 255); // Red
+        }
+
+        public static Color GetSecondary(int index)
+        {
+            if (index == 0) return new Color32(8, 235, 173, 255); // Teal
+            return new Color32(251, 193, 50, 255); // Yellow
         }
     }
 }

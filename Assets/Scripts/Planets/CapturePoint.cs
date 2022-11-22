@@ -21,7 +21,7 @@ namespace Planets
         private Material _leavesMaterial;
     
         [Header("Capture Properties")]
-        [HideInInspector] public PlayerCapture currentCaptor;
+        [HideInInspector] public PlayerCapture owner;
         public int health;
         public int maxHealth = 10;
     
@@ -39,7 +39,7 @@ namespace Planets
 
         public void AttemptCapture(PlayerCapture playerCapture)
         {
-            if (currentCaptor == playerCapture) return;
+            if (owner == playerCapture) return;
 
             // Decrement the health of the planet
             health -= 1;
@@ -59,8 +59,8 @@ namespace Planets
         private void Capture(PlayerCapture playerCapture)
         {
             /* If there is already an owner of the current CapturePoint,
-         un-claim it first instead of instantly claiming it for them. */
-            if (currentCaptor != null) RemoveCaptor();
+             un-claim it first instead of instantly claiming it for them. */
+            if (owner != null) RemoveCaptor();
             else AddCaptor(playerCapture);
         }
 
@@ -71,13 +71,13 @@ namespace Planets
             SetTreeColor(null);
 
             // Add point to player's inventory
-            currentCaptor.inventory.Remove(this);
+            owner.inventory.Remove(this);
             
             // Set the tree's visibility
             SetTreeVisibility(false);
             
             // Change the current captor for this CapturePoint
-            currentCaptor = null;
+            owner = null;
             
             // Refresh everyone's action bars
             PlayerManager.Instance.scoreboard.playerOne.RefreshInterfaceElements();
@@ -98,7 +98,7 @@ namespace Planets
             SetTreeVisibility(true);
         
             // Change the current captor for this CapturePoint
-            currentCaptor = playerCapture;
+            owner = playerCapture;
         
             // Refresh everyone's action bars
             PlayerManager.Instance.scoreboard.playerOne.RefreshInterfaceElements();
