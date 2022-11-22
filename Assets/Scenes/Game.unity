@@ -9240,9 +9240,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc73d8b5c8c44459382cb112d3ae9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unclaimedColor: {r: 1, g: 1, b: 1, a: 1}
   canvasPrimaries: []
   canvasAccents: []
-  unclaimedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &980557947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12246,6 +12246,21 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7e96c39cd5942644e8e3930a706d58a0, type: 2}
+    - target: {fileID: 8427803858992828774, guid: 3519cd0b1729fe648ac561fadade8b0a,
+        type: 3}
+      propertyPath: unclaimedColor.b
+      value: 0.5764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427803858992828774, guid: 3519cd0b1729fe648ac561fadade8b0a,
+        type: 3}
+      propertyPath: unclaimedColor.g
+      value: 0.5764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 8427803858992828774, guid: 3519cd0b1729fe648ac561fadade8b0a,
+        type: 3}
+      propertyPath: unclaimedColor.r
+      value: 0.5764706
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3519cd0b1729fe648ac561fadade8b0a, type: 3}
 --- !u!1 &1566000758
@@ -18511,7 +18526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1856160788}
   m_Layer: 0
-  m_Name: OwenPlanets
+  m_Name: Planets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19209,9 +19224,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc73d8b5c8c44459382cb112d3ae9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unclaimedColor: {r: 1, g: 1, b: 1, a: 1}
   canvasPrimaries: []
   canvasAccents: []
-  unclaimedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &2138767817
 MonoBehaviour:
   m_ObjectHideFlags: 0

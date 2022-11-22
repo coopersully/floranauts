@@ -12,7 +12,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{3f661248-d32c-1860-6130-220034d12e9b}</ProjectGuid>
+    <ProjectGuid>{4dcbf802-4e20-0cb3-5a71-eb436f7f7dc9}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -44,20 +44,21 @@
      <Compile Include="Assets\Scripts\Interfaces\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Gravity\GravityAttractor.cs" />
      <Compile Include="Assets\Scripts\Audio\UIAudioManager.cs" />
-     <Compile Include="Assets\Scripts\Emission_Incremint.cs" />
+     <Compile Include="Assets\Scripts\Planets\EmissionIncrement.cs" />
      <Compile Include="Assets\Scripts\Interfaces\Popup\Popup.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerScoreManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerControls.cs" />
      <Compile Include="Assets\Scripts\Interfaces\Popup\ExitGamePopup.cs" />
-     <Compile Include="Assets\Scripts\PlanetSpawner.cs" />
+     <Compile Include="Assets\Scripts\Planets\PlanetSpawner.cs" />
      <Compile Include="Assets\Scripts\Restrictions.cs" />
      <Compile Include="Assets\Scripts\Interfaces\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PlayerPairing.cs" />
      <Compile Include="Assets\Scripts\Interfaces\CaptureTextPrompt.cs" />
-     <Compile Include="Assets\Scripts\CapturePoint.cs" />
+     <Compile Include="Assets\Scripts\Planets\CapturePoint.cs" />
+     <Compile Include="Assets\Scripts\PedestalTeleporter.cs" />
      <Compile Include="Assets\Scripts\Interfaces\SettingsMenu.cs" />
-     <Compile Include="Assets\Scripts\PlanetType.cs" />
-     <Compile Include="Assets\Scripts\Planet.cs" />
+     <Compile Include="Assets\Scripts\Planets\PlanetType.cs" />
+     <Compile Include="Assets\Scripts\Planets\Planet.cs" />
      <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
      <Compile Include="Assets\Scripts\Player\InputManager.cs" />
      <Compile Include="Assets\Scripts\Gravity\GravityControl.cs" />
@@ -65,6 +66,7 @@
      <Compile Include="Assets\Scripts\Interfaces\GameOver.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PlayerCard.cs" />
      <Compile Include="Assets\Scripts\Interfaces\Popup\PopupExit.cs" />
+     <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Gravity\ObjectGravityControl.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PauseManager.cs" />
@@ -73,8 +75,6 @@
      <Compile Include="Assets\Scripts\Player\PlayerColor.cs" />
      <Compile Include="Assets\Scripts\BlackHole\Teleport.cs" />
      <Compile Include="Assets\Scripts\BlackHole\BHController.cs" />
-     <Compile Include="Assets\Scripts\PlayerManager.cs" />
-     <Compile Include="Assets\Scripts\PedestalTeleporter.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -341,25 +341,25 @@
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.11f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Unsafe">
-     <HintPath>C:\Users\Cooper\Projects\Unity\Project-C\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.Unsafe.dll</HintPath>
+     <HintPath>D:\Projects\Unity\Floranauts\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.Unsafe.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Mdb">
-     <HintPath>C:\Users\Cooper\Projects\Unity\Project-C\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+     <HintPath>D:\Projects\Unity\Floranauts\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Pdb">
-     <HintPath>C:\Users\Cooper\Projects\Unity\Project-C\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+     <HintPath>D:\Projects\Unity\Floranauts\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil">
-     <HintPath>C:\Users\Cooper\Projects\Unity\Project-C\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+     <HintPath>D:\Projects\Unity\Floranauts\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
      </Reference>
      <Reference Include="Unity.Burst.Cecil.Rocks">
-     <HintPath>C:\Users\Cooper\Projects\Unity\Project-C\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
+     <HintPath>D:\Projects\Unity\Floranauts\Library\PackageCache\com.unity.burst@1.7.3\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-     <HintPath>C:\Users\Cooper\Projects\Unity\Project-C\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+     <HintPath>D:\Projects\Unity\Floranauts\Library\PackageCache\com.unity.visualscripting@1.7.8\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
      </Reference>
      <Reference Include="Newtonsoft.Json">
-     <HintPath>C:\Users\Cooper\Projects\Unity\Project-C\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+     <HintPath>D:\Projects\Unity\Floranauts\Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
      </Reference>
      <Reference Include="netstandard">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.11f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -730,151 +730,151 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
-      <Project>{6ff09f16-5e11-7631-75c1-5ea11d3aa2a6}</Project>
+      <Project>{470ba2b0-280a-fd92-399a-146595256cdb}</Project>
       <Name>Unity.VisualScripting.Flow.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VSCode.Editor.csproj">
-      <Project>{f353d247-9bfc-a131-ad06-99c7c22de8c8}</Project>
+      <Project>{69353b3a-cf06-aa1a-5a14-42db11dfd65f}</Project>
       <Name>Unity.VSCode.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Shaders.csproj">
-      <Project>{4d5746bc-b553-a892-d9cb-71b21163d316}</Project>
+      <Project>{fa77be51-b2cc-76a8-8be2-b684629abd18}</Project>
       <Name>Unity.RenderPipelines.Universal.Shaders</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.csproj">
-      <Project>{d452e94c-b88a-66b5-9880-12cfb04cfb0d}</Project>
+      <Project>{bba63a73-2332-fe03-0140-7dea8dfa886b}</Project>
       <Name>Unity.RenderPipelines.Universal.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="PPv2URPConverters.csproj">
-      <Project>{9b500550-46cc-a8d5-6fe9-52d645c02610}</Project>
+      <Project>{7081b6ac-e716-f5ee-900a-7a1b366477bb}</Project>
       <Name>PPv2URPConverters</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{f74da6ce-6688-2c98-e8fc-aa7a07754b76}</Project>
+      <Project>{2b0053c1-d197-5522-a9b4-dfc1d41ec8f4}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
-      <Project>{9ca620e6-69c4-87f3-e5b0-4962b1071271}</Project>
+      <Project>{769d7693-756f-d392-0b6a-0000c6fe3ce6}</Project>
       <Name>Unity.VisualStudio.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Timeline.csproj">
-      <Project>{76118dad-2a76-b0f8-b3ff-041062715209}</Project>
+      <Project>{f808909a-4c1d-57a5-0058-049527a98879}</Project>
       <Name>Unity.Timeline</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.Editor.csproj">
-      <Project>{215cecb0-da14-3704-34f2-1fe149ce09f6}</Project>
+      <Project>{8a117ae7-72c8-d9fe-5b9e-61ded90dce13}</Project>
       <Name>Unity.VisualScripting.Core.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{6bb73cdf-ed99-bc45-b3b3-f3addeff8e15}</Project>
+      <Project>{b144d3c1-4275-1aca-c114-0c2c8af59110}</Project>
       <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.State.Editor.csproj">
-      <Project>{0ce7b894-4373-7b64-5ce1-1f4f7aec8a4c}</Project>
+      <Project>{b3ce4903-f3ab-8a78-c3a7-d01f525202f7}</Project>
       <Name>Unity.VisualScripting.State.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Burst.Editor.csproj">
-      <Project>{51b4bb23-d45a-ea8c-1dde-7b94b2c4f84e}</Project>
+      <Project>{7085fa4b-89e1-ca54-bccf-de889800f70d}</Project>
       <Name>Unity.Burst.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Searcher.Editor.csproj">
-      <Project>{4a935215-8db5-145e-ea2e-d10800b85e40}</Project>
+      <Project>{49602d69-e482-d37a-39f9-873c7fde778e}</Project>
       <Name>Unity.Searcher.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
-      <Project>{fb9ac996-dca5-c56e-d0db-d595c5bc6282}</Project>
+      <Project>{a89720c2-2b19-c69c-e0d9-416a41ee27eb}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
-      <Project>{b2aa8086-c3a0-90d9-84ee-f7aaf18dfdd9}</Project>
+      <Project>{a0f19116-7fe7-bb4b-b7bf-fa9cfec43b73}</Project>
       <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.csproj">
-      <Project>{78ff2227-4715-665e-de12-9f13fb3cc609}</Project>
+      <Project>{f8cb6f5f-d069-77db-2bac-f91cb7a7a24b}</Project>
       <Name>Unity.VisualScripting.Flow</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{cfdf2d16-b06d-4866-9619-e6580baece22}</Project>
+      <Project>{82149b60-4a07-35bd-75b6-f51e080468f4}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.InputSystem.csproj">
-      <Project>{7bf951dd-7e95-520b-c0e7-867135c5786d}</Project>
+      <Project>{f0865000-7b8b-1d4a-5f51-5884bf7ccaae}</Project>
       <Name>Unity.InputSystem</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Rider.Editor.csproj">
-      <Project>{6e045182-bfd5-709a-7a5e-e8c3b739bf5c}</Project>
+      <Project>{b6311a7f-df34-4113-6947-1b5743fde142}</Project>
       <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.ShaderLibrary.csproj">
-      <Project>{9e3f294d-0f9b-62ae-8386-fe8a4e74e4da}</Project>
+      <Project>{5c3dd03c-c3d3-32e8-4d8d-1d62c3f94a9e}</Project>
       <Name>Unity.RenderPipelines.Core.ShaderLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{7a20ab1d-7c02-af65-be49-880e2e724ad0}</Project>
+      <Project>{9dbdb08c-99fd-21a0-44c8-813b8b90ec6a}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
-      <Project>{2f86104b-dffe-8b7b-1bac-3125f38372ab}</Project>
+      <Project>{db50d30b-d6e1-1dc8-b493-638d2fecce93}</Project>
       <Name>Unity.PlasticSCM.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Core.csproj">
-      <Project>{c55123a7-3e2e-aaf8-6cfd-0e0c382f136d}</Project>
+      <Project>{6e950350-4da0-6c06-23d6-c065f01cd02e}</Project>
       <Name>Unity.VisualScripting.Core</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.csproj">
-      <Project>{87609683-70ff-64d2-fd98-b5da8df93a6c}</Project>
+      <Project>{c3b60606-5db3-de36-4f57-b17ae539f1d4}</Project>
       <Name>Unity.Mathematics</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.ShaderGraph.Editor.csproj">
-      <Project>{a0d15014-d029-e4c2-4a94-31c1a844047c}</Project>
+      <Project>{316777fd-236b-b515-482f-c9526df53fa0}</Project>
       <Name>Unity.ShaderGraph.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.csproj">
-      <Project>{28fd5d4e-c036-af1a-0b10-8f5b0c644b32}</Project>
+      <Project>{d4b5e794-8f08-1ba1-0aba-68e20c4205a9}</Project>
       <Name>Unity.Services.Core</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Analytics.csproj">
-      <Project>{81fa915c-184a-78c0-743a-1c407c28b664}</Project>
+      <Project>{fb877217-a745-6940-e89e-2b7c142a5a0b}</Project>
       <Name>Unity.Services.Core.Analytics</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Burst.csproj">
-      <Project>{1e3466b2-b17d-1793-3ef9-ee2ce1424dfd}</Project>
+      <Project>{c2fede25-385c-4db5-6cd2-a52429923651}</Project>
       <Name>Unity.Burst</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Editor.csproj">
-      <Project>{eee94bdb-abf6-18f1-9c5d-93cfe57814cf}</Project>
+      <Project>{9784dab7-c935-c405-c764-3cc02b2a8c95}</Project>
       <Name>Unity.RenderPipelines.Universal.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj">
-      <Project>{5a60f47c-c85b-6ba2-7eda-7cba3390aa8c}</Project>
+      <Project>{5f930680-523a-a8a6-1f94-a885ca01b163}</Project>
       <Name>Unity.VisualScripting.Shared.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Environments.csproj">
-      <Project>{185a9ae1-4e80-bf5b-45f8-c4e94d12ebc0}</Project>
+      <Project>{f83af615-f8f1-4b6a-1a9b-5923b8323cea}</Project>
       <Name>Unity.Services.Core.Environments</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Timeline.Editor.csproj">
-      <Project>{c42ab168-2afb-3409-c1ef-1951d7cc3c8a}</Project>
+      <Project>{95a0af04-a006-fb0e-8276-9f9e2db40785}</Project>
       <Name>Unity.Timeline.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj">
-      <Project>{4b71f833-97a0-157f-7742-c83d3fc4e328}</Project>
+      <Project>{52d9fba3-5ad0-83c3-c204-6ec9295c3c73}</Project>
       <Name>Unity.RenderPipeline.Universal.ShaderLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj">
-      <Project>{2d1b7e70-6756-d0fa-410f-76922b07c4ba}</Project>
+      <Project>{e9fe6df7-3325-0931-8d55-0c7713964399}</Project>
       <Name>Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Editor.csproj">
-      <Project>{512c9186-acea-6c1b-36d6-55a5ab5d82db}</Project>
+      <Project>{4114cb96-fe9e-0c90-52f4-1ff4786636e7}</Project>
       <Name>Unity.Mathematics.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Core.Editor.csproj">
-      <Project>{f1a02508-2e42-89f4-a70f-0d9e69f4fe8a}</Project>
+      <Project>{ddd9d1a2-f6a2-fea8-7b19-4f2d53472a58}</Project>
       <Name>Unity.RenderPipelines.Core.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.State.csproj">
-      <Project>{0c654868-bd33-ee3e-6f4b-5423d2fd0e1c}</Project>
+      <Project>{b43b9a46-51ff-788c-73bd-204648fd3156}</Project>
       <Name>Unity.VisualScripting.State</Name>
     </ProjectReference>
   </ItemGroup>

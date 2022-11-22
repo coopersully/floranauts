@@ -323,10 +323,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc73d8b5c8c44459382cb112d3ae9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unclaimedColor: {r: 0.5764706, g: 0.5764706, b: 0.5764706, a: 1}
   canvasPrimaries:
   - {fileID: 5193100950265414776}
   canvasAccents: []
-  unclaimedColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &2678522089132911057
 PrefabInstance:
   m_ObjectHideFlags: 0
