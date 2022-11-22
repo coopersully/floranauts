@@ -70,9 +70,15 @@ namespace Interfaces
             newPlayer.subtitle.SetText(playerInput.currentControlScheme);
 
             playerInput.gameObject.name = title;
+            
+            // Re-color player card
+            var primary = PlayerColor.GetPrimary(playerInput.playerIndex);
+            var secondary = PlayerColor.GetSecondary(playerInput.playerIndex);
 
-            newPlayer.background.color = PlayerColor.GetPrimary(playerInput.playerIndex);
-            newPlayer.icon.color = PlayerColor.GetSecondary(playerInput.playerIndex);
+            newPlayer.background.color = primary;
+            newPlayer.icon.color = secondary;
+            //newPlayer.title.color = secondary;
+            newPlayer.subtitle.color = secondary;
             
             PlayerManager.Instance.AddPlayer(playerInput);
         }

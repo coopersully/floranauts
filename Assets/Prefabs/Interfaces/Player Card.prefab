@@ -356,16 +356,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: MOUSE AND KEYBOARD
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c9f76a572c1642649915adba513c9444, type: 2}
-  m_sharedMaterial: {fileID: -2213298548302829190, guid: c9f76a572c1642649915adba513c9444,
+  m_fontAsset: {fileID: 11400000, guid: 593d99e2abf07004eb655c955378532a, type: 2}
+  m_sharedMaterial: {fileID: 813483452766279025, guid: 593d99e2abf07004eb655c955378532a,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 855638015
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.19607843}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
