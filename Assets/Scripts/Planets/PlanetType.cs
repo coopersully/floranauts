@@ -3,7 +3,9 @@
     public enum PlanetType
     {
         None,
-        DoubleJump,
+        FreezeGun,
         RocketLauncher,
+        Jetpack,
+        SpeedBoost
     }
 }

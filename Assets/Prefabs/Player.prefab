@@ -798,9 +798,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86d766b2a69e8b48ad5e3e5b805c47d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementInput: {x: 0, y: 0}
-  cameraInput: {x: 0, y: 0}
-  rb: {fileID: 0}
   mouseSensitivityX: 0.1
   mouseSensitivityY: 0.1
   groundMask:
@@ -912,8 +909,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6998766515489882796}
-        m_TargetAssemblyTypeName: Gravity.PlayerMovement, Assembly-CSharp
-        m_MethodName: Move
+        m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
+        m_MethodName: MoveAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -928,8 +925,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6998766515489882796}
-        m_TargetAssemblyTypeName: Gravity.PlayerMovement, Assembly-CSharp
-        m_MethodName: Jump
+        m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
+        m_MethodName: JumpAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -945,7 +942,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6998766515489882796}
         m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
-        m_MethodName: Camera
+        m_MethodName: CameraAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1037,7 +1034,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6998766515489882796}
         m_TargetAssemblyTypeName: Player.PlayerMovement, Assembly-CSharp
-        m_MethodName: UseItem
+        m_MethodName: UseItemAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

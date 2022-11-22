@@ -64,7 +64,7 @@ namespace Player
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int Vertical = Animator.StringToHash("Vertical");
         private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
-        private static readonly int Jump1 = Animator.StringToHash("Jump");
+        private static readonly int Jump = Animator.StringToHash("Jump");
         private static readonly int Falling = Animator.StringToHash("Falling");
         private static readonly int Attack = Animator.StringToHash("SwingAttack");
 
@@ -174,7 +174,7 @@ namespace Player
             // If the player is not grounded or is in Knock Back sequence, ignore the jump event.
             if (!isGrounded || _inKnockBack) return;
             
-            _animator.SetTrigger(Jump1); 
+            _animator.SetTrigger(Jump); 
             jumpParticles.Play();
 
             // Applies upward force and directional force depending on direction player is moving
