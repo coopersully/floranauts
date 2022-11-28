@@ -9,9 +9,9 @@ namespace Gravity
     {
         private PlayerMovement _playerMovement;
         private GravityControl _gravityControl;
+        private RocketProjectile _rocketProjectile;
 
         [Range(1, 10)] public int planetGravity = 1;
-        private int playerGravity = -25;
         public Quaternion targetRotation;
         [HideInInspector]
         public float rotationSpeed;
@@ -35,6 +35,7 @@ namespace Gravity
             body.AddForce(_gravityUp * (planetGravity * _playerMovement.playerGravity));
 
         }
+        
         public void Rotate(Rigidbody body)
         {
             _localUp = body.transform.up;
@@ -55,6 +56,14 @@ namespace Gravity
                 yield return new WaitForSeconds(.2f);
                 rotationSpeed += .25f;
             }
+        }
+
+        public void ProjectileAttract(Rigidbody body)
+        {
+            _gravityUp = (body.position - transform.position).normalized;
+            body.AddForce(_gravityUp * (planetGravity * _rocketProjectile.gravityAttraction));
+
+
         }
     }
 }
