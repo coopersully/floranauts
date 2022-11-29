@@ -36,20 +36,29 @@ namespace Player
         public float playerGravity = -10f;
 
         [Header("Items")]
+
+        public Transform firePoint;
         public bool hasJetpack = false;
         public GameObject jetPack;
+
         public bool hasStick = false;
         private bool _canSwingStick = true;
         public GameObject stickObj;
         public GameObject stickKnockBack;
+
         public bool hasFreezeRay = false;
         public GameObject freezeRay;
+
         public bool hasRocketLauncher = false;
+        private bool _canShootRocket = true;
+        public GameObject rocket;
+
         public bool hasSpeedIncrease = false;
         private bool _canSprint = true;
 
+
         // Knockback-related 
-        private bool _inKnockBack = false;
+        public bool _inKnockBack = false;
         private const float KnockBackForce = 10f;
         private const float KnockBackTime = .75f;
         private float _knockBackCounter;
@@ -80,13 +89,12 @@ namespace Player
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            // Object Defaults
-            //hasJetpack = true;
+            _inKnockBack = false;
             jetParticles.Stop();
-            //hasStick = true;
-            //hasSpeedIncrease = true;
-            //hasFreezeRay = true;
-            //hasRocketLauncher = true;
+
+           // rocket = GameObject.FindGameObjectWithTag("Rocket"); // defines rocket Object
+           
+
         }
 
         private void Update()
@@ -187,12 +195,17 @@ namespace Player
             if (hasJetpack && context.started)
                 JetPack();
             else if (hasStick && context.started && _canSwingStick)  // If the key was not pressed this frame, ignore it.
-                SwingAttack();
+                StartCoroutine(SwingAnimation());
             else if (hasSpeedIncrease && _canSprint)
-                StartCoroutine(Sprint());
+                Sprint();
+            else if (hasRocketLauncher && _canShootRocket)
+                StartCoroutine(RocketLauncher());
+
         }
 
-        private void JetPack()
+
+
+        public void JetPack()
         {
             // Apply force while jetpack input is activated
             if (!hasJetpack || _inKnockBack) return;
@@ -209,15 +222,7 @@ namespace Player
             Debug.Log("jetpack");
         }
 
-        private void SwingAttack()
-        {
-            // If the player is currently in knockback, ignore this event. 
-            if ( _inKnockBack ) return;
-            
-            StartCoroutine(SwingAnimation());
-        }
-        
-        private IEnumerator SwingAnimation()
+        public IEnumerator SwingAnimation()
         {
             // Player cannot swing stick again until animation plays through
             _canSwingStick = false;
@@ -231,7 +236,7 @@ namespace Player
             _canSwingStick = true;
         }
         
-        private IEnumerator Sprint()
+        public IEnumerator Sprint()
         {
             // Doubles player speed for short period, then has cooldown period before can be used again
             _canSprint = false;
@@ -242,6 +247,7 @@ namespace Player
             _canSprint = true;
             Debug.Log("can Sprint");
         }
+       
 
         private void ApplyKnockBack(Vector3 direction)
         {
@@ -254,7 +260,7 @@ namespace Player
         private void OnTriggerEnter(Collider other)
         {
             // Checks Trigger, and starts knockback sequence.
-            if (other.gameObject.CompareTag("KnockBack"))
+            if (other.gameObject.CompareTag("KnockBack") || other.gameObject.CompareTag("Rocket"))
             {
                 Vector3 hitDirection = other.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
@@ -269,6 +275,31 @@ namespace Player
         public void AddForce(Vector3 force, ForceMode forceMode)
         {
             _rigidbody.AddForce(force, forceMode);
+        }
+        private IEnumerator RocketLauncher()
+        {
+            _canShootRocket = false;
+            
+            //shoot ray from camera to center screen
+            Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f); //needs to change for multiplayer
+            Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
+            RaycastHit hit;
+            Vector3 destination;
+
+            //if ray cast hits, sets that as destination, if not sets point
+            if (Physics.Raycast(ray, out hit))
+                destination = hit.point;
+
+            else
+                destination = ray.GetPoint(300);
+            
+            //instatiates projectile and adds velocity
+            var projectileObj = Instantiate(rocket, firePoint.position, Quaternion.identity);
+            projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * 50;
+
+            //wait before can shoot again
+            yield return new WaitForSeconds(.1f);
+            _canShootRocket = true;
         }
     }
 }

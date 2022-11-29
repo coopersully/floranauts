@@ -14,10 +14,10 @@ namespace Gravity
         [Range(1, 10)] public int planetGravity = 1;
         public Quaternion targetRotation;
         [HideInInspector]
-        public float rotationSpeed;
+        public float playerRotationSpeed;
+        private float rocketRotationSpeed = 800;
 
         private Vector3 _gravityUp;
-        private Vector3 _localUp;
         
         // private void Awake()
         // {
@@ -36,27 +36,48 @@ namespace Gravity
 
         }
         
-        public void Rotate(Rigidbody body)
+        public void RotatePlayer(Rigidbody body)
         {
-            _localUp = body.transform.up;
+           var localUp = body.transform.up;
 
             // body.rotation = Quaternion.FromToRotation(localUp, gravityUp) * body.rotation;
 
             // Align body's up axis with the center of planet
             var startRotation = body.rotation;
-            var endRotation = Quaternion.FromToRotation(_localUp, _gravityUp) * body.rotation;
-            body.rotation = Quaternion.Lerp(startRotation, endRotation, rotationSpeed * Time.deltaTime);
+            var endRotation = Quaternion.FromToRotation(localUp, _gravityUp) * body.rotation;
+            body.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * Time.deltaTime);
         }
         
         //gradually increases rotation speed for smoother transition between planets
         IEnumerator RotationSpeed()
         {
-            while(rotationSpeed <= 8)
+            while(playerRotationSpeed <= 8)
             {
                 yield return new WaitForSeconds(.2f);
-                rotationSpeed += .25f;
+                playerRotationSpeed += .25f;
             }
         }
+        public void RotateRocket(Rigidbody body)
+        {
+            //same as RotatePlayer() except applies to rocket and has consistent rotation speed
+            var localUp = body.transform.up;
+
+            // Align body's up axis with the center of planet
+            var startRotation = body.rotation;
+            var endRotation = Quaternion.FromToRotation(localUp, _gravityUp) * body.rotation;
+            body.rotation = Quaternion.Lerp(startRotation, endRotation, rocketRotationSpeed * Time.deltaTime);
+        }
+        public void AttractRocket(Rigidbody body)
+        {
+            StartCoroutine(RotationSpeed());
+            _gravityUp = (body.position - transform.position).normalized;
+
+            _playerMovement = body.GetComponentInParent<PlayerMovement>();
+            // Apply downwards gravity to body
+            body.AddForce(_gravityUp * (planetGravity * 500));
+
+        }
+
 
         public void ProjectileAttract(Rigidbody body)
         {

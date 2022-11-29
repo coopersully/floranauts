@@ -40,7 +40,7 @@ namespace Gravity
             // Allow this body to be influenced by planet's gravity
              _planet.Attract(_rigidbody);
 
-            if (_shouldRotate) _planet.Rotate(_rigidbody);
+            if (_shouldRotate) _planet.RotatePlayer(_rigidbody);
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -50,7 +50,7 @@ namespace Gravity
             if (!_playerMovement.isGrounded && other.CompareTag("Gravity"))
             {
                 _planet = other.GetComponentInParent<GravityAttractor>();
-                _planet.rotationSpeed = 3;
+                _planet.playerRotationSpeed = 3;
 
                 _shouldRotate = true;
 
@@ -63,14 +63,14 @@ namespace Gravity
             if (other.CompareTag("InnerGravity"))
             {
                 _shouldRotate = true;
-                _planet.rotationSpeed = 8;
+                _planet.playerRotationSpeed = 8;
             }
 
             if (other.CompareTag("BlackHole"))
             {
                 //resets gravity and has player attracted to random planet
                 _shouldRotate = true;
-                _planet.rotationSpeed = 10;
+                _planet.playerRotationSpeed = 10;
                RandomPlanet();
 
             }
