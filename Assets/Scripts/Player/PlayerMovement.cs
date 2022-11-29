@@ -243,7 +243,7 @@ namespace Player
             _walkSpeed *= 2;
             yield return new WaitForSeconds(10f);
             _walkSpeed /= 2;
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(10f);
             _canSprint = true;
             Debug.Log("can Sprint");
         }
@@ -280,25 +280,15 @@ namespace Player
         {
             _canShootRocket = false;
             
-            //shoot ray from camera to center screen
-            Vector2 screenCenterPoint = new Vector2(Screen.width / 2f, Screen.height / 2f); //needs to change for multiplayer
-            Ray ray = Camera.main.ScreenPointToRay(screenCenterPoint);
-            RaycastHit hit;
-            Vector3 destination;
-
-            //if ray cast hits, sets that as destination, if not sets point
-            if (Physics.Raycast(ray, out hit))
-                destination = hit.point;
-
-            else
-                destination = ray.GetPoint(300);
+         
             
             //instatiates projectile and adds velocity
             var projectileObj = Instantiate(rocket, firePoint.position, Quaternion.identity);
-            projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * 50;
+            //projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * 50;
+            projectileObj.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 30);
 
             //wait before can shoot again
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(5f);
             _canShootRocket = true;
         }
     }

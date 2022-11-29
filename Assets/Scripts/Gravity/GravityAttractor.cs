@@ -15,7 +15,7 @@ namespace Gravity
         public Quaternion targetRotation;
         [HideInInspector]
         public float playerRotationSpeed;
-        private float rocketRotationSpeed = 800;
+        private float rocketRotationSpeed = 100;
 
         private Vector3 _gravityUp;
         
@@ -74,7 +74,7 @@ namespace Gravity
 
             _playerMovement = body.GetComponentInParent<PlayerMovement>();
             // Apply downwards gravity to body
-            body.AddForce(_gravityUp * (planetGravity * 500));
+            body.AddForce(_gravityUp * (planetGravity * -10));
 
         }
 

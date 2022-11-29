@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Player;
 using Gravity;
+using BlackHole;
 
 public class RocketProjectile : MonoBehaviour
 {
     private GravityAttractor _planet;
+    private Teleport _blackHole;
     public Rigidbody _rigidbody;
+
     private float launchForce = 500;
     public float gravityAttraction = 5;
     public GameObject[] allPlanets;
@@ -25,27 +28,34 @@ public class RocketProjectile : MonoBehaviour
 
     void Update()
     {
-        _planet.Attract(_rigidbody);
+        //_planet.Attract(_rigidbody);
         //applies forward force to projectile
        // _rigidbody.AddForce(transform.forward * launchForce);
 
     }
     void FixedUpdate()
     {
-        _planet.Attract(_rigidbody);
+        _planet.AttractRocket(this._rigidbody);
 
-        _planet.RotateRocket(_rigidbody);
+        _planet.RotateRocket(this._rigidbody);
     }
 
     //destroys game object when hits planet
-    void OnCollisionEnter(Collision co)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (co.gameObject.tag != "BlackHole")
+        Debug.Log("Collision");
+        if (collision.gameObject.tag == "Planet" || collision.gameObject.tag == "Player")
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+
             //Instantiate Explosion
         }
+        else if (collision.gameObject.tag == "BlackHole")
+            Destroy(this.gameObject);
+
+
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Gravity"))
@@ -58,6 +68,7 @@ public class RocketProjectile : MonoBehaviour
         if (other.CompareTag("Boundary"))
         {
             _planet = other.GetComponentInParent<GravityAttractor>();
+            Debug.Log("Exit");
 
         }
     }

@@ -20,12 +20,13 @@ namespace BlackHole
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("BlackHole")) return;
-            
+
             // Teleports player to random teleport point
             _randomInt = Random.Range(0, teleportPoints.Length);
             gameObject.transform.position = teleportPoints[_randomInt].transform.position;
             StartCoroutine(OpenPortal());
         }
+       
 
         private IEnumerator OpenPortal()
         {
