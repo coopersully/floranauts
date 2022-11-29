@@ -11,6 +11,7 @@ namespace Player
     {
         private bool _canCapture;
         public PlayerInput playerInput;
+        public PlayerItems playerItems;
 
         [HideInInspector] public int score;
 

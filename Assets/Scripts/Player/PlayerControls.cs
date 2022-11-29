@@ -98,6 +98,24 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InventoryUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""736caacc-4927-4329-8762-13d05ab015c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""InventoryDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb59dc4e-a78a-455e-b09c-8ba96de08dfa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -428,6 +446,50 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""ChangeItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8e7ec47-d0ef-4d62-9991-a125fa1ead86"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""InventoryUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ac3bfed-dbe7-4d36-aa2c-5d4d1c30be9f"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""InventoryUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e32cb828-f30c-42d7-b658-94f7e75aee11"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""InventoryDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66d7ad3e-992c-40a1-bb4e-c878eede72bc"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""InventoryDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -847,6 +909,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Capture = m_PlayerMovement.FindAction("Capture", throwIfNotFound: true);
         m_PlayerMovement_UseItem = m_PlayerMovement.FindAction("UseItem", throwIfNotFound: true);
         m_PlayerMovement_ChangeItem = m_PlayerMovement.FindAction("ChangeItem", throwIfNotFound: true);
+        m_PlayerMovement_InventoryUp = m_PlayerMovement.FindAction("InventoryUp", throwIfNotFound: true);
+        m_PlayerMovement_InventoryDown = m_PlayerMovement.FindAction("InventoryDown", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -926,6 +990,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Capture;
     private readonly InputAction m_PlayerMovement_UseItem;
     private readonly InputAction m_PlayerMovement_ChangeItem;
+    private readonly InputAction m_PlayerMovement_InventoryUp;
+    private readonly InputAction m_PlayerMovement_InventoryDown;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -938,6 +1004,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Capture => m_Wrapper.m_PlayerMovement_Capture;
         public InputAction @UseItem => m_Wrapper.m_PlayerMovement_UseItem;
         public InputAction @ChangeItem => m_Wrapper.m_PlayerMovement_ChangeItem;
+        public InputAction @InventoryUp => m_Wrapper.m_PlayerMovement_InventoryUp;
+        public InputAction @InventoryDown => m_Wrapper.m_PlayerMovement_InventoryDown;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -971,6 +1039,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ChangeItem.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnChangeItem;
                 @ChangeItem.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnChangeItem;
                 @ChangeItem.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnChangeItem;
+                @InventoryUp.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInventoryUp;
+                @InventoryUp.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInventoryUp;
+                @InventoryUp.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInventoryUp;
+                @InventoryDown.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInventoryDown;
+                @InventoryDown.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInventoryDown;
+                @InventoryDown.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInventoryDown;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -999,6 +1073,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @ChangeItem.started += instance.OnChangeItem;
                 @ChangeItem.performed += instance.OnChangeItem;
                 @ChangeItem.canceled += instance.OnChangeItem;
+                @InventoryUp.started += instance.OnInventoryUp;
+                @InventoryUp.performed += instance.OnInventoryUp;
+                @InventoryUp.canceled += instance.OnInventoryUp;
+                @InventoryDown.started += instance.OnInventoryDown;
+                @InventoryDown.performed += instance.OnInventoryDown;
+                @InventoryDown.canceled += instance.OnInventoryDown;
             }
         }
     }
@@ -1136,6 +1216,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnCapture(InputAction.CallbackContext context);
         void OnUseItem(InputAction.CallbackContext context);
         void OnChangeItem(InputAction.CallbackContext context);
+        void OnInventoryUp(InputAction.CallbackContext context);
+        void OnInventoryDown(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
