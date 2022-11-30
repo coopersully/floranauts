@@ -5,10 +5,11 @@ namespace BlackHole
 {
     public class Teleport : MonoBehaviour
     {
-        public GameObject portal;
-        private Transform _playerTransform;
+        private GameObject portal;
+        [HideInInspector]
         public GameObject[] teleportPoints;
-        private int _randomInt = 1;
+        [HideInInspector]
+        public int _randomInt = 1;
 
 
         private void Awake()
@@ -23,15 +24,15 @@ namespace BlackHole
 
             // Teleports player to random teleport point
             _randomInt = Random.Range(0, teleportPoints.Length);
-            gameObject.transform.position = teleportPoints[_randomInt].transform.position;
-            StartCoroutine(OpenPortal());
+            this.gameObject.transform.position = teleportPoints[_randomInt].transform.position;
+            StartCoroutine(OpenPortal(_randomInt));
         }
        
 
-        private IEnumerator OpenPortal()
+        public IEnumerator OpenPortal(int num)
         {
             portal.SetActive(true);
-            portal.transform.position = teleportPoints[_randomInt].transform.position;
+            portal.transform.position = teleportPoints[num].transform.position;
 
             yield return new WaitForSeconds(3f);
             portal.SetActive(false);
