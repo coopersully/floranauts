@@ -1106,9 +1106,11 @@ MonoBehaviour:
   stickKnockBack: {fileID: 1285710406208205830}
   hasFreezeRay: 0
   freezeRay: {fileID: 2048852145550252084}
-  hasRocketLauncher: 0
+  hasRocketLauncher: 1
   rocket: {fileID: 6250795035585002229, guid: cf2e3ab7466e8d942a76b87e7a8277ee, type: 3}
-  hasSpeedIncrease: 1
+  _reloadTime: 2
+  _launchForce: 50
+  hasSpeedIncrease: 0
   _inKnockBack: 0
   landParticles: {fileID: 6237699629949510446}
   jumpParticles: {fileID: 4801605877693451483}
@@ -1126,8 +1128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc6a7aa16d88af4b916e7b6acd61e9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portal: {fileID: 0}
   teleportPoints: []
+  _randomInt: 1
 --- !u!114 &8466629248505694014
 MonoBehaviour:
   m_ObjectHideFlags: 0
