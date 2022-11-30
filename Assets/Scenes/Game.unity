@@ -11177,9 +11177,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'press any key or start to join
-
-'
+  m_text: 'press any key or start to join'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 593d99e2abf07004eb655c955378532a, type: 2}
   m_sharedMaterial: {fileID: 813483452766279025, guid: 593d99e2abf07004eb655c955378532a,
@@ -18561,7 +18559,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aca4c5fa3343e04689c16fa51438c1d, type: 3}
-<<<<<<< Updated upstream
 --- !u!1001 &4367277276148080033
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18641,8 +18638,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf2e3ab7466e8d942a76b87e7a8277ee, type: 3}
-=======
->>>>>>> Stashed changes
 --- !u!1001 &5086717081670069589
 PrefabInstance:
   m_ObjectHideFlags: 0
