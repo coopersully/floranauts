@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Interfaces;
 using UnityEngine;
@@ -29,11 +30,11 @@ namespace Player
             while (!maxScoreAchieved)
             {
                 Debug.Log("Incrementing player scores...");
-                
+
                 // Tell each player to increment their scores
                 playerOne.IncrementScore();
                 playerTwo.IncrementScore();
-                
+
                 // Update visual UI elements
                 scoreManager.Refresh();
                 

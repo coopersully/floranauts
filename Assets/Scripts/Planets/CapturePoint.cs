@@ -35,6 +35,9 @@ namespace Planets
             _trunkMaterial = trunk.material;
             _fruitMaterial = fruit.material;
             _leavesMaterial = leaves.material;
+            
+            // Activate ghostly tree
+            SetTreeColor(null);
         }
 
         public void AttemptCapture(PlayerCapture playerCapture)
@@ -108,10 +111,7 @@ namespace Planets
         private void SetTreeVisibility(bool isVisible)
         {
             claimParticles.Play();
-        
-            trunk.gameObject.SetActive(isVisible);
             fruit.gameObject.SetActive(isVisible);
-            leaves.gameObject.SetActive(isVisible);
         }
 
         private void SetTreeColor(PlayerCapture playerCapture)
@@ -120,11 +120,12 @@ namespace Planets
             {
                 fruit.material.color = playerCapture.color.primary;
                 leaves.material.color = playerCapture.color.secondary;
+                trunk.material.color = new Color32(99, 69, 58, 255);
             }
             else
             {
-                fruit.material.color = planet.unclaimedColor;
-                leaves.material.color = planet.unclaimedColor;
+                leaves.material.color = new Color32(255, 255, 255, 10);
+                trunk.material.color = new Color32(255, 255, 255, 10);
             }
         }
     }

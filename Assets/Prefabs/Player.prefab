@@ -1090,8 +1090,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86d766b2a69e8b48ad5e3e5b805c47d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivityX: 0.1
-  mouseSensitivityY: 0.1
+  mouseSensitivityX: 0.75
+  mouseSensitivityY: 0.75
   groundMask:
     serializedVersion: 2
     m_Bits: 8
@@ -1108,7 +1108,7 @@ MonoBehaviour:
   freezeRay: {fileID: 2048852145550252084}
   hasRocketLauncher: 1
   rocket: {fileID: 6250795035585002229, guid: cf2e3ab7466e8d942a76b87e7a8277ee, type: 3}
-  _reloadTime: 2
+  _reloadTime: 0
   _launchForce: 50
   hasSpeedIncrease: 0
   _inKnockBack: 0
