@@ -32,36 +32,32 @@ namespace Player
         [Header("Grounding")]
         public LayerMask groundMask;
         public Transform groundCheck;
-        [HideInInspector]
         public bool isGrounded;
         public float playerGravity = -10f;
 
         [Header("Items")]
+
         public Transform firePoint;
-        //jetPack
         public bool hasJetpack = false;
         public GameObject jetPack;
-        //stick
+
         public bool hasStick = false;
+        private bool _canSwingStick = true;
         public GameObject stickObj;
         public GameObject stickKnockBack;
-        private bool _canSwingStick = true;
-        //freezeRay
+
         public bool hasFreezeRay = false;
         public GameObject freezeRay;
-        //rocketLauncher
+
         public bool hasRocketLauncher = false;
-        public GameObject rocket;
-        public float _reloadTime = 5f;
-        public float _launchForce = 50f;
         private bool _canShootRocket = true;
-        //speedboost
+        public GameObject rocket;
+
         public bool hasSpeedIncrease = false;
         private bool _canSprint = true;
 
 
         // Knockback-related 
-        [HideInInspector]
         public bool _inKnockBack = false;
         private const float KnockBackForce = 10f;
         private const float KnockBackTime = .75f;
@@ -96,6 +92,9 @@ namespace Player
             _inKnockBack = false;
             jetParticles.Stop();
 
+           // rocket = GameObject.FindGameObjectWithTag("Rocket"); // defines rocket Object
+           
+
         }
 
         private void Update()
@@ -124,6 +123,7 @@ namespace Player
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, .5f, groundMask);
             _animator.SetBool(IsGrounded, isGrounded);
+            //Debug.Log("isGrounded" + isGrounded);
         }
 
         private void FixedUpdate()
@@ -197,7 +197,7 @@ namespace Player
             else if (hasStick && context.started && _canSwingStick)  // If the key was not pressed this frame, ignore it.
                 StartCoroutine(SwingAnimation());
             else if (hasSpeedIncrease && _canSprint)
-                StartCoroutine(Sprint());
+                Sprint();
             else if (hasRocketLauncher && _canShootRocket)
                 StartCoroutine(RocketLauncher());
 
@@ -216,7 +216,9 @@ namespace Player
             _rigidbody.AddForce(transform.up * JumpForce );
             _rigidbody.AddForce(transform.forward * JumpForce * _movementInput * 5f);
 
+
             _animator.SetTrigger(Falling); // Transitions walking animation to falling without having to go through Jump
+            
             Debug.Log("jetpack");
         }
 
@@ -282,10 +284,11 @@ namespace Player
             
             //instatiates projectile and adds velocity
             var projectileObj = Instantiate(rocket, firePoint.position, Quaternion.identity);
-            projectileObj.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * _launchForce);
+            //projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * 50;
+            projectileObj.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 30);
 
             //wait before can shoot again
-            yield return new WaitForSeconds(_reloadTime);
+            yield return new WaitForSeconds(5f);
             _canShootRocket = true;
         }
     }

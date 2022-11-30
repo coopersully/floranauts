@@ -80,9 +80,6 @@ MonoBehaviour:
   _rigidbody: {fileID: 8023048438921269505}
   gravityAttraction: 5
   allPlanets: []
-  portal: {fileID: 3865196699935844238, guid: 549183785a22f4140889d028e1800c9e, type: 3}
-  teleportPoints: []
-  _randomInt: 1
 --- !u!1 &6260186606835035666
 GameObject:
   m_ObjectHideFlags: 0
