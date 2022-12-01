@@ -63,7 +63,6 @@ namespace Player
         // Knockback-related 
         [HideInInspector]
         public bool _inKnockBack = false;
-        private const float KnockBackForce = 10f;
         private const float KnockBackTime = .75f;
         private float _knockBackCounter;
         
@@ -116,6 +115,7 @@ namespace Player
 
             UpdateGroundedValue();
             ApplyMovement();
+            Debug.Log(_moveAmount);
         }
 
         /* Check for if the player is on the ground
@@ -247,11 +247,11 @@ namespace Player
         }
        
 
-        public void ApplyKnockBack(Vector3 direction)
+        public void ApplyKnockBack(Vector3 direction, float force)
         {
             // Takes in Vector3 direction value, applies force
             _knockBackCounter = KnockBackTime;
-            _moveDirection = direction * KnockBackForce;
+            _moveDirection = direction * force * KnockBackTime;
             _moveDirection.y = 2f;
         }
 
@@ -262,7 +262,7 @@ namespace Player
             {
                 Vector3 hitDirection = other.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
-                ApplyKnockBack(hitDirection);
+                ApplyKnockBack(hitDirection, 10f);
                 _animator.SetTrigger(Falling);
             }
 
@@ -275,7 +275,7 @@ namespace Player
             {
                 Vector3 hitDirection = collision.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
-                ApplyKnockBack(hitDirection);
+                ApplyKnockBack(hitDirection, 20f);
                 _animator.SetTrigger(Falling);
             }
         }
@@ -293,7 +293,7 @@ namespace Player
             //instatiates projectile and adds velocity
             var projectileObj = Instantiate(rocket, firePoint.position, Quaternion.identity);
             projectileObj.GetComponent<Rigidbody>().velocity = 
-                transform.TransformDirection(Vector3.forward * _launchForce + _moveAmount);
+                transform.TransformDirection(Vector3.forward * (_launchForce));
 
             //wait before can shoot again
             yield return new WaitForSeconds(_reloadTime);

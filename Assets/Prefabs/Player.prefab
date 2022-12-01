@@ -35,7 +35,7 @@ RectTransform:
   - {fileID: 2662176280498046044}
   - {fileID: 1599548822155292247}
   m_Father: {fileID: 6998766515489882792}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -135,7 +135,7 @@ Transform:
   - {fileID: 4801605877693451482}
   - {fileID: 1607707153979920375}
   m_Father: {fileID: 6998766515489882792}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1285710406208205830
 GameObject:
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8c4479fcf18ea43a05abbaa7da974e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planetGravity: 100
+  planetGravity: 50
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
   playerRotationSpeed: 0
 --- !u!1 &1472197726317187765
@@ -1120,6 +1120,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3897527103102480582}
+  - {fileID: 7325559602405330939}
   - {fileID: 6998766516845241718}
   - {fileID: 6998766516217002576}
   - {fileID: 1806023130869006201}
@@ -1222,7 +1223,7 @@ MonoBehaviour:
   freezeRay: {fileID: 2048852145550252084}
   hasRocketLauncher: 1
   rocket: {fileID: 6250795035585002229, guid: cf2e3ab7466e8d942a76b87e7a8277ee, type: 3}
-  _reloadTime: 0
+  _reloadTime: 2
   _launchForce: 50
   hasSpeedIncrease: 0
   _inKnockBack: 0
@@ -1528,7 +1529,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6998766515489882792}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6998766516845241717
 GameObject:
@@ -1561,7 +1562,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6998766515489882792}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!20 &6998766516845241719
 Camera:
@@ -1663,12 +1664,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7938710919072285631}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 40.2, z: 6.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.57580316, y: 0.37596035, z: 1.63}
+  m_LocalScale: {x: 0.030000001, y: 0.030000009, z: 0.030000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1667788196792074894}
-  m_RootOrder: 0
+  m_Father: {fileID: 6998766515489882792}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8538283510200866913
 GameObject:
@@ -1967,12 +1968,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f34f6088cce23584081cf7b16b47cd95, type: 3}
---- !u!4 &1667788196792074894 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1836620652156880863, guid: f34f6088cce23584081cf7b16b47cd95,
-    type: 3}
-  m_PrefabInstance: {fileID: 1034086596050453841}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2048852145550252084 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1312566658975751525, guid: f34f6088cce23584081cf7b16b47cd95,
@@ -2513,7 +2508,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 74d0f918bb0c2e241a85ca8b2ca9b090,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 74d0f918bb0c2e241a85ca8b2ca9b090,
         type: 3}

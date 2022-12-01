@@ -27,7 +27,7 @@ public class RocketProjectile : MonoBehaviour
     private bool _seePlayer = false;
 
     public GameObject explosion;
-    private int hitCounter = 0;
+    private int hitCounter = 0; //makes sure rocket does not explode on spawn
     
 
     void Awake()
@@ -47,19 +47,25 @@ public class RocketProjectile : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(distanceToPlayer);
+        
+        distanceToPlayer = Vector3.Distance(this.transform.position, otherPlayer.transform.position);
+        //rocket attracts to player if in certain distance
         if (distanceToPlayer < 50f)
         {
+            gravityAttraction = 100 - distanceToPlayer; //gradually adjust how fast the rocket attracts to player
             _planet = otherPlayer.GetComponentInChildren<GravityAttractor>();
             _seePlayer = true;
             Debug.Log("sees Player");
         }
-        else
+        else if (_seePlayer == true)
+        {
             _seePlayer = false;
+            gravityAttraction = 5f;
+            
+        }
     }
     void FixedUpdate()
     {
-        
         _planet.AttractRocket(this._rigidbody);
         _planet.RotateRocket(this._rigidbody);
     }
@@ -70,9 +76,8 @@ public class RocketProjectile : MonoBehaviour
         if (collision.gameObject.tag == "Planet" || collision.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
-
-            var explosionSpawn = Instantiate(explosion, transform.position, Quaternion.identity);
             //Instantiate Explosion
+            var explosionSpawn = Instantiate(explosion, transform.position, Quaternion.identity);
         }
    
     }
@@ -89,15 +94,14 @@ public class RocketProjectile : MonoBehaviour
             Debug.Log("gotSucked");
             _randomInt = Random.Range(0, teleportPoints.Length);
             this.gameObject.transform.position = teleportPoints[_randomInt].transform.position;
-            StartCoroutine(OpenPortal(_randomInt));
+            OpenPortal(_randomInt);
         }
-        if (other.CompareTag("PlayerRocketTrigger"))
+        if (other.CompareTag("PlayerRocketTrigger")) // explodes if hits near player
         {
-            if (hitCounter > 0)
+            if (hitCounter > 0) // keeps rocket from exploding on spawn
             {
                 Destroy(this.gameObject);
                 var explosionSpawn = Instantiate(explosion, transform.position, Quaternion.identity);
-
                 Debug.Log("hit");
             }
             hitCounter++;
@@ -110,8 +114,6 @@ public class RocketProjectile : MonoBehaviour
         if (other.CompareTag("Boundary"))
         {
             _planet = other.GetComponentInParent<GravityAttractor>();
-            Debug.Log("Exit");
-
         }
         
     }
@@ -137,6 +139,7 @@ public class RocketProjectile : MonoBehaviour
     }
     private void FindOtherPlayer()
     {
+        //finds the other player for targeting purposes
         otherPlayer = allPlayers[0];
         var distance1 = Vector3.Distance(transform.position, allPlayers[0].transform.position);
         var distance2 = Vector3.Distance(transform.position, allPlayers[1].transform.position);
@@ -144,7 +147,6 @@ public class RocketProjectile : MonoBehaviour
         {
             distanceToPlayer = distance1;
             otherPlayer = allPlayers[0];
-
         }
         else
         {
@@ -155,11 +157,10 @@ public class RocketProjectile : MonoBehaviour
 
 
     }
-    public IEnumerator OpenPortal(int num)
+    public void OpenPortal(int num)
     {
         //Spawns mini portal prefab
         var portalSpawn = Instantiate(portal, transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(.5f);
     }
 
 
