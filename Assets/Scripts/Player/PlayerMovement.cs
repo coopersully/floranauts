@@ -38,6 +38,8 @@ namespace Player
 
         [Header("Items")]
         public Transform firePoint;
+        public float _reloadTime = 5f;
+
         //jetPack
         public bool hasJetpack = false;
         public GameObject jetPack;
@@ -48,11 +50,14 @@ namespace Player
         private bool _canSwingStick = true;
         //freezeRay
         public bool hasFreezeRay = false;
-        public GameObject freezeRay;
+        public GameObject freezeRayGun;
+        public GameObject freezeRayProjectile;
+        public float _freezeTime = 10f;
+        private bool _canShootFreezeRay = true;
         //rocketLauncher
         public bool hasRocketLauncher = false;
+        public GameObject rocketLauncher;
         public GameObject rocket;
-        public float _reloadTime = 5f;
         public float _launchForce = 50f;
         private bool _canShootRocket = true;
         //speedboost
@@ -99,9 +104,11 @@ namespace Player
 
         private void Update()
         {
-            stickObj.SetActive(hasStick); // Shows physical stick if item is activated
+            //activates physical items based on bools
+            stickObj.SetActive(hasStick);
             jetPack.SetActive(hasJetpack);
-            freezeRay.SetActive(hasFreezeRay);
+            freezeRayGun.SetActive(hasFreezeRay);
+            rocketLauncher.SetActive(hasRocketLauncher);
             
             if (PauseManager.Instance.isPaused) return;
 
@@ -115,7 +122,6 @@ namespace Player
 
             UpdateGroundedValue();
             ApplyMovement();
-            Debug.Log(_moveAmount);
         }
 
         /* Check for if the player is on the ground
@@ -199,7 +205,9 @@ namespace Player
             else if (hasSpeedIncrease && _canSprint)
                 StartCoroutine(Sprint());
             else if (hasRocketLauncher && _canShootRocket && context.started)
-                StartCoroutine(RocketLauncher());
+                StartCoroutine(ShootRocketLauncher());
+            else if (hasFreezeRay && _canShootFreezeRay && context.started)
+                StartCoroutine(ShootFreezeRay());
 
         }
 
@@ -267,12 +275,18 @@ namespace Player
             }
 
             // Landing particles
-            if (other.gameObject.CompareTag("InnerGravity")) landParticles.Play();
+            if (other.gameObject.CompareTag("InnerGravity")) 
+                landParticles.Play();
+            if (other.gameObject.CompareTag("FreezeRay"))
+                StartCoroutine(FreezePlayer());
+
+
         }
         private void OnCollisionEnter(Collision collision)
         {
             if ( collision.gameObject.tag == "Rocket")
             {
+                //applies more knockback than stick
                 Vector3 hitDirection = collision.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
                 ApplyKnockBack(hitDirection, 20f);
@@ -284,12 +298,10 @@ namespace Player
         {
             _rigidbody.AddForce(force, forceMode);
         }
-        private IEnumerator RocketLauncher()
+        private IEnumerator ShootRocketLauncher()
         {
             _canShootRocket = false;
-            
-          
-            
+     
             //instatiates projectile and adds velocity
             var projectileObj = Instantiate(rocket, firePoint.position, Quaternion.identity);
             projectileObj.GetComponent<Rigidbody>().velocity = 
@@ -298,6 +310,28 @@ namespace Player
             //wait before can shoot again
             yield return new WaitForSeconds(_reloadTime);
             _canShootRocket = true;
+        }
+        private IEnumerator ShootFreezeRay()
+        {
+            //identical to rocket launcher but shoots freezeRay projectile
+            _canShootFreezeRay = false;
+
+            //instatiates projectile and adds velocity
+            var projectileObj = Instantiate(freezeRayProjectile, firePoint.position, Quaternion.identity);
+            projectileObj.GetComponent<Rigidbody>().velocity =
+                transform.TransformDirection(Vector3.forward * (_launchForce));
+
+            //wait before can shoot again
+            yield return new WaitForSeconds(_reloadTime);
+            _canShootFreezeRay = true;
+        }
+        private IEnumerator FreezePlayer()
+        {
+            //slows down player for alloted time
+            _walkSpeed /= 3f;
+            yield return new WaitForSeconds(_freezeTime);
+            _walkSpeed *= 3f;
+
         }
     }
 }

@@ -1214,16 +1214,20 @@ MonoBehaviour:
   isGrounded: 0
   playerGravity: 0
   firePoint: {fileID: 7325559602405330939}
+  _reloadTime: 2
   hasJetpack: 0
   jetPack: {fileID: 5044002236530911524}
   hasStick: 0
   stickObj: {fileID: 4995709867492863977}
   stickKnockBack: {fileID: 1285710406208205830}
-  hasFreezeRay: 0
-  freezeRay: {fileID: 2048852145550252084}
-  hasRocketLauncher: 1
+  hasFreezeRay: 1
+  freezeRayGun: {fileID: 2048852145550252084}
+  freezeRayProjectile: {fileID: 1056844323934953779, guid: 659b5c566a3870148b1cc909e33bf242,
+    type: 3}
+  _freezeTime: 10
+  hasRocketLauncher: 0
+  rocketLauncher: {fileID: 2048852145550252084}
   rocket: {fileID: 6250795035585002229, guid: cf2e3ab7466e8d942a76b87e7a8277ee, type: 3}
-  _reloadTime: 2
   _launchForce: 50
   hasSpeedIncrease: 0
   _inKnockBack: 0

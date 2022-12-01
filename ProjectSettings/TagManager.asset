@@ -16,6 +16,7 @@ TagManager:
   - Portal
   - Rocket
   - PlayerRocketTrigger
+  - FreezeRay
   layers:
   - Default
   - TransparentFX
