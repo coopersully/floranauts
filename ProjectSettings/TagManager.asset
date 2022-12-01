@@ -15,6 +15,7 @@ TagManager:
   - BlackHoleSpawn
   - Portal
   - Rocket
+  - PlayerRocketTrigger
   layers:
   - Default
   - TransparentFX

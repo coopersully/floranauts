@@ -198,7 +198,7 @@ namespace Player
                 StartCoroutine(SwingAnimation());
             else if (hasSpeedIncrease && _canSprint)
                 StartCoroutine(Sprint());
-            else if (hasRocketLauncher && _canShootRocket)
+            else if (hasRocketLauncher && _canShootRocket && context.started)
                 StartCoroutine(RocketLauncher());
 
         }
@@ -247,7 +247,7 @@ namespace Player
         }
        
 
-        private void ApplyKnockBack(Vector3 direction)
+        public void ApplyKnockBack(Vector3 direction)
         {
             // Takes in Vector3 direction value, applies force
             _knockBackCounter = KnockBackTime;
@@ -258,7 +258,7 @@ namespace Player
         private void OnTriggerEnter(Collider other)
         {
             // Checks Trigger, and starts knockback sequence.
-            if (other.gameObject.CompareTag("KnockBack") || other.gameObject.CompareTag("Rocket"))
+            if (other.gameObject.CompareTag("KnockBack"))
             {
                 Vector3 hitDirection = other.transform.position - transform.position;
                 hitDirection = hitDirection.normalized;
@@ -269,6 +269,16 @@ namespace Player
             // Landing particles
             if (other.gameObject.CompareTag("InnerGravity")) landParticles.Play();
         }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if ( collision.gameObject.tag == "Rocket")
+            {
+                Vector3 hitDirection = collision.transform.position - transform.position;
+                hitDirection = hitDirection.normalized;
+                ApplyKnockBack(hitDirection);
+                _animator.SetTrigger(Falling);
+            }
+        }
 
         public void AddForce(Vector3 force, ForceMode forceMode)
         {
@@ -278,11 +288,12 @@ namespace Player
         {
             _canShootRocket = false;
             
-         
+          
             
             //instatiates projectile and adds velocity
             var projectileObj = Instantiate(rocket, firePoint.position, Quaternion.identity);
-            projectileObj.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * _launchForce);
+            projectileObj.GetComponent<Rigidbody>().velocity = 
+                transform.TransformDirection(Vector3.forward * _launchForce + _moveAmount);
 
             //wait before can shoot again
             yield return new WaitForSeconds(_reloadTime);

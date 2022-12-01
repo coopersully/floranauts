@@ -11,7 +11,7 @@ namespace Gravity
         private GravityControl _gravityControl;
         private RocketProjectile _rocketProjectile;
 
-        [Range(1, 10)] public int planetGravity = 1;
+        [Range(1, 100)] public int planetGravity = 1;
         public Quaternion targetRotation;
         [HideInInspector]
         public float playerRotationSpeed;

@@ -8,6 +8,7 @@ using BlackHole;
 public class RocketProjectile : MonoBehaviour
 {
     private GravityAttractor _planet;
+    private PlayerMovement _playerMovement;
     private Teleport _blackHole;
     public Rigidbody _rigidbody;
 
@@ -20,6 +21,15 @@ public class RocketProjectile : MonoBehaviour
     [HideInInspector]
     public int _randomInt = 1;
 
+    public GameObject[] allPlayers;
+    public GameObject otherPlayer;
+    private float distanceToPlayer = 10000f;
+    private bool _seePlayer = false;
+
+    public GameObject explosion;
+    private int hitCounter = 0;
+    
+
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -28,14 +38,28 @@ public class RocketProjectile : MonoBehaviour
 
         allPlanets = GameObject.FindGameObjectsWithTag("Planet");
         NearestPlanet();
+        allPlayers = GameObject.FindGameObjectsWithTag("Player");
+        FindOtherPlayer();
 
         //makes array of teleport points for mini portals
         teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
 
     }
-
+    void Update()
+    {
+        Debug.Log(distanceToPlayer);
+        if (distanceToPlayer < 50f)
+        {
+            _planet = otherPlayer.GetComponentInChildren<GravityAttractor>();
+            _seePlayer = true;
+            Debug.Log("sees Player");
+        }
+        else
+            _seePlayer = false;
+    }
     void FixedUpdate()
     {
+        
         _planet.AttractRocket(this._rigidbody);
         _planet.RotateRocket(this._rigidbody);
     }
@@ -47,14 +71,15 @@ public class RocketProjectile : MonoBehaviour
         {
             Destroy(this.gameObject);
 
+            var explosionSpawn = Instantiate(explosion, transform.position, Quaternion.identity);
             //Instantiate Explosion
         }
-
+   
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Gravity"))
+        if (other.gameObject.CompareTag("Gravity") && !_seePlayer)
         {
             _planet = other.GetComponentInParent<GravityAttractor>();
         }
@@ -66,6 +91,18 @@ public class RocketProjectile : MonoBehaviour
             this.gameObject.transform.position = teleportPoints[_randomInt].transform.position;
             StartCoroutine(OpenPortal(_randomInt));
         }
+        if (other.CompareTag("PlayerRocketTrigger"))
+        {
+            if (hitCounter > 0)
+            {
+                Destroy(this.gameObject);
+                var explosionSpawn = Instantiate(explosion, transform.position, Quaternion.identity);
+
+                Debug.Log("hit");
+            }
+            hitCounter++;
+        }
+        
 
     }
     private void OnTriggerExit(Collider other)
@@ -76,6 +113,7 @@ public class RocketProjectile : MonoBehaviour
             Debug.Log("Exit");
 
         }
+        
     }
     private void NearestPlanet()
     {
@@ -96,6 +134,26 @@ public class RocketProjectile : MonoBehaviour
         }
 
         _planet = closestPlanet.GetComponent<GravityAttractor>();
+    }
+    private void FindOtherPlayer()
+    {
+        otherPlayer = allPlayers[0];
+        var distance1 = Vector3.Distance(transform.position, allPlayers[0].transform.position);
+        var distance2 = Vector3.Distance(transform.position, allPlayers[1].transform.position);
+        if (distance1 > distance2)
+        {
+            distanceToPlayer = distance1;
+            otherPlayer = allPlayers[0];
+
+        }
+        else
+        {
+            distanceToPlayer = distance2;
+            otherPlayer = allPlayers[1];
+        }
+
+
+
     }
     public IEnumerator OpenPortal(int num)
     {
