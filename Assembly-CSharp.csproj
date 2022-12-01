@@ -95,6 +95,7 @@
     <Compile Include="Assets\Scripts\BlackHole\Teleport.cs" />
     <Compile Include="Assets\Scripts\BlackHole\BlackHoleController.cs" />
     <Compile Include="Assets\Scripts\Items\RocketLauncher\DestroyExplosion.cs" />
+    <Compile Include="Assets\Scripts\Items\IceSculptures\IceDestroy.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

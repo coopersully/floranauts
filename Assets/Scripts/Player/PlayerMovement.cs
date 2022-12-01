@@ -62,7 +62,9 @@ namespace Player
         private bool _canShootRocket = true;
         //speedboost
         public bool hasSpeedIncrease = false;
+        public float _speedMultiplier = 2f;
         private bool _canSprint = true;
+        private bool _isSprinting = false;
 
 
         // Knockback-related 
@@ -246,12 +248,13 @@ namespace Player
         {
             // Doubles player speed for short period, then has cooldown period before can be used again
             _canSprint = false;
-            _walkSpeed *= 2;
+            _isSprinting = true;
+            _walkSpeed *= _speedMultiplier;
             yield return new WaitForSeconds(10f);
-            _walkSpeed /= 2;
+            _walkSpeed /= _speedMultiplier;
             yield return new WaitForSeconds(10f);
             _canSprint = true;
-            Debug.Log("can Sprint");
+            _isSprinting = false;
         }
        
 
@@ -277,10 +280,12 @@ namespace Player
             // Landing particles
             if (other.gameObject.CompareTag("InnerGravity")) 
                 landParticles.Play();
+
+        }
+        private void OnTriggerStay(Collider other)
+        {
             if (other.gameObject.CompareTag("FreezeRay"))
                 StartCoroutine(FreezePlayer());
-
-
         }
         private void OnCollisionEnter(Collision collision)
         {
@@ -328,10 +333,16 @@ namespace Player
         private IEnumerator FreezePlayer()
         {
             //slows down player for alloted time
-            _walkSpeed /= 3f;
-            yield return new WaitForSeconds(_freezeTime);
-            _walkSpeed *= 3f;
+            if(!_isSprinting )
+                _walkSpeed = 3f;
+            else
+                _walkSpeed = 3f * _speedMultiplier;
 
+            yield return new WaitForSeconds(_freezeTime);
+            if (!_isSprinting)
+                _walkSpeed = 13f;
+            else
+                _walkSpeed = 13f * _speedMultiplier;
         }
     }
 }

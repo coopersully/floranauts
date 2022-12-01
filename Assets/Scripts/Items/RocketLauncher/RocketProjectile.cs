@@ -73,13 +73,10 @@ public class RocketProjectile : MonoBehaviour
     //destroys game object when hits planet
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Planet" || collision.gameObject.tag == "Player")
-        {
-            Destroy(this.gameObject);
-            //Instantiate Explosion
-            var explosionSpawn = Instantiate(explosion, transform.position, Quaternion.identity);
-        }
-   
+        Destroy(this.gameObject);
+        //Instantiate Explosion
+        var explosionSpawn = Instantiate(explosion, transform.position, Quaternion.identity);
+
     }
 
     private void OnTriggerEnter(Collider other)
