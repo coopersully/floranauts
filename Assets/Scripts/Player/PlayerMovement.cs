@@ -81,7 +81,9 @@ namespace Player
         public ParticleSystem jumpParticles;
         public ParticleSystem walkParticles;
         public ParticleSystem jetParticles;
-        
+        public TrailRenderer speedTrail;
+
+
         // Player-related animation triggers
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int Vertical = Animator.StringToHash("Vertical");
@@ -105,6 +107,7 @@ namespace Player
 
             _inKnockBack = false;
             jetParticles.Stop();
+            speedTrail.gameObject.SetActive(false);
 
         }
 
@@ -258,15 +261,19 @@ namespace Player
             // Doubles player speed for short period, then has cooldown period before can be used again
             
             _canSprint = false;
+            speedTrail.gameObject.SetActive(true); ;
             _isSprinting = true;
             _walkSpeed *= _speedMultiplier;
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(20f);
             _walkSpeed /= _speedMultiplier;
+            speedTrail.gameObject.SetActive(false); ;
+
             yield return new WaitForSeconds(10f);
             _canSprint = true;
             _isSprinting = false;
+
         }
-       
+
 
         public void ApplyKnockBack(Vector3 direction, float force)
         {
