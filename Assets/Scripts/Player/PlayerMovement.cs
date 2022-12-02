@@ -71,7 +71,8 @@ namespace Player
         // Knockback-related 
         [HideInInspector]
         public bool _inKnockBack = false;
-        private const float KnockBackTime = .75f;
+        [HideInInspector]
+        public const float KnockBackTime = .75f;
         private float _knockBackCounter;
         
         [Header("Particles")]
@@ -270,7 +271,7 @@ namespace Player
         {
             // Takes in Vector3 direction value, applies force
             _knockBackCounter = KnockBackTime;
-            _moveDirection = direction * force * KnockBackTime;
+            _moveDirection = direction * force;
             _moveDirection.y = 2f;
         }
 

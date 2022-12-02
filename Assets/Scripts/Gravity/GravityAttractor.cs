@@ -57,16 +57,7 @@ namespace Gravity
                 playerRotationSpeed += .25f;
             }
         }
-        public void RotateRocket(Rigidbody body)
-        {
-            //same as RotatePlayer() except applies to rocket and has consistent rotation speed
-            var localUp = body.transform.up;
-
-            // Align body's up axis with the center of planet
-            var startRotation = body.rotation;
-            var endRotation = Quaternion.FromToRotation(localUp, _gravityUp) * body.rotation;
-            body.rotation = Quaternion.Lerp(startRotation, endRotation, rocketRotationSpeed * Time.deltaTime);
-        }
+        
         public void AttractRocket(Rigidbody body)
         {
             StartCoroutine(RotationSpeed());

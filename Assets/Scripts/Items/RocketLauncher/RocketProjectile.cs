@@ -42,7 +42,8 @@ public class RocketProjectile : MonoBehaviour
         NearestPlanet();
         allPlayers = GameObject.FindGameObjectsWithTag("Player");
         FindOtherPlayer();
-        this.transform.forward = samePlayer.transform.forward;
+
+        this.transform.forward = samePlayer.transform.forward; // sets starting rotation to same as player
 
         //makes array of teleport points for mini portals
         teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
@@ -71,7 +72,6 @@ public class RocketProjectile : MonoBehaviour
     void FixedUpdate()
     {
         _planet.AttractRocket(this._rigidbody);
-        //_planet.RotateRocket(this._rigidbody);
     }
 
     //destroys game object when hits planet
@@ -170,11 +170,9 @@ public class RocketProjectile : MonoBehaviour
     }
     private IEnumerator Rotate()
     {
-        var num = 1;
-        while (num == 1)
+        //projectile will always point forward
+        while (this.gameObject.activeSelf)
         {
-
-
             var oldPosition = this.transform.position;
             yield return new WaitForSeconds(.1f);
             var newPosition = this.transform.position;

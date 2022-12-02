@@ -1,6 +1,8 @@
 using Player;
 using UnityEngine;
 using UnityEngine.LowLevel;
+using System.Collections;
+
 
 namespace Gravity
 {
@@ -78,7 +80,8 @@ namespace Gravity
             if (other.CompareTag("KnockBack"))
             {
                 _shouldRotate = false;
-                NearestPlanet();
+                StartCoroutine(KnockBackTimer());
+                
             }
         }
         
@@ -129,6 +132,13 @@ namespace Gravity
             _planet = closestPlanet.GetComponent<GravityAttractor>();
 
             //need to find a way to exclude the planet player was just on
+        }
+        private IEnumerator KnockBackTimer()
+        {
+            //makes sure player is attracted to planet nearest him when he is done with knockback
+            NearestPlanet();
+            yield return new WaitForSeconds(.75f);
+            NearestPlanet();
         }
 
 
