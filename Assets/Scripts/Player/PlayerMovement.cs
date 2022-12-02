@@ -43,6 +43,7 @@ namespace Player
         //jetPack
         public bool hasJetpack = false;
         public GameObject jetPack;
+        private bool _canJetPack = true;
         //stick
         public bool hasStick = false;
         public GameObject stickObj;
@@ -201,11 +202,11 @@ namespace Player
 
         public void UseItemAction(InputAction.CallbackContext context)
         {
-            if (hasJetpack && context.started)
-                JetPack();
+            if (hasJetpack && context.started && _canJetPack && !_inKnockBack)
+                StartCoroutine(JetPack());
             else if (hasStick && context.started && _canSwingStick)  // If the key was not pressed this frame, ignore it.
                 StartCoroutine(SwingAnimation());
-            else if (hasSpeedIncrease && _canSprint)
+            else if (hasSpeedIncrease && _canSprint && !_inKnockBack)
                 StartCoroutine(Sprint());
             else if (hasRocketLauncher && _canShootRocket && context.started)
                 StartCoroutine(ShootRocketLauncher());
@@ -216,19 +217,24 @@ namespace Player
 
 
 
-        public void JetPack()
+        public IEnumerator JetPack()
         {
             // Apply force while jetpack input is activated
-            if (!hasJetpack || _inKnockBack) return;
-
+            _canJetPack = false;
             jetParticles.Play(); // Needs edits based on hold
 
             _animator.SetBool(IsGrounded, isGrounded);
-            _rigidbody.AddForce(transform.up * JumpForce );
-            _rigidbody.AddForce(transform.forward * JumpForce * _movementInput * 5f);
+            _rigidbody.AddForce(transform.up * (JumpForce) );
+            if(_movementInput.y > 0)
+             _rigidbody.AddForce(transform.forward * JumpForce * 2f);
+            else if(_movementInput.y < 0)
+                _rigidbody.AddForce(transform.forward * JumpForce * -2f); // if moving backward apply force backward
+
 
             _animator.SetTrigger(Falling); // Transitions walking animation to falling without having to go through Jump
             Debug.Log("jetpack");
+            yield return new WaitForSeconds(.5f);
+            _canJetPack = true;
         }
 
         public IEnumerator SwingAnimation()
@@ -248,6 +254,7 @@ namespace Player
         public IEnumerator Sprint()
         {
             // Doubles player speed for short period, then has cooldown period before can be used again
+            
             _canSprint = false;
             _isSprinting = true;
             _walkSpeed *= _speedMultiplier;
