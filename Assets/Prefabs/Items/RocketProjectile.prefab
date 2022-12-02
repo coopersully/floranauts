@@ -87,6 +87,7 @@ MonoBehaviour:
   _randomInt: 1
   allPlayers: []
   otherPlayer: {fileID: 0}
+  _seeDistance: 50
   explosion: {fileID: 2817324831303056126, guid: ab245e5367e5e0f4dad890e4ab772290,
     type: 3}
 --- !u!1 &6260186606835035666

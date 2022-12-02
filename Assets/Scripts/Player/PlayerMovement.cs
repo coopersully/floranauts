@@ -152,7 +152,7 @@ namespace Player
             // Rotate player based on where mouse or right joystick dictates
             transform.Rotate(Vector3.up * (_cameraInput.x * mouseSensitivityX));
             _verticalLookRotation += _cameraInput.y * mouseSensitivityY;
-            _verticalLookRotation = Mathf.Clamp(_verticalLookRotation, -40, -20);
+            _verticalLookRotation = Mathf.Clamp(_verticalLookRotation, -30, -15);
             _cameraTransform.localEulerAngles = Vector3.left * _verticalLookRotation;
             
 

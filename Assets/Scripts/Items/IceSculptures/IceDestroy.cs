@@ -8,12 +8,14 @@ public class IceDestroy : MonoBehaviour
     public float meltTime = 30f;
     void Awake()
     {
+        transform.Rotate(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)); // sets random rotation of ice
         StartCoroutine(Die());
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Rocket"))
             Destroy(this.gameObject);
+
     }
     private IEnumerator Die()
     {
@@ -21,3 +23,4 @@ public class IceDestroy : MonoBehaviour
         Destroy(this.gameObject);
     }
 }
+    
