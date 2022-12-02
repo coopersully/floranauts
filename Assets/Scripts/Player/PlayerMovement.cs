@@ -86,6 +86,7 @@ namespace Player
         private static readonly int Jump = Animator.StringToHash("Jump");
         private static readonly int Falling = Animator.StringToHash("Falling");
         private static readonly int Attack = Animator.StringToHash("SwingAttack");
+        private static readonly int Shoot = Animator.StringToHash("ShootPistol");
 
 
         private void Awake()
@@ -151,7 +152,7 @@ namespace Player
             // Rotate player based on where mouse or right joystick dictates
             transform.Rotate(Vector3.up * (_cameraInput.x * mouseSensitivityX));
             _verticalLookRotation += _cameraInput.y * mouseSensitivityY;
-            _verticalLookRotation = Mathf.Clamp(_verticalLookRotation, -45, -25);
+            _verticalLookRotation = Mathf.Clamp(_verticalLookRotation, -40, -20);
             _cameraTransform.localEulerAngles = Vector3.left * _verticalLookRotation;
             
 
@@ -306,6 +307,7 @@ namespace Player
         private IEnumerator ShootRocketLauncher()
         {
             _canShootRocket = false;
+            _animator.SetTrigger(Shoot);
      
             //instatiates projectile and adds velocity
             var projectileObj = Instantiate(rocket, firePoint.position, Quaternion.identity);
@@ -320,6 +322,8 @@ namespace Player
         {
             //identical to rocket launcher but shoots freezeRay projectile
             _canShootFreezeRay = false;
+            _animator.SetTrigger(Shoot);
+
 
             //instatiates projectile and adds velocity
             var projectileObj = Instantiate(freezeRayProjectile, firePoint.position, Quaternion.identity);

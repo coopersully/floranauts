@@ -5,6 +5,7 @@ using UnityEngine;
 public class IceDestroy : MonoBehaviour
 {
     // Start is called before the first frame update
+    public float meltTime = 30f;
     void Awake()
     {
         StartCoroutine(Die());
@@ -16,7 +17,7 @@ public class IceDestroy : MonoBehaviour
     }
     private IEnumerator Die()
     {
-        yield return new WaitForSeconds(60f);
+        yield return new WaitForSeconds(meltTime);
         Destroy(this.gameObject);
     }
 }

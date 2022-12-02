@@ -25,6 +25,7 @@ public class RocketProjectile : MonoBehaviour
     public GameObject otherPlayer;
     private float distanceToPlayer = 10000f;
     private bool _seePlayer = false;
+    public float _seeDistance = 50f;
 
     public GameObject explosion;
     private int hitCounter = 0; //makes sure rocket does not explode on spawn
@@ -50,9 +51,9 @@ public class RocketProjectile : MonoBehaviour
         
         distanceToPlayer = Vector3.Distance(this.transform.position, otherPlayer.transform.position);
         //rocket attracts to player if in certain distance
-        if (distanceToPlayer < 50f)
+        if (distanceToPlayer <= _seeDistance)
         {
-            gravityAttraction = 100 - distanceToPlayer; //gradually adjust how fast the rocket attracts to player
+            gravityAttraction = (_seeDistance * 2) - distanceToPlayer; //gradually adjust how fast the rocket attracts to player
             _planet = otherPlayer.GetComponentInChildren<GravityAttractor>();
             _seePlayer = true;
             Debug.Log("sees Player");
