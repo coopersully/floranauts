@@ -23,6 +23,7 @@ public class RocketProjectile : MonoBehaviour
 
     public GameObject[] allPlayers;
     public GameObject otherPlayer;
+    public GameObject samePlayer;
     private float distanceToPlayer = 10000f;
     private bool _seePlayer = false;
     public float _seeDistance = 50f;
@@ -41,9 +42,11 @@ public class RocketProjectile : MonoBehaviour
         NearestPlanet();
         allPlayers = GameObject.FindGameObjectsWithTag("Player");
         FindOtherPlayer();
+        this.transform.forward = samePlayer.transform.forward;
 
         //makes array of teleport points for mini portals
         teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
+        StartCoroutine(Rotate());
 
     }
     void Update()
@@ -68,7 +71,7 @@ public class RocketProjectile : MonoBehaviour
     void FixedUpdate()
     {
         _planet.AttractRocket(this._rigidbody);
-        _planet.RotateRocket(this._rigidbody);
+        //_planet.RotateRocket(this._rigidbody);
     }
 
     //destroys game object when hits planet
@@ -139,17 +142,22 @@ public class RocketProjectile : MonoBehaviour
     {
         //finds the other player for targeting purposes
         otherPlayer = allPlayers[0];
+        samePlayer = allPlayers[0];
         var distance1 = Vector3.Distance(transform.position, allPlayers[0].transform.position);
         var distance2 = Vector3.Distance(transform.position, allPlayers[1].transform.position);
         if (distance1 > distance2)
         {
             distanceToPlayer = distance1;
             otherPlayer = allPlayers[0];
+            samePlayer = allPlayers[1];
+
         }
         else
         {
             distanceToPlayer = distance2;
             otherPlayer = allPlayers[1];
+            samePlayer = allPlayers[0];
+
         }
 
 
@@ -159,6 +167,19 @@ public class RocketProjectile : MonoBehaviour
     {
         //Spawns mini portal prefab
         var portalSpawn = Instantiate(portal, transform.position, Quaternion.identity);
+    }
+    private IEnumerator Rotate()
+    {
+        var num = 1;
+        while (num == 1)
+        {
+
+
+            var oldPosition = this.transform.position;
+            yield return new WaitForSeconds(.1f);
+            var newPosition = this.transform.position;
+            this.transform.forward = newPosition - oldPosition;
+        }
     }
 
 

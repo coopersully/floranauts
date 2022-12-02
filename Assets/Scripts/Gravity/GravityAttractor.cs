@@ -72,7 +72,6 @@ namespace Gravity
             StartCoroutine(RotationSpeed());
             _gravityUp = (body.position - transform.position).normalized;
 
-            _playerMovement = body.GetComponentInParent<PlayerMovement>();
             // Apply downwards gravity to body
             body.AddForce(_gravityUp * (planetGravity * -10));
 
