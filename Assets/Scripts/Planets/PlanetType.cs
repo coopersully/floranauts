@@ -6,6 +6,6 @@
         FreezeGun,
         RocketLauncher,
         Jetpack,
-        SpeedBoost
+        SpeedIncrease
     }
 }

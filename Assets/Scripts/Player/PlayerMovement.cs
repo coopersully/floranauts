@@ -1,6 +1,7 @@
 using Gravity;
 using Interfaces;
 using System.Collections;
+using Planets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -37,6 +38,7 @@ namespace Player
         public float playerGravity = -10f;
 
         [Header("Items")]
+        public PlayerItems playerItems;
         public Transform firePoint;
         public float _reloadTime = 5f;
 
@@ -113,6 +115,29 @@ namespace Player
 
         private void Update()
         {
+            hasJetpack = false;
+            hasFreezeRay = false;
+            hasRocketLauncher = false;
+            hasSpeedIncrease = false;
+            
+            switch (playerItems.selectedItem)
+            {
+                case PlanetType.None:
+                    break;
+                case PlanetType.Jetpack:
+                    hasJetpack = true;
+                    break;
+                case PlanetType.FreezeGun:
+                    hasFreezeRay = true;
+                    break;
+                case PlanetType.RocketLauncher:
+                    hasRocketLauncher = true;
+                    break;
+                case PlanetType.SpeedIncrease:
+                    hasSpeedIncrease = true;
+                    break;
+            }
+            
             //activates physical items based on bools
             stickObj.SetActive(hasStick);
             jetPack.SetActive(hasJetpack);

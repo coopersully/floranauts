@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using Items;
 using Planets;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,14 +16,21 @@ namespace Interfaces
         public Image selectedFrame;
         private int _selectedIndex = 0;
 
+        [Header("Item Sprites")]
+        public Texture spriteNone;
+        public Texture spriteRocketLauncher;
+        public Texture spriteSpeedIncrease;
+        public Texture spriteFreezeRay;
+        public Texture spriteJetpack;
+
         [Header("Inventory")]
-        public List<InventoryItem> items;
-        private InventoryItem _selectedItem;
+        public List<PlanetType> items;
+        public PlanetType selectedItem;
 
         private void Awake()
         {
             _numSlots = slots.Length;
-            items = new List<InventoryItem>(_numSlots);
+            items = new List<PlanetType>(_numSlots);
             UpdateSelectedItem();
         }
 
@@ -50,32 +57,35 @@ namespace Interfaces
             // Update UI cursor
             Debug.Log("Player selected slot " + _selectedIndex);
             selectedFrame.rectTransform.SetPositionAndRotation(slots[_selectedIndex].position, selectedFrame.rectTransform.rotation);
-            
-            // Deactivate old item
-            _selectedItem.Deactivate();
-            
+
             // Update & activate new item
-            _selectedItem = items[_selectedIndex];
-            _selectedItem.Activate();
+            selectedItem = items[_selectedIndex];
         }
 
         public void RemoveItem(PlanetType planetType)
         {
             if (planetType == PlanetType.None) return;
             
-            foreach (var item in items)
+            for (int i = 0; i < items.Count; i++)
             {
-                if (item.type != planetType) continue;
+                if (items[i] != planetType) continue;
                 
-                item.Deactivate();
-                Destroy(item);
+                items[i] = PlanetType.None;
             }
         }
         
         public void AddItem(PlanetType planetType)
         {
             if (planetType == PlanetType.None) return;
-            // items.Add(); ??
+            var success = false;
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i] != PlanetType.None) continue;
+                
+                items[i] = planetType;
+                success = true;
+            }
+            if (!success) throw new IndexOutOfRangeException("Couldn't add item to player; inventory full");
         }
     }
 }
