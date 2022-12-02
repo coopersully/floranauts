@@ -1225,11 +1225,11 @@ MonoBehaviour:
   freezeRayProjectile: {fileID: 1056844323934953779, guid: 659b5c566a3870148b1cc909e33bf242,
     type: 3}
   _freezeTime: 7
-  hasRocketLauncher: 1
+  hasRocketLauncher: 0
   rocketLauncher: {fileID: 2539689661089005552}
   rocket: {fileID: 1574756143266322901, guid: cf2e3ab7466e8d942a76b87e7a8277ee, type: 3}
   _launchForce: 50
-  hasSpeedIncrease: 0
+  hasSpeedIncrease: 1
   _speedMultiplier: 1.5
   _inKnockBack: 0
   landParticles: {fileID: 6237699629949510446}

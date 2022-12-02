@@ -15,7 +15,6 @@ namespace Gravity
         public Quaternion targetRotation;
         [HideInInspector]
         public float playerRotationSpeed;
-        private float rocketRotationSpeed = 100;
 
         private Vector3 _gravityUp;
         
@@ -35,7 +34,8 @@ namespace Gravity
             body.AddForce(_gravityUp * (planetGravity * _playerMovement.playerGravity));
 
         }
-        
+       
+
         public void RotatePlayer(Rigidbody body)
         {
            var localUp = body.transform.up;
@@ -45,7 +45,10 @@ namespace Gravity
             // Align body's up axis with the center of planet
             var startRotation = body.rotation;
             var endRotation = Quaternion.FromToRotation(localUp, _gravityUp) * body.rotation;
-            body.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * Time.deltaTime);
+            if (_playerMovement.isGrounded && _playerMovement._isSprinting)
+                body.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * 10 * Time.deltaTime);
+            else
+                body.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * Time.deltaTime);
         }
         
         //gradually increases rotation speed for smoother transition between planets

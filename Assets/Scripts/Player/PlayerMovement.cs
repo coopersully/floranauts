@@ -65,7 +65,8 @@ namespace Player
         public bool hasSpeedIncrease = false;
         public float _speedMultiplier = 2f;
         private bool _canSprint = true;
-        private bool _isSprinting = false;
+        [HideInInspector]
+        public bool _isSprinting = false;
 
 
         // Knockback-related 

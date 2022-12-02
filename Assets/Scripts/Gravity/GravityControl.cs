@@ -35,8 +35,7 @@ namespace Gravity
             _rigidbody.useGravity = false;
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         }
-        
-
+    
         private void FixedUpdate()
         {
             // Allow this body to be influenced by planet's gravity
