@@ -65,6 +65,7 @@ namespace Player
         private bool _canShootRocket = true;
         //speedboost
         public bool hasSpeedIncrease = false;
+        public GameObject energyCan;
         public float _speedMultiplier = 2f;
         private bool _canSprint = true;
         [HideInInspector]
@@ -83,7 +84,7 @@ namespace Player
         public ParticleSystem jumpParticles;
         public ParticleSystem walkParticles;
         public ParticleSystem jetParticles;
-        public TrailRenderer speedTrail;
+        public ParticleSystem speedTrail;
 
 
         // Player-related animation triggers
@@ -109,7 +110,7 @@ namespace Player
 
             _inKnockBack = false;
             jetParticles.Stop();
-            speedTrail.gameObject.SetActive(false);
+            speedTrail.Stop();
 
         }
 
@@ -143,6 +144,7 @@ namespace Player
             jetPack.SetActive(hasJetpack);
             freezeRayGun.SetActive(hasFreezeRay);
             rocketLauncher.SetActive(hasRocketLauncher);
+            energyCan.SetActive(hasSpeedIncrease);
             
             if (PauseManager.Instance.isPaused) return;
 
@@ -286,12 +288,12 @@ namespace Player
             // Doubles player speed for short period, then has cooldown period before can be used again
             
             _canSprint = false;
-            speedTrail.gameObject.SetActive(true); ;
+            speedTrail.Play();
             _isSprinting = true;
             _walkSpeed *= _speedMultiplier;
             yield return new WaitForSeconds(20f);
             _walkSpeed /= _speedMultiplier;
-            speedTrail.gameObject.SetActive(false); ;
+            speedTrail.Stop();
 
             yield return new WaitForSeconds(10f);
             _canSprint = true;
