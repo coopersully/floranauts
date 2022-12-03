@@ -155,6 +155,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire_Orb.01
       objectReference: {fileID: 0}
+    - target: {fileID: 4233602738700649166, guid: dbf0557b933d8804297ff29baffb4693,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 26b75c65fba62214db45d808c11b09fb, type: 2}
     - target: {fileID: 7241911683623142549, guid: dbf0557b933d8804297ff29baffb4693,
         type: 3}
       propertyPath: m_RootOrder

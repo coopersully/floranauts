@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DestroyPortal : MonoBehaviour
 {
+    public float timer = .5f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -12,7 +13,7 @@ public class DestroyPortal : MonoBehaviour
 
     private IEnumerator Die()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(timer);
         Destroy(this.gameObject);
     }
 }

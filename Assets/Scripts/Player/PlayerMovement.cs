@@ -146,6 +146,7 @@ namespace Player
                     throw new ArgumentOutOfRangeException();
             }
             
+            
             //activates physical items based on bools
             stickObj.SetActive(hasStick);
             jetPack.SetActive(hasJetpack);
@@ -284,9 +285,9 @@ namespace Player
             yield return new WaitForSeconds(.75f);
 
             // Activates stick and deactivates after the animation plays out
-            stickObj.SetActive(true);
+            stickKnockBack.SetActive(true);
             yield return new WaitForSeconds(1f);
-            stickObj.SetActive(false);
+            stickKnockBack.SetActive(false);
             _canSwingStick = true;
         }
         
