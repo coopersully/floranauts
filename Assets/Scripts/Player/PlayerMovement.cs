@@ -1,3 +1,4 @@
+using System;
 using Gravity;
 using Interfaces;
 using System.Collections;
@@ -116,6 +117,7 @@ namespace Player
 
         private void Update()
         {
+            hasStick = false;
             hasJetpack = false;
             hasFreezeRay = false;
             hasRocketLauncher = false;
@@ -124,6 +126,9 @@ namespace Player
             switch (playerItems.selectedItem)
             {
                 case PlanetType.None:
+                    break;
+                case PlanetType.Stick:
+                    hasStick = true;
                     break;
                 case PlanetType.Jetpack:
                     hasJetpack = true;
@@ -137,6 +142,8 @@ namespace Player
                 case PlanetType.SpeedIncrease:
                     hasSpeedIncrease = true;
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             
             //activates physical items based on bools

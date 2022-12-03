@@ -3,6 +3,7 @@
     public enum PlanetType
     {
         None,
+        Stick,
         FreezeGun,
         RocketLauncher,
         Jetpack,

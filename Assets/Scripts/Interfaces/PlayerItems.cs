@@ -18,6 +18,7 @@ namespace Interfaces
 
         [Header("Item Sprites")]
         public Texture spriteNone;
+        public Texture spriteStick;
         public Texture spriteRocketLauncher;
         public Texture spriteSpeedIncrease;
         public Texture spriteFreezeRay;
