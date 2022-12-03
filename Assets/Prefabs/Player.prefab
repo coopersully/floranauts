@@ -1037,7 +1037,7 @@ MonoBehaviour:
   groundCheck: {fileID: 6998766516217002576}
   isGrounded: 0
   playerGravity: 0
-  playerItems: {fileID: 0}
+  playerItems: {fileID: 5210734675702151062}
   firePoint: {fileID: 7325559602405330939}
   _reloadTime: 2
   hasJetpack: 0
