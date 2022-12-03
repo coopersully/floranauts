@@ -1063,7 +1063,7 @@ MonoBehaviour:
   jumpParticles: {fileID: 4801605877693451483}
   walkParticles: {fileID: 8364875206105466594}
   jetParticles: {fileID: 6114283809697761642}
-  speedTrail: {fileID: 0}
+  speedTrail: {fileID: 7427615559996141476}
 --- !u!114 &4626641240122338924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1849,6 +1849,12 @@ PrefabInstance:
 --- !u!4 &1326299011141739856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1455054978030521967, guid: 0723f10c6a3f4714589383bbad79dc79,
+    type: 3}
+  m_PrefabInstance: {fileID: 456712010644745023}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7427615559996141476 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7008341922491761819, guid: 0723f10c6a3f4714589383bbad79dc79,
     type: 3}
   m_PrefabInstance: {fileID: 456712010644745023}
   m_PrefabAsset: {fileID: 0}
