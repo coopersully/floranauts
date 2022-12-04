@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Player;
 using UnityEngine;
 
@@ -6,7 +7,10 @@ namespace Planets
     [RequireComponent(typeof(Collider))]
     public class CapturePoint : MonoBehaviour
     {
+        public static List<PlanetType> availableItems;
+        
         public Planet planet;
+        public PlanetType item = PlanetType.None;
 
         [Header("Tree Elements")]
         public MeshRenderer mound;
@@ -76,6 +80,9 @@ namespace Planets
             // Add point to player's inventory
             owner.inventory.Remove(this);
             
+            // Remove item from previous owner
+            owner.playerItems.RemoveItem(item);
+            
             // Set the tree's visibility
             SetTreeVisibility(false);
             
@@ -96,6 +103,9 @@ namespace Planets
 
             // Add point to player's inventory
             playerCapture.inventory.Add(this);
+            
+            // Add item to new owner
+            playerCapture.playerItems.AddItem(item);
         
             // Set the tree's visibility
             SetTreeVisibility(true);

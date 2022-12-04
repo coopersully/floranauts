@@ -17,12 +17,11 @@ namespace Interfaces
         private int _selectedIndex = 0;
 
         [Header("Item Sprites")]
-        public Texture spriteNone;
-        public Texture spriteStick;
-        public Texture spriteRocketLauncher;
-        public Texture spriteSpeedIncrease;
-        public Texture spriteFreezeRay;
-        public Texture spriteJetpack;
+        public Image spriteStick;
+        public Image spriteRocketLauncher;
+        public Image spriteSpeedIncrease;
+        public Image spriteFreezeRay;
+        public Image spriteJetpack;
 
         [Header("Inventory")]
         public List<PlanetType> items;
@@ -63,6 +62,46 @@ namespace Interfaces
             selectedItem = items[_selectedIndex];
         }
 
+        private void RefreshInventory()
+        {
+            spriteStick.gameObject.SetActive(false);
+            spriteFreezeRay.gameObject.SetActive(false);
+            spriteRocketLauncher.gameObject.SetActive(false);
+            spriteSpeedIncrease.gameObject.SetActive(false);
+            spriteJetpack.gameObject.SetActive(false);
+            
+            for (int i = 0; i < _numSlots; i++)
+            {
+                switch (items[i])
+                {
+                    case PlanetType.None:
+                        continue;
+                    case PlanetType.Stick:
+                        spriteStick.gameObject.SetActive(true);
+                        spriteStick.rectTransform.SetPositionAndRotation(slots[i].position, spriteStick.rectTransform.rotation);
+                        break;
+                    case PlanetType.FreezeGun:
+                        spriteFreezeRay.gameObject.SetActive(true);
+                        spriteFreezeRay.rectTransform.SetPositionAndRotation(slots[i].position, spriteFreezeRay.rectTransform.rotation);
+                        break;
+                    case PlanetType.RocketLauncher:
+                        spriteRocketLauncher.gameObject.SetActive(true);
+                        spriteRocketLauncher.rectTransform.SetPositionAndRotation(slots[i].position, spriteRocketLauncher.rectTransform.rotation);
+                        break;
+                    case PlanetType.SpeedIncrease:
+                        spriteSpeedIncrease.gameObject.SetActive(true);
+                        spriteSpeedIncrease.rectTransform.SetPositionAndRotation(slots[i].position, spriteSpeedIncrease.rectTransform.rotation);
+                        break;
+                    case PlanetType.Jetpack:
+                        spriteJetpack.gameObject.SetActive(true);
+                        spriteJetpack.rectTransform.SetPositionAndRotation(slots[i].position, spriteJetpack.rectTransform.rotation);
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
         public void RemoveItem(PlanetType planetType)
         {
             if (planetType == PlanetType.None) return;
@@ -73,6 +112,7 @@ namespace Interfaces
                 
                 items[i] = PlanetType.None;
             }
+            RefreshInventory();
         }
         
         public void AddItem(PlanetType planetType)
@@ -86,6 +126,14 @@ namespace Interfaces
                 items[i] = planetType;
                 success = true;
             }
+            RefreshInventory();
+            
+            
+            
+            
+            
+            
+            
             if (!success) throw new IndexOutOfRangeException("Couldn't add item to player; inventory full");
         }
     }
