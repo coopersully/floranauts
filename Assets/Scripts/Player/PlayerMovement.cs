@@ -5,14 +5,16 @@ using System.Collections;
 using Planets;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Audio;
 
 namespace Player
 {
     public class PlayerMovement : MonoBehaviour
     {
-        private GravityAttractor _gravityAttractor;
+        private GravityControl _gravityControl;
         private Animator _animator;
         private Rigidbody _rigidbody;
+        private UIAudioManager _audio;
 
         [Header("Basics")]
         public float mouseSensitivityX = 1f;
@@ -82,10 +84,13 @@ namespace Player
         
         [Header("Particles")]
         public ParticleSystem landParticles;
+        private bool canPlayLandParticles = true;
         public ParticleSystem jumpParticles;
         public ParticleSystem walkParticles;
         public ParticleSystem jetParticles;
         public ParticleSystem speedTrail;
+
+       
 
 
         // Player-related animation triggers
@@ -96,6 +101,8 @@ namespace Player
         private static readonly int Falling = Animator.StringToHash("Falling");
         private static readonly int Attack = Animator.StringToHash("SwingAttack");
         private static readonly int Shoot = Animator.StringToHash("ShootPistol");
+        private static readonly int Drink = Animator.StringToHash("Drink");
+
 
 
         private void Awake()
@@ -112,6 +119,7 @@ namespace Player
             _inKnockBack = false;
             jetParticles.Stop();
             speedTrail.Stop();
+            canPlayLandParticles = true;
 
         }
 
@@ -145,7 +153,6 @@ namespace Player
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
             
             //activates physical items based on bools
             stickObj.SetActive(hasStick);
@@ -275,12 +282,14 @@ namespace Player
             Debug.Log("jetpack");
             yield return new WaitForSeconds(.5f);
             _canJetPack = true;
+            _gravityControl.NearestPlanet();
         }
 
         public IEnumerator SwingAnimation()
         {
             // Player cannot swing stick again until animation plays through
             _canSwingStick = false;
+            canPlayLandParticles = false; 
             _animator.SetTrigger(Attack);
             yield return new WaitForSeconds(.75f);
 
@@ -289,12 +298,15 @@ namespace Player
             yield return new WaitForSeconds(1f);
             stickKnockBack.SetActive(false);
             _canSwingStick = true;
+            canPlayLandParticles = true;
+
         }
-        
+
         public IEnumerator Sprint()
         {
             // Doubles player speed for short period, then has cooldown period before can be used again
-            
+            _animator.SetTrigger(Drink);
+
             _canSprint = false;
             speedTrail.Play();
             _isSprinting = true;
@@ -330,7 +342,7 @@ namespace Player
             }
 
             // Landing particles
-            if (other.gameObject.CompareTag("InnerGravity")) 
+            if (other.gameObject.CompareTag("InnerGravity") && canPlayLandParticles) 
                 landParticles.Play();
 
         }
@@ -359,6 +371,7 @@ namespace Player
         {
             _canShootRocket = false;
             _animator.SetTrigger(Shoot);
+           // _audio.RocketLaunch();
      
             //instatiates projectile and adds velocity
             var projectileObj = Instantiate(rocket, firePoint.position, Quaternion.identity);
@@ -374,6 +387,7 @@ namespace Player
             //identical to rocket launcher but shoots freezeRay projectile
             _canShootFreezeRay = false;
             _animator.SetTrigger(Shoot);
+            //_audio.FreezeRayLaunch();
 
 
             //instatiates projectile and adds velocity

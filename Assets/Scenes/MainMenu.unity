@@ -3046,6 +3046,13 @@ MonoBehaviour:
   cursorMove01: {fileID: 8300000, guid: 67769caf47aeb1e4099a595f74ed54b2, type: 3}
   cursorMove02: {fileID: 8300000, guid: 33a46535b4b58bc468dcf9d9a905895d, type: 3}
   cursorMove03: {fileID: 8300000, guid: 57b9e2b0ef7665f4fa96003b7b7ff822, type: 3}
+  rocketLaunch: {fileID: 8300000, guid: 8844dd3e107c00348a2eeacd438cd71f, type: 3}
+  rocketExplode: {fileID: 8300000, guid: 18555f1d0c9b8d044b48fb7522c5002c, type: 3}
+  freezeRayLaunch: {fileID: 8300000, guid: e20fe6ff2164e04429d5a627c89bab3c, type: 3}
+  freezeRayHit: {fileID: 8300000, guid: 9097cc7e2f533d044970c19096885333, type: 3}
+  capturePlanet: {fileID: 8300000, guid: a5af8d97bc79674439a6c15c274c0ece, type: 3}
+  unCapturePlanet: {fileID: 8300000, guid: 6e945dba8c6604f418ff4ca418ab742c, type: 3}
+  blackHole: {fileID: 8300000, guid: 5112f562aae75da4f82836e84c2011c6, type: 3}
 --- !u!82 &1219960727
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ namespace Gravity
         private PlayerMovement _playerMovement;
         private GravityControl _gravityControl;
         private RocketProjectile _rocketProjectile;
+        
 
         [Range(1, 100)] public int planetGravity = 1;
         public Quaternion targetRotation;
