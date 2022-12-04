@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using UnityEngine;
 using Player;
 using Gravity;
@@ -69,17 +70,15 @@ public class RocketProjectile : MonoBehaviour
             
         }
     }
-    void FixedUpdate()
-    {
-        _planet.AttractRocket(this._rigidbody);
-    }
+
+    private void FixedUpdate() => _planet.AttractRocket(_rigidbody);
 
     //destroys game object when hits planet
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(this.gameObject);
-        //Instantiate Explosion
-        var explosionSpawn = Instantiate(explosion, transform.position, Quaternion.identity);
+        AudioManager.Instance.fx.RocketExplode();
+        Instantiate(explosion, transform.position, Quaternion.identity);
 
     }
 
@@ -102,7 +101,8 @@ public class RocketProjectile : MonoBehaviour
             if (hitCounter > 0) // keeps rocket from exploding on spawn
             {
                 Destroy(this.gameObject);
-                var explosionSpawn = Instantiate(explosion, transform.position, Quaternion.identity);
+                AudioManager.Instance.fx.RocketExplode();
+                Instantiate(explosion, transform.position, Quaternion.identity);
                 Debug.Log("hit");
             }
             hitCounter++;

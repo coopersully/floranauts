@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Audio;
 using Player;
 using UnityEngine;
 
@@ -71,6 +72,8 @@ namespace Planets
 
         private void RemoveCaptor()
         {
+            AudioManager.Instance.fx.UnCapturePlanet();
+            
             // Change planet color to unclaimed
             planet.Unclaim();
             SetTreeColor(null);
@@ -95,6 +98,8 @@ namespace Planets
     
         private void AddCaptor(PlayerCapture playerCapture)
         {
+            AudioManager.Instance.fx.CapturePlanet();
+            
             // Change planet color to player's color
             planet.Claim(playerCapture);
             SetTreeColor(playerCapture);

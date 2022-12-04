@@ -84,6 +84,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerColor.cs" />
      <Compile Include="Assets\Scripts\BlackHole\Teleport.cs" />
      <Compile Include="Assets\Scripts\BlackHole\BlackHoleController.cs" />
+     <Compile Include="Assets\Scripts\Audio\FXAudioManager.cs" />
      <Folder Include="Assets" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hans.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\cm-help.en.txt" />

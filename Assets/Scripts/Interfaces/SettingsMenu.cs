@@ -13,6 +13,9 @@ namespace Interfaces
     
         public Slider interfaceVolume;
         public TextMeshProUGUI interfaceVolumeValue;
+
+        public Slider fxVolume;
+        public TextMeshProUGUI fxVolumeValue;
     
         private void OnEnable() => RefreshComponents();
 
@@ -25,6 +28,10 @@ namespace Interfaces
             // UI Volume
             AudioManager.Instance.ui.audioSource.volume = interfaceVolume.value;
             interfaceVolumeValue.SetText((int) (AudioManager.Instance.ui.audioSource.volume * 100.0) + "%");
+            
+            // FX Volume
+            AudioManager.Instance.fx.audioSource.volume = fxVolume.value;
+            fxVolumeValue.SetText((int) (AudioManager.Instance.fx.audioSource.volume * 100.0) + "%");
         }
 
         public void UpdateVolume()
@@ -37,6 +44,12 @@ namespace Interfaces
         {
             AudioManager.Instance.ui.audioSource.volume = interfaceVolume.value;
             interfaceVolumeValue.SetText((int) (AudioManager.Instance.ui.audioSource.volume * 100.0) + "%");
+        }
+        
+        public void UpdateVolumeFX()
+        {
+            AudioManager.Instance.fx.audioSource.volume = fxVolume.value;
+            fxVolumeValue.SetText((int) (AudioManager.Instance.fx.audioSource.volume * 100.0) + "%");
         }
     }
 }

@@ -369,6 +369,8 @@ namespace Player
         }
         private IEnumerator ShootRocketLauncher()
         {
+            AudioManager.Instance.fx.RocketLaunch();
+            
             _canShootRocket = false;
             _animator.SetTrigger(Shoot);
            // _audio.RocketLaunch();
@@ -384,6 +386,8 @@ namespace Player
         }
         private IEnumerator ShootFreezeRay()
         {
+            AudioManager.Instance.fx.FreezeRayLaunch();
+            
             //identical to rocket launcher but shoots freezeRay projectile
             _canShootFreezeRay = false;
             _animator.SetTrigger(Shoot);

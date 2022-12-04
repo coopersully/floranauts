@@ -1,4 +1,5 @@
 using System.Collections;
+using Audio;
 using UnityEngine;
 
 namespace BlackHole
@@ -31,6 +32,8 @@ namespace BlackHole
 
         public IEnumerator OpenPortal(int num)
         {
+            AudioManager.Instance.fx.BlackHole();
+            
             portal.SetActive(true);
             portal.transform.position = teleportPoints[num].transform.position;
 
