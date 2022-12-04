@@ -7,8 +7,6 @@ namespace Planets
     [RequireComponent(typeof(Collider))]
     public class CapturePoint : MonoBehaviour
     {
-        public static List<PlanetType> availableItems;
-        
         public Planet planet;
         public PlanetType item = PlanetType.None;
 

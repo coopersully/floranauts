@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Planets;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-namespace Interfaces
+namespace Player
 {
     public class PlayerItems : MonoBehaviour
     {
@@ -15,6 +16,7 @@ namespace Interfaces
         private int _numSlots;
         public Image selectedFrame;
         private int _selectedIndex = 0;
+        public PlayerActionBar playerActionBar;
 
         [Header("Item Sprites")]
         public Image spriteStick;
@@ -57,11 +59,38 @@ namespace Interfaces
         {
             // Update UI cursor
             Debug.Log("Player selected slot " + _selectedIndex);
-            selectedFrame.rectTransform.SetPositionAndRotation(slots[_selectedIndex].position, selectedFrame.rectTransform.rotation);
+            selectedFrame.rectTransform.SetPositionAndRotation(slots[_selectedIndex].position,
+                selectedFrame.rectTransform.rotation);
 
             // Update & activate new item
             Debug.Log("Player selected index " + _selectedIndex + "/" + (items.Count - 1));
             selectedItem = items[_selectedIndex];
+
+            // Send action bar event
+            if (selectedItem == PlanetType.None) return;
+            switch (selectedItem)
+            {
+                case PlanetType.None:
+                    break;
+                case PlanetType.Stick:
+                    playerActionBar.Send("Press [RT] to swing stick.");
+                    break;
+                case PlanetType.FreezeGun:
+                    playerActionBar.Send("Press [RT] to shoot Freeze Gun.");
+                    break;
+                case PlanetType.RocketLauncher:
+                    playerActionBar.Send("Press [RT] to shoot Rocket Launcher.");
+                    break;
+                case PlanetType.Jetpack:
+                    playerActionBar.Send("Press [RT] to use Jetpack.");
+                    break;
+                case PlanetType.SpeedIncrease:
+                    playerActionBar.Send("Press [RT] to use Speed Boost.");
+                    break;
+                default:
+                    playerActionBar.Send("Press [RT] to use item.");
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void RefreshInventory()
@@ -72,7 +101,7 @@ namespace Interfaces
             spriteSpeedIncrease.gameObject.SetActive(false);
             spriteJetpack.gameObject.SetActive(false);
             
-            for (int i = 0; i < _numSlots; i++)
+            for (var i = 0; i < _numSlots; i++)
             {
                 switch (items[i])
                 {
@@ -108,23 +137,25 @@ namespace Interfaces
         {
             if (planetType == PlanetType.None) return;
             
-            for (int i = 0; i < items.Count; i++)
+            for (var i = 0; i < items.Count; i++)
             {
+                /* If the current item is not the one we
+                 are trying to revoke from them, ignore it.*/
                 if (items[i] != planetType) continue;
                 
-                items[i] = PlanetType.None;
-                RefreshInventory();
+                items[i] = PlanetType.None; // Remove the item
+                RefreshInventory(); // Update the inventory UI
+                break;
             }
         }
         
         public void AddItem(PlanetType planetType)
         {
-            Debug.Log("Attempting to grant " + name + " " + planetType);
-            
             if (planetType == PlanetType.None) return;
             var success = false;
-            for (int i = 0; i < slots.Length; i++)
+            for (var i = 0; i < slots.Length; i++)
             {
+                // Debug statement for iterating over free slots
                 if (items[i] != PlanetType.None)
                 {
                     Debug.Log("Couldn't add to slot " + i + " because it was " + items[i]);
@@ -133,8 +164,8 @@ namespace Interfaces
                 
                 Debug.Log(name + " acquired the item " + planetType);
 
-                items[i] = planetType;
-                RefreshInventory();
+                items[i] = planetType; // Add & set the item
+                RefreshInventory(); // Update the inventory UI
                 success = true;
                 break;
             }

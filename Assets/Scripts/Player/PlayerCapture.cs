@@ -19,9 +19,9 @@ namespace Player
         [HideInInspector] public CapturePoint currentCapturePoint;
 
         public PlayerColor color;
-        
+
         [Header("Interface Elements")]
-        public TextMeshProUGUI actionBar;
+        public PlayerActionBar playerActionBar;
         public TextMeshProUGUI captureHealth;
 
         // Called every time a player presses the 'Capture' binding.
@@ -53,9 +53,7 @@ namespace Player
             // If the entered trigger is not a capture point, ignore it.
             if (!other.CompareTag("CapturePoint")) return;
             
-            actionBar.gameObject.SetActive(false);
             captureHealth.gameObject.SetActive(false);
-
             currentCapturePoint = null;
         }
 
@@ -73,20 +71,18 @@ namespace Player
             if (currentCapturePoint.owner == this)
             {
                 // If the planet's owner is the current player
-                actionBar.gameObject.SetActive(false);
             }
             else if (currentCapturePoint.owner != null)
             {
                 // If the planet's owner is NOT the current player
                 // but it HAS one
-                actionBar.SetText("Destroy Host Tree [F]");
-                actionBar.gameObject.SetActive(true); }
+                playerActionBar.Send("Destroy Host Tree [F]");
+            }
             else
             {
                 // If the planet's owner is NOT the current player
                 // but it DOES NOT have one
-                actionBar.SetText("Plant New Tree [F]");
-                actionBar.gameObject.SetActive(true);
+                playerActionBar.Send("Plant New Tree [F]");
             }
         }
 
