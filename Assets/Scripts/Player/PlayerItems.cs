@@ -145,6 +145,7 @@ namespace Player
                 
                 items[i] = PlanetType.None; // Remove the item
                 RefreshInventory(); // Update the inventory UI
+                UpdateSelectedItem(); // Update selected item UI & registry
                 break;
             }
         }
@@ -166,6 +167,7 @@ namespace Player
 
                 items[i] = planetType; // Add & set the item
                 RefreshInventory(); // Update the inventory UI
+                UpdateSelectedItem(); // Update selected item UI & registry
                 success = true;
                 break;
             }
