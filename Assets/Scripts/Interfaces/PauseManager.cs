@@ -77,6 +77,9 @@ namespace Interfaces
         // "Main Menu" button
         public void MainMenu()
         {
+            Resume();
+            Cursor.lockState = CursorLockMode.None;
+            Destroy(PlayerManager.Instance.gameObject);
             SceneManager.LoadScene(0);
         }
 
