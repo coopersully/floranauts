@@ -30,7 +30,8 @@ namespace Interfaces
         private void Awake()
         {
             _numSlots = slots.Length;
-            items = new List<PlanetType>(_numSlots);
+            items = new List<PlanetType>();
+            for (int i = 0; i < _numSlots; i++) items.Add(PlanetType.None);
             UpdateSelectedItem();
         }
 
@@ -59,6 +60,7 @@ namespace Interfaces
             selectedFrame.rectTransform.SetPositionAndRotation(slots[_selectedIndex].position, selectedFrame.rectTransform.rotation);
 
             // Update & activate new item
+            Debug.Log("Player selected index " + _selectedIndex + "/" + (items.Count - 1));
             selectedItem = items[_selectedIndex];
         }
 
@@ -111,29 +113,31 @@ namespace Interfaces
                 if (items[i] != planetType) continue;
                 
                 items[i] = PlanetType.None;
+                RefreshInventory();
             }
-            RefreshInventory();
         }
         
         public void AddItem(PlanetType planetType)
         {
+            Debug.Log("Attempting to grant " + name + " " + planetType);
+            
             if (planetType == PlanetType.None) return;
             var success = false;
-            for (int i = 0; i < items.Count; i++)
+            for (int i = 0; i < slots.Length; i++)
             {
-                if (items[i] != PlanetType.None) continue;
+                if (items[i] != PlanetType.None)
+                {
+                    Debug.Log("Couldn't add to slot " + i + " because it was " + items[i]);
+                    continue;
+                }
                 
+                Debug.Log(name + " acquired the item " + planetType);
+
                 items[i] = planetType;
+                RefreshInventory();
                 success = true;
+                break;
             }
-            RefreshInventory();
-            
-            
-            
-            
-            
-            
-            
             if (!success) throw new IndexOutOfRangeException("Couldn't add item to player; inventory full");
         }
     }
