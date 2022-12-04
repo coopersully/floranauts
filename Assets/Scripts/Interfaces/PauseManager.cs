@@ -14,6 +14,7 @@ namespace Interfaces
         [Header("Panels")]
         public GameObject hud;
         public GameObject mainPanel;
+        public GameObject controlsPanel;
         public GameObject overlay;
 
         private void Awake()
@@ -40,8 +41,7 @@ namespace Interfaces
             
             SetHUDVisibility(false);
             
-            overlay.SetActive(true);
-            mainPanel.SetActive(true);
+            ReturnToMainMenu();
         }
 
         /* UN-PAUSES/RESUMES the game universally, plays an audio-cue,
@@ -72,6 +72,19 @@ namespace Interfaces
         {
             if (hud == null) return;
             hud.SetActive(isVisible);
+        }
+
+        public void Controls()
+        {
+            mainPanel.SetActive(false);
+            controlsPanel.SetActive(true);
+        }
+
+        public void ReturnToMainMenu()
+        {
+            controlsPanel.SetActive(false);
+            mainPanel.SetActive(true);
+            overlay.SetActive(true);
         }
         
         // "Main Menu" button
