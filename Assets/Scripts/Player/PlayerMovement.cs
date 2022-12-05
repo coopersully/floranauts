@@ -30,7 +30,7 @@ namespace Player
         private float _verticalLookRotation;
         private Transform _cameraTransform;
 
-        private float _walkSpeed = 13f;
+        private float _walkSpeed = 15f;
         private const float JumpForce = 1200f;
 
         [Header("Grounding")]
@@ -92,10 +92,7 @@ namespace Player
         public ParticleSystem walkParticles;
         public ParticleSystem jetParticles;
         public ParticleSystem speedTrail;
-
-       
-
-
+        
         // Player-related animation triggers
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
         private static readonly int Vertical = Animator.StringToHash("Vertical");
@@ -105,8 +102,6 @@ namespace Player
         private static readonly int Attack = Animator.StringToHash("SwingAttack");
         private static readonly int Shoot = Animator.StringToHash("ShootPistol");
         private static readonly int Drink = Animator.StringToHash("Drink");
-
-
 
         private void Awake()
         {
@@ -156,7 +151,7 @@ namespace Player
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-            
+
             //activates physical items based on bools
             stickObj.SetActive(hasStick);
             jetPack.SetActive(hasJetpack);

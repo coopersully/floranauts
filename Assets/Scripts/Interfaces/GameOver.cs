@@ -1,5 +1,6 @@
 using Player;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Interfaces
 {
@@ -9,6 +10,9 @@ namespace Interfaces
 
         public GameObject playerOneWin;
         public GameObject playerTwoWin;
+
+        public Slider playerOneScore;
+        public Slider playerTwoScore;
 
         public Animator animator;
         private static readonly int End = Animator.StringToHash("end");
@@ -29,6 +33,10 @@ namespace Interfaces
             
             // Unlock cursors
             Cursor.lockState = CursorLockMode.None;
+            
+            // Set sliders to their scores
+            playerOneScore.SetValueWithoutNotify( (float) PlayerManager.Instance.scoreboard.playerOne.score );
+            playerTwoScore.SetValueWithoutNotify( (float) PlayerManager.Instance.scoreboard.playerTwo.score );
             
             // Determine winner banner reveal
             switch (winnerIndex)

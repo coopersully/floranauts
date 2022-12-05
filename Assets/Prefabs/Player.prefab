@@ -1398,7 +1398,7 @@ MonoBehaviour:
   playerGravity: 0
   playerItems: {fileID: 5210734675702151062}
   firePoint: {fileID: 7325559602405330939}
-  reloadTime: 5
+  reloadTime: 2
   hasJetpack: 0
   jetPack: {fileID: 5044002236530911524}
   hasStick: 0

@@ -13,7 +13,7 @@ namespace Planets
             PlanetType.Stick,
             PlanetType.FreezeGun,
             PlanetType.RocketLauncher,
-            PlanetType.SpeedIncrease
+            PlanetType.SpeedIncrease,
         };
         
         private void Awake()

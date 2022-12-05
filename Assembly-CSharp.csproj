@@ -134,7 +134,6 @@
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <Folder Include="Assets\Models\OwenPlanets\TextureMaps\CrackedDead" />
      <Folder Include="Assets\Scenes" />
-     <Folder Include="Assets\Scenes\Game" />
      <Folder Include="Assets\Shaders\JetEngine\Materials" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <Folder Include="Assets\Models\OwenPlanets\TextureMaps\RibbedDead" />

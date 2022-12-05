@@ -68,11 +68,7 @@ namespace Player
             captureHealth.SetText(currentCapturePoint.health.ToString("N0"));
             captureHealth.gameObject.SetActive(true);
             
-            if (currentCapturePoint.owner == this)
-            {
-                // If the planet's owner is the current player
-            }
-            else if (currentCapturePoint.owner != null)
+            if (currentCapturePoint.owner != null)
             {
                 // If the planet's owner is NOT the current player
                 // but it HAS one
