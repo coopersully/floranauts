@@ -22,6 +22,7 @@ namespace BlackHole
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("BlackHole")) return;
+            AudioManager.Instance.fx.BlackHole();
 
             // Teleports player to random teleport point
             _randomInt = Random.Range(0, teleportPoints.Length);
@@ -32,7 +33,6 @@ namespace BlackHole
 
         public IEnumerator OpenPortal(int num)
         {
-            AudioManager.Instance.fx.BlackHole();
             
             portal.SetActive(true);
             portal.transform.position = teleportPoints[num].transform.position;

@@ -5,6 +5,9 @@ namespace Audio
     public class FXAudioManager : MonoBehaviour
     {
         public AudioSource audioSource;
+        public AudioClip jetPack;
+        public AudioClip stickSwoosh;
+        public AudioClip energyDrink;
     
         public AudioClip rocketLaunch;
         public AudioClip rocketExplode;
@@ -14,6 +17,18 @@ namespace Audio
         public AudioClip unCapturePlanet;
         public AudioClip blackHole;
 
+        public void JetPack()
+        {
+            audioSource.PlayOneShot(jetPack);
+        }
+        public void StickSwoosh()
+        {
+            audioSource.PlayOneShot(stickSwoosh);
+        }
+        public void EnergyDrink()
+        {
+            audioSource.PlayOneShot(energyDrink);
+        }
         public void RocketLaunch()
         {
             audioSource.PlayOneShot(rocketLaunch);

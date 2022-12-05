@@ -268,6 +268,7 @@ namespace Player
         {
             // Apply force while jetpack input is activated
             _canJetPack = false;
+            AudioManager.Instance.fx.JetPack();
             jetParticles.Play(); // Needs edits based on hold
 
             _animator.SetBool(IsGrounded, isGrounded);
@@ -292,6 +293,7 @@ namespace Player
             canPlayLandParticles = false; 
             _animator.SetTrigger(Attack);
             yield return new WaitForSeconds(.75f);
+            AudioManager.Instance.fx.StickSwoosh();
 
             // Activates stick and deactivates after the animation plays out
             stickKnockBack.SetActive(true);
@@ -308,6 +310,7 @@ namespace Player
             _animator.SetTrigger(Drink);
 
             _canSprint = false;
+            AudioManager.Instance.fx.EnergyDrink();
             speedTrail.Play();
             _isSprinting = true;
             _walkSpeed *= _speedMultiplier;

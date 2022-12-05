@@ -31,6 +31,7 @@ public class RocketProjectile : MonoBehaviour
 
     public GameObject explosion;
     private int hitCounter = 0; //makes sure rocket does not explode on spawn
+
     
 
     void Awake()
@@ -53,7 +54,6 @@ public class RocketProjectile : MonoBehaviour
     }
     void Update()
     {
-        
         distanceToPlayer = Vector3.Distance(this.transform.position, otherPlayer.transform.position);
         //rocket attracts to player if in certain distance
         if (distanceToPlayer <= _seeDistance)
@@ -76,8 +76,11 @@ public class RocketProjectile : MonoBehaviour
     //destroys game object when hits planet
     private void OnCollisionEnter(Collision collision)
     {
+
         Destroy(this.gameObject);
-        AudioManager.Instance.fx.RocketExplode();
+        if(this.gameObject.tag == "Rocket")
+            AudioManager.Instance.fx.RocketExplode();
+        
         Instantiate(explosion, transform.position, Quaternion.identity);
 
     }
