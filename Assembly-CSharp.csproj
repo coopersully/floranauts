@@ -85,6 +85,7 @@
      <Compile Include="Assets\Scripts\Audio\FXAudioManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerActionBar.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PlayerIcon.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\RotateSlow.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Textures\Planets\TextureMaps\WarpedAliveMaps" />
      <Folder Include="Assets\Animations\UI" />
@@ -145,6 +146,7 @@
      <Folder Include="Assets\Textures\Items\Soda_Energy_Can" />
      <Folder Include="Assets\Materials\Black Hole" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <Folder Include="Assets\Materials\Planets\Main Menu" />
      <Folder Include="Assets\Packages\Blitz Games\Sci-Fi Human\DemoScene\DemoScene" />
      <Folder Include="Assets\Prefabs\Planets" />
      <Folder Include="Assets\Textures\Items\Twig_Texs" />

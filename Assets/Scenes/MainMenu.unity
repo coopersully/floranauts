@@ -536,6 +536,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 61590049}
   jetPack: {fileID: 8300000, guid: 9c61231233692da4e96d43917b8f8651, type: 3}
+  stickSwoosh: {fileID: 0}
+  energyDrink: {fileID: 0}
   rocketLaunch: {fileID: 8300000, guid: 1df3dfcadcfec2943af43ab47bb18c8e, type: 3}
   rocketExplode: {fileID: 8300000, guid: 18555f1d0c9b8d044b48fb7522c5002c, type: 3}
   freezeRayLaunch: {fileID: 8300000, guid: e4d01b38eb648b947aa2746c26159c9a, type: 3}
@@ -1128,7 +1130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 205}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &173481546
@@ -1613,7 +1615,7 @@ Skybox:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
-  m_CustomSkybox: {fileID: 2100000, guid: e025af0ce4292124d8856839e2a066f5, type: 2}
+  m_CustomSkybox: {fileID: 2100000, guid: 2f817dbe02502c94d86cea427a053d30, type: 2}
 --- !u!95 &330585549
 Animator:
   serializedVersion: 4
@@ -9366,7 +9368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 205}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1663869011
@@ -9720,7 +9722,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 205}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1882754735
@@ -10141,7 +10143,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0e25326ba224b7b4eaacaececc733a4b, type: 2}
+  - {fileID: 2100000, guid: 12a8398ae3617be4f927aebc42f934a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10183,7 +10185,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: baf530f4dfe0ff14aa0590c8b113aaea, type: 2}
+  - {fileID: 2100000, guid: c47e8bf60183946479b847d6c50f9072, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10225,7 +10227,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: baf530f4dfe0ff14aa0590c8b113aaea, type: 2}
+  - {fileID: 2100000, guid: c47e8bf60183946479b847d6c50f9072, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10310,6 +10312,7 @@ GameObject:
   - component: {fileID: 342073563040312839}
   - component: {fileID: 2547838226538765005}
   - component: {fileID: 9068876833438604930}
+  - component: {fileID: 9068876833438604931}
   m_Layer: 0
   m_Name: asteroidRing
   m_TagString: Untagged
@@ -10385,7 +10388,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a20e015aac1cb6f438ead5276b42635e, type: 2}
+  - {fileID: 2100000, guid: 6f1df4495607d82479f0b407e0d5ab8b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10647,8 +10650,8 @@ Transform:
   m_GameObject: {fileID: 3070309328907681875}
   m_LocalRotation: {x: 0.5482737, y: 0.11473065, z: -0.8252077, w: 0.072561115}
   m_LocalPosition: {x: -0.24701491, y: -12.5, z: 16.4}
-  m_LocalScale: {x: 750, y: 750, z: 750}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 850, y: 850, z: 850}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4901031538300029062}
   - {fileID: 8007718744764722475}
@@ -10676,7 +10679,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cef2296a538b8594e9aab55f5ec803c2, type: 2}
+  - {fileID: 2100000, guid: 4e72a215f78daec408b437b749c3ac54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10749,3 +10752,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -1457428880595589945, guid: 693cda29ae5f5c540aa25ccd9cce4296, type: 3}
+--- !u!114 &9068876833438604931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4060911154840386328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a8cee7f99efc7b4b81c0fc264c1ef87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 0.0025
