@@ -76,13 +76,13 @@ namespace Player
             {
                 // If the planet's owner is NOT the current player
                 // but it HAS one
-                playerActionBar.Send("Destroy Host Tree [F]");
+                playerActionBar.Send("Destroy Host Tree [A]");
             }
             else
             {
                 // If the planet's owner is NOT the current player
                 // but it DOES NOT have one
-                playerActionBar.Send("Plant New Tree [F]");
+                playerActionBar.Send("Plant New Tree [A]");
             }
         }
 

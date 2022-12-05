@@ -21,10 +21,10 @@ namespace Interfaces
 
         private void Update()
         {
-            var targetPosition = new Vector3(target.position.x, 50, target.position.z);
+            var targetPosition = new Vector3(target.position.x, 200, target.position.z);
             transform.position = targetPosition;
         }
 
-        public void SetColor(Color32 color32) => _meshRenderer.material.color = color32;
+        private void SetColor(Color32 color32) => _meshRenderer.material.color = color32;
     }
 }

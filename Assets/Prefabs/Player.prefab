@@ -1192,7 +1192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5733372152094830508}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 131.7, z: 0}
+  m_LocalPosition: {x: 0, y: 200, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1398,7 +1398,7 @@ MonoBehaviour:
   playerGravity: 0
   playerItems: {fileID: 5210734675702151062}
   firePoint: {fileID: 7325559602405330939}
-  _reloadTime: 2
+  reloadTime: 5
   hasJetpack: 0
   jetPack: {fileID: 5044002236530911524}
   hasStick: 0
@@ -1408,16 +1408,16 @@ MonoBehaviour:
   freezeRayGun: {fileID: 7588213826173140267}
   freezeRayProjectile: {fileID: 1056844323934953779, guid: 659b5c566a3870148b1cc909e33bf242,
     type: 3}
-  _freezeTime: 7
+  freezeTime: 10
   hasRocketLauncher: 1
   rocketLauncher: {fileID: 2539689661089005552}
   rocket: {fileID: 1574756143266322901, guid: cf2e3ab7466e8d942a76b87e7a8277ee, type: 3}
-  _launchForce: 50
+  launchForce: 50
   hasSpeedIncrease: 0
   energyCan: {fileID: 1590284704425107792}
-  _speedMultiplier: 2
-  _isSprinting: 0
-  _inKnockBack: 0
+  speedMultiplier: 2
+  isSprinting: 0
+  inKnockBack: 0
   landParticles: {fileID: 6237699629949510446}
   jumpParticles: {fileID: 4801605877693451483}
   walkParticles: {fileID: 8364875206105466594}
