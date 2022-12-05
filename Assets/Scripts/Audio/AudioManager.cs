@@ -10,6 +10,7 @@ namespace Audio
         [Header("Audio Sections")]
         public UIAudioManager ui;
         public FXAudioManager fx;
+        public MusicAudioManager music;
 
         private void Awake()
         {

@@ -86,6 +86,7 @@
      <Compile Include="Assets\Scripts\Player\PlayerActionBar.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PlayerIcon.cs" />
      <Compile Include="Assets\Scripts\Interfaces\RotateSlow.cs" />
+     <Compile Include="Assets\Scripts\Audio\MusicAudioManager.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Textures\Planets\TextureMaps\WarpedAliveMaps" />
      <Folder Include="Assets\Animations\UI" />

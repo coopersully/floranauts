@@ -125,6 +125,6 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 119.42823, g: 8.430228, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _canyonColor: {r: 3.8289042, g: 2.225175, b: 0, a: 0}
-    - _canyonEmission: {r: 2436.8022, g: 0, b: 0, a: 0}
+    - _canyonColor: {r: 0, g: 0.72768354, b: 1, a: 1}
+    - _canyonEmission: {r: 0.00030737813, g: 0.00030737813, b: 0.00030737813, a: 1}
   m_BuildTextureStacks: []
