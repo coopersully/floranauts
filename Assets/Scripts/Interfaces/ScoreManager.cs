@@ -15,10 +15,10 @@ namespace Interfaces
         public void Refresh()
         {
             playerOneText.SetText(PlayerManager.Instance.scoreboard.playerOne.score.ToString("N0"));
-            playerOneProgress.value = PlayerManager.Instance.scoreboard.playerOne.score;
+            playerOneProgress.value = (float) PlayerManager.Instance.scoreboard.playerOne.score;
             
             playerTwoText.SetText(PlayerManager.Instance.scoreboard.playerTwo.score.ToString("N0"));
-            playerTwoProgress.value = PlayerManager.Instance.scoreboard.playerTwo.score;
+            playerTwoProgress.value = (float) PlayerManager.Instance.scoreboard.playerTwo.score;
         }
     }
 }

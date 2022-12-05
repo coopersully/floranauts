@@ -46,7 +46,7 @@ namespace Gravity
             // Align body's up axis with the center of planet
             var startRotation = body.rotation;
             var endRotation = Quaternion.FromToRotation(localUp, _gravityUp) * body.rotation;
-            if (_playerMovement.isGrounded && _playerMovement._isSprinting)
+            if (_playerMovement.isGrounded && _playerMovement.isSprinting)
                 body.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * 10 * Time.deltaTime);
             else
                 body.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * Time.deltaTime);

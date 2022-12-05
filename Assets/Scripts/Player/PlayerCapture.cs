@@ -13,7 +13,7 @@ namespace Player
         public PlayerInput playerInput;
         public PlayerItems playerItems;
 
-        [HideInInspector] public int score;
+        [HideInInspector] public double score;
 
         [HideInInspector] public List<CapturePoint> inventory;
         [HideInInspector] public CapturePoint currentCapturePoint;
@@ -90,7 +90,7 @@ namespace Player
          score by the amount of Capture Points they currently own. */
         public void IncrementScore()
         {
-            score += inventory.Count;
+            score += (inventory.Count * 0.1);
             Debug.Log(name + "'s score changed to " + score);
             
             // If the player achieves the maximum score

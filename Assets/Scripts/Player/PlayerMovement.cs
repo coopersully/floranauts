@@ -43,48 +43,51 @@ namespace Player
         [Header("Items")]
         public PlayerItems playerItems;
         public Transform firePoint;
-        public float _reloadTime = 5f;
+        public float reloadTime = 5f;
 
         //jetPack
-        public bool hasJetpack = false;
+        public bool hasJetpack;
         public GameObject jetPack;
         private bool _canJetPack = true;
+        
         //stick
-        public bool hasStick = false;
+        public bool hasStick;
         public GameObject stickObj;
         public GameObject stickKnockBack;
         private bool _canSwingStick = true;
+        
         //freezeRay
-        public bool hasFreezeRay = false;
+        public bool hasFreezeRay;
         public GameObject freezeRayGun;
         public GameObject freezeRayProjectile;
-        public float _freezeTime = 10f;
+        public float freezeTime = 10f;
         private bool _canShootFreezeRay = true;
+        
         //rocketLauncher
-        public bool hasRocketLauncher = false;
+        public bool hasRocketLauncher;
         public GameObject rocketLauncher;
         public GameObject rocket;
-        public float _launchForce = 50f;
+        public float launchForce = 50f;
         private bool _canShootRocket = true;
+        
         //speedboost
-        public bool hasSpeedIncrease = false;
+        public bool hasSpeedIncrease;
         public GameObject energyCan;
-        public float _speedMultiplier = 2f;
+        public float speedMultiplier = 2f;
         private bool _canSprint = true;
         [HideInInspector]
-        public bool _isSprinting = false;
+        public bool isSprinting;
 
 
         // Knockback-related 
         [HideInInspector]
-        public bool _inKnockBack = false;
-        [HideInInspector]
-        public const float KnockBackTime = .75f;
+        public bool inKnockBack;
+        private const float KnockBackTime = .75f;
         private float _knockBackCounter;
         
         [Header("Particles")]
         public ParticleSystem landParticles;
-        private bool canPlayLandParticles = true;
+        private bool _canPlayLandParticles = true;
         public ParticleSystem jumpParticles;
         public ParticleSystem walkParticles;
         public ParticleSystem jetParticles;
@@ -116,10 +119,10 @@ namespace Player
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            _inKnockBack = false;
+            inKnockBack = false;
             jetParticles.Stop();
             speedTrail.Stop();
-            canPlayLandParticles = true;
+            _canPlayLandParticles = true;
 
         }
 
@@ -166,10 +169,10 @@ namespace Player
             // Checks if player is in knockback sequence, sets Bool, and counts down if inKnockBack
             if (_knockBackCounter > 0)
             {
-                _inKnockBack = true;
+                inKnockBack = true;
                 _knockBackCounter -= Time.deltaTime * 2;
             }
-            else _inKnockBack = false;
+            else inKnockBack = false;
 
             UpdateGroundedValue();
             ApplyMovement();
@@ -204,7 +207,7 @@ namespace Player
             _cameraTransform.localEulerAngles = Vector3.left * _verticalLookRotation;
             
 
-            if (!_inKnockBack)
+            if (!inKnockBack)
             {
                 // If player is not in knockBack, Move player based on Input System
                 _moveDirection = new Vector3(_movementInput.x, 0, _movementInput.y).normalized;
@@ -237,7 +240,7 @@ namespace Player
         public void JumpAction(InputAction.CallbackContext context)
         {
             // If the player is not grounded or is in Knock Back sequence, ignore the jump event.
-            if (!isGrounded || _inKnockBack) return;
+            if (!isGrounded || inKnockBack) return;
             
             _animator.SetTrigger(Jump); 
             jumpParticles.Play();
@@ -249,11 +252,11 @@ namespace Player
 
         public void UseItemAction(InputAction.CallbackContext context)
         {
-            if (hasJetpack && context.started && _canJetPack && !_inKnockBack)
+            if (hasJetpack && context.started && _canJetPack && !inKnockBack)
                 StartCoroutine(JetPack());
             else if (hasStick && context.started && _canSwingStick)  // If the key was not pressed this frame, ignore it.
                 StartCoroutine(SwingAnimation());
-            else if (hasSpeedIncrease && _canSprint && !_inKnockBack)
+            else if (hasSpeedIncrease && _canSprint && !inKnockBack)
                 StartCoroutine(Sprint());
             else if (hasRocketLauncher && _canShootRocket && context.started)
                 StartCoroutine(ShootRocketLauncher());
@@ -263,8 +266,7 @@ namespace Player
         }
 
 
-
-        public IEnumerator JetPack()
+        private IEnumerator JetPack()
         {
             // Apply force while jetpack input is activated
             _canJetPack = false;
@@ -274,9 +276,9 @@ namespace Player
             _animator.SetBool(IsGrounded, isGrounded);
             _rigidbody.AddForce(transform.up * (JumpForce) );
             if(_movementInput.y > 0)
-             _rigidbody.AddForce(transform.forward * JumpForce * 2f);
+             _rigidbody.AddForce(transform.forward * (JumpForce * 2f));
             else if(_movementInput.y < 0)
-                _rigidbody.AddForce(transform.forward * JumpForce * -2f); // if moving backward apply force backward
+                _rigidbody.AddForce(transform.forward * (JumpForce * -2f)); // if moving backward apply force backward
 
 
             _animator.SetTrigger(Falling); // Transitions walking animation to falling without having to go through Jump
@@ -286,11 +288,11 @@ namespace Player
             _gravityControl.NearestPlanet();
         }
 
-        public IEnumerator SwingAnimation()
+        private IEnumerator SwingAnimation()
         {
             // Player cannot swing stick again until animation plays through
             _canSwingStick = false;
-            canPlayLandParticles = false; 
+            _canPlayLandParticles = false; 
             _animator.SetTrigger(Attack);
             yield return new WaitForSeconds(.75f);
             AudioManager.Instance.fx.StickSwoosh();
@@ -300,11 +302,11 @@ namespace Player
             yield return new WaitForSeconds(1f);
             stickKnockBack.SetActive(false);
             _canSwingStick = true;
-            canPlayLandParticles = true;
+            _canPlayLandParticles = true;
 
         }
 
-        public IEnumerator Sprint()
+        private IEnumerator Sprint()
         {
             // Doubles player speed for short period, then has cooldown period before can be used again
             _animator.SetTrigger(Drink);
@@ -312,20 +314,19 @@ namespace Player
             _canSprint = false;
             AudioManager.Instance.fx.EnergyDrink();
             speedTrail.Play();
-            _isSprinting = true;
-            _walkSpeed *= _speedMultiplier;
+            isSprinting = true;
+            _walkSpeed *= speedMultiplier;
             yield return new WaitForSeconds(20f);
-            _walkSpeed /= _speedMultiplier;
+            _walkSpeed /= speedMultiplier;
             speedTrail.Stop();
 
             yield return new WaitForSeconds(10f);
             _canSprint = true;
-            _isSprinting = false;
+            isSprinting = false;
 
         }
-
-
-        public void ApplyKnockBack(Vector3 direction, float force)
+        
+        private void ApplyKnockBack(Vector3 direction, float force)
         {
             // Takes in Vector3 direction value, applies force
             _knockBackCounter = KnockBackTime;
@@ -345,7 +346,7 @@ namespace Player
             }
 
             // Landing particles
-            if (other.gameObject.CompareTag("InnerGravity") && canPlayLandParticles) 
+            if (other.gameObject.CompareTag("InnerGravity") && _canPlayLandParticles) 
                 landParticles.Play();
 
         }
@@ -356,14 +357,13 @@ namespace Player
         }
         private void OnCollisionEnter(Collision collision)
         {
-            if ( collision.gameObject.tag == "Rocket")
-            {
-                //applies more knockback than stick
-                Vector3 hitDirection = collision.transform.position - transform.position;
-                hitDirection = hitDirection.normalized;
-                ApplyKnockBack(hitDirection, 20f);
-                _animator.SetTrigger(Falling);
-            }
+            if (!collision.gameObject.CompareTag("Rocket")) return;
+            
+            //applies more knockback than stick
+            Vector3 hitDirection = collision.transform.position - transform.position;
+            hitDirection = hitDirection.normalized;
+            ApplyKnockBack(hitDirection, 20f);
+            _animator.SetTrigger(Falling);
         }
 
         public void AddForce(Vector3 force, ForceMode forceMode)
@@ -381,10 +381,10 @@ namespace Player
             //instatiates projectile and adds velocity
             var projectileObj = Instantiate(rocket, firePoint.position, Quaternion.identity);
             projectileObj.GetComponent<Rigidbody>().velocity = 
-                transform.TransformDirection(Vector3.forward * (_launchForce));
+                transform.TransformDirection(Vector3.forward * (launchForce));
 
             //wait before can shoot again
-            yield return new WaitForSeconds(_reloadTime);
+            yield return new WaitForSeconds(reloadTime);
             _canShootRocket = true;
         }
         private IEnumerator ShootFreezeRay()
@@ -400,25 +400,25 @@ namespace Player
             //instatiates projectile and adds velocity
             var projectileObj = Instantiate(freezeRayProjectile, firePoint.position, Quaternion.identity);
             projectileObj.GetComponent<Rigidbody>().velocity =
-                transform.TransformDirection(Vector3.forward * (_launchForce));
+                transform.TransformDirection(Vector3.forward * (launchForce));
 
             //wait before can shoot again
-            yield return new WaitForSeconds(_reloadTime);
+            yield return new WaitForSeconds(reloadTime);
             _canShootFreezeRay = true;
         }
         private IEnumerator FreezePlayer()
         {
             //slows down player for alloted time
-            if(!_isSprinting )
+            if(!isSprinting )
                 _walkSpeed = 3f;
             else
-                _walkSpeed = 3f * _speedMultiplier;
+                _walkSpeed = 3f * speedMultiplier;
 
-            yield return new WaitForSeconds(_freezeTime);
-            if (!_isSprinting)
+            yield return new WaitForSeconds(freezeTime);
+            if (!isSprinting)
                 _walkSpeed = 13f;
             else
-                _walkSpeed = 13f * _speedMultiplier;
+                _walkSpeed = 13f * speedMultiplier;
         }
     }
 }
