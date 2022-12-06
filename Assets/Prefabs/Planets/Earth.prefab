@@ -426,6 +426,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1243119945194938375, guid: 433c18d3307ed854ea635c7195bddce3,
         type: 3}
+      propertyPath: image
+      value: 
+      objectReference: {fileID: 2800000, guid: 67fda1cdc692240e48a5c197d9f2937f, type: 3}
+    - target: {fileID: 1243119945194938375, guid: 433c18d3307ed854ea635c7195bddce3,
+        type: 3}
       propertyPath: planet
       value: 
       objectReference: {fileID: 1204145194863960779}
