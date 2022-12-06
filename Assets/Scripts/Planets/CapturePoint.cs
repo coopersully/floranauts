@@ -2,14 +2,12 @@ using System.Collections.Generic;
 using Audio;
 using Player;
 using UnityEngine;
-using CaptureSprite;
 
 namespace Planets
 {
     [RequireComponent(typeof(Collider))]
     public class CapturePoint : MonoBehaviour
     {
-        private CaptureImage captureImage;
         public Planet planet;
         public PlanetType item = PlanetType.None;
 
@@ -29,6 +27,7 @@ namespace Planets
         [HideInInspector] public PlayerCapture owner;
         public int health;
         public int maxHealth = 10;
+
 
         private void Awake()
         {
@@ -51,9 +50,7 @@ namespace Planets
 
             // Decrement the health of the planet
             health -= 1;
-
-            
-        
+      
             // If the health has reached zero, capture the planet.
             if (health <= 0)
             {
@@ -62,8 +59,8 @@ namespace Planets
             }
         
             // Set the player's UI element to display current health
-            PlayerManager.Instance.scoreboard.playerOne.RefreshInterfaceElements();
-            PlayerManager.Instance.scoreboard.playerTwo.RefreshInterfaceElements();
+           PlayerManager.Instance.scoreboard.playerOne.RefreshInterfaceElements();
+           PlayerManager.Instance.scoreboard.playerTwo.RefreshInterfaceElements();
         }
 
         private void Capture(PlayerCapture playerCapture)

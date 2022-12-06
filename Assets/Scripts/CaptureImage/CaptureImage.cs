@@ -2,39 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Player;
 
-namespace CaptureSprite
+namespace Player
 {
     public class CaptureImage : MonoBehaviour
     {
+        public CaptureImageManager imageManager;
         public Image mainImage;
         public Sprite[] blueSprites;
         public Sprite[] redSprites;
         public Sprite[] deadSprites;
 
         private int spriteIndex = 0;
-        public bool bluePlayer = false;
-        public bool redPlayer = false;
+        public bool playerOne = false;
+        public bool playerTwo = false;
         public bool dead = true;
 
         private void Awake()
         {
-            bluePlayer = true;
+            imageManager = GetComponentInParent<CaptureImageManager>();
+            playerOne = true;
 
             dead = true;
             spriteIndex = 0;
         }
         private void Update()
         {
-           if(bluePlayer)
+;          spriteIndex = imageManager.spriteIndex;
+           if(playerOne)
                 mainImage.sprite = blueSprites[spriteIndex];
-            else if (redPlayer)
+            else if (playerTwo)
                 mainImage.sprite = redSprites[spriteIndex];
 
         }
         public void NextImage()
         {
             spriteIndex++;
+            
         }
         public void PreviousImage()
         {

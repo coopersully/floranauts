@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Interfaces\RotateSlow.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerItems.cs" />
+    <Compile Include="Assets\Scripts\CaptureImage\CaptureImage.cs" />
     <Compile Include="Assets\Scripts\Interfaces\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Gravity\GravityAttractor.cs" />
     <Compile Include="Assets\Scripts\Items\InventoryItem.cs" />
@@ -102,7 +103,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerColor.cs" />
     <Compile Include="Assets\Scripts\BlackHole\Teleport.cs" />
     <Compile Include="Assets\Scripts\BlackHole\BlackHoleController.cs" />
-    <Compile Include="Assets\Scripts\Planets\CaptureImage.cs" />
+    <Compile Include="Assets\Scripts\CaptureImage\CaptureImageManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

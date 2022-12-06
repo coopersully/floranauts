@@ -92,6 +92,7 @@ namespace Player
         public ParticleSystem walkParticles;
         public ParticleSystem jetParticles;
         public ParticleSystem speedTrail;
+        public ParticleSystem frozenParticles;
         
         // Player-related animation triggers
         private static readonly int Horizontal = Animator.StringToHash("Horizontal");
@@ -105,6 +106,11 @@ namespace Player
 
         private void Awake()
         {
+            jetParticles.Stop();
+            speedTrail.Stop();
+            frozenParticles.Stop();
+            _canPlayLandParticles = true;
+
             // Initialize components
             _animator = GetComponent<Animator>();
             _rigidbody = GetComponent<Rigidbody>();
@@ -114,9 +120,8 @@ namespace Player
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            inKnockBack = false;
-            jetParticles.Stop();
-            speedTrail.Stop();
+           
+
             _canPlayLandParticles = true;
 
         }
@@ -289,7 +294,7 @@ namespace Player
             _canSwingStick = false;
             _canPlayLandParticles = false; 
             _animator.SetTrigger(Attack);
-            yield return new WaitForSeconds(.75f);
+            yield return new WaitForSeconds(.5f);
             AudioManager.Instance.fx.StickSwoosh();
 
             // Activates stick and deactivates after the animation plays out
@@ -408,12 +413,15 @@ namespace Player
                 _walkSpeed = 3f;
             else
                 _walkSpeed = 3f * speedMultiplier;
+            frozenParticles.Play();
 
             yield return new WaitForSeconds(freezeTime);
             if (!isSprinting)
-                _walkSpeed = 13f;
+                _walkSpeed = 15f;
             else
-                _walkSpeed = 13f * speedMultiplier;
+                _walkSpeed = 15f * speedMultiplier;
+            frozenParticles.Stop();
+
         }
     }
 }

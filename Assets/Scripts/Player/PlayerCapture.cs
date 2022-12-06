@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 namespace Player
 {
     public class PlayerCapture : MonoBehaviour
@@ -12,7 +13,7 @@ namespace Player
         private bool _canCapture;
         public PlayerInput playerInput;
         public PlayerItems playerItems;
-
+    
         [HideInInspector] public double score;
 
         [HideInInspector] public List<CapturePoint> inventory;
@@ -24,6 +25,7 @@ namespace Player
         public PlayerActionBar playerActionBar;
         public TextMeshProUGUI captureHealth;
 
+        
         // Called every time a player presses the 'Capture' binding.
         public void Capture(InputAction.CallbackContext context)
         {
@@ -55,6 +57,9 @@ namespace Player
             
             captureHealth.gameObject.SetActive(false);
             currentCapturePoint = null;
+
+            //capture image turns off when player leaves trigger
+            
         }
 
         public void RefreshInterfaceElements()
