@@ -1,5 +1,6 @@
 using Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Interfaces
@@ -53,6 +54,12 @@ namespace Interfaces
             
             // Open screen w/ animator
             animator.SetTrigger(End);
+        }
+        
+        public void MainMenu()
+        {
+            Destroy(PlayerManager.Instance.gameObject);
+            SceneManager.LoadScene(0);
         }
     }
 }

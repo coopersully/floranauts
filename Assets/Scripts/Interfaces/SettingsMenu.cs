@@ -26,7 +26,7 @@ namespace Interfaces
         {
             // Master Volume
             masterVolume.value = AudioListener.volume;
-            masterVolumeValue.SetText((int) (AudioListener.volume * 100.0) + "%");
+            masterVolumeValue.SetText((int) (masterVolume.value * 100.0) + "%");
         
             // UI Volume
             AudioManager.Instance.ui.audioSource.volume = interfaceVolume.value;
