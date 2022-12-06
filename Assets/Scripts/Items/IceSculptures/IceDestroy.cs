@@ -16,8 +16,9 @@ public class IceDestroy : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Rocket"))
-            Destroy(this.gameObject);
+        if (!other.gameObject.CompareTag("Rocket")) return;
+        
+        Destroy(this.gameObject);
 
     }
     private IEnumerator Die()
