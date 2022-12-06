@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\Interfaces\PlayerCard.cs" />
     <Compile Include="Assets\Scripts\Audio\MusicAudioManager.cs" />
     <Compile Include="Assets\Scripts\Interfaces\Popup\PopupExit.cs" />
+    <Compile Include="Assets\Scripts\CaptureImage\CaptureImageManager.cs" />
     <Compile Include="Assets\Scripts\PlayerManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Interfaces\PauseManager.cs" />
@@ -103,7 +104,6 @@
     <Compile Include="Assets\Scripts\Player\PlayerColor.cs" />
     <Compile Include="Assets\Scripts\BlackHole\Teleport.cs" />
     <Compile Include="Assets\Scripts\BlackHole\BlackHoleController.cs" />
-    <Compile Include="Assets\Scripts\CaptureImage\CaptureImageManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

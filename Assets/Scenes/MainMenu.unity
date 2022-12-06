@@ -539,8 +539,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 61590049}
   jetPack: {fileID: 8300000, guid: 9c61231233692da4e96d43917b8f8651, type: 3}
-  stickSwoosh: {fileID: 0}
-  energyDrink: {fileID: 0}
+  stickSwoosh: {fileID: 8300000, guid: f5a258ef7dc03c741a6ebd21ce64cb46, type: 3}
+  energyDrink: {fileID: 8300000, guid: d2323a3ea22559740b945ade085dc11c, type: 3}
   rocketLaunch: {fileID: 8300000, guid: 1df3dfcadcfec2943af43ab47bb18c8e, type: 3}
   rocketExplode: {fileID: 8300000, guid: 18555f1d0c9b8d044b48fb7522c5002c, type: 3}
   freezeRayLaunch: {fileID: 8300000, guid: e4d01b38eb648b947aa2746c26159c9a, type: 3}
