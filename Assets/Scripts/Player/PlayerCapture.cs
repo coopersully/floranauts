@@ -92,7 +92,6 @@ namespace Player
         public void IncrementScore()
         {
             score += (inventory.Count * 0.1);
-            Debug.Log(name + "'s score changed to " + score);
             
             // If the player achieves the maximum score
             if (score >= PlayerManager.Instance.scoreboard.maxScore)
