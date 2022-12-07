@@ -7633,7 +7633,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 759693354}
-  original: {fileID: 8300000, guid: 0c090b6a50461a14694e6c0d3c8eb0a1, type: 3}
+  original01: {fileID: 8300000, guid: 0c090b6a50461a14694e6c0d3c8eb0a1, type: 3}
+  original02: {fileID: 8300000, guid: 8d1d480009b1c2e4c85993e56c9fa04f, type: 3}
+  original03: {fileID: 8300000, guid: b26ae8aae209ca740af37192e4d7f7ec, type: 3}
+  original04: {fileID: 8300000, guid: b96f2adc936f20148b08a01296f49be7, type: 3}
+  original05: {fileID: 8300000, guid: dcee6f9f105f053458f805a775fd5cf7, type: 3}
+  original06: {fileID: 8300000, guid: 84d7a2d0c66374847b4753561ffae097, type: 3}
 --- !u!82 &759693354
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7644,8 +7649,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0c090b6a50461a14694e6c0d3c8eb0a1, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
   m_Volume: 0.25
   m_Pitch: 1
   Loop: 1
