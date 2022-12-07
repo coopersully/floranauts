@@ -1,6 +1,4 @@
-using Player;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -30,6 +28,7 @@ namespace Interfaces
             PlayerManager.Instance.scoreboard.maxScoreAchieved = true;
             
             // Fix pause menu
+            PauseManager.Instance.Resume();
             PauseManager.Instance.SetHUDVisibility(false);
             PauseManager.Instance.restrictions.Add(gameObject);
             
