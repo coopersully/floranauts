@@ -1349,7 +1349,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -60, y: 0}
-  m_SizeDelta: {x: 438.62793, y: 670.66}
+  m_SizeDelta: {x: 440, y: 670}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &221750590
 MonoBehaviour:
@@ -1371,7 +1371,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The blackhole sucks you in and teleports you to a random planet.
+  m_text: Watch out! The black hole sucks you in and teleports you to a random planet.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6b54727a55c872648af8b5a047b89aad, type: 2}
   m_sharedMaterial: {fileID: 7605028226517147828, guid: 6b54727a55c872648af8b5a047b89aad,
@@ -8244,7 +8244,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -60, y: 0}
-  m_SizeDelta: {x: 438.62793, y: 670.66}
+  m_SizeDelta: {x: 440, y: 670}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &937493600
 MonoBehaviour:
@@ -8266,7 +8266,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Terraform planets to your color by planting a tree with B to earn points.
+  m_text: Terraform and capture planets by planting a tree with B to earn points.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6b54727a55c872648af8b5a047b89aad, type: 2}
   m_sharedMaterial: {fileID: 7605028226517147828, guid: 6b54727a55c872648af8b5a047b89aad,
@@ -9700,7 +9700,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: 986.207, y: 624.666}
+  m_SizeDelta: {x: 990, y: 620}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1293265635
 MonoBehaviour:
@@ -9988,7 +9988,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: 986.207, y: 624.666}
+  m_SizeDelta: {x: 990, y: 620}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1465254715
 MonoBehaviour:
@@ -10511,7 +10511,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: 986.207, y: 624.666}
+  m_SizeDelta: {x: 990, y: 620}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1569712130
 MonoBehaviour:
@@ -10739,7 +10739,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: 986.207, y: 624.666}
+  m_SizeDelta: {x: 990, y: 620}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1628765940
 MonoBehaviour:
@@ -11358,7 +11358,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -60, y: 0}
-  m_SizeDelta: {x: 438.62793, y: 670.66}
+  m_SizeDelta: {x: 440, y: 670}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1830923999
 MonoBehaviour:
@@ -11631,7 +11631,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -60, y: 0}
-  m_SizeDelta: {x: 438.62793, y: 670.66}
+  m_SizeDelta: {x: 440, y: 670}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1917211801
 MonoBehaviour:
@@ -11653,7 +11653,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: The first player to 100 points wins.
+  m_text: Every planet you own slowly grants you points. The first player to 100
+    points wins.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6b54727a55c872648af8b5a047b89aad, type: 2}
   m_sharedMaterial: {fileID: 7605028226517147828, guid: 6b54727a55c872648af8b5a047b89aad,
