@@ -1,5 +1,6 @@
 using Player;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -57,8 +58,7 @@ namespace Interfaces
         }
         
         public void MainMenu()
-        {
-            Destroy(PlayerManager.Instance.gameObject);
+        { 
             SceneManager.LoadScene(0);
         }
     }

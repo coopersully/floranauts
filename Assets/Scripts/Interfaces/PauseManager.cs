@@ -1,5 +1,6 @@
 using Audio;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace Interfaces
@@ -92,7 +93,6 @@ namespace Interfaces
         {
             Resume();
             Cursor.lockState = CursorLockMode.None;
-            Destroy(PlayerManager.Instance.gameObject);
             SceneManager.LoadScene(0);
         }
 

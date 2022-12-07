@@ -13866,7 +13866,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1620641727}
-  - component: {fileID: 1620641730}
   - component: {fileID: 1620641728}
   - component: {fileID: 1620641729}
   m_Layer: 0
@@ -13925,18 +13924,6 @@ MonoBehaviour:
   playerOne: {fileID: 0}
   playerTwo: {fileID: 0}
   scoreManager: {fileID: 883706058}
---- !u!114 &1620641730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1620641726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6790b92e1491a254ead38c42361df8b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1666706834
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ namespace Player
         public PlayerInput playerInput;
         public PlayerItems playerItems;
     
-        [HideInInspector] public double score;
+        public double score;
 
         [HideInInspector] public List<CapturePoint> inventory;
         [HideInInspector] public CapturePoint currentCapturePoint;
