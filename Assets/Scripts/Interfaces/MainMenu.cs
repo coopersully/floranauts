@@ -21,6 +21,12 @@ namespace Interfaces
             cameraAnimator.SetTrigger(Main);
             AudioManager.Instance.ui.Select01();
         }
+        
+        public void TransitionMainAndSaveCurrentPrefs()
+        {
+            TransitionMain();
+            FindObjectOfType<SettingsMenu>().SaveCurrentPrefs();
+        }
     
         public void TransitionPlay()
         {

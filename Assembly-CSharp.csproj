@@ -90,6 +90,7 @@
      <Compile Include="Assets\Scripts\Interfaces\RotateSlow.cs" />
      <Compile Include="Assets\Scripts\CaptureImage\CaptureImageManager.cs" />
      <Compile Include="Assets\Scripts\Interfaces\LoadingScreen.cs" />
+     <Compile Include="Assets\Scripts\PrefSaver.cs" />
      <Folder Include="Assets" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hans.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\cm-help.en.txt" />
@@ -156,7 +157,6 @@
      <None Include="Library\PackageCache\com.unity.modules.imgui@1.0.0\package.json" />
      <Folder Include="Assets\Textures\Planets\TextureMaps\SmoothAlive" />
      <Folder Include="Library\PackageCache\com.unity.visualscripting@1.7.8\Graphics" />
-     <Folder Include="Assets\StreamingAssets" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\ValidationExceptions.json" />
      <Folder Include="Assets\Models\OwenPlanets\TextureMaps" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\plastic-gui.es.txt" />
@@ -285,7 +285,6 @@
      <Folder Include="Library\PackageCache\com.unity.modules.wind@1.0.0" />
      <Folder Include="Assets\Textures" />
      <Folder Include="Assets\Textures\Planets\TextureMaps\CrackedAlive" />
-     <None Include="Assets\StreamingAssets\UnityServicesProjectConfiguration.json" />
      <Folder Include="Library\PackageCache\com.unity.shadergraph@12.1.7" />
      <Folder Include="Assets\Materials\Tree" />
      <Folder Include="Assets\Prefabs\Items" />

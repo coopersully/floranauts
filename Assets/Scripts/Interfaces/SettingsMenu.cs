@@ -8,61 +8,79 @@ namespace Interfaces
     public class SettingsMenu : MonoBehaviour
     {
 
-        public Slider masterVolume;
-        public TextMeshProUGUI masterVolumeValue;
+        public Slider sliderMaster;
+        public TextMeshProUGUI textMaster;
     
-        public Slider interfaceVolume;
-        public TextMeshProUGUI interfaceVolumeValue;
+        public Slider sliderInterface;
+        public TextMeshProUGUI textInterface;
 
-        public Slider fxVolume;
-        public TextMeshProUGUI fxVolumeValue;
+        public Slider sliderSoundFX;
+        public TextMeshProUGUI textSoundFX;
         
-        public Slider musicVolume;
-        public TextMeshProUGUI musicVolumeValue;
+        public Slider sliderMusic;
+        public TextMeshProUGUI textMusic;
     
         private void OnEnable() => RefreshComponents();
 
         private void RefreshComponents()
         {
+            float valueMaster = PlayerPrefs.GetFloat("volumeMaster", 100);
+            float valueInterface = PlayerPrefs.GetFloat("volumeInterface", 100);
+            float valueSoundFX = PlayerPrefs.GetFloat("volumeSoundFX", 100);
+            float valueMusic = PlayerPrefs.GetFloat("volumeMusic", 100);
+
             // Master Volume
-            masterVolume.value = AudioListener.volume;
-            masterVolumeValue.SetText((int) (masterVolume.value * 100.0) + "%");
+            AudioListener.volume = valueMaster / 100f;
+            sliderMaster.SetValueWithoutNotify(AudioListener.volume);
+            textMaster.SetText((int) valueMaster + "%");
         
-            // UI Volume
-            AudioManager.Instance.ui.audioSource.volume = interfaceVolume.value;
-            interfaceVolumeValue.SetText((int) (AudioManager.Instance.ui.audioSource.volume * 100.0) + "%");
+            // Interface Volume
+            sliderInterface.SetValueWithoutNotify(valueInterface / 100);
+            AudioManager.Instance.ui.audioSource.volume = sliderInterface.value;
+            textInterface.SetText((int) valueInterface + "%");
             
             // FX Volume
-            AudioManager.Instance.fx.audioSource.volume = fxVolume.value;
-            fxVolumeValue.SetText((int) (AudioManager.Instance.fx.audioSource.volume * 100.0) + "%");
+            sliderSoundFX.SetValueWithoutNotify(valueSoundFX / 100);
+            AudioManager.Instance.fx.audioSource.volume = sliderSoundFX.value;
+            textSoundFX.SetText((int) valueSoundFX + "%");
             
             // Music Volume
-            AudioManager.Instance.music.audioSource.volume = musicVolume.value;
-            musicVolumeValue.SetText((int) (AudioManager.Instance.music.audioSource.volume * 100.0) + "%");
+            sliderMusic.SetValueWithoutNotify(valueMusic / 100);
+            AudioManager.Instance.music.audioSource.volume = sliderMusic.value;
+            textMusic.SetText((int) valueMusic+ "%");
         }
 
         public void UpdateVolume()
         {
-            AudioListener.volume = masterVolume.value;
-            masterVolumeValue.SetText((int) (AudioListener.volume * 100.0) + "%");
+            AudioListener.volume = sliderMaster.value;
+            textMaster.SetText((int) (AudioListener.volume * 100.0) + "%");
         }
     
         public void UpdateVolumeUI()
         {
-            AudioManager.Instance.ui.audioSource.volume = interfaceVolume.value;
-            interfaceVolumeValue.SetText((int) (AudioManager.Instance.ui.audioSource.volume * 100.0) + "%");
+            AudioManager.Instance.ui.audioSource.volume = sliderInterface.value;
+            textInterface.SetText((int) (AudioManager.Instance.ui.audioSource.volume * 100.0) + "%");
         }
         
         public void UpdateVolumeFX()
         {
-            AudioManager.Instance.fx.audioSource.volume = fxVolume.value;
-            fxVolumeValue.SetText((int) (AudioManager.Instance.fx.audioSource.volume * 100.0) + "%");
+            AudioManager.Instance.fx.audioSource.volume = sliderSoundFX.value;
+            textSoundFX.SetText((int) (AudioManager.Instance.fx.audioSource.volume * 100.0) + "%");
         }
         
         public void UpdateVolumeMusic()
         {
-            AudioManager.Instance.music.audioSource.volume = musicVolume.value;
-            musicVolumeValue.SetText((int) (AudioManager.Instance.music.audioSource.volume * 100.0) + "%");
+            AudioManager.Instance.music.audioSource.volume = sliderMusic.value;
+            textMusic.SetText((int) (AudioManager.Instance.music.audioSource.volume * 100.0) + "%");
+        }
+
+        public void SaveCurrentPrefs()
+        {
+            PlayerPrefs.SetFloat("volumeMaster", sliderMaster.value * 100);
+            PlayerPrefs.SetFloat("volumeInterface", sliderInterface.value * 100);
+            PlayerPrefs.SetFloat("volumeSoundFX", sliderSoundFX.value * 100);
+            PlayerPrefs.SetFloat("volumeMusic", sliderMusic.value * 100);
+            PlayerPrefs.Save();
         }
     }
 }
