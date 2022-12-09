@@ -187,14 +187,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afd1d5d56e16c64b9c15d0a9bdbcacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sliderMaster: {fileID: 0}
-  textMaster: {fileID: 0}
-  sliderInterface: {fileID: 0}
-  textInterface: {fileID: 0}
-  sliderSoundFX: {fileID: 0}
-  textSoundFX: {fileID: 0}
-  sliderMusic: {fileID: 0}
-  textMusic: {fileID: 0}
+  sliderMaster: {fileID: 1767996918}
+  textMaster: {fileID: 59504759}
+  sliderInterface: {fileID: 284216898}
+  textInterface: {fileID: 1483998324}
+  sliderSoundFX: {fileID: 902019233}
+  textSoundFX: {fileID: 1307704813}
+  sliderMusic: {fileID: 618555156}
+  textMusic: {fileID: 698631604}
 --- !u!1 &48892549
 GameObject:
   m_ObjectHideFlags: 0
