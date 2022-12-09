@@ -27,7 +27,7 @@ namespace Interfaces
          and disables the heads-up-display for all users. */
         public void Pause()
         {
-            if (restrictions.IsRestricted())
+            if (restrictions.IsRestricted() || LoadingScreen.IsLoading)
             {
                 Debug.Log("Pause was attempted & blocked because of restrictions.");
                 AudioManager.Instance.ui.Click01();
@@ -93,7 +93,7 @@ namespace Interfaces
         {
             Resume();
             Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene(0);
+            LoadingScreen.Instance.Load(0);
         }
 
         // "Exit Game" button

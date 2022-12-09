@@ -89,6 +89,7 @@
      <Compile Include="Assets\Scripts\CaptureImage\CaptureImage.cs" />
      <Compile Include="Assets\Scripts\Interfaces\RotateSlow.cs" />
      <Compile Include="Assets\Scripts\CaptureImage\CaptureImageManager.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\LoadingScreen.cs" />
      <Folder Include="Assets" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hans.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\cm-help.en.txt" />

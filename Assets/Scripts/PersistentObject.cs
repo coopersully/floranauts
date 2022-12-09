@@ -28,7 +28,7 @@ public class PersistentObject : MonoBehaviour
 
     }
     
-    private void OnActiveSceneChanged(Scene current, Scene next)
+    private static void OnActiveSceneChanged(Scene current, Scene next)
     {
         var sceneName = SceneManager.GetActiveScene().name;
         if (!sceneName.ToLower().Contains("game")) return;

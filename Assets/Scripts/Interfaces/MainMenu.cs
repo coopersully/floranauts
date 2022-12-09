@@ -41,9 +41,6 @@ namespace Interfaces
             window.SetActive(true);
         }
 
-        public void StartGame()
-        {
-            SceneManager.LoadScene(1);
-        }
+        public void StartGame() => LoadingScreen.Instance.Load(1);
     }
 }

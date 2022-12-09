@@ -56,9 +56,6 @@ namespace Interfaces
             animator.SetTrigger(End);
         }
         
-        public void MainMenu()
-        { 
-            SceneManager.LoadScene(0);
-        }
+        public void MainMenu() => LoadingScreen.Instance.Load(0);
     }
 }
