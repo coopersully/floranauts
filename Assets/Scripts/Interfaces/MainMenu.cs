@@ -36,10 +36,7 @@ namespace Interfaces
             AudioManager.Instance.ui.Select01();
         }
 
-        public void ExitGame()
-        {
-            window.SetActive(true);
-        }
+        public void ExitGame() => window.SetActive(true);
 
         public void StartGame() => LoadingScreen.Instance.Load(1);
     }
