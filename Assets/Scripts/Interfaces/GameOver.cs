@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +18,10 @@ namespace Interfaces
 
         public Animator animator;
         private static readonly int End = Animator.StringToHash("end");
+
+        public TextMeshProUGUI countdownText;
+        public int secondsBeforeReturn;
+        private int _countdown;
 
         private void Awake()
         {
@@ -54,8 +60,27 @@ namespace Interfaces
             
             // Open screen w/ animator
             animator.SetTrigger(End);
+            
+            // Start countdown
+            StartCoroutine(CountdownToMainMenu());
         }
         
         public void MainMenu() => LoadingScreen.Instance.Load(0);
+
+        private IEnumerator CountdownToMainMenu()
+        {
+            yield return new WaitForSeconds(2.0f);
+            countdownText.gameObject.SetActive(true);
+            
+            _countdown = secondsBeforeReturn;
+            while (_countdown > 0)
+            {
+                countdownText.SetText("Returning to Main Menu in " + _countdown + " seconds...");
+                _countdown--;
+                yield return new WaitForSeconds(1.0f);
+            }
+            MainMenu();
+        }
+        
     }
 }

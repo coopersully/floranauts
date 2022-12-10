@@ -41,7 +41,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Interfaces\RotateSlow.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerItems.cs" />
+     <Compile Include="Assets\Scripts\CaptureImage\CaptureImage.cs" />
      <Compile Include="Assets\Scripts\Interfaces\MainMenu.cs" />
      <Compile Include="Assets\Scripts\Gravity\GravityAttractor.cs" />
      <Compile Include="Assets\Scripts\Items\InventoryItem.cs" />
@@ -61,6 +63,7 @@
      <Compile Include="Assets\Scripts\PedestalTeleporter.cs" />
      <Compile Include="Assets\Scripts\Interfaces\SettingsMenu.cs" />
      <Compile Include="Assets\Scripts\Planets\PlanetType.cs" />
+     <Compile Include="Assets\Scripts\PrefSaver.cs" />
      <Compile Include="Assets\Scripts\BlackHole\DestroyPortal.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PlayerIcon.cs" />
      <Compile Include="Assets\Scripts\Planets\Planet.cs" />
@@ -72,25 +75,22 @@
      <Compile Include="Assets\Scripts\Interfaces\GameOver.cs" />
      <Compile Include="Assets\Scripts\Items\RocketLauncher\RocketProjectile.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PlayerCard.cs" />
+     <Compile Include="Assets\Scripts\Audio\MusicAudioManager.cs" />
      <Compile Include="Assets\Scripts\Interfaces\Popup\PopupExit.cs" />
+     <Compile Include="Assets\Scripts\CaptureImage\CaptureImageManager.cs" />
      <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PauseManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerCapture.cs" />
      <Compile Include="Assets\Scripts\Items\RocketLauncher\DestroyExplosion.cs" />
      <Compile Include="Assets\Scripts\Planets\CapturePointController.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\LoadingScreen.cs" />
      <Compile Include="Assets\Scripts\Items\ExampleItem.cs" />
      <Compile Include="Assets\Scripts\Items\IceSculptures\IceDestroy.cs" />
      <Compile Include="Assets\Scripts\PersistentObject.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerColor.cs" />
      <Compile Include="Assets\Scripts\BlackHole\Teleport.cs" />
      <Compile Include="Assets\Scripts\BlackHole\BlackHoleController.cs" />
-     <Compile Include="Assets\Scripts\Audio\MusicAudioManager.cs" />
-     <Compile Include="Assets\Scripts\CaptureImage\CaptureImage.cs" />
-     <Compile Include="Assets\Scripts\Interfaces\RotateSlow.cs" />
-     <Compile Include="Assets\Scripts\CaptureImage\CaptureImageManager.cs" />
-     <Compile Include="Assets\Scripts\Interfaces\LoadingScreen.cs" />
-     <Compile Include="Assets\Scripts\PrefSaver.cs" />
      <Folder Include="Assets" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hans.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\cm-help.en.txt" />
