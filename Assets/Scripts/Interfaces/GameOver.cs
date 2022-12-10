@@ -37,10 +37,7 @@ namespace Interfaces
             PauseManager.Instance.Resume();
             PauseManager.Instance.SetHUDVisibility(false);
             PauseManager.Instance.restrictions.Add(gameObject);
-            
-            // Unlock cursors
-            Cursor.lockState = CursorLockMode.None;
-            
+
             // Set sliders to their scores
             playerOneScore.SetValueWithoutNotify( (float) PlayerManager.Instance.scoreboard.playerOne.score );
             playerTwoScore.SetValueWithoutNotify( (float) PlayerManager.Instance.scoreboard.playerTwo.score );
@@ -61,12 +58,24 @@ namespace Interfaces
             // Open screen w/ animator
             animator.SetTrigger(End);
             
+            // // Unlock cursors
+            // Cursor.visible = true;
+            // Cursor.lockState = CursorLockMode.None;
+            
             // Start countdown
             StartCoroutine(CountdownToMainMenu());
         }
         
-        public void MainMenu() => LoadingScreen.Instance.Load(0);
-
+        public void MainMenu()
+        {
+            // Unlock cursors
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            
+            // Load main menu scene
+            LoadingScreen.Instance.Load(0);
+        }
+        
         private IEnumerator CountdownToMainMenu()
         {
             yield return new WaitForSeconds(2.0f);
