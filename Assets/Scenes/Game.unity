@@ -6875,7 +6875,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: main menu
+  m_text: main menu (left)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 593d99e2abf07004eb655c955378532a, type: 2}
   m_sharedMaterial: {fileID: 813483452766279025, guid: 593d99e2abf07004eb655c955378532a,
@@ -7609,7 +7609,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: return
+  m_text: return (right)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 593d99e2abf07004eb655c955378532a, type: 2}
   m_sharedMaterial: {fileID: 813483452766279025, guid: 593d99e2abf07004eb655c955378532a,
@@ -7745,7 +7745,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXIT GAME
+  m_text: EXIT GAME (down)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 593d99e2abf07004eb655c955378532a, type: 2}
   m_sharedMaterial: {fileID: 813483452766279025, guid: 593d99e2abf07004eb655c955378532a,
@@ -9200,7 +9200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: controls
+  m_text: controls (right)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 593d99e2abf07004eb655c955378532a, type: 2}
   m_sharedMaterial: {fileID: 813483452766279025, guid: 593d99e2abf07004eb655c955378532a,
@@ -21078,7 +21078,7 @@ GameObject:
   - component: {fileID: 1994199079}
   - component: {fileID: 1994199078}
   m_Layer: 5
-  m_Name: Resume
+  m_Name: Return
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21438,7 +21438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: resume
+  m_text: resume (Up)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 593d99e2abf07004eb655c955378532a, type: 2}
   m_sharedMaterial: {fileID: 813483452766279025, guid: 593d99e2abf07004eb655c955378532a,

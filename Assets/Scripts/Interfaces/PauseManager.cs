@@ -2,6 +2,8 @@ using Audio;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System;
+using System.Collections;
 
 namespace Interfaces
 {
@@ -80,6 +82,11 @@ namespace Interfaces
             mainPanel.SetActive(false);
             controlsPanel.SetActive(true);
         }
+        public void ControlsBack()
+        {
+            mainPanel.SetActive(true);
+            controlsPanel.SetActive(false);
+        }
 
         public void ReturnToMainMenu()
         {
@@ -101,6 +108,8 @@ namespace Interfaces
         {
             Application.Quit();
         }
+
+        
         
     }
 }

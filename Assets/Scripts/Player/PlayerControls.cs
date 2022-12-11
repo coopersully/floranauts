@@ -116,6 +116,42 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Resume"",
+                    ""type"": ""Button"",
+                    ""id"": ""9d23ece1-cada-407d-bf03-3f2d175809e7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Controls"",
+                    ""type"": ""Button"",
+                    ""id"": ""c9893f38-e238-440f-999a-225524f2bed3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MainMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""bdc5f7cc-589e-4ddc-a977-c66465b838c3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Quit"",
+                    ""type"": ""Button"",
+                    ""id"": ""030f7e24-88f0-462e-899a-46378f6d7622"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -512,6 +548,50 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""InventoryDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""716b5a8b-190d-4293-9981-63ff61063272"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Resume"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5919ee4d-daf4-4605-a8db-cc67c3778f81"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Controls"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7a32b2b-2940-4acd-9461-faadf765d039"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MainMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8f52cf4-8cf0-4dd1-bf0b-9e03264ba0b5"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -933,6 +1013,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_ChangeItem = m_PlayerMovement.FindAction("ChangeItem", throwIfNotFound: true);
         m_PlayerMovement_InventoryUp = m_PlayerMovement.FindAction("InventoryUp", throwIfNotFound: true);
         m_PlayerMovement_InventoryDown = m_PlayerMovement.FindAction("InventoryDown", throwIfNotFound: true);
+        m_PlayerMovement_Resume = m_PlayerMovement.FindAction("Resume", throwIfNotFound: true);
+        m_PlayerMovement_Controls = m_PlayerMovement.FindAction("Controls", throwIfNotFound: true);
+        m_PlayerMovement_MainMenu = m_PlayerMovement.FindAction("MainMenu", throwIfNotFound: true);
+        m_PlayerMovement_Quit = m_PlayerMovement.FindAction("Quit", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1014,6 +1098,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_ChangeItem;
     private readonly InputAction m_PlayerMovement_InventoryUp;
     private readonly InputAction m_PlayerMovement_InventoryDown;
+    private readonly InputAction m_PlayerMovement_Resume;
+    private readonly InputAction m_PlayerMovement_Controls;
+    private readonly InputAction m_PlayerMovement_MainMenu;
+    private readonly InputAction m_PlayerMovement_Quit;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -1028,6 +1116,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @ChangeItem => m_Wrapper.m_PlayerMovement_ChangeItem;
         public InputAction @InventoryUp => m_Wrapper.m_PlayerMovement_InventoryUp;
         public InputAction @InventoryDown => m_Wrapper.m_PlayerMovement_InventoryDown;
+        public InputAction @Resume => m_Wrapper.m_PlayerMovement_Resume;
+        public InputAction @Controls => m_Wrapper.m_PlayerMovement_Controls;
+        public InputAction @MainMenu => m_Wrapper.m_PlayerMovement_MainMenu;
+        public InputAction @Quit => m_Wrapper.m_PlayerMovement_Quit;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1067,6 +1159,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @InventoryDown.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInventoryDown;
                 @InventoryDown.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInventoryDown;
                 @InventoryDown.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInventoryDown;
+                @Resume.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnResume;
+                @Resume.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnResume;
+                @Resume.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnResume;
+                @Controls.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnControls;
+                @Controls.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnControls;
+                @Controls.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnControls;
+                @MainMenu.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMainMenu;
+                @MainMenu.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMainMenu;
+                @MainMenu.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnMainMenu;
+                @Quit.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
+                @Quit.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
+                @Quit.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -1101,6 +1205,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @InventoryDown.started += instance.OnInventoryDown;
                 @InventoryDown.performed += instance.OnInventoryDown;
                 @InventoryDown.canceled += instance.OnInventoryDown;
+                @Resume.started += instance.OnResume;
+                @Resume.performed += instance.OnResume;
+                @Resume.canceled += instance.OnResume;
+                @Controls.started += instance.OnControls;
+                @Controls.performed += instance.OnControls;
+                @Controls.canceled += instance.OnControls;
+                @MainMenu.started += instance.OnMainMenu;
+                @MainMenu.performed += instance.OnMainMenu;
+                @MainMenu.canceled += instance.OnMainMenu;
+                @Quit.started += instance.OnQuit;
+                @Quit.performed += instance.OnQuit;
+                @Quit.canceled += instance.OnQuit;
             }
         }
     }
@@ -1240,6 +1356,10 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnChangeItem(InputAction.CallbackContext context);
         void OnInventoryUp(InputAction.CallbackContext context);
         void OnInventoryDown(InputAction.CallbackContext context);
+        void OnResume(InputAction.CallbackContext context);
+        void OnControls(InputAction.CallbackContext context);
+        void OnMainMenu(InputAction.CallbackContext context);
+        void OnQuit(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

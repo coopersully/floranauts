@@ -21195,6 +21195,70 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bb59dc4e-a78a-455e-b09c-8ba96de08dfa
     m_ActionName: PlayerMovement/InventoryDown[/Keyboard/leftArrow,/SwitchProControllerHID/dpad/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8466629248505694014}
+        m_TargetAssemblyTypeName: Player.PlayerControlsMisc, Assembly-CSharp
+        m_MethodName: ResumeButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9d23ece1-cada-407d-bf03-3f2d175809e7
+    m_ActionName: PlayerMovement/Resume[/XInputControllerWindows/dpad/up]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8466629248505694014}
+        m_TargetAssemblyTypeName: Player.PlayerControlsMisc, Assembly-CSharp
+        m_MethodName: ControlsButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c9893f38-e238-440f-999a-225524f2bed3
+    m_ActionName: PlayerMovement/Controls[/XInputControllerWindows/dpad/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8466629248505694014}
+        m_TargetAssemblyTypeName: Player.PlayerControlsMisc, Assembly-CSharp
+        m_MethodName: MenuButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: bdc5f7cc-589e-4ddc-a977-c66465b838c3
+    m_ActionName: PlayerMovement/MainMenu[/XInputControllerWindows/leftStick/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8466629248505694014}
+        m_TargetAssemblyTypeName: Player.PlayerControlsMisc, Assembly-CSharp
+        m_MethodName: ExitButton
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 030f7e24-88f0-462e-899a-46378f6d7622
+    m_ActionName: PlayerMovement/Quit[/XInputControllerWindows/dpad/down]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
