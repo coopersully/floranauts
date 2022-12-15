@@ -99,7 +99,12 @@ namespace Interfaces
         public void MainMenu()
         {
             Resume();
+            
+            // Unlock cursors
+            Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+            
+            // Load main menu scene
             LoadingScreen.Instance.Load(0);
         }
 
