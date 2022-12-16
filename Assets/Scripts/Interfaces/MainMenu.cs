@@ -10,23 +10,33 @@ namespace Interfaces
         [SerializeField] private Animator cameraAnimator;
 
         public GameObject window;
-    
-        private static readonly int Main = Animator.StringToHash("main");
+        private static readonly int Shop = Animator.StringToHash("shop");
+        private static readonly int Career = Animator.StringToHash("career");
         private static readonly int Play = Animator.StringToHash("play");
         private static readonly int Settings = Animator.StringToHash("settings");
+        private static readonly int Exit = Animator.StringToHash("exit");
 
-        public void TransitionMain()
-        {
-            panelAnimator.SetTrigger(Main);
-            cameraAnimator.SetTrigger(Main);
-            AudioManager.Instance.ui.Select01();
-        }
-        
         public void TransitionMainAndSaveCurrentPrefs()
         {
-            TransitionMain();
+            TransitionPlay();
             FindObjectOfType<SettingsMenu>().SaveCurrentPrefs();
         }
+        
+        public void TransitionShop()
+        {
+            panelAnimator.SetTrigger(Shop);
+            cameraAnimator.SetTrigger(Shop);
+            AudioManager.Instance.ui.Select01();
+        }
+
+        
+        public void TransitionCareer()
+        {
+            panelAnimator.SetTrigger(Career);
+            cameraAnimator.SetTrigger(Career);
+            AudioManager.Instance.ui.Select01();
+        }
+
     
         public void TransitionPlay()
         {
@@ -42,7 +52,12 @@ namespace Interfaces
             AudioManager.Instance.ui.Select01();
         }
 
-        public void ExitGame() => window.SetActive(true);
+        public void TransitionExit()
+        {
+            panelAnimator.SetTrigger(Exit);
+            cameraAnimator.SetTrigger(Exit);
+            AudioManager.Instance.ui.Select01();
+        }
 
         public void StartGame() => LoadingScreen.Instance.Load(1);
     }

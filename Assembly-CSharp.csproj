@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Interfaces\RotateSlow.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\FakePlayerAnimator.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerItems.cs" />
      <Compile Include="Assets\Scripts\CaptureImage\CaptureImage.cs" />
      <Compile Include="Assets\Scripts\Interfaces\MainMenu.cs" />
@@ -64,6 +65,7 @@
      <Compile Include="Assets\Scripts\Interfaces\SettingsMenu.cs" />
      <Compile Include="Assets\Scripts\Planets\PlanetType.cs" />
      <Compile Include="Assets\Scripts\PrefSaver.cs" />
+     <Compile Include="Assets\Packages\KawaseBlur\KawaseBlur.cs" />
      <Compile Include="Assets\Scripts\BlackHole\DestroyPortal.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PlayerIcon.cs" />
      <Compile Include="Assets\Scripts\Planets\Planet.cs" />
@@ -91,7 +93,6 @@
      <Compile Include="Assets\Scripts\Player\PlayerColor.cs" />
      <Compile Include="Assets\Scripts\BlackHole\Teleport.cs" />
      <Compile Include="Assets\Scripts\BlackHole\BlackHoleController.cs" />
-     <Compile Include="Assets\Scripts\Interfaces\FakePlayerAnimator.cs" />
      <Folder Include="Assets" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hans.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\cm-help.en.txt" />
@@ -162,6 +163,7 @@
      <Folder Include="Assets\Models\OwenPlanets\TextureMaps" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\plastic-gui.es.txt" />
      <None Include="Library\PackageCache\com.unity.modules.tilemap@1.0.0\package.json" />
+     <None Include="Assets\Packages\KawaseBlur\KawaseBlur.shader" />
      <Folder Include="Library\PackageCache\com.unity.modules.assetbundle@1.0.0" />
      <Folder Include="Assets\Textures\Planets" />
      <Folder Include="Library\PackageCache\com.unity.burst@1.7.3\Tests" />
@@ -327,6 +329,7 @@
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\configurehelper.zh-Hans.txt" />
      <None Include="Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\package.json" />
      <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Textures" />
+     <Folder Include="Library\PackageCache\com.unity.2d.sprite@1.0.0" />
      <Folder Include="Library\PackageCache\com.unity.modules.tilemap@1.0.0" />
      <Folder Include="Library\PackageCache\com.unity.modules.ui@1.0.0" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
@@ -389,6 +392,7 @@
      <Folder Include="Assets\Prefabs\Audio" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\images.zh-Hant.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\guihelp.en.txt" />
+     <Folder Include="Assets\Textures\Interfaces" />
      <None Include="Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0\package.json" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\clientcommon.zh-Hans.txt" />
      <Folder Include="Library\PackageCache\com.unity.searcher@4.9.1\Tests" />
@@ -429,7 +433,6 @@
      <Folder Include="Assets\Prefabs\Planets" />
      <None Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources\Shaders\TMP_SDF Internal Editor.shader" />
      <Folder Include="Library\PackageCache\com.unity.modules.umbra@1.0.0" />
-     <Folder Include="Assets\Textures\UI Tiles" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <Folder Include="Library\PackageCache\com.unity.modules.unitywebrequestwww@1.0.0" />
      <Folder Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib" />
@@ -445,6 +448,7 @@
      <Folder Include="Assets\Materials\Rocket" />
      <Folder Include="Assets\Textures\Planets\TextureMaps\CraterAlive" />
      <None Include="Library\PackageCache\com.unity.modules.terrain@1.0.0\package.json" />
+     <None Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\package.json" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\xdiff.en.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\plastic-gui.zh-Hans.txt" />
      <Folder Include="Library\PackageCache\com.unity.ide.visualstudio@2.0.16" />
@@ -471,8 +475,10 @@
      <Folder Include="Assets\Audio\Items\RocketLauncher" />
      <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Package Resources" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\mergetool.ja.txt" />
+     <Folder Include="Assets\Packages\KawaseBlur" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
      <Folder Include="Library\PackageCache\com.unity.modules.terrain@1.0.0" />
+     <Folder Include="Library\PackageCache\com.unity.2d.sprite@1.0.0\Tests" />
      <None Include="Library\PackageCache\com.unity.modules.animation@1.0.0\package.json" />
      <Folder Include="Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2" />
      <Folder Include="Assets\Particles" />
@@ -1199,9 +1205,9 @@
       <Project>{49602d69-e482-d37a-39f9-873c7fde778e}</Project>
       <Name>Unity.Searcher.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
-      <Project>{a89720c2-2b19-c69c-e0d9-416a41ee27eb}</Project>
-      <Name>Unity.RenderPipelines.Core.Runtime</Name>
+    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
+      <Project>{cc81d097-c6f9-a361-000f-f7cb66b9ccab}</Project>
+      <Name>Unity.2D.Sprite.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
       <Project>{a0f19116-7fe7-bb4b-b7bf-fa9cfec43b73}</Project>
@@ -1230,6 +1236,10 @@
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{9dbdb08c-99fd-21a0-44c8-813b8b90ec6a}</Project>
       <Name>UnityEngine.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
+      <Project>{a89720c2-2b19-c69c-e0d9-416a41ee27eb}</Project>
+      <Name>Unity.RenderPipelines.Core.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
       <Project>{db50d30b-d6e1-1dc8-b493-638d2fecce93}</Project>
