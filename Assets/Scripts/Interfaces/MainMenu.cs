@@ -19,7 +19,7 @@ namespace Interfaces
         public void TransitionMainAndSaveCurrentPrefs()
         {
             TransitionPlay();
-            FindObjectOfType<SettingsMenu>().SaveCurrentPrefs();
+            FindObjectOfType<SettingsMenu>().SavePrefsAll();
         }
         
         public void TransitionShop()

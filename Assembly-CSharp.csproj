@@ -50,10 +50,8 @@
      <Compile Include="Assets\Scripts\Items\InventoryItem.cs" />
      <Compile Include="Assets\Scripts\Audio\UIAudioManager.cs" />
      <Compile Include="Assets\Scripts\Planets\EmissionIncrement.cs" />
-     <Compile Include="Assets\Scripts\Interfaces\Popup\Popup.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerScoreManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerControls.cs" />
-     <Compile Include="Assets\Scripts\Interfaces\Popup\ExitGamePopup.cs" />
      <Compile Include="Assets\Scripts\Planets\PlanetSpawner.cs" />
      <Compile Include="Assets\Scripts\Audio\FXAudioManager.cs" />
      <Compile Include="Assets\Scripts\Restrictions.cs" />
@@ -78,7 +76,6 @@
      <Compile Include="Assets\Scripts\Items\RocketLauncher\RocketProjectile.cs" />
      <Compile Include="Assets\Scripts\Interfaces\PlayerCard.cs" />
      <Compile Include="Assets\Scripts\Audio\MusicAudioManager.cs" />
-     <Compile Include="Assets\Scripts\Interfaces\Popup\PopupExit.cs" />
      <Compile Include="Assets\Scripts\CaptureImage\CaptureImageManager.cs" />
      <Compile Include="Assets\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
@@ -302,7 +299,6 @@
      <Folder Include="Library\PackageCache\com.unity.modules.uielements@1.0.0" />
      <None Include="Library\PackageCache\com.unity.visualscripting@1.7.8\ValidationExceptions.json" />
      <Folder Include="Library\PackageCache\com.unity.modules.unitywebrequestaudio@1.0.0" />
-     <Folder Include="Assets\Scripts\Interfaces\Popup" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <Folder Include="Assets\Audio\Items\Stick" />
      <Folder Include="Assets\Textures\Items\Freeze_Ray_Texture" />

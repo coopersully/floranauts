@@ -7,7 +7,8 @@ namespace Interfaces
 {
     public class SettingsMenu : MonoBehaviour
     {
-
+        
+        [Header("Volume")]
         public Slider sliderMaster;
         public TextMeshProUGUI textMaster;
     
@@ -19,10 +20,25 @@ namespace Interfaces
         
         public Slider sliderMusic;
         public TextMeshProUGUI textMusic;
+        
+        [Header("Sensitivity")]
+        public Slider sliderMouse;
+        public TextMeshProUGUI textMouse;
+        
+        public Slider sliderController;
+        public TextMeshProUGUI textController;
     
         private void OnEnable() => RefreshComponents();
 
-        private void RefreshComponents()
+        public void RefreshComponents()
+        {
+            RefreshComponentsVolume();
+            RefreshComponentsSensitivity();
+        }
+
+        #region Volume
+
+        public void RefreshComponentsVolume()
         {
             float valueMaster = PlayerPrefs.GetFloat("volumeMaster", 100);
             float valueInterface = PlayerPrefs.GetFloat("volumeInterface", 100);
@@ -31,56 +47,99 @@ namespace Interfaces
 
             // Master Volume
             AudioListener.volume = valueMaster / 100f;
-            sliderMaster.SetValueWithoutNotify(AudioListener.volume);
+            sliderMaster.SetValueWithoutNotify(AudioListener.volume * 100);
             textMaster.SetText((int) valueMaster + "%");
         
             // Interface Volume
-            sliderInterface.SetValueWithoutNotify(valueInterface / 100);
-            AudioManager.Instance.ui.audioSource.volume = sliderInterface.value;
+            sliderInterface.SetValueWithoutNotify(valueInterface);
+            AudioManager.Instance.ui.audioSource.volume = sliderInterface.value / 100f;
             textInterface.SetText((int) valueInterface + "%");
             
-            // FX Volume
-            sliderSoundFX.SetValueWithoutNotify(valueSoundFX / 100);
-            AudioManager.Instance.fx.audioSource.volume = sliderSoundFX.value;
+            // Effects Volume
+            sliderSoundFX.SetValueWithoutNotify(valueSoundFX);
+            AudioManager.Instance.fx.audioSource.volume = sliderSoundFX.value / 100f;
             textSoundFX.SetText((int) valueSoundFX + "%");
             
             // Music Volume
-            sliderMusic.SetValueWithoutNotify(valueMusic / 100);
-            AudioManager.Instance.music.audioSource.volume = sliderMusic.value;
+            sliderMusic.SetValueWithoutNotify(valueMusic);
+            AudioManager.Instance.music.audioSource.volume = sliderMusic.value / 100f;
             textMusic.SetText((int) valueMusic+ "%");
         }
 
-        public void UpdateVolume()
+        public void OnUpdateVolume()
         {
-            AudioListener.volume = sliderMaster.value;
+            AudioListener.volume = sliderMaster.value / 100f;
             textMaster.SetText((int) (AudioListener.volume * 100.0) + "%");
         }
     
-        public void UpdateVolumeUI()
+        public void OnUpdateVolumeUI()
         {
-            AudioManager.Instance.ui.audioSource.volume = sliderInterface.value;
+            AudioManager.Instance.ui.audioSource.volume = sliderInterface.value / 100f;
             textInterface.SetText((int) (AudioManager.Instance.ui.audioSource.volume * 100.0) + "%");
         }
         
-        public void UpdateVolumeFX()
+        public void OnUpdateVolumeFX()
         {
-            AudioManager.Instance.fx.audioSource.volume = sliderSoundFX.value;
+            AudioManager.Instance.fx.audioSource.volume = sliderSoundFX.value / 100f;
             textSoundFX.SetText((int) (AudioManager.Instance.fx.audioSource.volume * 100.0) + "%");
         }
         
-        public void UpdateVolumeMusic()
+        public void OnUpdateVolumeMusic()
         {
-            AudioManager.Instance.music.audioSource.volume = sliderMusic.value;
+            AudioManager.Instance.music.audioSource.volume = sliderMusic.value / 100f;
             textMusic.SetText((int) (AudioManager.Instance.music.audioSource.volume * 100.0) + "%");
         }
 
-        public void SaveCurrentPrefs()
+        public void SavePrefsVolume()
         {
-            PlayerPrefs.SetFloat("volumeMaster", sliderMaster.value * 100);
-            PlayerPrefs.SetFloat("volumeInterface", sliderInterface.value * 100);
-            PlayerPrefs.SetFloat("volumeSoundFX", sliderSoundFX.value * 100);
-            PlayerPrefs.SetFloat("volumeMusic", sliderMusic.value * 100);
+            PlayerPrefs.SetFloat("volumeMaster", sliderMaster.value);
+            PlayerPrefs.SetFloat("volumeInterface", sliderInterface.value);
+            PlayerPrefs.SetFloat("volumeSoundFX", sliderSoundFX.value);
+            PlayerPrefs.SetFloat("volumeMusic", sliderMusic.value);
             PlayerPrefs.Save();
+        }
+
+        #endregion
+
+        #region Sensitivity
+        
+        public void RefreshComponentsSensitivity()
+        {
+            float valueMouseSens = PlayerPrefs.GetFloat("sensMouse", 1);
+            float valueControllerSens = PlayerPrefs.GetFloat("sensController", 1);
+            
+            // Mouse sensitivity
+            sliderMouse.SetValueWithoutNotify(valueMouseSens);
+            textMouse.SetText(valueMouseSens.ToString("0.00"));
+            
+            // Controller sensitivity
+            sliderController.SetValueWithoutNotify(valueControllerSens);
+            textController.SetText(valueControllerSens.ToString("0.00"));
+        }
+
+        public void OnUpdateSensitivityMouse()
+        {
+            textMouse.SetText(sliderMouse.value.ToString("0.00"));
+        }
+        
+        public void OnUpdateSensitivityController()
+        {
+            textController.SetText(sliderController.value.ToString("0.00"));
+        }
+        
+        public void SavePrefsSensitivity()
+        {
+            PlayerPrefs.SetFloat("sensMouse", sliderMouse.value);
+            PlayerPrefs.SetFloat("sensController", sliderController.value);
+            PlayerPrefs.Save();
+        }
+
+        #endregion
+        
+        public void SavePrefsAll()
+        {
+            SavePrefsVolume();
+            SavePrefsSensitivity();
         }
     }
 }
