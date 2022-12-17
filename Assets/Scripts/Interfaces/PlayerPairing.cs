@@ -10,10 +10,39 @@ namespace Interfaces
 {
     public class PlayerPairing : MonoBehaviour
     {
+
+        public static string[] Usernames =
+        {
+            "Alpha",
+            "Bravo",
+            "Charlie",
+            "Delta",
+            "Echo",
+            "Foxtrot",
+            "Golf",
+            "Hotel",
+            "India",
+            "Juliet",
+            "Kilo",
+            "Lima",
+            "Mike",
+            "November",
+            "Oscar",
+            "Papa",
+            "Quebec",
+            "Romeo",
+            "Sierra",
+            "Tango",
+            "Uniform",
+            "Victor",
+            "Whiskey",
+            "X-ray",
+            "Yankee",
+            "Zulu"
+        };
         
         [Header("General & Upper")]
         public GameObject pairingSection;
-        public GameObject noPlayersConnected;
         public TextMeshProUGUI numPlayersConnected;
         
         [Header("Scroll View")]
@@ -44,9 +73,6 @@ namespace Interfaces
         private void Update()
         {
             RefreshUI();
-            
-            // Enable the "no players" placeholder text if there are... no players lol
-            noPlayersConnected.SetActive(_players < 1);
 
             if (_players < _maxPlayers)
             {
@@ -62,12 +88,13 @@ namespace Interfaces
         public void OnPlayerJoined(PlayerInput playerInput)
         {
             AudioManager.Instance.ui.Select03();
-
-            var title = "Player " + (playerInput.playerIndex + 1);
+            
+            var title = Usernames[playerInput.playerIndex];
             
             var newPlayer = Instantiate(playerCard, playersReady, false);
+            newPlayer.index.SetText((playerInput.playerIndex + 1).ToString());
             newPlayer.title.SetText(title);
-            newPlayer.subtitle.SetText(playerInput.currentControlScheme);
+            newPlayer.subtitle.SetText("USING " + playerInput.currentControlScheme);
 
             playerInput.gameObject.name = title;
             
@@ -76,7 +103,10 @@ namespace Interfaces
             var secondary = PlayerColor.GetSecondary(playerInput.playerIndex);
 
             newPlayer.background.color = primary;
-            newPlayer.icon.color = secondary;
+            foreach (var icon in newPlayer.icons)
+            {
+                icon.color = secondary;
+            }
             //newPlayer.title.color = secondary;
             newPlayer.subtitle.color = secondary;
             
