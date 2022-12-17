@@ -28,8 +28,8 @@ namespace Gravity
             RandomPlanet();
            
             
-            _playerMovement = GetComponent<PlayerMovement>();
-            _rigidbody = GetComponent<Rigidbody>();
+            _playerMovement = GetComponentInChildren<PlayerMovement>();
+            _rigidbody = GetComponentInChildren<Rigidbody>();
 
             // Disable rigidbody built in gravity and freezes rotations so planet can add that itself
             _rigidbody.useGravity = false;
