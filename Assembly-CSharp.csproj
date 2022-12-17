@@ -106,6 +106,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerColor.cs" />
     <Compile Include="Assets\Scripts\BlackHole\Teleport.cs" />
     <Compile Include="Assets\Scripts\BlackHole\BlackHoleController.cs" />
+    <Compile Include="Assets\Scripts\Player\Camera\CameraFollow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -871,6 +872,10 @@
       <Project>{D430944B-3CAF-CD4A-4AFB-021E58F8DC52}</Project>
       <Name>Unity.Services.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="Cinemachine.csproj">
+      <Project>{654C0E15-D110-DE03-2AC1-88BC9283E309}</Project>
+      <Name>Cinemachine</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Services.Core.Analytics.csproj">
       <Project>{7CB97C43-83E5-6EC9-3518-0FF29213AE02}</Project>
       <Name>Unity.Services.Core.Analytics</Name>
@@ -878,6 +883,10 @@
     <ProjectReference Include="Unity.Burst.csproj">
       <Project>{E3EAC459-D2FC-9909-9FDB-772671872727}</Project>
       <Name>Unity.Burst</Name>
+    </ProjectReference>
+    <ProjectReference Include="com.unity.cinemachine.editor.csproj">
+      <Project>{929E99CC-F5BF-8F7F-908A-4921EE3F7AB9}</Project>
+      <Name>com.unity.cinemachine.editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Shared.Editor.csproj">
       <Project>{F4ADC5C6-0347-6B9B-B699-F3BF44B8F7E6}</Project>

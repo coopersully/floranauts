@@ -15,6 +15,7 @@ namespace Player
         private Animator _animator;
         private Rigidbody _rigidbody;
         private UIAudioManager _audio;
+        private Transform playerTransform;
 
         [Header("Basics")]
         public float mouseSensitivityX = 1f;
@@ -112,9 +113,11 @@ namespace Player
             _canPlayLandParticles = true;
 
             // Initialize components
-            _animator = GetComponent<Animator>();
-            _rigidbody = GetComponent<Rigidbody>();
+            _animator = GetComponentInChildren<Animator>();
+            _rigidbody = GetComponentInChildren<Rigidbody>();
             _cameraTransform = GetComponentInChildren<Camera>().transform;
+
+
 
             // Hides mouse cursor
             Cursor.lockState = CursorLockMode.Locked;
@@ -200,8 +203,9 @@ namespace Player
 
         private void ApplyMovement()
         {
+            
             // Rotate player based on where mouse or right joystick dictates
-            transform.Rotate(Vector3.up * (_cameraInput.x * mouseSensitivityX));
+            transform.Rotate(Vector3.up * _cameraInput.x * mouseSensitivityX);
             _verticalLookRotation += _cameraInput.y * mouseSensitivityY;
             _verticalLookRotation = Mathf.Clamp(_verticalLookRotation, -30, -15);
             _cameraTransform.localEulerAngles = Vector3.left * _verticalLookRotation;
