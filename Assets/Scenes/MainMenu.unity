@@ -7391,7 +7391,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 364110746}
         m_TargetAssemblyTypeName: Interfaces.MainMenu, Assembly-CSharp
-        m_MethodName: TransitionPlay
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

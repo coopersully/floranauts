@@ -60,5 +60,7 @@ namespace Interfaces
         }
 
         public void StartGame() => LoadingScreen.Instance.Load(1);
+
+        public void StopGame() => Application.Quit(0);
     }
 }
