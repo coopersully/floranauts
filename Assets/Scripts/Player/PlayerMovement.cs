@@ -166,7 +166,8 @@ namespace Player
             freezeRayGun.SetActive(hasFreezeRay);
             rocketLauncher.SetActive(hasRocketLauncher);
             energyCan.SetActive(hasSpeedIncrease);
-            
+
+            if (PauseManager.Instance == null) return;
             if (PauseManager.Instance.isPaused) return;
 
             // Checks if player is in knockback sequence, sets Bool, and counts down if inKnockBack

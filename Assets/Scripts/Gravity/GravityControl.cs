@@ -108,7 +108,6 @@ namespace Gravity
             //chooses random planet and attracts player to that
             randNum = Random.Range(0, allPlanets.Length);
             _planet = allPlanets[randNum].GetComponent<GravityAttractor>();
-
         }
         public void NearestPlanet()
         {

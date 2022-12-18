@@ -22,6 +22,8 @@ namespace Audio
         public AudioClip cursorMove02;
         public AudioClip cursorMove03;
 
+        public AudioClip[] recordScratches;
+
         public void Click01()
         {
             audioSource.PlayOneShot(cursorClick01);
@@ -70,6 +72,11 @@ namespace Audio
         public void Select05()
         {
             audioSource.PlayOneShot(cursorSelect05);
+        }
+
+        public void RecordScratch()
+        {
+            audioSource.PlayOneShot(recordScratches[Random.Range(0, recordScratches.Length)]);
         }
     }
 }

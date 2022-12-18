@@ -1,9 +1,5 @@
 using Audio;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using System;
-using System.Collections;
 
 namespace Interfaces
 {
@@ -18,8 +14,7 @@ namespace Interfaces
         public GameObject hud;
         public GameObject mainPanel;
         public GameObject controlsPanel;
-        public GameObject overlay;
-
+        
         private void Awake()
         {
             if (Instance == null) Instance = this;
@@ -66,7 +61,6 @@ namespace Interfaces
             
             SetHUDVisibility(true);
             
-            overlay.SetActive(false);
             mainPanel.SetActive(false);
         }
         
@@ -92,7 +86,6 @@ namespace Interfaces
         {
             controlsPanel.SetActive(false);
             mainPanel.SetActive(true);
-            overlay.SetActive(true);
         }
         
         // "Main Menu" button

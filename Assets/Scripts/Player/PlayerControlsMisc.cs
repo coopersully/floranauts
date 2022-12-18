@@ -1,12 +1,9 @@
 using Interfaces;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Interfaces;
 
 namespace Player
 {
-    
-    
     public class PlayerControlsMisc : MonoBehaviour
     {
         public bool controlPanelUp = false;

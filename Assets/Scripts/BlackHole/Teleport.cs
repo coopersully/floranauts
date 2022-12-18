@@ -26,7 +26,7 @@ namespace BlackHole
 
             // Teleports player to random teleport point
             _randomInt = Random.Range(0, teleportPoints.Length);
-            this.gameObject.transform.position = teleportPoints[_randomInt].transform.position;
+            gameObject.transform.position = teleportPoints[_randomInt].transform.position;
             StartCoroutine(OpenPortal(_randomInt));
         }
        
