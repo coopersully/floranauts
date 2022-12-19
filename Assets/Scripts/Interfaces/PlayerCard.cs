@@ -11,5 +11,6 @@ namespace Interfaces
         public TextMeshProUGUI title;
         public TextMeshProUGUI subtitle;
         public Image[] icons;
+        public uint uid;
     }
 }

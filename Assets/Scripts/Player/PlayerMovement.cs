@@ -117,16 +117,11 @@ namespace Player
             _rigidbody = GetComponentInChildren<Rigidbody>();
             _cameraTransform = GetComponentInChildren<Camera>().transform;
 
-
-
             // Hides mouse cursor
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-
-           
+            // Cursor.lockState = CursorLockMode.Locked;
+            // Cursor.visible = false;
 
             _canPlayLandParticles = true;
-
         }
 
         private void Update()

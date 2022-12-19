@@ -12931,6 +12931,7 @@ MonoBehaviour:
   cursorMove01: {fileID: 8300000, guid: 67769caf47aeb1e4099a595f74ed54b2, type: 3}
   cursorMove02: {fileID: 8300000, guid: 33a46535b4b58bc468dcf9d9a905895d, type: 3}
   cursorMove03: {fileID: 8300000, guid: 57b9e2b0ef7665f4fa96003b7b7ff822, type: 3}
+  recordScratches: []
 --- !u!82 &1219960727
 AudioSource:
   m_ObjectHideFlags: 0

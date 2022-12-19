@@ -1,9 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using Audio;
 using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Interfaces
 {
@@ -38,13 +41,15 @@ namespace Interfaces
             "Yankee",
             "Zulu"
         };
+
+        public List<PlayerCard> cards = new ();
         
         [Header("General & Upper")]
         public TextMeshProUGUI captainName;
         public TextMeshProUGUI numOccupants;
         
-        [Header("Scroll View")]
-        public PlayerCard playerCard;
+        [FormerlySerializedAs("playerCard")] [Header("Scroll View")]
+        public PlayerCard playerCardPrefab;
         public Transform content;
 
         [Header("Countdown UI")]
@@ -60,32 +65,58 @@ namespace Interfaces
         {
             PlayerInputManager.instance.EnableJoining();
         }
+        
+        private PlayerCard CreatePlayerCard(PlayerInput playerInput)
+        {
+            var uid = playerInput.user.id;
+            var index = playerInput.playerIndex;
+            var indexDeco = (playerInput.playerIndex + 1).ToString();
+            
+            var playerCard = Instantiate(playerCardPrefab, content, false);
+            
+            // Update player's card information
+            var alias = Usernames[index];
+            playerCard.uid = uid;
+            playerCard.index.SetText(indexDeco);
+            playerCard.title.SetText(alias);
+            playerCard.subtitle.SetText("USING " + playerInput.currentControlScheme);
+            
+            // Update player's card colors
+            var colorPrimary = PlayerColor.GetPrimary(index);
+            var colorSecondary = PlayerColor.GetSecondary(index);
+            
+            playerCard.background.color = colorPrimary;
+            foreach (var icon in playerCard.icons) icon.color = colorSecondary;
+            
+            Debug.Log("Card for player (UID " + uid + ") was created.");
+            
+            cards.Add(playerCard);
+            return playerCard;
+        }
+
+        private void RemovePlayerCard(PlayerInput playerInput)
+        {
+            var uid = playerInput.user.id;
+            var playerCard = cards.Find(card => card.uid == uid);
+            
+            Destroy(playerCard.gameObject);
+            cards.Remove(playerCard);
+            
+            Debug.Log("Card for player (UID " + uid + ") was removed.");
+        }
 
         public void OnPlayerJoined(PlayerInput playerInput)
         {
+            var uid = playerInput.user.id;
             var playerIndex = playerInput.playerIndex;
             var playerIndexDeco = (playerIndex + 1).ToString();
-            Debug.Log("Player joined the lobby.");
 
-            // Summon player's card
-            var card = Instantiate(playerCard, content, false);
-            
-            // Update player's card information
-            var alias = Usernames[playerIndex];
-            card.index.SetText(playerIndexDeco);
-            card.title.SetText(alias);
-            card.subtitle.SetText("USING " + playerInput.currentControlScheme);
-            
-            // Update player's card colors
-            var colorPrimary = PlayerColor.GetPrimary(playerIndex);
-            var colorSecondary = PlayerColor.GetSecondary(playerIndex);
-            
-            card.background.color = colorPrimary;
-            foreach (var icon in card.icons) icon.color = colorSecondary;
-            card.subtitle.color = colorSecondary;
-            
+            Debug.Log("Player (UID " + uid + ") joined the lobby.");
+
+            var playerCard = CreatePlayerCard(playerInput);
+
             // Change player's GameObject name
-            playerInput.gameObject.name = "P" + playerIndexDeco + " (" + alias + ")";
+            playerInput.gameObject.name = "Player " + playerIndexDeco;
 
             // Register player in game session
             PlayerManager.Instance.AddPlayer(playerInput);
@@ -96,6 +127,12 @@ namespace Interfaces
             
             // If the maximum amount of players is met, begin the countdown
             if (_players == _maxPlayers) StartCountdown();
+        }
+
+        public void OnPlayerLeave(PlayerInput playerInput)
+        {
+            RemovePlayerCard(playerInput);
+            RefreshUI();
         }
 
         private void RefreshUI()
@@ -151,6 +188,22 @@ namespace Interfaces
             
             // Switch to game scene
             PlayerManager.Instance.CarryPlayersToScene(2);
+        }
+
+        public void LeaveLobby()
+        {
+            // Unlock cursors
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            
+            // // Destroy other objects
+            // var playerManager = FindObjectOfType<PlayerManager>().gameObject;
+            // var currentScene = SceneManager.GetActiveScene();
+            // SceneManager.MoveGameObjectToScene(playerManager, currentScene);
+            // PlayerInputManager.instance.
+            
+            // Load main menu scene
+            LoadingScreen.Instance.Load(0);
         }
     }
 }
