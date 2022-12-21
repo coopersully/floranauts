@@ -7,13 +7,16 @@ namespace Player
 {
     public class TargetMovement : MonoBehaviour
     {
+        public GameObject player;
         private MoveCineMachine playerMovement;
         public GameObject followTarget;
         public Vector2 _cameraInput;
-        public float rotationPower = 1f;
+        public float rotationPower = .5f;
+        private float yInput;
         void Awake()
         {
             playerMovement = GetComponent<MoveCineMachine>();
+            yInput = _cameraInput.y;
         }
 
         void Update()
@@ -28,34 +31,28 @@ namespace Player
         private void PlayerRotation()
         {
             //Follow Transform Rotation
-            followTarget.transform.rotation *= Quaternion.AngleAxis(_cameraInput.x * rotationPower, Vector3.up);
+            transform.rotation *= Quaternion.AngleAxis(_cameraInput.x * rotationPower, Vector3.up); //rotates player around y axis (or player up)
 
+            float xRotation = followTarget.transform.eulerAngles.x;
+            
             //Vertical Rotation
-            followTarget.transform.rotation *= Quaternion.AngleAxis(_cameraInput.y * rotationPower, Vector3.right);
-
-            
-            var angles = followTarget.transform.localEulerAngles;
-            angles.z = 0;
-
-            var x_angle = followTarget.transform.localEulerAngles.x;
-
-            //clamp up/down
-            if (x_angle > 180 && x_angle < 340)
+            if (xRotation > -30 && xRotation < 60)
             {
-                angles.x = 340;
+                followTarget.transform.rotation *= Quaternion.AngleAxis(_cameraInput.y * rotationPower, Vector3.right); //rotates camera around x axis (or player left/right)
             }
-            else if (x_angle < 180 && x_angle > 40)
+            //needs work for smoother transition
+            else if (xRotation <= -30)
             {
-                angles.x = 40;
+                followTarget.transform.Rotate(Mathf.Lerp(xRotation, (-30 - xRotation), .25f), 0, 0);
+            }
+            else if (xRotation >= 60)
+            {
+                followTarget.transform.Rotate(Mathf.Lerp(xRotation,(xRotation - 60), 1f), 0, 0);
             }
 
-            if(playerMovement._movementInput.x == 0 && playerMovement._movementInput.y == 0)
-            {
-                //transform.rotation = Quaternion.Euler(0, followTarget.transform.rotation.eulerAngles.y, 0);
-                //transform.rotation.eulerAngles.y = followTarget.transform.rotation.eulerAngles.y;
-                //followTarget.transform.localEulerAngles = new Vector3(angles.x, 0, 0);
-            }
-            
+            //Z Rotation
+            var playerZAngle = transform.localEulerAngles.z;
+            //followTarget.transform.rotation = Quaternion.Euler(followTarget.transform.eulerAngles.x, followTarget.transform.eulerAngles.y, transform.eulerAngles.z);
 
 
         }

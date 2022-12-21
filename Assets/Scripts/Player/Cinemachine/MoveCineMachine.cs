@@ -53,7 +53,7 @@ namespace Player
             // Initialize components
             _animator = GetComponentInChildren<Animator>();
             _rigidbody = GetComponentInChildren<Rigidbody>();
-            _cameraTransform = GetComponentInChildren<Camera>().transform;
+            //_cameraTransform = GetComponentInChildren<Camera>().transform;
         }
 
         // Update is called once per frame

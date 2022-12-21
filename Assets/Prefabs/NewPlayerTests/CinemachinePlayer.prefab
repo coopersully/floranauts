@@ -21205,7 +21205,7 @@ Transform:
   m_Children:
   - {fileID: 3914190681977911608}
   m_Father: {fileID: 8392952076635125538}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2714869457871041539
 GameObject:
@@ -26778,6 +26778,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4293579414822886710}
+  - {fileID: 8392952077486100732}
   - {fileID: 8392952076635125538}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72268,10 +72269,9 @@ Transform:
   - {fileID: 7951352107212294890}
   - {fileID: 6140522956609594693}
   - {fileID: 3223297726541365288}
-  - {fileID: 8392952077486100732}
   - {fileID: 4766335900051046700}
   m_Father: {fileID: 4293579415496860709}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &8392952076635125539
 CapsuleCollider:
@@ -72773,9 +72773,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909ea2e9896556343a0b819de4d4e4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 8392952076635125543}
   followTarget: {fileID: 2568602342929554602}
   _cameraInput: {x: 0, y: 0}
-  rotationPower: 1
+  rotationPower: 0.5
 --- !u!1 &8392952077486100735
 GameObject:
   m_ObjectHideFlags: 0
@@ -72803,12 +72804,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8392952077486100735}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.146, y: 3.145, z: -10}
+  m_LocalPosition: {x: 0.569, y: 3.145, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8392952076635125538}
-  m_RootOrder: 7
+  m_Father: {fileID: 4293579415496860709}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!20 &8392952077486100733
 Camera:
