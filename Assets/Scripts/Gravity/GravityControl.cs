@@ -22,10 +22,10 @@ namespace Gravity
         private void Awake()
         {
             //creates array out of all the planets
-            allPlanets = GameObject.FindGameObjectsWithTag("Planet");
+            //allPlanets = GameObject.FindGameObjectsWithTag("Planet");
 
             //set first planet to random planet in the array
-            RandomPlanet();
+            //RandomPlanet();
            
             
             _playerMovement = GetComponentInChildren<PlayerMovement>();
@@ -72,7 +72,8 @@ namespace Gravity
                 //resets gravity and has player attracted to random planet
                 _shouldRotate = true;
                 _planet.playerRotationSpeed = 10;
-               RandomPlanet();
+                allPlanets = GameObject.FindGameObjectsWithTag("Planet");
+                RandomPlanet();
 
             }
 

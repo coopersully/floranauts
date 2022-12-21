@@ -25,8 +25,8 @@ namespace Player
         private Vector3 _smoothMoveVelocity;
         private Vector3 _moveDirection;
         
-        private Vector2 _movementInput;
-        private Vector2 _cameraInput;
+        public Vector2 _movementInput;
+        public Vector2 _cameraInput;
 
         private float _verticalLookRotation;
         private Transform _cameraTransform;
@@ -202,8 +202,8 @@ namespace Player
             
             // Rotate player based on where mouse or right joystick dictates
             transform.Rotate(Vector3.up * _cameraInput.x * mouseSensitivityX);
-            _verticalLookRotation += _cameraInput.y * mouseSensitivityY;
-            _verticalLookRotation = Mathf.Clamp(_verticalLookRotation, -30, -15);
+           // _verticalLookRotation += _cameraInput.y * mouseSensitivityY;
+           // _verticalLookRotation = Mathf.Clamp(_verticalLookRotation, -30, -15);
            // _cameraTransform.localEulerAngles = Vector3.left * _verticalLookRotation;
             
 

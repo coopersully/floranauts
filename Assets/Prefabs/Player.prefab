@@ -10111,9 +10111,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c478ceaf795b3fe4ea1f6cb5179f77d6, type: 2}
-  m_sharedMaterial: {fileID: 934715845060849042, guid: c478ceaf795b3fe4ea1f6cb5179f77d6,
-    type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -20866,7 +20865,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79b22a4553df0c46be716e3f845ca6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allPlanets: []
+  allPlanets:
+  - {fileID: 0}
   currPlanet: {fileID: 0}
 --- !u!114 &6998766515489882796
 MonoBehaviour:
@@ -20880,10 +20880,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86d766b2a69e8b48ad5e3e5b805c47d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 6998766515489882795}
-  player: {fileID: 6998766515489882797}
   mouseSensitivityX: 2
   mouseSensitivityY: 2
+  _movementInput: {x: 0, y: 0}
+  _cameraInput: {x: 0, y: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 8

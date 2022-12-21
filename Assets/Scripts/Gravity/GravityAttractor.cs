@@ -7,7 +7,8 @@ namespace Gravity
     // This Script rests on the planet and attracts the player to the center of the planet
     public class GravityAttractor : MonoBehaviour
     {
-        private PlayerMovement _playerMovement;
+        //private PlayerMovement _playerMovement;
+        private MoveCineMachine _playerMovement;
         private GravityControl _gravityControl;
         private RocketProjectile _rocketProjectile;
         
@@ -30,9 +31,12 @@ namespace Gravity
             StartCoroutine(RotationSpeed());
             _gravityUp = (body.position - transform.position).normalized;
 
-            _playerMovement = body.GetComponentInParent<PlayerMovement>();
+            //_playerMovement = body.GetComponentInParent<PlayerMovement>();
+            _playerMovement = body.GetComponentInParent<MoveCineMachine>();
+
             // Apply downwards gravity to body
             body.AddForce(_gravityUp * (planetGravity * _playerMovement.playerGravity));
+            Debug.Log("Attracting");
 
         }
        
