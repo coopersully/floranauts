@@ -26724,7 +26724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damping: {x: 0.5, y: 0.5, z: 0.5}
+  Damping: {x: 0.25, y: 0.25, z: 0.25}
   ShoulderOffset: {x: 0.5, y: -0.4, z: 0}
   VerticalArmLength: 3
   CameraSide: 0.423
@@ -26734,8 +26734,8 @@ MonoBehaviour:
     m_Bits: 8
   IgnoreTag: 
   CameraRadius: 0.2
-  DampingIntoCollision: 1
-  DampingFromCollision: 2
+  DampingIntoCollision: 0.5
+  DampingFromCollision: 1
 --- !u!114 &1517020911704864044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72776,7 +72776,7 @@ MonoBehaviour:
   player: {fileID: 8392952076635125543}
   followTarget: {fileID: 2568602342929554602}
   _cameraInput: {x: 0, y: 0}
-  rotationPower: 0.5
+  rotationSensitivity: 2.5
 --- !u!1 &8392952077486100735
 GameObject:
   m_ObjectHideFlags: 0

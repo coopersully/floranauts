@@ -6,9 +6,10 @@ using Player;
 namespace Gravity { 
 public class CineGravityControl : MonoBehaviour
 {
-    private GravityAttractor _planet;
+    public GravityAttractor _planet;
     private MoveCineMachine _playerMovement;
     private Rigidbody _rigidbody;
+        public GameObject followTarget;
 
     public GameObject[] allPlanets;
     public GameObject currPlanet;
