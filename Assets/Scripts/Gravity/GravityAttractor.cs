@@ -41,20 +41,6 @@ namespace Gravity
         }
        
 
-        public void RotateFollowTarget(GameObject target)
-        {
-           var localforward = target.transform.forward;
-
-            // body.rotation = Quaternion.FromToRotation(localUp, gravityUp) * body.rotation;
-
-            // Align body's up axis with the center of planet
-            var startRotation = target.transform.rotation;
-            var endRotation = Quaternion.FromToRotation(localforward, _gravityUp) * target.transform.rotation;
-            if (_playerMovement.isGrounded && _playerMovement.isSprinting)
-                target.transform.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * 10 * Time.deltaTime);
-            else
-                target.transform.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * Time.deltaTime);
-        }
         public void RotatePlayer(Rigidbody body)
         {
             var localUp = body.transform.up;

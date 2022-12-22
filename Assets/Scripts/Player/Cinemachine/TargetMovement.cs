@@ -48,10 +48,7 @@ namespace Player
         }
         private void PlayerRotation()
         {
-            //Z Rotation
-            float rotateZ = (currentRotation.eulerAngles.z - transform.rotation.eulerAngles.z);
-            followTarget.transform.rotation = Quaternion.FromToRotation(Vector3.up, transform.up);
-
+            
             //left/right Rotation + player Rotation
             var rotateY = _cameraInput.x * rotationSensitivity;
             if (playerMovement._movementInput.y > 0 || playerMovement._movementInput.x > 0)
@@ -62,9 +59,11 @@ namespace Player
             else
             {
                 followTarget.transform.rotation *= Quaternion.AngleAxis(rotateY, Vector3.up); //rotates camera around y axis
+                //transform.rotation *= Quaternion.AngleAxis(rotateY, Vector3.up); //rotates player with camera around y axis (or player up)
+
             }
-           
-           
+
+
 
             //Look up/down Rotation
             var rotateX = _cameraInput.y * rotationSensitivity;
@@ -89,9 +88,13 @@ namespace Player
 
             }
 
-
+            //Z Rotation
             
            
+
+
+
+
 
 
 
