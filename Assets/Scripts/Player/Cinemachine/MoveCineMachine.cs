@@ -61,6 +61,7 @@ namespace Player
         {
             UpdateGroundedValue();
             ApplyMovement();
+            if (!isGrounded) Debug.Log("not Grounded");
         }
         private void FixedUpdate()
         {
@@ -78,13 +79,6 @@ namespace Player
         private void ApplyMovement()
         {
 
-            // Rotate player based on where mouse or right joystick dictates
-            //transform.Rotate(Vector3.up * _cameraInput.x * mouseSensitivityX);
-            // _verticalLookRotation += _cameraInput.y * mouseSensitivityY;
-            // _verticalLookRotation = Mathf.Clamp(_verticalLookRotation, -30, -15);
-            // _cameraTransform.localEulerAngles = Vector3.left * _verticalLookRotation;
-
-
             if (!inKnockBack)
             {
                 // If player is not in knockBack, Move player based on Input System
@@ -96,8 +90,6 @@ namespace Player
             var targetMoveAmount = _moveDirection * _walkSpeed;
 
             _moveAmount = Vector3.SmoothDamp(_moveAmount, targetMoveAmount, ref _smoothMoveVelocity, .15f);
-
-
 
 
             // Sets player gravity which accelerates over time if
