@@ -152,6 +152,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""776aa1f2-db05-4ef8-935e-ae65c35f19f8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -594,6 +603,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Quit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c78206e-bde8-49bc-946c-873455b5df84"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e5a2f3e-79d4-4acc-ba82-868a9c13ac80"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -1017,6 +1048,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Controls = m_PlayerMovement.FindAction("Controls", throwIfNotFound: true);
         m_PlayerMovement_MainMenu = m_PlayerMovement.FindAction("MainMenu", throwIfNotFound: true);
         m_PlayerMovement_Quit = m_PlayerMovement.FindAction("Quit", throwIfNotFound: true);
+        m_PlayerMovement_Aim = m_PlayerMovement.FindAction("Aim", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1102,6 +1134,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Controls;
     private readonly InputAction m_PlayerMovement_MainMenu;
     private readonly InputAction m_PlayerMovement_Quit;
+    private readonly InputAction m_PlayerMovement_Aim;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -1120,6 +1153,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Controls => m_Wrapper.m_PlayerMovement_Controls;
         public InputAction @MainMenu => m_Wrapper.m_PlayerMovement_MainMenu;
         public InputAction @Quit => m_Wrapper.m_PlayerMovement_Quit;
+        public InputAction @Aim => m_Wrapper.m_PlayerMovement_Aim;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1171,6 +1205,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Quit.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
                 @Quit.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
                 @Quit.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
+                @Aim.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -1217,6 +1254,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Quit.started += instance.OnQuit;
                 @Quit.performed += instance.OnQuit;
                 @Quit.canceled += instance.OnQuit;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
             }
         }
     }
@@ -1360,6 +1400,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnControls(InputAction.CallbackContext context);
         void OnMainMenu(InputAction.CallbackContext context);
         void OnQuit(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -54,6 +54,7 @@ namespace Player
             _animator = GetComponentInChildren<Animator>();
             _rigidbody = GetComponentInChildren<Rigidbody>();
             //_cameraTransform = GetComponentInChildren<Camera>().transform;
+            _smoothMoveVelocity = new Vector3(0.25f, 0.25f, 0.25f);
         }
 
         // Update is called once per frame
@@ -61,7 +62,8 @@ namespace Player
         {
             UpdateGroundedValue();
             ApplyMovement();
-            if (!isGrounded) Debug.Log("not Grounded");
+
+            //if (!isGrounded) Debug.Log("not Grounded");
         }
         private void FixedUpdate()
         {
@@ -88,7 +90,6 @@ namespace Player
             }
 
             var targetMoveAmount = _moveDirection * _walkSpeed;
-
             _moveAmount = Vector3.SmoothDamp(_moveAmount, targetMoveAmount, ref _smoothMoveVelocity, .15f);
 
 
