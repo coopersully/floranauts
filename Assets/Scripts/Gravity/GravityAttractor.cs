@@ -45,15 +45,27 @@ namespace Gravity
         {
             var localUp = body.transform.up;
 
-            // body.rotation = Quaternion.FromToRotation(localUp, gravityUp) * body.rotation;
 
             // Align body's up axis with the center of planet
             var startRotation = body.rotation;
             var endRotation = Quaternion.FromToRotation(localUp, _gravityUp) * body.rotation;
             if (_playerMovement.isGrounded && _playerMovement.isSprinting)
-                body.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * 10 * Time.deltaTime);
+                body.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * 10 * Time.fixedDeltaTime);
             else
-                body.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * Time.deltaTime);
+                body.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed *Time.fixedDeltaTime);
+        }
+        public void RotatePlayer(GameObject body)
+        {
+            var localUp = body.transform.up;
+
+
+            // Align body's up axis with the center of planet
+            var startRotation = body.transform.rotation;
+            var endRotation = Quaternion.FromToRotation(localUp, _gravityUp) * body.transform.rotation;
+            if (_playerMovement.isGrounded && _playerMovement.isSprinting)
+                body.transform.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * 10 * Time.fixedDeltaTime);
+            else
+                body.transform.rotation = Quaternion.Lerp(startRotation, endRotation, playerRotationSpeed * Time.fixedDeltaTime);
         }
 
         //gradually increases rotation speed for smoother transition between planets

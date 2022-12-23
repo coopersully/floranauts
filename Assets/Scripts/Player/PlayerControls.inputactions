@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Aim",
+                    "type": "Button",
+                    "id": "776aa1f2-db05-4ef8-935e-ae65c35f19f8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "SlowTap",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Join",
                     "type": "Button",
                     "id": "9fe85cd9-504e-4109-b5c5-942313b69d68",
@@ -126,15 +135,6 @@
                     "name": "Quit",
                     "type": "Button",
                     "id": "030f7e24-88f0-462e-899a-46378f6d7622",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Aim",
-                    "type": "Button",
-                    "id": "776aa1f2-db05-4ef8-935e-ae65c35f19f8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",

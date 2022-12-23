@@ -55,6 +55,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""776aa1f2-db05-4ef8-935e-ae65c35f19f8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""SlowTap"",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Join"",
                     ""type"": ""Button"",
                     ""id"": ""9fe85cd9-504e-4109-b5c5-942313b69d68"",
@@ -148,15 +157,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""Quit"",
                     ""type"": ""Button"",
                     ""id"": ""030f7e24-88f0-462e-899a-46378f6d7622"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Aim"",
-                    ""type"": ""Button"",
-                    ""id"": ""776aa1f2-db05-4ef8-935e-ae65c35f19f8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -1037,6 +1037,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_HorizontalMovement = m_PlayerMovement.FindAction("HorizontalMovement", throwIfNotFound: true);
         m_PlayerMovement_Jump = m_PlayerMovement.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMovement_Camera = m_PlayerMovement.FindAction("Camera", throwIfNotFound: true);
+        m_PlayerMovement_Aim = m_PlayerMovement.FindAction("Aim", throwIfNotFound: true);
         m_PlayerMovement_Join = m_PlayerMovement.FindAction("Join", throwIfNotFound: true);
         m_PlayerMovement_Pause = m_PlayerMovement.FindAction("Pause", throwIfNotFound: true);
         m_PlayerMovement_Capture = m_PlayerMovement.FindAction("Capture", throwIfNotFound: true);
@@ -1048,7 +1049,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Controls = m_PlayerMovement.FindAction("Controls", throwIfNotFound: true);
         m_PlayerMovement_MainMenu = m_PlayerMovement.FindAction("MainMenu", throwIfNotFound: true);
         m_PlayerMovement_Quit = m_PlayerMovement.FindAction("Quit", throwIfNotFound: true);
-        m_PlayerMovement_Aim = m_PlayerMovement.FindAction("Aim", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1123,6 +1123,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_HorizontalMovement;
     private readonly InputAction m_PlayerMovement_Jump;
     private readonly InputAction m_PlayerMovement_Camera;
+    private readonly InputAction m_PlayerMovement_Aim;
     private readonly InputAction m_PlayerMovement_Join;
     private readonly InputAction m_PlayerMovement_Pause;
     private readonly InputAction m_PlayerMovement_Capture;
@@ -1134,7 +1135,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Controls;
     private readonly InputAction m_PlayerMovement_MainMenu;
     private readonly InputAction m_PlayerMovement_Quit;
-    private readonly InputAction m_PlayerMovement_Aim;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -1142,6 +1142,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @HorizontalMovement => m_Wrapper.m_PlayerMovement_HorizontalMovement;
         public InputAction @Jump => m_Wrapper.m_PlayerMovement_Jump;
         public InputAction @Camera => m_Wrapper.m_PlayerMovement_Camera;
+        public InputAction @Aim => m_Wrapper.m_PlayerMovement_Aim;
         public InputAction @Join => m_Wrapper.m_PlayerMovement_Join;
         public InputAction @Pause => m_Wrapper.m_PlayerMovement_Pause;
         public InputAction @Capture => m_Wrapper.m_PlayerMovement_Capture;
@@ -1153,7 +1154,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Controls => m_Wrapper.m_PlayerMovement_Controls;
         public InputAction @MainMenu => m_Wrapper.m_PlayerMovement_MainMenu;
         public InputAction @Quit => m_Wrapper.m_PlayerMovement_Quit;
-        public InputAction @Aim => m_Wrapper.m_PlayerMovement_Aim;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1172,6 +1172,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Camera.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCamera;
                 @Camera.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCamera;
                 @Camera.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCamera;
+                @Aim.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
+                @Aim.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
+                @Aim.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
                 @Join.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJoin;
                 @Join.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJoin;
                 @Join.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnJoin;
@@ -1205,9 +1208,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Quit.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
                 @Quit.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
                 @Quit.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
-                @Aim.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
-                @Aim.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
-                @Aim.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAim;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -1221,6 +1221,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Camera.started += instance.OnCamera;
                 @Camera.performed += instance.OnCamera;
                 @Camera.canceled += instance.OnCamera;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
                 @Join.started += instance.OnJoin;
                 @Join.performed += instance.OnJoin;
                 @Join.canceled += instance.OnJoin;
@@ -1254,9 +1257,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Quit.started += instance.OnQuit;
                 @Quit.performed += instance.OnQuit;
                 @Quit.canceled += instance.OnQuit;
-                @Aim.started += instance.OnAim;
-                @Aim.performed += instance.OnAim;
-                @Aim.canceled += instance.OnAim;
             }
         }
     }
@@ -1389,6 +1389,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnHorizontalMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCamera(InputAction.CallbackContext context);
+        void OnAim(InputAction.CallbackContext context);
         void OnJoin(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnCapture(InputAction.CallbackContext context);
@@ -1400,7 +1401,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnControls(InputAction.CallbackContext context);
         void OnMainMenu(InputAction.CallbackContext context);
         void OnQuit(InputAction.CallbackContext context);
-        void OnAim(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

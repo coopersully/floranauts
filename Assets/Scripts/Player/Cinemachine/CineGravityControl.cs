@@ -7,12 +7,15 @@ namespace Gravity
 {
     public class CineGravityControl : MonoBehaviour
     {
+        [HideInInspector]
         public GravityAttractor _planet;
         private MoveCineMachine _playerMovement;
         private Rigidbody _rigidbody;
-        public GameObject followTarget;
+        
 
+        [HideInInspector]
         public GameObject[] allPlanets;
+        [HideInInspector]
         public GameObject currPlanet;
         private int randNum = 1;
 
@@ -34,12 +37,15 @@ namespace Gravity
             _rigidbody.useGravity = false;
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         }
+      
 
         private void FixedUpdate()
         {
             // Allow this body to be influenced by planet's gravity
             _planet.Attract(_rigidbody);
-            if (_shouldRotate) RotatePlayer();
+            if (_shouldRotate) _planet.RotatePlayer(this.gameObject);
+
+
 
         }
         private void OnTriggerStay(Collider other)
@@ -147,11 +153,7 @@ namespace Gravity
             NearestPlanet();
         }
 
-        public void RotatePlayer()
-        {
-            _planet.RotatePlayer(_rigidbody);
-
-        }
+        
 
 
 
