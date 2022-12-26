@@ -22,6 +22,7 @@ namespace Player
         private float normalOffset;
         private float aimOffset;
         private bool inAim = false;
+        private Vector3 damping;
         
         
 
@@ -39,6 +40,7 @@ namespace Player
             gravityControl = GetComponent<CineGravityControl>();
             framingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
             normalOffset = framingTransposer.m_CameraDistance;
+            damping = new Vector3(framingTransposer.m_XDamping, framingTransposer.m_YDamping, framingTransposer.m_ZDamping);
         }
         private void Update()
         {
@@ -64,18 +66,23 @@ namespace Player
             switch (context.phase)
             {
                 case InputActionPhase.Performed:
+                    framingTransposer.m_ZDamping = .5f;
                     framingTransposer.m_CameraDistance = Mathf.Lerp(normalOffset, aimOffset, Time.deltaTime);
                     inAim = false;
                     break;
                 case InputActionPhase.Started:
+                    framingTransposer.m_ZDamping = .5f;
                     framingTransposer.m_CameraDistance = Mathf.Lerp(aimOffset, normalOffset, Time.deltaTime);
                     inAim = true;
                     break;
                 case InputActionPhase.Canceled:
                     framingTransposer.m_CameraDistance = Mathf.Lerp(normalOffset, aimOffset, Time.deltaTime);
+                    framingTransposer.m_ZDamping = damping.z;
+
                     inAim = false;
                     break;
             }
+            //framingTransposer.m_ZDamping = damping.z;
            
         }
         
@@ -111,13 +118,13 @@ namespace Player
             {
                 followTarget.transform.rotation *= Quaternion.AngleAxis(Mathf.Lerp(0, rotateX, .5f), Vector3.right); //rotates camera around x axis (or player left/right)
             }
-            else if(xRotation > 50f && xRotation < 180f) //add negative rotation if camera rotation > 50
+            else if(xRotation > 50f && xRotation < 180f && rotateX <= 0 ) //only allow negative rotation if camera rotation > 50
             {
-                followTarget.transform.rotation *= Quaternion.AngleAxis(-0.25f * mouseSensitivityY, Vector3.right);
+                followTarget.transform.rotation *= Quaternion.AngleAxis(Mathf.Lerp(0, rotateX, .5f), Vector3.right); 
             }
-            else if(xRotation < 345f && xRotation > 180f) //add positive rotation if camera rotation < 345 (-15)
+            else if(xRotation < 345f && xRotation > 180f && rotateX >= 0) //only allow positive rotation if camera rotation < 345 (-15)
             {
-                followTarget.transform.rotation *= Quaternion.AngleAxis(0.25f * mouseSensitivityY, Vector3.right);
+                followTarget.transform.rotation *= Quaternion.AngleAxis(Mathf.Lerp(0, rotateX, .5f), Vector3.right); 
             }
 
             //Z Rotation aligns camera keep player from rotating in view

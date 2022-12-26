@@ -18,7 +18,8 @@ namespace Player
 
         private Vector3 _moveAmount;
         private Vector3 _smoothMoveVelocity;
-        private Vector3 _moveDirection;
+        [HideInInspector]
+        public Vector3 _moveDirection;
 
         private float _verticalLookRotation;
         private Transform _cameraTransform;
@@ -26,8 +27,10 @@ namespace Player
         public Vector2 _movementInput;
         public Vector2 _cameraInput;
 
-        private float _walkSpeed = 15f;
-        private const float JumpForce = 1200f;
+        [HideInInspector]
+        public float _walkSpeed = 15f;
+        [HideInInspector]
+        public float JumpForce = 1200f;
 
         public LayerMask groundMask;
         public Transform groundCheck;

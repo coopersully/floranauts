@@ -18,8 +18,8 @@ namespace BlackHole
         private void Awake()
         {
             // finds all objects with "respawn' tag and adds them to an array
-            teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
-            portal = GameObject.FindGameObjectWithTag("Portal");
+            //teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
+            //portal = GameObject.FindGameObjectWithTag("Portal");
             _randomInt = Random.Range(0, teleportPoints.Length);
             this.gameObject.transform.position = teleportPoints[_randomInt].transform.position;
             StartCoroutine(OpenPortal(_randomInt));
@@ -27,8 +27,9 @@ namespace BlackHole
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("BlackHole")) return;
-            //gravityControl.allPlanets = GameObject.FindGameObjectsWithTag("Planet");
             AudioManager.Instance.fx.BlackHole();
+            teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
+            portal = GameObject.FindGameObjectWithTag("Portal");
 
             // Teleports player to random teleport point
             _randomInt = Random.Range(0, teleportPoints.Length);
