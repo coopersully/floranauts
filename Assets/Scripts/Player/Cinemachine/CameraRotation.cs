@@ -38,6 +38,8 @@ namespace Player
         {
             playerMovement = GetComponent<MoveCineMachine>();
             gravityControl = GetComponent<CineGravityControl>();
+
+            //set aim variables
             framingTransposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
             normalOffset = framingTransposer.m_CameraDistance;
             damping = new Vector3(framingTransposer.m_XDamping, framingTransposer.m_YDamping, framingTransposer.m_ZDamping);

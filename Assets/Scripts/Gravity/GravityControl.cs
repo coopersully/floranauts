@@ -22,10 +22,10 @@ namespace Gravity
         private void Awake()
         {
             //creates array out of all the planets
-            //allPlanets = GameObject.FindGameObjectsWithTag("Planet");
+            allPlanets = GameObject.FindGameObjectsWithTag("Planet");
 
             //set first planet to random planet in the array
-            //RandomPlanet();
+            RandomPlanet();
            
             
             _playerMovement = GetComponentInChildren<PlayerMovement>();
@@ -39,7 +39,7 @@ namespace Gravity
         private void FixedUpdate()
         {
             // Allow this body to be influenced by planet's gravity
-             _planet.Attract(_rigidbody);
+            _planet.Attract(_rigidbody);
 
             if (_shouldRotate) _planet.RotatePlayer(_rigidbody);
         }
@@ -72,7 +72,7 @@ namespace Gravity
                 //resets gravity and has player attracted to random planet
                 _shouldRotate = true;
                 _planet.playerRotationSpeed = 10;
-                allPlanets = GameObject.FindGameObjectsWithTag("Planet");
+                //allPlanets = GameObject.FindGameObjectsWithTag("Planet");
                 RandomPlanet();
 
             }
@@ -104,7 +104,7 @@ namespace Gravity
 
             }
         }
-        private void RandomPlanet()
+        public void RandomPlanet()
         {
             //chooses random planet and attracts player to that
             randNum = Random.Range(0, allPlanets.Length);
