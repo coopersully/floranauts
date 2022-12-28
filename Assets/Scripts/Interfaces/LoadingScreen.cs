@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -23,9 +24,9 @@ namespace Interfaces
             StartCoroutine(LoadScene(buildIndex));
         }
         
-        public void Load(int buildIndex, List<GameObject> objects)
+        public void Load(int buildIndex, List<PlayerController> players, Action afterwards = null)
         {
-            StartCoroutine(LoadSceneAndCarryObjects(buildIndex, objects));
+            StartCoroutine(LoadSceneAndCarryPlayers(buildIndex, players, afterwards));
         }
 
         private void Awake()
@@ -43,20 +44,22 @@ namespace Interfaces
 
         private IEnumerator LoadScene(int buildIndex)
         {
-            return LoadSceneAndCarryObjects(buildIndex, null);
+            return LoadSceneAndCarryPlayers(buildIndex, null);
         }
         
-        private IEnumerator LoadSceneAndCarryObjects(int buildIndex, List<GameObject> objects)
+        private IEnumerator LoadSceneAndCarryPlayers(int buildIndex, List<PlayerController> players, Action afterwards = null)
         {
-            if (objects != null)
-            {
-                foreach (var givenObject in objects) givenObject.transform.SetParent(transform);
-            }
-            
             IsLoading = true;
             _animator.SetTrigger(StartTrigger);
-            
+
             yield return new WaitForSeconds(0.75f); 
+            
+            /* If players are being carried across scenes, make them
+             all children of the Loading Screen so that they become persistent objects. */
+            if (players != null)
+            {
+                foreach (var player in players) player.transform.SetParent(transform);
+            }
             
             /* Begin loading the new scene and hold
             the function until it is finished loading. */ 
@@ -68,14 +71,27 @@ namespace Interfaces
             
             _animator.SetTrigger(EndTrigger);
             
+            /* If players are being carried across scenes, make them no longer
+             all children of the Loading Screen and move them to the newly loaded scene. */
+            if (players != null)
+            {
+                var newScene = SceneManager.GetActiveScene();
+                foreach (var player in players)
+                {
+                    player.transform.SetParent(null);
+                    SceneManager.MoveGameObjectToScene(player.gameObject, newScene);
+                }
+            }
+            
             // Wait until animator is done for pausing to be allowed
             yield return new WaitForSeconds(1.0f); 
             IsLoading = false;
             
-            if (objects != null)
-            {
-                foreach (var givenObject in objects) givenObject.transform.SetParent(null);
-            }
+            // Complete 'afterwards' action
+            if (afterwards == null) yield break;
+            
+            Debug.Log("Scene loaded! Performing afterwards function... " + afterwards.Method);
+            afterwards();
         }
         
     }

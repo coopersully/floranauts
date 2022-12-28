@@ -12,8 +12,9 @@ namespace Interfaces
         
         public void Refresh()
         {
-            playerOneProgress.value = (float) PlayerManager.Instance.scoreboard.playerOne.score;
-            playerTwoProgress.value = (float) PlayerManager.Instance.scoreboard.playerTwo.score;
+            // TODO: Fix for player scores
+            //playerOneProgress.value = (float) PlayerManager.Instance.scoreboard.playerOne.score;
+            //playerTwoProgress.value = (float) PlayerManager.Instance.scoreboard.playerTwo.score;
         }
     }
 }

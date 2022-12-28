@@ -17,7 +17,7 @@ namespace Player
 
         private void Awake()
         {
-            _playerInput = GetComponent<PlayerInput>();
+            _playerInput = GetComponentInParent<PlayerInput>();
             primary = GetPrimary(_playerInput.playerIndex);
             secondary = GetSecondary(_playerInput.playerIndex);
             

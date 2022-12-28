@@ -285,7 +285,7 @@ namespace Player
             Debug.Log("jetpack");
             yield return new WaitForSeconds(.5f);
             _canJetPack = true;
-            _gravityControl.NearestPlanet();
+            _gravityControl.AttractToNearestPlanet();
         }
 
         private IEnumerator SwingAnimation()

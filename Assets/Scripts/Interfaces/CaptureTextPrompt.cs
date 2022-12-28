@@ -1,27 +1,29 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CaptureTextPrompt : MonoBehaviour
+namespace Interfaces
 {
-    private PlayerInput _playerInput;
-
-    public static string promptName;
-
-    //public TextMeshProUGUI BlueCaptureTextPrompt;
-    //public TextMeshProUGUI RedCaptureTextPrompt;
-
-    public void ShowPrompt()
+    public class CaptureTextPrompt : MonoBehaviour
     {
-        _playerInput = GetComponent<PlayerInput>();
+        private PlayerInput _playerInput;
 
-        if (_playerInput.playerIndex == 0)
+        public static string promptName;
+
+        //public TextMeshProUGUI BlueCaptureTextPrompt;
+        //public TextMeshProUGUI RedCaptureTextPrompt;
+
+        public void ShowPrompt()
         {
-            promptName = "BlueCaptureTextPrompt";
-        }
-        else
-        {
-            promptName = "RedCaptureTextPrompt";
+            _playerInput = GetComponentInParent<PlayerInput>();
+
+            if (_playerInput.playerIndex == 0)
+            {
+                promptName = "BlueCaptureTextPrompt";
+            }
+            else
+            {
+                promptName = "RedCaptureTextPrompt";
+            }
         }
     }
 }

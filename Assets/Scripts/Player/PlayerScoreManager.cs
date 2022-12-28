@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Player
 {
@@ -11,10 +13,9 @@ namespace Player
         public int maxScore = 100;
         public bool maxScoreAchieved;
         public float incrementTime = 3.0f;
-        
+
         [Header("Players")]
-        public PlayerCapture playerOne;
-        public PlayerCapture playerTwo;
+        public List<PlayerCapture> players;
 
         [Header("Interfaces")]
         public ScoreManager scoreManager;
@@ -25,6 +26,17 @@ namespace Player
             StartCoroutine(IncrementScores());
         }
 
+        public void RegisterPlayerScoreboard(PlayerInput playerInput)
+        {
+            var playerCapture = playerInput.gameObject.GetComponentInChildren<PlayerCapture>(true);
+            if (playerCapture == null)
+            {
+                Debug.Log(playerInput.gameObject.name + " did not have a PlayerCapture component.");
+                return;
+            }
+            players.Add(playerCapture);
+        }
+
         private IEnumerator IncrementScores()
         {
             while (!maxScoreAchieved)
@@ -32,11 +44,11 @@ namespace Player
                 Debug.Log("Incrementing player scores...");
 
                 // Tell each player to increment their scores
-                playerOne.IncrementScore();
-                playerTwo.IncrementScore();
+                foreach (var player in players) player.IncrementScore();
 
                 // Update visual UI elements
-                scoreManager.Refresh();
+                Debug.Log("ScoreManager not refreshed; check TO-DO");
+                //scoreManager.Refresh();
                 
                 // Wait for allotted time before re-looping
                 yield return new WaitForSeconds(incrementTime);

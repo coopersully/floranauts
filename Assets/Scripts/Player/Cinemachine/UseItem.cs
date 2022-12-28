@@ -1,20 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using System;
-using UnityEngine;
-using UnityEngine.InputSystem;
+using System.Collections;
 using Audio;
 using Gravity;
 using Interfaces;
 using Planets;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
-namespace Player
+namespace Player.Cinemachine
 {
     public class UseItem : MonoBehaviour
     {
         private Animator _animator;
         private GravityControl _gravityControl;
-        private MoveCineMachine playerMovement;
+        private MoveCineMachine _playerMovement;
         private Rigidbody _rigidbody;
 
         [Header("Items")]
@@ -69,7 +68,6 @@ namespace Player
         [HideInInspector]
         public bool inKnockBack;
         private const float KnockBackTime = .75f;
-        private float _knockBackCounter;
 
         private static readonly int IsGrounded = Animator.StringToHash("isGrounded");
         private static readonly int Jump = Animator.StringToHash("Jump");
@@ -87,7 +85,7 @@ namespace Player
 
             // Initialize components
             _animator = GetComponentInChildren<Animator>();
-            playerMovement = GetComponent<MoveCineMachine>();
+            _playerMovement = GetComponent<MoveCineMachine>();
             _rigidbody = GetComponentInChildren<Rigidbody>();
 
             _canPlayLandParticles = true;
@@ -157,19 +155,19 @@ namespace Player
             AudioManager.Instance.fx.JetPack();
             jetParticles.Play(); // Needs edits based on hold
 
-            _animator.SetBool(IsGrounded, playerMovement.isGrounded);
-            _rigidbody.AddForce(transform.up * (playerMovement.JumpForce));
-            if (playerMovement._movementInput.y > 0)
-                _rigidbody.AddForce(transform.forward * (playerMovement.JumpForce * 2f));
-            else if (playerMovement._movementInput.y < 0)
-                _rigidbody.AddForce(transform.forward * (playerMovement.JumpForce * -2f)); // if moving backward apply force backward
+            _animator.SetBool(IsGrounded, _playerMovement.isGrounded);
+            _rigidbody.AddForce(transform.up * (_playerMovement.JumpForce));
+            if (_playerMovement._movementInput.y > 0)
+                _rigidbody.AddForce(transform.forward * (_playerMovement.JumpForce * 2f));
+            else if (_playerMovement._movementInput.y < 0)
+                _rigidbody.AddForce(transform.forward * (_playerMovement.JumpForce * -2f)); // if moving backward apply force backward
 
 
             _animator.SetTrigger(Falling); // Transitions walking animation to falling without having to go through Jump
             Debug.Log("jetpack");
             yield return new WaitForSeconds(.5f);
             _canJetPack = true;
-            _gravityControl.NearestPlanet();
+            _gravityControl.AttractToNearestPlanet();
         }
 
         private IEnumerator SwingAnimation()
@@ -199,9 +197,9 @@ namespace Player
             AudioManager.Instance.fx.EnergyDrink();
             speedTrail.Play();
             isSprinting = true;
-            playerMovement._walkSpeed *= speedMultiplier;
+            _playerMovement._walkSpeed *= speedMultiplier;
             yield return new WaitForSeconds(20f);
-            playerMovement._walkSpeed /= speedMultiplier;
+            _playerMovement._walkSpeed /= speedMultiplier;
             speedTrail.Stop();
 
             yield return new WaitForSeconds(10f);
@@ -212,9 +210,8 @@ namespace Player
         private void ApplyKnockBack(Vector3 direction, float force)
         {
             // Takes in Vector3 direction value, applies force
-            _knockBackCounter = KnockBackTime;
-            playerMovement._moveDirection = direction * force;
-            playerMovement._moveDirection.y = 2f;
+            _playerMovement._moveDirection = direction * force;
+            _playerMovement._moveDirection.y = 2f;
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -292,16 +289,16 @@ namespace Player
         {
             //slows down player for alloted time
             if (!isSprinting)
-                playerMovement._walkSpeed = 3f;
+                _playerMovement._walkSpeed = 3f;
             else
-                playerMovement._walkSpeed = 3f * speedMultiplier;
+                _playerMovement._walkSpeed = 3f * speedMultiplier;
             frozenParticles.Play();
 
             yield return new WaitForSeconds(freezeTime);
             if (!isSprinting)
-                playerMovement._walkSpeed = 15f;
+                _playerMovement._walkSpeed = 15f;
             else
-                playerMovement._walkSpeed = 15f * speedMultiplier;
+                _playerMovement._walkSpeed = 15f * speedMultiplier;
             frozenParticles.Stop();
 
         }

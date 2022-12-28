@@ -119,7 +119,7 @@ namespace Interfaces
             playerInput.gameObject.name = "Player " + playerIndexDeco;
 
             // Register player in game session
-            PlayerManager.Instance.AddPlayer(playerInput);
+            PlayerManager.Instance.RegisterPlayer(playerInput);
             
             // Play "join" audio cue & update interface elements
             AudioManager.Instance.ui.Select03();
@@ -139,8 +139,12 @@ namespace Interfaces
         {
             _maxPlayers = PlayerInputManager.instance.maxPlayerCount;
             _players = PlayerInputManager.instance.playerCount;
-            
-            captainName.SetText(PlayerManager.Instance.playerOne.name);
+
+            var captain = PlayerManager.Instance.players[0];
+            if (captain != null)
+            {
+                captainName.SetText(captain.name);
+            }
             numOccupants.SetText(_players + "/" + _maxPlayers);
         }
 
@@ -187,7 +191,12 @@ namespace Interfaces
             PlayerManager.Instance.scoreboard.RestartScoreTicking();
             
             // Switch to game scene
-            PlayerManager.Instance.CarryPlayersToScene(2);
+            PlayerManager.Instance.CarryPlayersToScene(2, CheaplyEnableAllPlayers);
+        }
+
+        private static void CheaplyEnableAllPlayers()
+        {
+            PlayerManager.Instance.SetAllPlayerBodiesActive(true);
         }
 
         public void LeaveLobby()

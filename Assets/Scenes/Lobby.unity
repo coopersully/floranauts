@@ -1920,7 +1920,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -5276206175033565737, guid: 92e59cfe79e2992428a575ed1e364811,
       type: 3}
-  m_PlayerPrefab: {fileID: 6998766515489882797, guid: bf8816164f7ca83478ce55adfac0d6ab,
+  m_PlayerPrefab: {fileID: 4293579415496860708, guid: f5febaeb5935d714eb5eae68d1e07f10,
     type: 3}
   m_SplitScreen: 1
   m_MaintainAspectRatioInSplitScreen: 0

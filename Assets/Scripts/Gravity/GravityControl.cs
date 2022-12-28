@@ -1,7 +1,9 @@
+using System;
 using Player;
 using UnityEngine;
 using UnityEngine.LowLevel;
 using System.Collections;
+using Random = UnityEngine.Random;
 
 
 namespace Gravity
@@ -15,19 +17,13 @@ namespace Gravity
 
         public GameObject[] allPlanets;
         public GameObject currPlanet;
-        private int randNum = 1;
+        private int _randNum = 1;
 
         private bool _shouldRotate = true;
         
         private void Awake()
         {
-            //creates array out of all the planets
-            allPlanets = GameObject.FindGameObjectsWithTag("Planet");
-
-            //set first planet to random planet in the array
-            RandomPlanet();
-           
-            
+            // Initialize Components
             _playerMovement = GetComponentInChildren<PlayerMovement>();
             _rigidbody = GetComponentInChildren<Rigidbody>();
 
@@ -35,7 +31,16 @@ namespace Gravity
             _rigidbody.useGravity = false;
             _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         }
-    
+
+        private void OnEnable()
+        {
+            // Creates array out of all the planets
+            allPlanets = GameObject.FindGameObjectsWithTag("Planet");
+
+            // Set first planet to random planet in the array
+            AttractToRandomPlanet();
+        }
+
         private void FixedUpdate()
         {
             // Allow this body to be influenced by planet's gravity
@@ -43,6 +48,7 @@ namespace Gravity
 
             if (_shouldRotate) _planet.RotatePlayer(_rigidbody);
         }
+        
         private void OnTriggerEnter(Collider other)
         {
             /* While player is in the air, if hits trigger
@@ -73,7 +79,7 @@ namespace Gravity
                 _shouldRotate = true;
                 _planet.playerRotationSpeed = 10;
                 //allPlanets = GameObject.FindGameObjectsWithTag("Planet");
-                RandomPlanet();
+                AttractToRandomPlanet();
 
             }
 
@@ -104,40 +110,42 @@ namespace Gravity
 
             }
         }
-        public void RandomPlanet()
+
+        private void AttractToRandomPlanet()
         {
-            //chooses random planet and attracts player to that
-            randNum = Random.Range(0, allPlanets.Length);
-            _planet = allPlanets[randNum].GetComponent<GravityAttractor>();
+            // Chooses random planet and attracts player to that
+            _randNum = Random.Range(0, allPlanets.Length);
+            _planet = allPlanets[_randNum].GetComponent<GravityAttractor>();
         }
-        public void NearestPlanet()
+        
+        public void AttractToNearestPlanet()
         {
-            //Finds closest planet to player and attracts player
+            // Finds closest planet to player and attracts player
             var closestPlanet = allPlanets[0];
             var distance = Vector3.Distance(transform.position, allPlanets[0].transform.position);
 
-            //goes through array and if the next planet in array is closer, sets that to closest planet
-            for (int i = 0; i < allPlanets.Length; i++)
+            // Goes through array and if the next planet in array is closer, sets that to closest planet
+            foreach (var planet in allPlanets)
             {
-                var tempDistance = Vector3.Distance(transform.position, allPlanets[i].transform.position);
-                if (tempDistance < distance && allPlanets[i] != currPlanet) //sets closest planet but excludes current planet
-                {
-                    closestPlanet = allPlanets[i];
-                    distance = tempDistance;
-                }
-      
+                var tempDistance = Vector3.Distance(transform.position, planet.transform.position);
+                
+                // Sets closest planet but excludes current planet
+                if (!(tempDistance < distance) || planet == currPlanet) continue;
+
+                closestPlanet = planet;
+                distance = tempDistance;
             }
 
             _planet = closestPlanet.GetComponent<GravityAttractor>();
 
-            //need to find a way to exclude the planet player was just on
+            // TODO: Need to find a way to exclude the planet player was just on
         }
         private IEnumerator KnockBackTimer()
         {
-            //makes sure player is attracted to planet nearest him when he is done with knockback
-            NearestPlanet();
+            // Makes sure player is attracted to planet nearest him when he is done with knockback
+            AttractToNearestPlanet();
             yield return new WaitForSeconds(.75f);
-            NearestPlanet();
+            AttractToNearestPlanet();
         }
 
 

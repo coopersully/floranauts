@@ -39,8 +39,9 @@ namespace Interfaces
             PauseManager.Instance.restrictions.Add(gameObject);
 
             // Set sliders to their scores
-            playerOneScore.SetValueWithoutNotify( (float) PlayerManager.Instance.scoreboard.playerOne.score );
-            playerTwoScore.SetValueWithoutNotify( (float) PlayerManager.Instance.scoreboard.playerTwo.score );
+            // TODO: Fix for multiplayer
+            //playerOneScore.SetValueWithoutNotify( (float) PlayerManager.Instance.scoreboard.playerOne.score );
+            //playerTwoScore.SetValueWithoutNotify( (float) PlayerManager.Instance.scoreboard.playerTwo.score );
             
             // Determine winner banner reveal
             switch (winnerIndex)

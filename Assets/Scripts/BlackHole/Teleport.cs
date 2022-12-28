@@ -7,45 +7,44 @@ namespace BlackHole
 {
     public class Teleport : MonoBehaviour
     {
-        private GravityControl gravityControl;
-        private GameObject portal;
-        [HideInInspector]
-        public GameObject[] teleportPoints;
-        [HideInInspector]
-        public int _randomInt = 1;
+        private GravityControl _gravityControl;
+        private GameObject _portal;
+        [HideInInspector] public GameObject[] teleportPoints;
+        [HideInInspector] public int randomPointIndex;
 
 
         private void Awake()
         {
-            // finds all objects with "respawn' tag and adds them to an array
-            //teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
-            //portal = GameObject.FindGameObjectWithTag("Portal");
-            _randomInt = Random.Range(0, teleportPoints.Length);
-            this.gameObject.transform.position = teleportPoints[_randomInt].transform.position;
-            StartCoroutine(OpenPortal(_randomInt));
+            // Finds all objects with "respawn' tag and adds them to an array
+            
+            teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
+            _portal = GameObject.FindGameObjectWithTag("Portal");
+            
+            randomPointIndex = Random.Range(0, teleportPoints.Length);
+            gameObject.transform.position = teleportPoints[randomPointIndex].transform.position;
+            StartCoroutine(OpenPortal(randomPointIndex));
         }
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("BlackHole")) return;
             AudioManager.Instance.fx.BlackHole();
             teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
-            portal = GameObject.FindGameObjectWithTag("Portal");
+            _portal = GameObject.FindGameObjectWithTag("Portal");
 
             // Teleports player to random teleport point
-            _randomInt = Random.Range(0, teleportPoints.Length);
-            this.gameObject.transform.position = teleportPoints[_randomInt].transform.position;
-            StartCoroutine(OpenPortal(_randomInt));
+            randomPointIndex = Random.Range(0, teleportPoints.Length);
+            this.gameObject.transform.position = teleportPoints[randomPointIndex].transform.position;
+            StartCoroutine(OpenPortal(randomPointIndex));
         }
-       
 
-        public IEnumerator OpenPortal(int num)
+
+        private IEnumerator OpenPortal(int num)
         {
-            
-            portal.SetActive(true);
-            portal.transform.position = teleportPoints[num].transform.position;
+            _portal.SetActive(true);
+            _portal.transform.position = teleportPoints[num].transform.position;
 
             yield return new WaitForSeconds(3f);
-            portal.SetActive(false);
+            _portal.SetActive(false);
         }
     }
 }

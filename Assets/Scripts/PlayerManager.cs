@@ -10,9 +10,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance;
 
     [Header("Players")]
-    public List<GameObject> players;
-    public GameObject playerOne;
-    public GameObject playerTwo;
+    public List<PlayerController> players;
 
     [Header("Scoring System")]
     public PlayerScoreManager scoreboard;
@@ -22,28 +20,23 @@ public class PlayerManager : MonoBehaviour
         if (Instance == null) Instance = this;
     }
 
-    public void AddPlayer(PlayerInput playerInput)
+    public void RegisterPlayer(PlayerInput playerInput)
     {
         var playerObject = playerInput.gameObject;
+        var controller = playerObject.GetComponent<PlayerController>();
+        controller.SetBodyActive(false);
 
-        players.Add(playerObject);
-        switch (playerInput.playerIndex)
-        {
-            case 0:
-                playerOne = playerObject;
-                scoreboard.playerOne = playerOne.GetComponent<PlayerCapture>();
-                break;
-            case 1:
-                playerTwo = playerObject;
-                scoreboard.playerTwo = playerTwo.GetComponent<PlayerCapture>();
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+        players.Add(controller);
+        scoreboard.RegisterPlayerScoreboard(playerInput);
     }
 
-    public void CarryPlayersToScene(int buildIndex)
+    public void CarryPlayersToScene(int buildIndex, Action afterwards = null)
     {
-        LoadingScreen.Instance.Load(buildIndex, players);
+        LoadingScreen.Instance.Load(buildIndex, players, afterwards);
+    }
+
+    public void SetAllPlayerBodiesActive(bool exists)
+    {
+        foreach (var player in players) player.SetBodyActive(exists);
     }
 }

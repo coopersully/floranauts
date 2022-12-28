@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Audio;
 using Player;
 using UnityEngine;
@@ -59,8 +58,10 @@ namespace Planets
             }
         
             // Set the player's UI element to display current health
-           PlayerManager.Instance.scoreboard.playerOne.RefreshInterfaceElements();
-           PlayerManager.Instance.scoreboard.playerTwo.RefreshInterfaceElements();
+            foreach (var player in PlayerManager.Instance.scoreboard.players)
+            {
+                player.RefreshInterfaceElements();
+            }
         }
 
         private void Capture(PlayerCapture playerCapture)
@@ -92,8 +93,10 @@ namespace Planets
             owner = null;
             
             // Refresh everyone's action bars
-            PlayerManager.Instance.scoreboard.playerOne.RefreshInterfaceElements();
-            PlayerManager.Instance.scoreboard.playerTwo.RefreshInterfaceElements();
+            foreach (var player in PlayerManager.Instance.scoreboard.players)
+            {
+                player.RefreshInterfaceElements();
+            }
         }
 
     
@@ -118,8 +121,10 @@ namespace Planets
             owner = playerCapture;
         
             // Refresh everyone's action bars
-            PlayerManager.Instance.scoreboard.playerOne.RefreshInterfaceElements();
-            PlayerManager.Instance.scoreboard.playerTwo.RefreshInterfaceElements();
+            foreach (var player in PlayerManager.Instance.scoreboard.players)
+            {
+                player.RefreshInterfaceElements();
+            }
         }
 
         private void SetTreeVisibility(bool isVisible)
