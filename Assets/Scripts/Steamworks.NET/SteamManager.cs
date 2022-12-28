@@ -11,10 +11,8 @@
 
 using UnityEngine;
 
-//
-// The SteamManager provides a base implementation of Steamworks.NET on which you can build upon.
-// It handles the basics of starting up and shutting down the SteamAPI for use.
-//
+// The SteamManager provides a base implementation of Steamworks.NET on which you can
+// build upon. It handles the basics of starting up and shutting down the SteamAPI for use.
 namespace Steamworks.NET
 {
 	[DisallowMultipleComponent]
@@ -74,7 +72,7 @@ namespace Steamworks.NET
 			DontDestroyOnLoad(gameObject);
 
 			if (!Packsize.Test()) {
-				Debug.LogError("[Steamworks.NET] Packsize Test returned false, the wrong version of Steamworks.NET is being run in this platform.", this);
+				Debug.LogError("[Steamworks.NET] Pack-size Test returned false, the wrong version of Steamworks.NET is being run in this platform.", this);
 			}
 
 			if (!DllCheck.Test()) {
@@ -139,7 +137,7 @@ namespace Steamworks.NET
 
 		// OnApplicationQuit gets called too early to shutdown the SteamAPI.
 		// Because the SteamManager should be persistent and never disabled or destroyed we can shutdown the SteamAPI here.
-		// Thus it is not recommended to perform any Steamworks work in other OnDestroy functions as the order of execution can not be garenteed upon Shutdown. Prefer OnDisable().
+		// Thus it is not recommended to perform any Steamworks work in other OnDestroy functions as the order of execution can not be guaranteed upon Shutdown. Prefer OnDisable().
 		protected virtual void OnDestroy() {
 			if (SInstance != this) {
 				return;
