@@ -25,7 +25,6 @@ public class PersistentObject : MonoBehaviour
             PersistentObjects.Add(gameObject.name, this);
             DontDestroyOnLoad(gameObject);
         }
-
     }
     
     private static void OnActiveSceneChanged(Scene current, Scene next)

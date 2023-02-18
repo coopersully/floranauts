@@ -4445,8 +4445,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  playerOne: {fileID: 0}
-  playerTwo: {fileID: 0}
+  player01:
+    serializedVersion: 2
+    m_Bits: 512
+  player02:
+    serializedVersion: 2
+    m_Bits: 1024
+  player03:
+    serializedVersion: 2
+    m_Bits: 2048
+  player04:
+    serializedVersion: 2
+    m_Bits: 4096
   scoreboard: {fileID: 1620641729}
 --- !u!114 &1620641729
 MonoBehaviour:
@@ -4463,8 +4473,7 @@ MonoBehaviour:
   maxScore: 100
   maxScoreAchieved: 0
   incrementTime: 1
-  playerOne: {fileID: 0}
-  playerTwo: {fileID: 0}
+  players: []
   scoreManager: {fileID: 0}
 --- !u!114 &1620641730
 MonoBehaviour:
