@@ -68,6 +68,7 @@
     <Compile Include="Assets\Packages\KawaseBlur\KawaseBlur.cs" />
     <Compile Include="Assets\Scripts\BlackHole\DestroyPortal.cs" />
     <Compile Include="Assets\Scripts\Planets\Planet.cs" />
+    <Compile Include="Assets\Scripts\Gravity\OldGravityControl\GravityControl.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerActionBar.cs" />
     <Compile Include="Assets\Scripts\Interfaces\GameOver.cs" />
     <Compile Include="Assets\Scripts\Items\RocketLauncher\RocketProjectile.cs" />
@@ -75,7 +76,8 @@
     <Compile Include="Assets\Scripts\Steamworks.NET\SteamManager.cs" />
     <Compile Include="Assets\Scripts\CaptureImage\CaptureImageManager.cs" />
     <Compile Include="Assets\Scripts\PlayerManager.cs" />
-    <Compile Include="Assets\Scripts\Player\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Player\OldCamera\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Player\Cinemachine\CineGravityControl.cs" />
     <Compile Include="Assets\Scripts\Items\RocketLauncher\DestroyExplosion.cs" />
     <Compile Include="Assets\Scripts\Interfaces\LoadingScreen.cs" />
     <Compile Include="Assets\Scripts\Items\ExampleItem.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Assets\Scripts\Interfaces\RotateSlow.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerItems.cs" />
     <Compile Include="Assets\Scripts\Interfaces\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Gravity\GravityAttractor.cs" />
     <Compile Include="Assets\Scripts\Items\InventoryItem.cs" />
     <Compile Include="Assets\Scripts\Planets\EmissionIncrement.cs" />
     <Compile Include="Assets\Scripts\Player\Cinemachine\UseItem.cs" />
@@ -109,9 +112,6 @@
     <Compile Include="Assets\Scripts\Items\IceSculptures\IceDestroy.cs" />
     <Compile Include="Assets\Scripts\PersistentObject.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerColor.cs" />
-    <Compile Include="Assets\Scripts\Player\Cinemachine\CineGravityControl.cs" />
-    <Compile Include="Assets\Scripts\Gravity\GravityControl.cs" />
-    <Compile Include="Assets\Scripts\Gravity\GravityAttractor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\DesignElements\TextMesh Pro\Shaders\TMPro.cginc" />

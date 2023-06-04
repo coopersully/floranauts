@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 5956695654535449607}
   - component: {fileID: 9002765611565126482}
   - component: {fileID: 6343887518347484275}
+  - component: {fileID: 8587936860204907822}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Planet
@@ -171,6 +172,22 @@ MonoBehaviour:
   planetGravity: 1
   targetRotation: {x: 0, y: 0, z: 0, w: 0}
   playerRotationSpeed: 0
+--- !u!114 &8587936860204907822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127444027451677913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc73d8b5c8c44459382cb112d3ae9f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unclaimedColor: {r: 0, g: 0, b: 0, a: 1}
+  canvasPrimaries:
+  - {fileID: 2610453756117400496}
+  canvasAccents: []
 --- !u!1 &2610453756117400496
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +199,6 @@ GameObject:
   - component: {fileID: 6835432805607800742}
   - component: {fileID: 4127462730632134560}
   - component: {fileID: 607973547534475029}
-  - component: {fileID: 6921204124967236685}
   - component: {fileID: 6790788021121233226}
   m_Layer: 3
   m_Name: PlanetMesh
@@ -256,21 +272,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6921204124967236685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2610453756117400496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dc73d8b5c8c44459382cb112d3ae9f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unclaimedColor: {r: 147, g: 147, b: 147, a: 1}
-  canvasPrimaries: []
-  canvasAccents: []
 --- !u!135 &6790788021121233226
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -397,7 +398,7 @@ PrefabInstance:
         type: 3}
       propertyPath: planet
       value: 
-      objectReference: {fileID: 6921204124967236685}
+      objectReference: {fileID: 8587936860204907822}
     - target: {fileID: 1876773630474222268, guid: 433c18d3307ed854ea635c7195bddce3,
         type: 3}
       propertyPath: m_RootOrder
@@ -426,7 +427,7 @@ PrefabInstance:
     - target: {fileID: 1876773630474222268, guid: 433c18d3307ed854ea635c7195bddce3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.99
+      value: 8.38
       objectReference: {fileID: 0}
     - target: {fileID: 1876773630474222268, guid: 433c18d3307ed854ea635c7195bddce3,
         type: 3}
