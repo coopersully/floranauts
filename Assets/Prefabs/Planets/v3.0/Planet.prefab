@@ -107,9 +107,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5956695654535449607}
   - component: {fileID: 9002765611565126482}
+  - component: {fileID: 4733605663042989366}
   m_Layer: 0
   m_Name: Planet
-  m_TagString: Untagged
+  m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,6 +156,21 @@ MonoBehaviour:
   waterMat: {fileID: 2100000, guid: 7d19e90b90344df448cf5364eddb52b5, type: 2}
   planetMesh: {fileID: 2610453756117400496}
   planetMat: 2
+--- !u!114 &4733605663042989366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127444027451677913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c8c4479fcf18ea43a05abbaa7da974e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetGravity: 1
+  targetRotation: {x: 0, y: 0, z: 0, w: 0}
+  playerRotationSpeed: 0
 --- !u!1 &2610453756117400496
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,10 +182,9 @@ GameObject:
   - component: {fileID: 6835432805607800742}
   - component: {fileID: 4127462730632134560}
   - component: {fileID: 607973547534475029}
-  - component: {fileID: 3171218076718469791}
   - component: {fileID: 6921204124967236685}
   - component: {fileID: 6790788021121233226}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PlanetMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,21 +256,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3171218076718469791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2610453756117400496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c8c4479fcf18ea43a05abbaa7da974e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planetGravity: 1
-  targetRotation: {x: 0, y: 0, z: 0, w: 0}
-  playerRotationSpeed: 0
 --- !u!114 &6921204124967236685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,8 +268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc73d8b5c8c44459382cb112d3ae9f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unclaimedColor: {r: 147, g: 147, b: 147, a: 1}
-  canvasPrimaries: []
+  unclaimedColor: {r: 0.7735849, g: 0.21529014, b: 0.21529014, a: 1}
+  canvasPrimaries:
+  - {fileID: 0}
   canvasAccents: []
 --- !u!135 &6790788021121233226
 SphereCollider:
@@ -312,7 +313,7 @@ Transform:
   m_GameObject: {fileID: 3052751888494211477}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9, y: 9, z: 9}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5956695654535449607}
@@ -388,11 +389,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5956695654535449607}
     m_Modifications:
+    - target: {fileID: 342735121696442421, guid: 433c18d3307ed854ea635c7195bddce3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 861538502219663678, guid: 433c18d3307ed854ea635c7195bddce3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1243119945194938374, guid: 433c18d3307ed854ea635c7195bddce3,
         type: 3}
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
+    - target: {fileID: 1243119945194938374, guid: 433c18d3307ed854ea635c7195bddce3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243119945194938375, guid: 433c18d3307ed854ea635c7195bddce3,
+        type: 3}
+      propertyPath: planet
+      value: 
+      objectReference: {fileID: 6921204124967236685}
     - target: {fileID: 1876773630474222268, guid: 433c18d3307ed854ea635c7195bddce3,
         type: 3}
       propertyPath: m_RootOrder
@@ -461,6 +482,21 @@ PrefabInstance:
     - target: {fileID: 1876773630474222268, guid: 433c18d3307ed854ea635c7195bddce3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3392010448565645018, guid: 433c18d3307ed854ea635c7195bddce3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8846651257626550981, guid: 433c18d3307ed854ea635c7195bddce3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9034257621261552797, guid: 433c18d3307ed854ea635c7195bddce3,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

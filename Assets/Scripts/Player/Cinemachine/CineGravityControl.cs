@@ -9,6 +9,8 @@ namespace Gravity
     {
         [HideInInspector]
         public GravityAttractor _planet;
+        public GravityAttractor _targetPlanet;
+        public bool planetInSight = false;
         private MoveCineMachine _playerMovement;
         private Rigidbody _rigidbody;
         
@@ -17,6 +19,7 @@ namespace Gravity
         public GameObject[] allPlanets;
         [HideInInspector]
         public GameObject currPlanet;
+        public GameObject nextPlanet;
         private int randNum = 1;
 
         private bool _shouldRotate = true;
@@ -58,24 +61,24 @@ namespace Gravity
         }
         private void OnTriggerEnter(Collider other)
         {
-            /* While player is in the air, if hits trigger
-             for other planet, gravity switches and player
-             slowly rotates. */
+            /* as player gets close to current planet, the rotation kicks in */
+            
             if (!_playerMovement.isGrounded && other.CompareTag("Gravity"))
             {
-                _planet = other.GetComponentInParent<GravityAttractor>();
-                _planet.playerRotationSpeed = 3;
-
-                _shouldRotate = true;
-
-                currPlanet = other.transform.parent.gameObject;
+                if(other.transform.parent.gameObject == currPlanet)
+                {
+                    _planet.playerRotationSpeed = 3;
+                    _shouldRotate = true;
+                }
             }
-
+            
+            
             /* When Player hits trigger closer to the planet,
              the rotation speed increases, snapping him upright
              in relation to planet. */
             if (other.CompareTag("InnerGravity"))
             {
+                _targetPlanet = other.GetComponentInParent<GravityAttractor>();
                 _shouldRotate = true;
                 _planet.playerRotationSpeed = 10;
             }
@@ -87,14 +90,12 @@ namespace Gravity
                 _planet.playerRotationSpeed = 10;
                 allPlanets = GameObject.FindGameObjectsWithTag("Planet");
                 RandomPlanet();
-
             }
 
             if (other.CompareTag("KnockBack"))
             {
                 _shouldRotate = false;
                 StartCoroutine(KnockBackTimer());
-
             }
         }
 
@@ -114,6 +115,7 @@ namespace Gravity
             if (other.CompareTag("InnerGravity"))
             {
                 _shouldRotate = false;
+                ChangeGravity();
 
             }
         }
@@ -122,8 +124,9 @@ namespace Gravity
             //chooses random planet and attracts player to that
             randNum = Random.Range(0, allPlanets.Length);
             _planet = allPlanets[randNum].GetComponent<GravityAttractor>();
+            _targetPlanet = allPlanets[randNum + 1].GetComponent<GravityAttractor>();
         }
-        public void NearestPlanet()
+        public GravityAttractor NearestPlanet()
         {
             //Finds closest planet to player and attracts player
             var closestPlanet = allPlanets[0];
@@ -141,21 +144,23 @@ namespace Gravity
 
             }
 
-            _planet = closestPlanet.GetComponent<GravityAttractor>();
+            return closestPlanet.GetComponent<GravityAttractor>();
 
             //need to find a way to exclude the planet player was just on
         }
         private IEnumerator KnockBackTimer()
         {
             //makes sure player is attracted to planet nearest him when he is done with knockback
-            NearestPlanet();
+            _planet = NearestPlanet();
             yield return new WaitForSeconds(.75f);
-            NearestPlanet();
+            _planet = NearestPlanet();
         }
 
-        
+        public void ChangeGravity()
+        {
+            _planet = _targetPlanet;
 
-
+        }
 
     }
 }
