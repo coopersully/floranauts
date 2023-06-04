@@ -66,7 +66,7 @@ namespace Player
             UpdateGroundedValue();
             ApplyMovement();
 
-            if (!isGrounded) Debug.Log("not Grounded");
+            //if (!isGrounded) Debug.Log("not Grounded");
         }
         private void FixedUpdate()
         {
