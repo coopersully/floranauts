@@ -9,6 +9,8 @@ namespace Gravity
     {
         [HideInInspector]
         public GravityAttractor _planet;
+        [HideInInspector]
+        public GravityAttractor _targetPlanet;
         private MoveCineMachine _playerMovement;
         private Rigidbody _rigidbody;
         
@@ -17,6 +19,8 @@ namespace Gravity
         public GameObject[] allPlanets;
         [HideInInspector]
         public GameObject currPlanet;
+        [HideInInspector]
+        public GameObject nextPlanet;
         private int randNum = 1;
 
         private bool _shouldRotate = true;

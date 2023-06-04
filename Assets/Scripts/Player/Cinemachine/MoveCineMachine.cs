@@ -9,7 +9,7 @@ namespace Player
 
     public class MoveCineMachine : MonoBehaviour
     {
-        private GravityControl _gravityControl;
+        private CineGravityControl _gravityControl;
         private Animator _animator;
         private Rigidbody _rigidbody;
 
@@ -66,7 +66,7 @@ namespace Player
             UpdateGroundedValue();
             ApplyMovement();
 
-            //if (!isGrounded) Debug.Log("not Grounded");
+            if (!isGrounded) Debug.Log("not Grounded");
         }
         private void FixedUpdate()
         {
