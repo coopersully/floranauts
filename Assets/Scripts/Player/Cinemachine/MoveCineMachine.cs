@@ -9,7 +9,7 @@ namespace Player
 
     public class MoveCineMachine : MonoBehaviour
     {
-        public CineGravityControl _gravityControl;
+        private GravityControl _gravityControl;
         private Animator _animator;
         private Rigidbody _rigidbody;
 
