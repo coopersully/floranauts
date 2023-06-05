@@ -26988,10 +26988,6 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 5feb5fc6-3f19-40cf-a9db-a7e72cf55a45
-    m_ActionName: PlayerMovement/JetPack[/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 6c074e8e-a41f-4e03-a7d7-b08c4577374c
     m_ActionName: PlayerMovement/ChangeItem[/Keyboard/1]
   - m_PersistentCalls:
@@ -27106,6 +27102,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 776aa1f2-db05-4ef8-935e-ae65c35f19f8
     m_ActionName: PlayerMovement/Aim[/XInputControllerWindows/leftTrigger,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8263846330238006161}
+        m_TargetAssemblyTypeName: Player.Cinemachine.UseItem, Assembly-CSharp
+        m_MethodName: UseItemAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: eb38f89d-2f05-4abe-8f26-f643438cf274
+    m_ActionName: PlayerMovement/UseItem[/XInputControllerWindows/rightTrigger,/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
@@ -72889,7 +72901,7 @@ MonoBehaviour:
   freezeRayProjectile: {fileID: 4569382463292491119, guid: 926333c79f77ebb45b2c3490bfff69b1,
     type: 3}
   freezeTime: 10
-  hasRocketLauncher: 0
+  hasRocketLauncher: 1
   rocketLauncher: {fileID: 3920267102512728698}
   rocket: {fileID: 1574756143266322901, guid: cf2e3ab7466e8d942a76b87e7a8277ee, type: 3}
   launchForce: 50

@@ -89,6 +89,7 @@ namespace Player.Cinemachine
             _rigidbody = GetComponentInChildren<Rigidbody>();
 
             _canPlayLandParticles = true;
+            
 
         }
 
@@ -98,7 +99,7 @@ namespace Player.Cinemachine
             hasStick = false;
             hasJetpack = false;
             hasFreezeRay = false;
-            hasRocketLauncher = false;
+            //hasRocketLauncher = false;
             hasSpeedIncrease = false;
 
             switch (playerItems.selectedItem)
@@ -136,6 +137,8 @@ namespace Player.Cinemachine
         }
         public void UseItemAction(InputAction.CallbackContext context)
         {
+            Debug.Log("use item");
+            
             if (hasJetpack && context.started && _canJetPack && !inKnockBack)
                 StartCoroutine(JetPack());
             else if (hasStick && context.started && _canSwingStick)  // If the key was not pressed this frame, ignore it.
@@ -146,6 +149,7 @@ namespace Player.Cinemachine
                 StartCoroutine(ShootRocketLauncher());
             else if (hasFreezeRay && _canShootFreezeRay && context.started)
                 StartCoroutine(ShootFreezeRay());
+            
 
         }
         private IEnumerator JetPack()
@@ -251,7 +255,7 @@ namespace Player.Cinemachine
         }
         private IEnumerator ShootRocketLauncher()
         {
-            AudioManager.Instance.fx.RocketLaunch();
+            //AudioManager.Instance.fx.RocketLaunch();
 
             _canShootRocket = false;
             _animator.SetTrigger(Shoot);

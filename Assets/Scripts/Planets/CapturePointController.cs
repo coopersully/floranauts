@@ -34,7 +34,7 @@ namespace Planets
                 thisPoint.item = _availableItems[0];
                 _availableItems.RemoveAt(0);
             }
-            Debug.Log("Assigned all planets");
+            //Debug.Log("Assigned all planets");
         }
     }
 }

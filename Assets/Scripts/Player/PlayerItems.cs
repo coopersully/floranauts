@@ -58,12 +58,12 @@ namespace Player
         private void UpdateSelectedItem()
         {
             // Update UI cursor
-            Debug.Log("Player selected slot " + _selectedIndex);
+            //Debug.Log("Player selected slot " + _selectedIndex);
             selectedFrame.rectTransform.SetPositionAndRotation(slots[_selectedIndex].position,
                 selectedFrame.rectTransform.rotation);
 
             // Update & activate new item
-            Debug.Log("Player selected index " + _selectedIndex + "/" + (items.Count - 1));
+            //Debug.Log("Player selected index " + _selectedIndex + "/" + (items.Count - 1));
             selectedItem = items[_selectedIndex];
 
             // Send action bar event

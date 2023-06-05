@@ -10134,6 +10134,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3982947214394020540, guid: f5febaeb5935d714eb5eae68d1e07f10,
+        type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Controller
+      objectReference: {fileID: 0}
+    - target: {fileID: 3982947214394020540, guid: f5febaeb5935d714eb5eae68d1e07f10,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: c80fff0488e332b48a54bfbf10f1f938,
+        type: 3}
     - target: {fileID: 4293579414822886710, guid: f5febaeb5935d714eb5eae68d1e07f10,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10233,6 +10244,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263846330238006161, guid: f5febaeb5935d714eb5eae68d1e07f10,
+        type: 3}
+      propertyPath: hasRocketLauncher
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8392952077486100732, guid: f5febaeb5935d714eb5eae68d1e07f10,
         type: 3}

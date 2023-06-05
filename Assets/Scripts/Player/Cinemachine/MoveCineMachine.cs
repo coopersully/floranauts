@@ -121,6 +121,10 @@ namespace Player
             _rigidbody.AddForce(transform.up * JumpForce);
             _rigidbody.AddForce(transform.forward * JumpForce * _movementInput);
         }
+        public void UseItemAction(InputAction.CallbackContext context)
+        {
+            Debug.Log("Use Item");
+        }
 
     }
 }

@@ -69,15 +69,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "UseItem",
-                    "type": "Button",
-                    "id": "5feb5fc6-3f19-40cf-a9db-a7e72cf55a45",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "ChangeItem",
                     "type": "Button",
                     "id": "6c074e8e-a41f-4e03-a7d7-b08c4577374c",
@@ -135,6 +126,15 @@
                     "name": "Quit",
                     "type": "Button",
                     "id": "030f7e24-88f0-462e-899a-46378f6d7622",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UseItem",
+                    "type": "Button",
+                    "id": "eb38f89d-2f05-4abe-8f26-f643438cf274",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -430,28 +430,6 @@
                 },
                 {
                     "name": "",
-                    "id": "d3531075-b3f1-4a08-a6bc-07958185570a",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "UseItem",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fad53654-3b43-4359-9dc7-11da4b8b021a",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "Hold",
-                    "processors": "",
-                    "groups": "Mouse and Keyboard",
-                    "action": "UseItem",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ec74b994-b55a-499e-95ff-da5aba41b0e1",
                     "path": "<Keyboard>/1",
                     "interactions": "",
@@ -601,6 +579,28 @@
                     "processors": "",
                     "groups": "Mouse and Keyboard",
                     "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df30b991-24bb-4ed3-a312-3c7e454906e1",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "UseItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cc7297ac-a39a-4361-a1f3-7aa642220e25",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse and Keyboard",
+                    "action": "UseItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

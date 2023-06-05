@@ -45,7 +45,7 @@ public class RocketProjectile : MonoBehaviour
         allPlayers = GameObject.FindGameObjectsWithTag("Player");
         FindOtherPlayer();
 
-        this.transform.forward = samePlayer.transform.forward; // sets starting rotation to same as player
+        //this.transform.forward = samePlayer.transform.forward; // sets starting rotation to same as player
 
         //makes array of teleport points for mini portals
         teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");

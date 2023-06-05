@@ -91,15 +91,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""UseItem"",
-                    ""type"": ""Button"",
-                    ""id"": ""5feb5fc6-3f19-40cf-a9db-a7e72cf55a45"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""ChangeItem"",
                     ""type"": ""Button"",
                     ""id"": ""6c074e8e-a41f-4e03-a7d7-b08c4577374c"",
@@ -157,6 +148,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""Quit"",
                     ""type"": ""Button"",
                     ""id"": ""030f7e24-88f0-462e-899a-46378f6d7622"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb38f89d-2f05-4abe-8f26-f643438cf274"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -452,28 +452,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d3531075-b3f1-4a08-a6bc-07958185570a"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""UseItem"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fad53654-3b43-4359-9dc7-11da4b8b021a"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": """",
-                    ""groups"": ""Mouse and Keyboard"",
-                    ""action"": ""UseItem"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ec74b994-b55a-499e-95ff-da5aba41b0e1"",
                     ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
@@ -623,6 +601,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Mouse and Keyboard"",
                     ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df30b991-24bb-4ed3-a312-3c7e454906e1"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""UseItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc7297ac-a39a-4361-a1f3-7aa642220e25"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse and Keyboard"",
+                    ""action"": ""UseItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1041,7 +1041,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Join = m_PlayerMovement.FindAction("Join", throwIfNotFound: true);
         m_PlayerMovement_Pause = m_PlayerMovement.FindAction("Pause", throwIfNotFound: true);
         m_PlayerMovement_Capture = m_PlayerMovement.FindAction("Capture", throwIfNotFound: true);
-        m_PlayerMovement_UseItem = m_PlayerMovement.FindAction("UseItem", throwIfNotFound: true);
         m_PlayerMovement_ChangeItem = m_PlayerMovement.FindAction("ChangeItem", throwIfNotFound: true);
         m_PlayerMovement_InventoryUp = m_PlayerMovement.FindAction("InventoryUp", throwIfNotFound: true);
         m_PlayerMovement_InventoryDown = m_PlayerMovement.FindAction("InventoryDown", throwIfNotFound: true);
@@ -1049,6 +1048,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_PlayerMovement_Controls = m_PlayerMovement.FindAction("Controls", throwIfNotFound: true);
         m_PlayerMovement_MainMenu = m_PlayerMovement.FindAction("MainMenu", throwIfNotFound: true);
         m_PlayerMovement_Quit = m_PlayerMovement.FindAction("Quit", throwIfNotFound: true);
+        m_PlayerMovement_UseItem = m_PlayerMovement.FindAction("UseItem", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1127,7 +1127,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Join;
     private readonly InputAction m_PlayerMovement_Pause;
     private readonly InputAction m_PlayerMovement_Capture;
-    private readonly InputAction m_PlayerMovement_UseItem;
     private readonly InputAction m_PlayerMovement_ChangeItem;
     private readonly InputAction m_PlayerMovement_InventoryUp;
     private readonly InputAction m_PlayerMovement_InventoryDown;
@@ -1135,6 +1134,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMovement_Controls;
     private readonly InputAction m_PlayerMovement_MainMenu;
     private readonly InputAction m_PlayerMovement_Quit;
+    private readonly InputAction m_PlayerMovement_UseItem;
     public struct PlayerMovementActions
     {
         private @PlayerControls m_Wrapper;
@@ -1146,7 +1146,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Join => m_Wrapper.m_PlayerMovement_Join;
         public InputAction @Pause => m_Wrapper.m_PlayerMovement_Pause;
         public InputAction @Capture => m_Wrapper.m_PlayerMovement_Capture;
-        public InputAction @UseItem => m_Wrapper.m_PlayerMovement_UseItem;
         public InputAction @ChangeItem => m_Wrapper.m_PlayerMovement_ChangeItem;
         public InputAction @InventoryUp => m_Wrapper.m_PlayerMovement_InventoryUp;
         public InputAction @InventoryDown => m_Wrapper.m_PlayerMovement_InventoryDown;
@@ -1154,6 +1153,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Controls => m_Wrapper.m_PlayerMovement_Controls;
         public InputAction @MainMenu => m_Wrapper.m_PlayerMovement_MainMenu;
         public InputAction @Quit => m_Wrapper.m_PlayerMovement_Quit;
+        public InputAction @UseItem => m_Wrapper.m_PlayerMovement_UseItem;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1184,9 +1184,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Capture.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCapture;
                 @Capture.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCapture;
                 @Capture.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnCapture;
-                @UseItem.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnUseItem;
-                @UseItem.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnUseItem;
-                @UseItem.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnUseItem;
                 @ChangeItem.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnChangeItem;
                 @ChangeItem.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnChangeItem;
                 @ChangeItem.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnChangeItem;
@@ -1208,6 +1205,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Quit.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
                 @Quit.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
                 @Quit.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnQuit;
+                @UseItem.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnUseItem;
+                @UseItem.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnUseItem;
+                @UseItem.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnUseItem;
             }
             m_Wrapper.m_PlayerMovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -1233,9 +1233,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Capture.started += instance.OnCapture;
                 @Capture.performed += instance.OnCapture;
                 @Capture.canceled += instance.OnCapture;
-                @UseItem.started += instance.OnUseItem;
-                @UseItem.performed += instance.OnUseItem;
-                @UseItem.canceled += instance.OnUseItem;
                 @ChangeItem.started += instance.OnChangeItem;
                 @ChangeItem.performed += instance.OnChangeItem;
                 @ChangeItem.canceled += instance.OnChangeItem;
@@ -1257,6 +1254,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Quit.started += instance.OnQuit;
                 @Quit.performed += instance.OnQuit;
                 @Quit.canceled += instance.OnQuit;
+                @UseItem.started += instance.OnUseItem;
+                @UseItem.performed += instance.OnUseItem;
+                @UseItem.canceled += instance.OnUseItem;
             }
         }
     }
@@ -1393,7 +1393,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnJoin(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnCapture(InputAction.CallbackContext context);
-        void OnUseItem(InputAction.CallbackContext context);
         void OnChangeItem(InputAction.CallbackContext context);
         void OnInventoryUp(InputAction.CallbackContext context);
         void OnInventoryDown(InputAction.CallbackContext context);
@@ -1401,6 +1400,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnControls(InputAction.CallbackContext context);
         void OnMainMenu(InputAction.CallbackContext context);
         void OnQuit(InputAction.CallbackContext context);
+        void OnUseItem(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

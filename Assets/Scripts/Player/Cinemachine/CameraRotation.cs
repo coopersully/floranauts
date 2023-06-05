@@ -64,6 +64,7 @@ namespace Player
         
         public void AimAction(InputAction.CallbackContext context)
         {
+            //mmoves camera to aim position while aim controll is held
             aimOffset = normalOffset/3;
             switch (context.phase)
             {
