@@ -43,7 +43,7 @@ public class RocketProjectile : MonoBehaviour
         allPlanets = GameObject.FindGameObjectsWithTag("Planet");
         NearestPlanet();
         allPlayers = GameObject.FindGameObjectsWithTag("Player");
-        FindOtherPlayer();
+        //FindOtherPlayer();
 
         //this.transform.forward = samePlayer.transform.forward; // sets starting rotation to same as player
 
@@ -54,6 +54,7 @@ public class RocketProjectile : MonoBehaviour
     }
     void Update()
     {
+        /**
         distanceToPlayer = Vector3.Distance(this.transform.position, otherPlayer.transform.position);
         //rocket attracts to player if in certain distance
         if (distanceToPlayer <= _seeDistance)
@@ -69,6 +70,7 @@ public class RocketProjectile : MonoBehaviour
             gravityAttraction = 5f;
             
         }
+        **/
     }
 
     private void FixedUpdate() => _planet.AttractRocket(_rigidbody);
@@ -79,7 +81,7 @@ public class RocketProjectile : MonoBehaviour
 
         Destroy(this.gameObject);
         if(this.gameObject.tag == "Rocket")
-            AudioManager.Instance.fx.RocketExplode();
+            //AudioManager.Instance.fx.RocketExplode();
         
         Instantiate(explosion, transform.position, Quaternion.identity);
 

@@ -51624,7 +51624,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9aa4348290784b2468144a97eb15d8d7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -72888,6 +72888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c80fff0488e332b48a54bfbf10f1f938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 8392952077486100733}
+  aimCursor: {fileID: 5825945060101708534}
   playerItems: {fileID: 6703999431904297500}
   firePoint: {fileID: 8138217590981442161}
   reloadTime: 5

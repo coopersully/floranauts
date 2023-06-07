@@ -15,11 +15,22 @@ namespace Player.Cinemachine
         private GravityControl _gravityControl;
         private MoveCineMachine _playerMovement;
         private Rigidbody _rigidbody;
+        //aim mechanics
+        public Camera camera;
+        public GameObject aimCursor;
+        Ray ray;
+        private Vector3 destination;
 
         [Header("Items")]
         public PlayerItems playerItems;
         public Transform firePoint;
         public float reloadTime = 5f;
+        public enum ProjectileType
+        {
+            rocket,
+            freeze
+        }
+        //public ProjectileType projectileType;
 
         //jetPack
         public bool hasJetpack;
@@ -138,7 +149,7 @@ namespace Player.Cinemachine
         public void UseItemAction(InputAction.CallbackContext context)
         {
             Debug.Log("use item");
-            
+
             if (hasJetpack && context.started && _canJetPack && !inKnockBack)
                 StartCoroutine(JetPack());
             else if (hasStick && context.started && _canSwingStick)  // If the key was not pressed this frame, ignore it.
@@ -146,7 +157,8 @@ namespace Player.Cinemachine
             else if (hasSpeedIncrease && _canSprint && !inKnockBack)
                 StartCoroutine(Sprint());
             else if (hasRocketLauncher && _canShootRocket && context.started)
-                StartCoroutine(ShootRocketLauncher());
+                ShootGun(ProjectileType.rocket);
+            //StartCoroutine(ShootRocketLauncher());
             else if (hasFreezeRay && _canShootFreezeRay && context.started)
                 StartCoroutine(ShootFreezeRay());
             
@@ -306,5 +318,38 @@ namespace Player.Cinemachine
             frozenParticles.Stop();
 
         }
+        public void ShootGun(ProjectileType projectileType)
+        {
+            //sets raycast origin to the camera and the direction from the camera to the aim cursor
+            ray.origin = camera.transform.position;
+            ray.direction = (aimCursor.transform.position - camera.transform.position).normalized;
+            RaycastHit hit;
+            if(Physics.Raycast(ray.origin, ray.direction, out hit))
+            {
+                destination = hit.point;
+            }
+            else
+            {
+                destination = ray.GetPoint(1000);
+            }
+            
+            //pass projectile object into InstantiateProjectile() depending on what type of gun it is
+            switch (projectileType)
+            {
+                case ProjectileType.rocket:
+                    InstantiateProjectile(rocket);
+                    break;
+                case ProjectileType.freeze:
+                    InstantiateProjectile(freezeRayProjectile);
+                    break;
+            }
+        }
+        void InstantiateProjectile(GameObject projectile)
+        {
+            var projectileObj = Instantiate(projectile, firePoint.position, Quaternion.identity) as GameObject;
+            projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * launchForce;
+        }
+        
+
     }
 }
