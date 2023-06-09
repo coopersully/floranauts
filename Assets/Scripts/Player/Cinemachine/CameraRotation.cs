@@ -21,7 +21,8 @@ namespace Player
         private CinemachineFramingTransposer framingTransposer;
         private float normalOffset;
         private float aimOffset;
-        private bool inAim = false;
+        [HideInInspector]
+        public bool inAim = false;
         private Vector3 damping;
         
         
@@ -136,7 +137,7 @@ namespace Player
 
 
         }
-        private void AlignPlayer()
+        public void AlignPlayer()
         {
             yRotationDifference = localRotation.eulerAngles.y;
             if(yRotationDifference >= 180)

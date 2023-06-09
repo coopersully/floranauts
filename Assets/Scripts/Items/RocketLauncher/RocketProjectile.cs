@@ -31,8 +31,8 @@ public class RocketProjectile : MonoBehaviour
 
     public GameObject explosion;
     private int hitCounter = 0; //makes sure rocket does not explode on spawn
+    public bool targetFound = false;
 
-    
 
     void Awake()
     {
@@ -43,9 +43,9 @@ public class RocketProjectile : MonoBehaviour
         allPlanets = GameObject.FindGameObjectsWithTag("Planet");
         NearestPlanet();
         allPlayers = GameObject.FindGameObjectsWithTag("Player");
-        //FindOtherPlayer();
+        FindOtherPlayer();
 
-        //this.transform.forward = samePlayer.transform.forward; // sets starting rotation to same as player
+        this.transform.forward = samePlayer.transform.forward; // sets starting rotation to same as player
 
         //makes array of teleport points for mini portals
         teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
@@ -54,7 +54,8 @@ public class RocketProjectile : MonoBehaviour
     }
     void Update()
     {
-        /**
+        if (otherPlayer == null)
+            Debug.Log("Null");
         distanceToPlayer = Vector3.Distance(this.transform.position, otherPlayer.transform.position);
         //rocket attracts to player if in certain distance
         if (distanceToPlayer <= _seeDistance)
@@ -68,12 +69,13 @@ public class RocketProjectile : MonoBehaviour
         {
             _seePlayer = false;
             gravityAttraction = 5f;
-            
+
         }
-        **/
     }
 
-    private void FixedUpdate() => _planet.AttractRocket(_rigidbody);
+    private void FixedUpdate() => _planet.AttractProjectile(_rigidbody, targetFound);
+       
+    
 
     //destroys game object when hits planet
     private void OnCollisionEnter(Collision collision)
@@ -101,6 +103,7 @@ public class RocketProjectile : MonoBehaviour
             this.gameObject.transform.position = teleportPoints[_randomInt].transform.position;
             OpenPortal(_randomInt);
         }
+
         if (other.CompareTag("PlayerRocketTrigger")) // explodes if hits near player
         {
             if (hitCounter > 0) // keeps rocket from exploding on spawn
@@ -184,6 +187,5 @@ public class RocketProjectile : MonoBehaviour
             this.transform.forward = newPosition - oldPosition;
         }
     }
-
 
 }

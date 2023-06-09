@@ -78,14 +78,16 @@ namespace Gravity
             }
         }
         
-        public void AttractRocket(Rigidbody body)
+        public void AttractProjectile(Rigidbody body, bool targetFound)
         {
-            StartCoroutine(RotationSpeed());
-            _gravityUp = (body.position - transform.position).normalized;
+            if (!targetFound)
+            {
+                StartCoroutine(RotationSpeed());
+                _gravityUp = (body.position - transform.position).normalized;
 
-            // Apply downwards gravity to body
-            body.AddForce(_gravityUp * (planetGravity * -10));
-
+                // Apply downwards gravity to body
+                body.AddForce(_gravityUp * (planetGravity * -10));
+            }
         }
 
 

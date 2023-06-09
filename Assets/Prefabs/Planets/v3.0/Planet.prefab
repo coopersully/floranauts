@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6475421072083697696}
   - component: {fileID: 7477411342695679650}
   - component: {fileID: 8916311977966330903}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: innerGravity
   m_TagString: InnerGravity
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 5497198927613295689}
   - component: {fileID: 7273850260908643608}
   - component: {fileID: 1537852931624555968}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Gravity
   m_TagString: Gravity
   m_Icon: {fileID: 0}

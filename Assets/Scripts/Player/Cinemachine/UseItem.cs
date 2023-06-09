@@ -13,13 +13,16 @@ namespace Player.Cinemachine
     {
         private Animator _animator;
         private GravityControl _gravityControl;
+        private CameraRotation _cameraRotation;
         private MoveCineMachine _playerMovement;
         private Rigidbody _rigidbody;
         //aim mechanics
         public Camera camera;
         public GameObject aimCursor;
-        Ray ray;
+        Ray aimRay;
+        Ray cameraRay;
         private Vector3 destination;
+        private bool targetFound;
 
         [Header("Items")]
         public PlayerItems playerItems;
@@ -97,6 +100,7 @@ namespace Player.Cinemachine
             // Initialize components
             _animator = GetComponentInChildren<Animator>();
             _playerMovement = GetComponent<MoveCineMachine>();
+            _cameraRotation = GetComponent<CameraRotation>();
             _rigidbody = GetComponentInChildren<Rigidbody>();
 
             _canPlayLandParticles = true;
@@ -148,8 +152,6 @@ namespace Player.Cinemachine
         }
         public void UseItemAction(InputAction.CallbackContext context)
         {
-            Debug.Log("use item");
-
             if (hasJetpack && context.started && _canJetPack && !inKnockBack)
                 StartCoroutine(JetPack());
             else if (hasStick && context.started && _canSwingStick)  // If the key was not pressed this frame, ignore it.
@@ -320,33 +322,49 @@ namespace Player.Cinemachine
         }
         public void ShootGun(ProjectileType projectileType)
         {
-            //sets raycast origin to the camera and the direction from the camera to the aim cursor
-            ray.origin = camera.transform.position;
-            ray.direction = (aimCursor.transform.position - camera.transform.position).normalized;
+            //_cameraRotation.inAim = true; //orients player to face the direction of the camera
+
+            //shoots ray from camera and sets hit point as target
+            cameraRay.origin = camera.transform.position;
+            cameraRay.direction = (aimCursor.transform.position - camera.transform.position).normalized;
+            aimRay.origin = cameraRay.GetPoint(50);//establish aiming ray as point in front of player
+            aimRay.direction = (aimRay.origin - aimCursor.transform.position).normalized;
+
+            /**
+            Debug.DrawLine(cameraRay.origin, cameraRay.GetPoint(1000) + cameraRay.direction, Color.red,5);
+            Debug.DrawLine(aimRay.origin, aimRay.GetPoint(1000) + aimRay.direction, Color.green,5);
+            **/
+
             RaycastHit hit;
-            if(Physics.Raycast(ray.origin, ray.direction, out hit))
+            if (Physics.Raycast(aimRay.origin, aimRay.direction, out hit))
             {
+                //Debug.Log("hit " + hit.transform.tag);
                 destination = hit.point;
+                targetFound = true;
             }
             else
             {
-                destination = ray.GetPoint(1000);
+                destination = aimRay.GetPoint(1000);
+                targetFound = false;
             }
-            
+
             //pass projectile object into InstantiateProjectile() depending on what type of gun it is
             switch (projectileType)
             {
                 case ProjectileType.rocket:
-                    InstantiateProjectile(rocket);
+                    InstantiateProjectile(rocket, targetFound);
                     break;
                 case ProjectileType.freeze:
-                    InstantiateProjectile(freezeRayProjectile);
+                    InstantiateProjectile(freezeRayProjectile, targetFound);
                     break;
             }
+            Debug.Log("target found = " + targetFound);
         }
-        void InstantiateProjectile(GameObject projectile)
+        void InstantiateProjectile(GameObject projectile, bool targetFound)
         {
+            //spawn projectile and apply force towards target
             var projectileObj = Instantiate(projectile, firePoint.position, Quaternion.identity) as GameObject;
+            projectileObj.GetComponent<RocketProjectile>().targetFound = targetFound;
             projectileObj.GetComponent<Rigidbody>().velocity = (destination - firePoint.position).normalized * launchForce;
         }
         
