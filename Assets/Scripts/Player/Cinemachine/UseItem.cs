@@ -162,7 +162,8 @@ namespace Player.Cinemachine
                 ShootGun(ProjectileType.rocket);
             //StartCoroutine(ShootRocketLauncher());
             else if (hasFreezeRay && _canShootFreezeRay && context.started)
-                StartCoroutine(ShootFreezeRay());
+                ShootGun(ProjectileType.freeze);
+            //StartCoroutine(ShootFreezeRay());
             
 
         }
