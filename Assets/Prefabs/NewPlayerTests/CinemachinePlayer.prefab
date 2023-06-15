@@ -72871,10 +72871,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 4293579414822886711}
+  inAim: 0
   followTarget: {fileID: 2568602342929554602}
   _cameraInput: {x: 0, y: 0}
-  mouseSensitivityY: 2.5
-  mouseSensitivityX: 2.5
+  mouseSensitivityY: 0.2
+  mouseSensitivityX: 0.2
   yRotationDifference: 0
 --- !u!114 &8263846330238006161
 MonoBehaviour:
@@ -72945,7 +72946,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8392952077486100735}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.3, y: 1.5450001, z: -15}
+  m_LocalPosition: {x: 91.37789, y: 10.385015, z: -12.312528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
