@@ -83,9 +83,14 @@ public class RocketProjectile : MonoBehaviour
 
         Destroy(this.gameObject);
         if(this.gameObject.tag == "Rocket")
+        {
             //AudioManager.Instance.fx.RocketExplode();
-        
+        }
+
         Instantiate(explosion, transform.position, Quaternion.identity);
+
+
+
 
     }
 

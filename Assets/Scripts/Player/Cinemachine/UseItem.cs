@@ -113,8 +113,8 @@ namespace Player.Cinemachine
         {
             hasStick = false;
             hasJetpack = false;
-            hasFreezeRay = false;
-            //hasRocketLauncher = false;
+            //hasFreezeRay = false;
+            hasRocketLauncher = false;
             hasSpeedIncrease = false;
 
             switch (playerItems.selectedItem)
