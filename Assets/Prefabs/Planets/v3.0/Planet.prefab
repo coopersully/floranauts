@@ -156,7 +156,7 @@ MonoBehaviour:
   swirlsMat: {fileID: 2100000, guid: 741de0d3da595a247b7c0822ac3e1d8e, type: 2}
   waterMat: {fileID: 2100000, guid: 7d19e90b90344df448cf5364eddb52b5, type: 2}
   planetMesh: {fileID: 2610453756117400496}
-  planetMat: 2
+  planetMat: 1
 --- !u!114 &6343887518347484275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +250,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ce07cf4e9ed31d14282d098341222273, type: 2}
+  - {fileID: 2100000, guid: 46d74a9fc6e7c9b4fb4ca6899e2c6a11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
