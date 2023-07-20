@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 namespace Gravity
 {
     // This Script goes on the player and tells the planet what to attract.
-    public class GravityControl : MonoBehaviour
+    public class GravityControlOld : MonoBehaviour
     {
         private GravityAttractor _planet;
         private PlayerMovement _playerMovement;
