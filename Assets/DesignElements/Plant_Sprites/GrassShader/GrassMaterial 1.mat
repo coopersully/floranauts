@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrassMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 51b934ba2089f6946904c5c873cdf818,
+  m_Name: GrassMaterial 1
+  m_Shader: {fileID: -6465566751694194690, guid: 66c2e8b7ee773dc4d9c5bd19333fc737,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -35,7 +35,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1044e38028a013747b394ce92ab1a37b, type: 3}
+        m_Texture: {fileID: 2800000, guid: b41bfd0486086ca4fa5603b09f87f940, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -57,6 +57,9 @@ Material:
     - _Scale: 0.1
     - _Smoothness: 0
     - _Speed: 1
+    - _Strength: 0.3
+    - _WindDensity: 2
     m_Colors:
     - _Albedo: {r: 1, g: 1, b: 1, a: 0}
+    - _WindMovement: {r: 6, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

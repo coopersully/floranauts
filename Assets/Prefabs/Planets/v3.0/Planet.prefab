@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 9002765611565126482}
   - component: {fileID: 6343887518347484275}
   - component: {fileID: 8587936860204907822}
+  - component: {fileID: 4163572540872065721}
   m_Layer: 0
   m_Name: Planet
   m_TagString: Planet
@@ -188,6 +189,22 @@ MonoBehaviour:
   canvasPrimaries:
   - {fileID: 2610453756117400496}
   canvasAccents: []
+--- !u!114 &4163572540872065721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127444027451677913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b565cca7eed41594095d5db74be8faa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planetMesh: {fileID: 2610453756117400496}
+  grass: {fileID: 3323163501334995988, guid: 21ed16d57131f9343bd0a346cdaa743c, type: 3}
+  number: 100
+  spawn: 0
 --- !u!1 &2610453756117400496
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +267,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46d74a9fc6e7c9b4fb4ca6899e2c6a11, type: 2}
+  - {fileID: 2100000, guid: dbdc037268a102f47a04a76ddb960ed8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -427,7 +444,7 @@ PrefabInstance:
     - target: {fileID: 1876773630474222268, guid: 433c18d3307ed854ea635c7195bddce3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.38
+      value: 8.13
       objectReference: {fileID: 0}
     - target: {fileID: 1876773630474222268, guid: 433c18d3307ed854ea635c7195bddce3,
         type: 3}
