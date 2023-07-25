@@ -5,15 +5,13 @@ using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Interfaces
 {
     public class LobbyController : MonoBehaviour
     {
-        
-        public static readonly string[] Usernames = {
+        private static readonly string[] Usernames = {
             "Alpha",
             "Bravo",
             "Charlie",
@@ -47,7 +45,8 @@ namespace Interfaces
         [Header("General & Upper")]
         public TextMeshProUGUI captainName;
         public TextMeshProUGUI numOccupants;
-        
+        public TextMeshProUGUI actionBar;
+
         [FormerlySerializedAs("playerCard")] [Header("Scroll View")]
         public PlayerCard playerCardPrefab;
         public Transform content;
@@ -125,8 +124,8 @@ namespace Interfaces
             AudioManager.Instance.ui.Select03();
             RefreshUI();
             
-            // If the maximum amount of players is met, begin the countdown
-            if (_players == _maxPlayers) StartCountdown();
+            // // If the maximum amount of players is met, begin the countdown
+            // if (_players == _maxPlayers) StartCountdown();
         }
 
         public void OnPlayerLeave(PlayerInput playerInput)
@@ -152,14 +151,18 @@ namespace Interfaces
         {
             if (_isCountingDown)
             {
+                StartCoroutine(SendActionBarMessage("Cannot start a new game- one is already starting!"));
                 Debug.Log("Captain failed to start game- already starting!");
+                
                 AudioManager.Instance.ui.Click01();
                 return;
             }
 
             if (_players < 2)
             {
+                StartCoroutine(SendActionBarMessage("Cannot start a new game- not enough players!"));
                 Debug.Log("Captain failed to start game- not enough players!");
+                
                 AudioManager.Instance.ui.Click01();
                 return;
             }
@@ -213,6 +216,13 @@ namespace Interfaces
             
             // Load main menu scene
             LoadingScreen.Instance.Load(0);
+        }
+
+        private IEnumerator SendActionBarMessage(string message)
+        {
+            actionBar.SetText(message);
+            yield return new WaitForSeconds(3.0f);
+            actionBar.SetText("");
         }
     }
 }
