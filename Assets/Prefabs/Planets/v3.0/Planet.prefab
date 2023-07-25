@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planetMesh: {fileID: 2610453756117400496}
   grass: {fileID: 3323163501334995988, guid: 21ed16d57131f9343bd0a346cdaa743c, type: 3}
+  radius: 8.5
   number: 100
   spawn: 0
 --- !u!1 &2610453756117400496
@@ -268,6 +269,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: dbdc037268a102f47a04a76ddb960ed8, type: 2}
+  - {fileID: 2100000, guid: b9fc0c2e73da3a1418c66fd6de2dd508, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
