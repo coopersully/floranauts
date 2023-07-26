@@ -68,7 +68,7 @@ namespace Player
             UpdateGroundedValue();
             ApplyMovement();
 
-            Shader.SetGlobalVector("_PlayerPosition", transform.position + Vector3.up * _capsuleCollider.radius);
+            Shader.SetGlobalVector("_PlayerPosition", groundCheck.transform.position + Vector3.up * _capsuleCollider.radius);
             //if (!isGrounded) Debug.Log("not Grounded");
         }
         private void FixedUpdate()

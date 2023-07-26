@@ -5529,6 +5529,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4163572540872065721, guid: d77b461255a44664aa2b1c1b86f0800d,
+        type: 3}
+      propertyPath: number
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4965624574390825177, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
       propertyPath: planetMat
@@ -6951,6 +6956,11 @@ PrefabInstance:
       propertyPath: spawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4163572540872065721, guid: d77b461255a44664aa2b1c1b86f0800d,
+        type: 3}
+      propertyPath: number
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4965624574390825177, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
       propertyPath: planetMat
@@ -7154,7 +7164,7 @@ PrefabInstance:
     - target: {fileID: 4163572540872065721, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
       propertyPath: number
-      value: 150
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4965624574390825177, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
@@ -8795,6 +8805,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163572540872065721, guid: d77b461255a44664aa2b1c1b86f0800d,
+        type: 3}
+      propertyPath: number
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4965624574390825177, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
@@ -10900,9 +10915,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 607973547534475029, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 607973547534475029, guid: d77b461255a44664aa2b1c1b86f0800d,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0d93fd36440ecb74f8dddd44f9cda055, type: 2}
+    - target: {fileID: 607973547534475029, guid: d77b461255a44664aa2b1c1b86f0800d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: b9fc0c2e73da3a1418c66fd6de2dd508, type: 2}
     - target: {fileID: 2127444027451677913, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
       propertyPath: m_Name
@@ -10912,6 +10937,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spawn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163572540872065721, guid: d77b461255a44664aa2b1c1b86f0800d,
+        type: 3}
+      propertyPath: number
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4965624574390825177, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
@@ -11184,6 +11214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spawn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163572540872065721, guid: d77b461255a44664aa2b1c1b86f0800d,
+        type: 3}
+      propertyPath: number
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4965624574390825177, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
@@ -17677,6 +17712,11 @@ PrefabInstance:
       propertyPath: spawn
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4163572540872065721, guid: d77b461255a44664aa2b1c1b86f0800d,
+        type: 3}
+      propertyPath: number
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 4965624574390825177, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
       propertyPath: planetMat
@@ -18108,6 +18148,11 @@ PrefabInstance:
         type: 3}
       propertyPath: spawn
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4163572540872065721, guid: d77b461255a44664aa2b1c1b86f0800d,
+        type: 3}
+      propertyPath: number
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4965624574390825177, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}

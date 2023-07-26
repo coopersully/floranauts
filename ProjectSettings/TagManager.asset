@@ -18,6 +18,7 @@ TagManager:
   - PlayerRocketTrigger
   - FreezeRay
   - FreezeProjectile
+  - PlanetMesh
   layers:
   - Default
   - TransparentFX

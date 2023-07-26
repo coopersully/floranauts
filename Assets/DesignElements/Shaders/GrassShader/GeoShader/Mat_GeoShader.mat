@@ -37,17 +37,17 @@ Material:
     - _BendDelta: 1
     - _BladeBendCurve: 4
     - _BladeBendDistance: 0.38
-    - _BladeHeightMax: 0.966
-    - _BladeHeightMin: 0
+    - _BladeHeightMax: 0.777
+    - _BladeHeightMin: 0.307
     - _BladeSegments: 1
-    - _BladeWidthMax: 0.085
-    - _BladeWidthMin: 0
+    - _BladeWidthMax: 0.123
+    - _BladeWidthMin: 0.063
     - _GrassFalloff: 0
     - _GrassThreshold: 0.42
     - _TessellationGrassDistance: 0.052
-    - _WindFrequency: 0.053
+    - _WindFrequency: 0.017
     m_Colors:
-    - _BaseColor: {r: 0.82745105, g: 0.58431375, b: 0.45882356, a: 1}
-    - _TipColor: {r: 0.83921576, g: 0.50980395, b: 0.40784317, a: 1}
-    - _WindVelocity: {r: 0.25, g: 0, b: 0, a: 0}
+    - _BaseColor: {r: 0.38679248, g: 0.1311161, b: 0, a: 1}
+    - _TipColor: {r: 0.6415094, g: 0.3976711, b: 0.32378072, a: 1}
+    - _WindVelocity: {r: 0.5, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
