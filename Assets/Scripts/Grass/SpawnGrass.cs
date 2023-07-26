@@ -11,9 +11,8 @@ namespace Planets
         public float radius = 8f;
         public int number = 300;
         public bool spawn = false;
-        [HideInInspector]
-        public Material grassMat;
-        public Renderer rend;
+       
+        private Renderer rend;
         
         
         // Start is called before the first frame update

@@ -259,6 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8877689926265291549}
   - component: {fileID: 7415705725555987739}
+  - component: {fileID: 3965357567754640330}
   m_Layer: 0
   m_Name: GrassLODPrefab
   m_TagString: Untagged
@@ -311,3 +312,15 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1080614931506356885}
   m_Enabled: 1
+--- !u!114 &3965357567754640330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8104284013300750759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ed7f113dbd53a84b983823163a42b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
