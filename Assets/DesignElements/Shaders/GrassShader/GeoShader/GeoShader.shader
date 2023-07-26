@@ -5,6 +5,7 @@ Shader "GeoShader"
 		_BaseColor("Base Color", Color) = (1, 1, 1, 1)
 		_TipColor("Tip Color", Color) = (1, 1, 1, 1)
 		_BladeTexture("Blade Texture", 2D) = "white" {}
+		
 
 		_BladeWidthMin("Blade Width (Min)", Range(0, 1)) = 0.02
 		_BladeWidthMax("Blade Width (Max)", Range(0, 1)) = 0.05
@@ -55,6 +56,8 @@ Shader "GeoShader"
 					float4 _BaseColor;
 					float4 _TipColor;
 					sampler2D _BladeTexture;
+					
+					
 
 					float _BladeWidthMin;
 					float _BladeWidthMax;

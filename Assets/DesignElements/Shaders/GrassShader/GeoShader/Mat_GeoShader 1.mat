@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_GeoShader
+  m_Name: Mat_GeoShader 1
   m_Shader: {fileID: 4800000, guid: bbe2777ee377781448888b3d4d25d4cf, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -29,25 +29,25 @@ Material:
         m_Scale: {x: -100, y: -100}
         m_Offset: {x: 0, y: 0}
     - _WindMap:
-        m_Texture: {fileID: 2800000, guid: 79fe822ba06bbf94d80d24ffa57c9eed, type: 3}
+        m_Texture: {fileID: 2800000, guid: ac2fabcc2a8718b41b3498ab5777b721, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 1, y: 1}
+        m_Offset: {x: 2, y: 1}
     m_Ints: []
     m_Floats:
-    - _BendDelta: 1
+    - _BendDelta: 0.52
     - _BladeBendCurve: 4
     - _BladeBendDistance: 0.38
-    - _BladeHeightMax: 0.966
+    - _BladeHeightMax: 2
     - _BladeHeightMin: 0
-    - _BladeSegments: 1
-    - _BladeWidthMax: 0.085
+    - _BladeSegments: 3
+    - _BladeWidthMax: 0.193
     - _BladeWidthMin: 0
-    - _GrassFalloff: 0
-    - _GrassThreshold: 0.42
-    - _TessellationGrassDistance: 0.052
-    - _WindFrequency: 0.053
+    - _GrassFalloff: 0.07
+    - _GrassThreshold: 0.392
+    - _TessellationGrassDistance: 0.01
+    - _WindFrequency: 0.011
     m_Colors:
-    - _BaseColor: {r: 0.82745105, g: 0.58431375, b: 0.45882356, a: 1}
-    - _TipColor: {r: 0.83921576, g: 0.50980395, b: 0.40784317, a: 1}
-    - _WindVelocity: {r: 0.25, g: 0, b: 0, a: 0}
+    - _BaseColor: {r: 0.1259853, g: 0.65882355, b: 0, a: 1}
+    - _TipColor: {r: 0.078431346, g: 0.78431374, b: 0.4933598, a: 1}
+    - _WindVelocity: {r: 6, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

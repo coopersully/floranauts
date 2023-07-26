@@ -19471,6 +19471,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RiggedPrefab test
       objectReference: {fileID: 0}
+    - target: {fileID: 1056545344570243512, guid: 54033b1da3130df4aac26ed9b13fae3c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1543370460506987709, guid: 54033b1da3130df4aac26ed9b13fae3c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -12,6 +12,7 @@ namespace Player
         private CineGravityControl _gravityControl;
         private Animator _animator;
         private Rigidbody _rigidbody;
+        private CapsuleCollider _capsuleCollider;
 
         public float mouseSensitivityX = 1f;
         public float mouseSensitivityY = 1f;
@@ -56,6 +57,7 @@ namespace Player
             // Initialize components
             _animator = GetComponentInChildren<Animator>();
             _rigidbody = GetComponentInChildren<Rigidbody>();
+            _capsuleCollider = GetComponent<CapsuleCollider>();
             //_cameraTransform = GetComponentInChildren<Camera>().transform;
             _smoothMoveVelocity = new Vector3(0.25f, 0.25f, 0.25f);
         }
@@ -66,6 +68,7 @@ namespace Player
             UpdateGroundedValue();
             ApplyMovement();
 
+            Shader.SetGlobalVector("_PlayerPosition", transform.position + Vector3.up * _capsuleCollider.radius);
             //if (!isGrounded) Debug.Log("not Grounded");
         }
         private void FixedUpdate()

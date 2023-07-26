@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrassMaterial 1
+  m_Name: M_SinGrass
   m_Shader: {fileID: -6465566751694194690, guid: 66c2e8b7ee773dc4d9c5bd19333fc737,
     type: 3}
   m_ValidKeywords: []
@@ -35,7 +35,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b41bfd0486086ca4fa5603b09f87f940, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1044e38028a013747b394ce92ab1a37b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
