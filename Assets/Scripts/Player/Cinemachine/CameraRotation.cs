@@ -135,6 +135,7 @@ namespace Player
             float zRotationDifference = localRotation.eulerAngles.z; //finds difference between camera and player rotation
             followTarget.transform.rotation *= Quaternion.AngleAxis(-zRotationDifference, Vector3.forward); //adds amount of rotation needed to align camera up and player up
 
+            
 
         }
         public void AlignPlayer()

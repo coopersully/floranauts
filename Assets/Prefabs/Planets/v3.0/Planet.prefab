@@ -206,8 +206,6 @@ MonoBehaviour:
   radius: 8
   number: 200
   spawn: 1
-  grassMat: {fileID: 0}
-  rend: {fileID: 0}
 --- !u!1 &2610453756117400496
 GameObject:
   m_ObjectHideFlags: 0
