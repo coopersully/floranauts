@@ -13,6 +13,9 @@ namespace Planets
         public int number = 300;
         public bool spawn = false;
         private GameObject grassSphere;
+        private Material grassBaseMat;
+        public Color color;
+        private float transparency;
 
         public Material[] mats;
         public enum Grass_Mats
@@ -42,11 +45,13 @@ namespace Planets
         // Update is called once per frame
         void Update()
         {
+            grassBaseMat.color = color;
             
         }
 
         private void spawnGrass(int amount)
         {
+            StartCoroutine(grassDissolve());
             switch (grassMat)
             {
                 case Grass_Mats.blue:
@@ -63,7 +68,7 @@ namespace Planets
                     break;
             }
             grassRenderer.material = setMat;
-            grassSphere.SetActive(true);
+            //grassSphere.SetActive(true);
 
             Vector3 randomPos = planetMesh.transform.position + Random.onUnitSphere * radius;
             for (int i=0; i <= amount; i++)
@@ -73,11 +78,28 @@ namespace Planets
                 randomPos = planetMesh.transform.position + Random.onUnitSphere * radius;
             }
         }
-
+        
+        IEnumerator grassDissolve()
+        {
+            float num = .05f;
+            grassSphere.transform.localScale = new Vector3(6.5f, 6.5f, 6.5f);
+            grassSphere.SetActive(true);
+            
+            transparency = 1f;
+            while(transparency > 0)
+            {
+                transparency -= 0.02f;
+                grassSphere.transform.localScale += new Vector3(num,num,num);
+                grassBaseMat.SetFloat("_Transparency", transparency);
+                yield return new WaitForSeconds(.1f);
+            }
+            
+        }
         private void FindGrassSphere()
         {
+            grassBaseMat = planetMesh.GetComponent<Renderer>().materials[0];
             
-            foreach(Transform child in transform)
+            foreach (Transform child in transform)
             {
                 if (child.tag == "GrassSphere")
                 {

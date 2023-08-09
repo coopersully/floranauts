@@ -207,6 +207,8 @@ MonoBehaviour:
   radius: 8
   number: 200
   spawn: 1
+  color: {r: 1, g: 0, b: 0, a: 0}
+  transparency: 0
   mats:
   - {fileID: 2100000, guid: 7360f0c6c47ee80428399f1ede2d4417, type: 2}
   - {fileID: 2100000, guid: 07c2da532c80745449d0fc5785dacbd5, type: 2}
@@ -275,7 +277,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: eee49495a2d5543279acac8cf4c823c6, type: 2}
   - {fileID: 2100000, guid: abeff93f0ce4c7941baedf6c6fa71f66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

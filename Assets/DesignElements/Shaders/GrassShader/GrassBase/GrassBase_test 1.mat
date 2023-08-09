@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GrassBase_test
+  m_Name: GrassBase_test 1
   m_Shader: {fileID: -6465566751694194690, guid: fb9752c0e87d04f08abb7fa4ef1c947f,
     type: 3}
   m_ValidKeywords: []
@@ -44,12 +44,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _EdgeSize: 0.03
-    - _Float: 0.327
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Transparency: 1
+    - _Transparency: 0.43
     m_Colors:
-    - _Color: {r: 0.7372549, g: 0.38000616, b: 0.18431373, a: 0}
+    - _Color: {r: 0.40318313, g: 0.7372549, b: 0.18431373, a: 0}
     - _DarkColor: {r: 0.090268664, g: 0.49019608, b: 0, a: 0}
     - _LightColor: {r: 0.4811321, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
