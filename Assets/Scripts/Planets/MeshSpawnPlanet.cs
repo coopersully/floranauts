@@ -62,7 +62,9 @@ public class MeshSpawnPlanet : MonoBehaviour
                 break;
 
         }
-        planetMesh.GetComponent<Renderer>().material = setMat;
+
+        planetMesh.GetComponent<Renderer>().sharedMaterials[1] = setMat;
+        //planetMesh.GetComponent<Renderer>().materials[1] = setMat;
     }
 
     // Update is called once per frame

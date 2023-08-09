@@ -158,7 +158,7 @@ MonoBehaviour:
   swirlsMat: {fileID: 2100000, guid: 741de0d3da595a247b7c0822ac3e1d8e, type: 2}
   waterMat: {fileID: 2100000, guid: 7d19e90b90344df448cf5364eddb52b5, type: 2}
   planetMesh: {fileID: 2610453756117400496}
-  planetMat: 1
+  planetMat: 0
 --- !u!114 &6343887518347484275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,7 +275,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dbdc037268a102f47a04a76ddb960ed8, type: 2}
+  - {fileID: 0}
+  - {fileID: 2100000, guid: abeff93f0ce4c7941baedf6c6fa71f66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -592,7 +593,7 @@ PrefabInstance:
     - target: {fileID: 6708271543030261513, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6708271543030261513, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
