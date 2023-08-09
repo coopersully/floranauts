@@ -62,6 +62,8 @@ public class ProceduralGrassRenderer : MonoBehaviour {
         public float cameraLODFactor = 1;
     }
 
+    
+    
     [Tooltip("A mesh to create grass from. A blade sprouts from the center of every triangle")]
     [SerializeField] private Mesh sourceMesh = default;
     [Tooltip("The grass geometry creating compute shader")]
@@ -112,6 +114,8 @@ public class ProceduralGrassRenderer : MonoBehaviour {
     private int[] argsBufferReset = new int[] { 0, 1, 0, 0 };
 
     private void OnEnable() {
+        
+        
         Debug.Assert(grassComputeShader != null, "The grass compute shader is null", gameObject);
         Debug.Assert(material != null, "The material is null", gameObject);
 
