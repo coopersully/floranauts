@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: grassToolSettings
   m_EditorClassIdentifier: 
   layerBlocking:
-  - 1
+  - 0.514
   - 1
   - 1
   - 1
@@ -26,28 +26,28 @@ MonoBehaviour:
   VertexFade: 0
   sizeWidth: 1
   sizeLength: 1.501
-  adjustWidth: 0
-  adjustLength: 0
-  adjustWidthMax: 2
-  adjustHeightMax: 2
+  adjustWidth: 1
+  adjustLength: 1
+  adjustWidthMax: 3
+  adjustHeightMax: 3
   reprojectOffset: 1
-  rangeR: 1
-  rangeG: 1
-  rangeB: 1
-  AdjustedColor: {r: 0.06897095, g: 0.2735849, b: 0, a: 1}
+  rangeR: 0.65
+  rangeG: 0.657
+  rangeB: 0.648
+  AdjustedColor: {r: 0.16051704, g: 0.8396226, b: 0, a: 1}
   paintBlockMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   hitMask:
     serializedVersion: 2
     m_Bits: 1
   paintMask:
     serializedVersion: 2
     m_Bits: 1
-  brushSize: 4
-  brushFalloffSize: 0.8
-  Flow: 0
-  density: 1
+  brushSize: 1
+  brushFalloffSize: 0.687
+  Flow: 2.39
+  density: 4.47
   normalLimit: 1
   grassAmountToGenerate: 100000
-  generationDensity: 1
+  generationDensity: 0.914

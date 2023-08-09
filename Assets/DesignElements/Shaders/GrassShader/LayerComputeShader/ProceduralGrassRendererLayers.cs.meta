@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 60114372227e08e44b810865ccc5e4f1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sourceMesh: {instanceID: 0}
+  - grassComputeShader: {instanceID: 0}
+  - triToVertComputeShader: {instanceID: 0}
+  - material: {fileID: 2100000, guid: 8b8ea9d7acd00c24a94e391630a1c598, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
