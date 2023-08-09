@@ -6,20 +6,32 @@ namespace Planets
 {
     public class SpawnGrass : MonoBehaviour
     {
+        private ProceduralGrassRenderer grassRenderer;
         public GameObject planetMesh;
         public GameObject grass;
         public float radius = 8f;
         public int number = 300;
         public bool spawn = false;
-       
-        private Renderer rend;
+        private GameObject grassSphere;
+
+        public Material[] mats;
+        public enum Grass_Mats
+        {
+            blue,
+            red,
+            green,
+            purple
+        }
+        public Grass_Mats grassMat;
+        private Material setMat;
         
         
         // Start is called before the first frame update
         void Start()
         {
-            FindGrassRenderer();
-            rend.enabled = false;
+            FindGrassSphere();
+            grassSphere.SetActive(false);
+
             radius *= transform.localScale.x;
             int difference = Mathf.RoundToInt(transform.localScale.x);
             if (difference != 0) number *= difference;
@@ -35,7 +47,24 @@ namespace Planets
 
         private void spawnGrass(int amount)
         {
-            rend.enabled = true;
+            switch (grassMat)
+            {
+                case Grass_Mats.blue:
+                    setMat = mats[0];
+                    break;
+                case Grass_Mats.red:
+                    setMat = mats[1];
+                    break;
+                case Grass_Mats.green:
+                    setMat = mats[2];
+                    break;
+                case Grass_Mats.purple:
+                    setMat = mats[3];
+                    break;
+            }
+            grassRenderer.material = setMat;
+            grassSphere.SetActive(true);
+
             Vector3 randomPos = planetMesh.transform.position + Random.onUnitSphere * radius;
             for (int i=0; i <= amount; i++)
             {
@@ -45,13 +74,16 @@ namespace Planets
             }
         }
 
-        private void FindGrassRenderer()
+        private void FindGrassSphere()
         {
+            
             foreach(Transform child in transform)
             {
-                if (child.tag == "InnerGravity")
+                if (child.tag == "GrassSphere")
                 {
-                    rend = child.GetComponent<MeshRenderer>();
+                    grassSphere = child.gameObject;
+                    grassRenderer = grassSphere.GetComponent<ProceduralGrassRenderer>();
+
                     break;
                 }
                    

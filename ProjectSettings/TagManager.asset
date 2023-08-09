@@ -19,6 +19,7 @@ TagManager:
   - FreezeRay
   - FreezeProjectile
   - PlanetMesh
+  - GrassSphere
   layers:
   - Default
   - TransparentFX

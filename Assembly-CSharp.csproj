@@ -62,7 +62,6 @@
     <Compile Include="Assets\Scripts\Audio\UIAudioManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerScoreManager.cs" />
     <Compile Include="Assets\Scripts\Grass\SpawnGrass.cs" />
-    <Compile Include="Assets\DesignElements\Shaders\GrassShader\LayerComputeShader\ProceduralGrassRendererLayers.cs" />
     <Compile Include="Assets\Scripts\Audio\FXAudioManager.cs" />
     <Compile Include="Assets\Scripts\Player\Cinemachine\CameraRotation.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ScoreManager.cs" />
@@ -127,7 +126,6 @@
     <Compile Include="Assets\DesignElements\Shaders\GrassShader\ToolComputeShader\GrassComputeScript.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\DesignElements\Shaders\GrassShader\LayerComputeShader\GrassLayersCompute.compute" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\DesignElements\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -155,7 +153,6 @@
     <None Include="Assets\DesignElements\Shaders\GrassShader\ToolComputeShader\Grass.hlsl" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
-    <None Include="Assets\DesignElements\Shaders\GrassShader\LayerComputeShader\GrassLayers.shader" />
     <None Include="Assets\DesignElements\Shaders\GrassShader\ComputeShader\GrassBlades.shader" />
     <None Include="Assets\DesignElements\Shaders\GrassShader\ComputeShader\GrassBlades.hlsl" />
     <None Include="Assets\DesignElements\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
@@ -166,10 +163,8 @@
     <None Include="Assets\DesignElements\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\DesignElements\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\DesignElements\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\DesignElements\Shaders\GrassShader\LayerComputeShader\GrassLayers.hlsl" />
     <None Include="Assets\DesignElements\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\DesignElements\Shaders\GrassShader\ComputeShader\GrassBladesCompute.compute" />
-    <None Include="Assets\DesignElements\Shaders\GrassShader\LayerComputeShader\NMGGrassLayersHelpers.hlsl" />
     <None Include="Assets\DesignElements\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\DesignElements\Shaders\GrassShader\ToolComputeShader\GrassSurface (1).shader" />
     <None Include="Assets\DesignElements\Shaders\GrassShader\GeoShader\GeoShader.shader" />
@@ -180,7 +175,6 @@
     <None Include="Assets\DesignElements\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\DesignElements\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\DesignElements\Shaders\GrassShader\LayerComputeShader\TriCountToVertCount.compute" />
     <None Include="Assets\DesignElements\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\DesignElements\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
