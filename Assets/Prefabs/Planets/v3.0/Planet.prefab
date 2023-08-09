@@ -522,12 +522,12 @@ PrefabInstance:
     - target: {fileID: 4301495825731638951, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 8.7072
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4301495825731638951, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 8.7072
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4301495825731638951, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
@@ -579,10 +579,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4301495825731638951, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6708271543030261513, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
       propertyPath: m_Name
       value: GrassSphere
+      objectReference: {fileID: 0}
+    - target: {fileID: 6708271543030261513, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6708271543030261513, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}

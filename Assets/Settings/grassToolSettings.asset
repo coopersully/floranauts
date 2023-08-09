@@ -26,7 +26,7 @@ MonoBehaviour:
   VertexFade: 0
   sizeWidth: 1
   sizeLength: 1.501
-  adjustWidth: 1
+  adjustWidth: -0.144
   adjustLength: 1
   adjustWidthMax: 3
   adjustHeightMax: 3
