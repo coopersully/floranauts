@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17392284, g: 0.21747012, b: 0.29963392, a: 1}
+  m_IndirectSpecularColor: {r: 0.17392218, g: 0.21746892, b: 0.2996324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -632,7 +632,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 0d93fd36440ecb74f8dddd44f9cda055, type: 2}
+      objectReference: {fileID: 2100000, guid: eeed945ed84a6d74e9fa964fabd0dcd3, type: 2}
     - target: {fileID: 2127444027451677913, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
       propertyPath: m_Name
@@ -641,7 +641,7 @@ PrefabInstance:
     - target: {fileID: 4163572540872065721, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
       propertyPath: spawn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4163572540872065721, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
@@ -706,7 +706,7 @@ PrefabInstance:
     - target: {fileID: 9002765611565126482, guid: d77b461255a44664aa2b1c1b86f0800d,
         type: 3}
       propertyPath: planetMat
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d77b461255a44664aa2b1c1b86f0800d, type: 3}

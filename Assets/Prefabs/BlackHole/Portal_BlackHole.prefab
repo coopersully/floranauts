@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 3865196699935844226}
   - component: {fileID: 7864008938339109887}
   m_Layer: 0
-  m_Name: BlackHole_Portal
+  m_Name: Portal_BlackHole
   m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

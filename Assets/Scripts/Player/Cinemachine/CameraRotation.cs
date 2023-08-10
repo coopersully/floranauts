@@ -48,7 +48,6 @@ namespace Player
         private void Update()
         {
             yRotationDifference = localRotation.eulerAngles.y;
-
         }
 
         void LateUpdate()

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4301495825731638951}
   - component: {fileID: 6774861632310429284}
+  - component: {fileID: 2914080658411624294}
   m_Layer: 0
   m_Name: GrassSphere
-  m_TagString: Untagged
+  m_TagString: GrassSphere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,3 +65,16 @@ MonoBehaviour:
     cameraLODMin: 3
     cameraLODMax: 30
     cameraLODFactor: 1
+--- !u!135 &2914080658411624294
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708271543030261513}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.1
+  m_Center: {x: 0, y: 0, z: 0}
