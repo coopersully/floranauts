@@ -50,7 +50,7 @@ Material:
     - _OffsetY: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Transparency: 0.5
+    - _Transparency: 0.548
     m_Colors:
     - _Color: {r: 0.2627133, g: 0.6037736, b: 0.014239941, a: 0}
     - _DarkColor: {r: 0.090268664, g: 0.49019608, b: 0, a: 0}

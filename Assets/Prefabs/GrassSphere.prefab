@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aec1673b334fb724ebb37029cc201c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sourceMesh: {fileID: -3489939506879909612, guid: 0827d255d48fda94c93c217494d98dfa,
+  sourceMesh: {fileID: -1400512876473869042, guid: 9ea42624ee03951469484940eee93af2,
     type: 3}
   grassComputeShader: {fileID: 7200000, guid: 7af5852e5cdbaf447959631c8a554361, type: 3}
   material: {fileID: 2100000, guid: 07c2da532c80745449d0fc5785dacbd5, type: 2}

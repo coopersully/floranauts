@@ -212,7 +212,6 @@ MonoBehaviour:
   - {r: 0.509434, g: 0.2453068, b: 0.18983625, a: 0}
   - {r: 0.24003203, g: 0.5849056, b: 0.32742247, a: 0}
   - {r: 0.4716981, g: 0.16687433, b: 0.38368338, a: 0}
-  color: {r: 0.091415524, g: 1, b: 0, a: 0}
   dissolveRate: 1
   mats:
   - {fileID: 2100000, guid: 7360f0c6c47ee80428399f1ede2d4417, type: 2}
@@ -620,27 +619,27 @@ PrefabInstance:
     - target: {fileID: 6774861632310429284, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
       propertyPath: grassSettings.windScale
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6774861632310429284, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
       propertyPath: grassSettings.bladeWidth
-      value: 0.15
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6774861632310429284, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
       propertyPath: grassSettings.bladeHeight
-      value: 0.3
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 6774861632310429284, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
       propertyPath: grassSettings.maxSegments
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6774861632310429284, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
       propertyPath: grassSettings.maxBendAngle
-      value: 0.75
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 6774861632310429284, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
@@ -660,7 +659,7 @@ PrefabInstance:
     - target: {fileID: 6774861632310429284, guid: a352007eb4b2a9b4caf6f584bdb38fb2,
         type: 3}
       propertyPath: grassSettings.bladeHeightVariance
-      value: 0.3
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a352007eb4b2a9b4caf6f584bdb38fb2, type: 3}

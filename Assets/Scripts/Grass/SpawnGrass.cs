@@ -15,7 +15,7 @@ namespace Planets
         private GameObject grassSphere;
         private Material grassBaseMat;
         public Color[] colors;
-        public Color color;
+        private Color color;
         private float transparency;
         public float dissolveRate = 1;
 
@@ -36,8 +36,8 @@ namespace Planets
         void Start()
         {
             FindGrassSphere();
-            
-
+            grassSphere.SetActive(false);
+            grassBaseMat.SetFloat("_Transparency", 1f);
             radius *= transform.localScale.x;
             int difference = Mathf.RoundToInt(transform.localScale.x);
             if (difference != 0) number *= difference;
@@ -46,19 +46,16 @@ namespace Planets
             
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-            
-            
-        }
+      
 
         private void spawnGrass(int amount)
         {
+            //initialize grass sphere object size
             float num = 8f;
             grassSphere.transform.localScale = new Vector3(num, num, num);
             grassSphere.SetActive(true);
 
+            //select right mat and color for planet color
             switch (grassMat)
             {
                 case Grass_Mats.blue:
@@ -87,16 +84,18 @@ namespace Planets
         
         IEnumerator grassDissolve(int amount, float num)
         {
+            //slowly make grass mat appear while expanding grass sphere object to give "growth" appearance
             transparency = 1f;
             while(transparency > Random.Range(0.1f, 0.3f))
             {
                 transparency -= 0.02f * dissolveRate;
-                num = 8f + (1 - transparency);
+                num = 8f + (1 - transparency); //calculates percentage done and applies to grass object to match speed
                 grassSphere.transform.localScale = new Vector3(num,num,num);
                 grassBaseMat.SetFloat("_Transparency", transparency);
                 yield return new WaitForSeconds(.1f);
             }
 
+            //slowly spawn plant sprites
             Vector3 randomPos = planetMesh.transform.position + Random.onUnitSphere * radius;
             for (int i = 0; i <= amount; i++)
             {
@@ -109,6 +108,7 @@ namespace Planets
         }
         private void FindGrassSphere()
         {
+            //finds grass base mat and assigns randomized values
             grassBaseMat = planetMesh.GetComponent<Renderer>().materials[1];
             grassBaseMat.SetFloat("_OffsetX", Random.Range(0, 100));
             grassBaseMat.SetFloat("_OffsetY", Random.Range(0, 100));
