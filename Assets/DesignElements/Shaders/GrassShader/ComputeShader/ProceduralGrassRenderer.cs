@@ -117,7 +117,7 @@ namespace Planets
         // 3: and start instance location if using a Graphics Buffer
         private int[] argsBufferReset = new int[] { 0, 1, 0, 0 };
 
-        private void OnEnable()
+        public void OnEnable()
         {
 
 

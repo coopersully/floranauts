@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 
 [ExecuteInEditMode]
@@ -16,6 +17,7 @@ public class MeshSpawnPlanet : MonoBehaviour
     public Material waterMat;
     private Material setMat;
     public GameObject planetMesh;
+    private Renderer rend;
     
 
     public enum Planet_Mats
@@ -60,10 +62,10 @@ public class MeshSpawnPlanet : MonoBehaviour
             case Planet_Mats.water:
                 setMat = waterMat;
                 break;
-
         }
-
-        planetMesh.GetComponent<Renderer>().sharedMaterials[1] = setMat;
+        rend = planetMesh.GetComponent<Renderer>();
+        rend.sharedMaterial = setMat;
+        
         //planetMesh.GetComponent<Renderer>().materials[1] = setMat;
     }
 

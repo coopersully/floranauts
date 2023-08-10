@@ -51,16 +51,16 @@ MonoBehaviour:
   grassSettings:
     maxSegments: 5
     maxBendAngle: 1
-    bladeCurvature: 1
+    bladeCurvature: 15
     bladeHeight: 0.5
-    bladeHeightVariance: 0.1
-    bladeWidth: 0.1
-    bladeWidthVariance: 0.1
-    windNoiseTexture: {fileID: 2800000, guid: ac2fabcc2a8718b41b3498ab5777b721, type: 3}
-    windTextureScale: 1
-    windPeriod: 1
-    windScale: 1
-    windAmplitude: 0.1
+    bladeHeightVariance: 0.3
+    bladeWidth: 0.15
+    bladeWidthVariance: 0.5
+    windNoiseTexture: {fileID: 2800000, guid: 12a9fdfab62c48b4ca3d0e50b7b1bdec, type: 3}
+    windTextureScale: 4
+    windPeriod: 0.001
+    windScale: 5
+    windAmplitude: 0.3
     cameraLODMin: 3
     cameraLODMax: 30
     cameraLODFactor: 1

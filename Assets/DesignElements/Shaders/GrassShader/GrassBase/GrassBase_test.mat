@@ -45,11 +45,14 @@ Material:
     m_Floats:
     - _EdgeSize: 0.03
     - _Float: 0.327
+    - _NoiseSize: 75
+    - _OffsetX: 0
+    - _OffsetY: 0
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Transparency: 1
+    - _Transparency: 0.5
     m_Colors:
-    - _Color: {r: 0.7372549, g: 0.38000616, b: 0.18431373, a: 0}
+    - _Color: {r: 0.2627133, g: 0.6037736, b: 0.014239941, a: 0}
     - _DarkColor: {r: 0.090268664, g: 0.49019608, b: 0, a: 0}
     - _LightColor: {r: 0.4811321, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
