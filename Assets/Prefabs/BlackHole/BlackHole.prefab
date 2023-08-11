@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 814301844112016118}
   - component: {fileID: 963993284399840852}
   - component: {fileID: 1079311921995179746}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Distortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
