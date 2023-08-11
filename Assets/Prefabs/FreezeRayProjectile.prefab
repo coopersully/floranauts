@@ -50,7 +50,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 8529778997064471953}
   gravityAttraction: 2
   allPlanets: []
-  portal: {fileID: 3865196699935844238, guid: 549183785a22f4140889d028e1800c9e, type: 3}
+  portal: {fileID: 3865196699935844238, guid: 9026abf6a60e7b5429e77a86b87c982b, type: 3}
   teleportPoints: []
   _randomInt: 1
   allPlayers: []
@@ -59,6 +59,7 @@ MonoBehaviour:
   _seeDistance: 25
   explosion: {fileID: 5604407887244313098, guid: 2fcd6162ce015f84da02fc7644fa718f,
     type: 3}
+  targetFound: 0
 --- !u!135 &4924094728049102968
 SphereCollider:
   m_ObjectHideFlags: 0

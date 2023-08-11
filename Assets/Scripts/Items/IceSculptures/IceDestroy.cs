@@ -9,7 +9,7 @@ public class IceDestroy : MonoBehaviour
     public float meltTime = 30f;
     void Awake()
     {
-        AudioManager.Instance.fx.FreezeRayHit();
+        //AudioManager.Instance.fx.FreezeRayHit();
         
         transform.Rotate(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)); // sets random rotation of ice
         StartCoroutine(Die());

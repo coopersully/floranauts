@@ -8,7 +8,7 @@ namespace BlackHole
     public class Teleport : MonoBehaviour
     {
         private GravityControl _gravityControl;
-        private GameObject _portal;
+        public GameObject portal;
         [HideInInspector] public GameObject[] teleportPoints;
         [HideInInspector] public int randomPointIndex;
 
@@ -18,7 +18,6 @@ namespace BlackHole
             // Finds all objects with "respawn' tag and adds them to an array
             
             teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
-            _portal = GameObject.FindGameObjectWithTag("Portal");
             
             randomPointIndex = Random.Range(0, teleportPoints.Length);
             gameObject.transform.position = teleportPoints[randomPointIndex].transform.position;
@@ -27,9 +26,9 @@ namespace BlackHole
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("BlackHole")) return;
-            AudioManager.Instance.fx.BlackHole();
+            //AudioManager.Instance.fx.BlackHole();
             teleportPoints = GameObject.FindGameObjectsWithTag("BlackHoleSpawn");
-            _portal = GameObject.FindGameObjectWithTag("Portal");
+            
 
             // Teleports player to random teleport point
             randomPointIndex = Random.Range(0, teleportPoints.Length);
@@ -40,11 +39,11 @@ namespace BlackHole
 
         private IEnumerator OpenPortal(int num)
         {
-            _portal.SetActive(true);
-            _portal.transform.position = teleportPoints[num].transform.position;
-
+            var newPortal = Instantiate(portal, teleportPoints[num].transform.position, 
+                Quaternion.identity) as GameObject;
+      
             yield return new WaitForSeconds(3f);
-            _portal.SetActive(false);
+           // Destroy(newPortal);
         }
     }
 }
