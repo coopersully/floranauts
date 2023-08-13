@@ -113,8 +113,8 @@ namespace Player.Cinemachine
         {
             hasStick = false;
             hasJetpack = false;
-            //hasFreezeRay = false;
-            hasRocketLauncher = false;
+            hasFreezeRay = false;
+            //hasRocketLauncher = false;
             hasSpeedIncrease = false;
 
             switch (playerItems.selectedItem)
@@ -268,42 +268,7 @@ namespace Player.Cinemachine
         {
             _rigidbody.AddForce(force, forceMode);
         }
-        private IEnumerator ShootRocketLauncher()
-        {
-            //AudioManager.Instance.fx.RocketLaunch();
-
-            _canShootRocket = false;
-            _animator.SetTrigger(Shoot);
-            // _audio.RocketLaunch();
-
-            //instatiates projectile and adds velocity
-            var projectileObj = Instantiate(rocket, firePoint.position, Quaternion.identity);
-            projectileObj.GetComponent<Rigidbody>().velocity =
-                transform.TransformDirection(Vector3.forward * (launchForce));
-
-            //wait before can shoot again
-            yield return new WaitForSeconds(reloadTime);
-            _canShootRocket = true;
-        }
-        private IEnumerator ShootFreezeRay()
-        {
-            AudioManager.Instance.fx.FreezeRayLaunch();
-
-            //identical to rocket launcher but shoots freezeRay projectile
-            _canShootFreezeRay = false;
-            _animator.SetTrigger(Shoot);
-            //_audio.FreezeRayLaunch();
-
-
-            //instatiates projectile and adds velocity
-            var projectileObj = Instantiate(freezeRayProjectile, firePoint.position, Quaternion.identity);
-            projectileObj.GetComponent<Rigidbody>().velocity =
-                transform.TransformDirection(Vector3.forward * (launchForce));
-
-            //wait before can shoot again
-            yield return new WaitForSeconds(reloadTime);
-            _canShootFreezeRay = true;
-        }
+       
         private IEnumerator FreezePlayer()
         {
             //slows down player for alloted time

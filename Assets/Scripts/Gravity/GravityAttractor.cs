@@ -88,6 +88,10 @@ namespace Gravity
                 // Apply downwards gravity to body
                 body.AddForce(_gravityUp * (planetGravity * -10));
             }
+            else
+            {
+                Debug.Log("Target is found");
+            }
         }
 
 

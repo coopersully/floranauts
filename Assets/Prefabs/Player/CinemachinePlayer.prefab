@@ -72938,12 +72938,12 @@ MonoBehaviour:
   hasStick: 0
   stickObj: {fileID: 8029302431333757319}
   stickKnockBack: {fileID: 328374300841787788}
-  hasFreezeRay: 1
+  hasFreezeRay: 0
   freezeRayGun: {fileID: 8941787280408512673}
   freezeRayProjectile: {fileID: 1056844323934953779, guid: 659b5c566a3870148b1cc909e33bf242,
     type: 3}
   freezeTime: 10
-  hasRocketLauncher: 0
+  hasRocketLauncher: 1
   rocketLauncher: {fileID: 3920267102512728698}
   rocket: {fileID: 1574756143266322901, guid: cf2e3ab7466e8d942a76b87e7a8277ee, type: 3}
   launchForce: 50
