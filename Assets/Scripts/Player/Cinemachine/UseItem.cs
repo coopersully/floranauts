@@ -296,17 +296,18 @@ namespace Player.Cinemachine
             aimRay.origin = cameraRay.GetPoint(50);//establish aiming ray as point in front of player
             aimRay.direction = (aimRay.origin - aimCursor.transform.position).normalized;
 
-            /**
+            
             Debug.DrawLine(cameraRay.origin, cameraRay.GetPoint(1000) + cameraRay.direction, Color.red,5);
             Debug.DrawLine(aimRay.origin, aimRay.GetPoint(1000) + aimRay.direction, Color.green,5);
-            **/
+            
 
             RaycastHit hit;
             if (Physics.Raycast(aimRay.origin, aimRay.direction, out hit))
             {
-                //Debug.Log("hit " + hit.transform.tag);
+                Debug.Log("hit " + hit.transform.tag);
                 destination = hit.point;
                 targetFound = true;
+                
             }
             else
             {

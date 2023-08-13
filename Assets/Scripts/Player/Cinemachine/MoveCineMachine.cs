@@ -32,6 +32,7 @@ namespace Player
         public float _walkSpeed = 15f;
         [HideInInspector]
         public float JumpForce = 1200f;
+        
 
         public LayerMask groundMask;
         public Transform groundCheck;
@@ -41,6 +42,9 @@ namespace Player
 
         private bool inKnockBack = false;
         public bool isSprinting = false;
+
+        public ParticleSystem jumpParticles;
+        public ParticleSystem runParticles;
 
 
         // Player-related animation triggers
@@ -93,6 +97,7 @@ namespace Player
                 _moveDirection = new Vector3(_movementInput.x, 0, _movementInput.y).normalized;
                 _animator.SetFloat(Horizontal, _movementInput.x);
                 _animator.SetFloat(Vertical, _movementInput.y);
+                
             }
 
             var targetMoveAmount = _moveDirection * _walkSpeed;
@@ -103,8 +108,15 @@ namespace Player
             // not grounded (accessed by GravityAttractor script)
             if (isGrounded)
                 playerGravity = -10;
-            else
+
+            else 
                 playerGravity -= 50 * Time.deltaTime;
+
+            if (_movementInput != (new Vector2(0,0)) && isGrounded) 
+                runParticles.Play();
+            else 
+                runParticles.Stop();
+                
             //Debug.Log("Player Gravity: " + playerGravity);
         }
 
@@ -118,7 +130,7 @@ namespace Player
             if (!isGrounded || inKnockBack) return;
 
             _animator.SetTrigger(Jump);
-            //jumpParticles.Play();
+            jumpParticles.Play();
 
             // Applies upward force and directional force depending on direction player is moving
             _rigidbody.AddForce(transform.up * JumpForce);

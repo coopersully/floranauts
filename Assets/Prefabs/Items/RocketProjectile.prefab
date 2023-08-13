@@ -113,6 +113,7 @@ MonoBehaviour:
   _seeDistance: 50
   explosion: {fileID: 2817324831303056126, guid: ab245e5367e5e0f4dad890e4ab772290,
     type: 3}
+  targetFound: 0
 --- !u!54 &2444885841000885922
 Rigidbody:
   m_ObjectHideFlags: 0

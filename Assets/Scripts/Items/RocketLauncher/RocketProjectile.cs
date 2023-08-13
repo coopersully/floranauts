@@ -73,7 +73,7 @@ public class RocketProjectile : MonoBehaviour
         }
     }
 
-    private void FixedUpdate() => _planet.AttractProjectile(_rigidbody, targetFound);
+    private void FixedUpdate() => _planet.AttractProjectile(_rigidbody, targetFound); 
        
     
 
