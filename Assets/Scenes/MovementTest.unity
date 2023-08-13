@@ -1243,7 +1243,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -1302,12 +1302,6 @@ Transform:
   m_Father: {fileID: 1174937823}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!1 &390120734 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8392952076635125543, guid: f5febaeb5935d714eb5eae68d1e07f10,
-    type: 3}
-  m_PrefabInstance: {fileID: 547463698}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &399041014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2912421760696237971, guid: 974f7e07c8da84366892143b91442971,
@@ -2178,7 +2172,7 @@ PrefabInstance:
     - target: {fileID: 8392952077486100733, guid: f5febaeb5935d714eb5eae68d1e07f10,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 24575
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8448957268046488033, guid: f5febaeb5935d714eb5eae68d1e07f10,
         type: 3}
@@ -3601,7 +3595,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -5488,7 +5482,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -6012,7 +6006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1487737056
 Transform:
   m_ObjectHideFlags: 0
@@ -6122,7 +6116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aed40aadbdefe954a9877324d95d222f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 390120734}
+  playerMesh: {fileID: 0}
 --- !u!1 &1495393167
 GameObject:
   m_ObjectHideFlags: 0
@@ -8004,7 +7998,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -8220,7 +8214,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -8567,7 +8561,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 1
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1

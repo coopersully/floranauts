@@ -20,6 +20,7 @@ TagManager:
   - FreezeProjectile
   - PlanetMesh
   - GrassSphere
+  - PlayerMesh
   layers:
   - Default
   - TransparentFX
@@ -35,10 +36,10 @@ TagManager:
   - PlayerCam3
   - PlayerCam4
   - Distortion
-  - Player
-  - 
-  - 
-  - 
+  - Player_1
+  - Player_2
+  - Player_3
+  - Player_4
   - 
   - 
   - 
