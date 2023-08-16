@@ -173,7 +173,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 200
+      m_SerializableObject: 300
     m_Space: 2147483647
   m_Property:
     name: Rate
@@ -547,7 +547,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614583}
   - {fileID: 8926484042661614585}
   dataType: 0
-  capacity: 4000
+  capacity: 1000
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 0
@@ -876,7 +876,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.Gradient, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.0},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":1.0}],"alphaKeys":[{"alpha":0.0,"time":0.23529411852359773},{"alpha":1.0,"time":0.4735332131385803},{"alpha":1.0,"time":0.48529791831970217},{"alpha":0.0,"time":0.8205844163894653}],"gradientMode":0}'
+      m_SerializableObject: '{"colorKeys":[{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.21176470816135407},{"color":{"r":1.0,"g":1.0,"b":1.0,"a":1.0},"time":0.7470664381980896}],"alphaKeys":[{"alpha":0.0,"time":0.3970550000667572},{"alpha":1.0,"time":0.4735332131385803},{"alpha":1.0,"time":0.48529791831970217},{"alpha":0.0,"time":0.5588311553001404}],"gradientMode":0}'
     m_Space: 2147483647
   m_Property:
     name: Color
@@ -2908,7 +2908,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.01
+      m_SerializableObject: 0.025
     m_Space: 2147483647
   m_Property:
     name: stickDistance
@@ -2942,7 +2942,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 10
+      m_SerializableObject: 6
     m_Space: 2147483647
   m_Property:
     name: stickForce
@@ -4272,8 +4272,8 @@ MonoBehaviour:
   - {fileID: 8926484042661614712}
   - {fileID: 8926484042661614714}
   dataType: 1
-  capacity: 400000
-  stripCapacity: 4000
+  capacity: 50000
+  stripCapacity: 500
   particlePerStripCount: 100
   needsComputeBounds: 0
   boundsMode: 0
