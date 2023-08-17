@@ -149,7 +149,7 @@
      <Folder Include="Assets\DesignElements\Models\Planets\v1.0\Texture Maps\WarpedDead" />
      <Folder Include="Assets\Animations\OldAnims\Player\Movement" />
      <Folder Include="Assets\DesignElements\Textures\Planets\Texture Maps\ring1" />
-     <None Include="Library\PackageCache\com.unity.inputsystem@1.4.3\package.json" />
+     <None Include="Library\PackageCache\com.unity.inputsystem@1.7.0\package.json" />
      <None Include="Library\PackageCache\com.unity.modules.ai@1.0.0\package.json" />
      <Folder Include="Assets\Animations\OldAnims\MovementAnimations" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\xdiff.ko.txt" />
@@ -158,7 +158,7 @@
      <Folder Include="Assets\DesignElements\Materials\Items\Projectile Particles\Projectile" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\clientcommon.zh-Hant.txt" />
      <Folder Include="Assets\Audio\Music" />
-     <None Include="Library\PackageCache\com.unity.inputsystem@1.4.3\ValidationConfig.json" />
+     <None Include="Library\PackageCache\com.unity.inputsystem@1.7.0\ValidationConfig.json" />
      <Folder Include="Assets\DesignElements\Shaders" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\binmergetool.es.txt" />
      <Folder Include="Assets\DesignElements\Fonts" />
@@ -177,7 +177,7 @@
      <Folder Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.7\Textures\SMAA" />
      <Folder Include="Assets\TextMesh Pro\Resources\Fonts &amp; Materials" />
      <Folder Include="Assets\TextMesh Pro\Sprites" />
-     <Folder Include="Library\PackageCache\com.unity.ide.rider@3.0.16\Rider" />
+     <Folder Include="Library\PackageCache\com.unity.ide.rider@3.0.24\Rider" />
      <Folder Include="Assets\Packages\Blitz Games\Sci-Fi Human\Art\Animations" />
      <Folder Include="Assets\Animations\Interface\Game Over" />
      <Folder Include="Assets\DesignElements\Shaders\GrassShader\GeoShader" />
@@ -186,7 +186,7 @@
      <Folder Include="Library\PackageCache\com.unity.textmeshpro@3.0.6\Editor Resources" />
      <Folder Include="Assets\TextMesh Pro\Resources\Style Sheets" />
      <None Include="Library\PackageCache\com.unity.modules.assetbundle@1.0.0\package.json" />
-     <Folder Include="Library\PackageCache\com.unity.inputsystem@1.4.3\Tests" />
+     <Folder Include="Library\PackageCache\com.unity.inputsystem@1.7.0\Tests" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\binmergetool.en.txt" />
      <Folder Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Tests" />
      <Folder Include="Assets\DesignElements\Models\Planets\v3.0\Planet_Texture" />
@@ -367,7 +367,7 @@
      <Folder Include="Assets\DesignElements\Materials\Items\Freeze Gun" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hant.txt" />
      <Folder Include="Assets\DesignElements\Models\Planets\v2.0\Materials" />
-     <None Include="Library\PackageCache\com.unity.ide.rider@3.0.16\package.json" />
+     <None Include="Library\PackageCache\com.unity.ide.rider@3.0.24\package.json" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
      <Folder Include="Library\PackageCache\com.rlabrecque.steamworks.net@53d1718058\Plugins\steam_api.bundle\Contents" />
      <None Include="Library\PackageCache\com.unity.searcher@4.9.1\package.json" />
@@ -406,7 +406,7 @@
      <Folder Include="Assets\DesignElements\Models\Planets\v1.0\OwenPlanets\TextureMaps\CraterDead" />
      <Folder Include="Assets\Models\Environment\Tree" />
      <Folder Include="Library\PackageCache\com.rlabrecque.steamworks.net@53d1718058\Plugins\steam_api.bundle\Contents\MacOS" />
-     <Folder Include="Library\PackageCache\com.unity.inputsystem@1.4.3" />
+     <Folder Include="Library\PackageCache\com.unity.inputsystem@1.7.0" />
      <Folder Include="Assets\DesignElements\Models\Player\RigTest\RigTest" />
      <Folder Include="Library\PackageCache\com.unity.render-pipelines.universal@12.1.7" />
      <None Include="Library\PackageCache\com.unity.modules.particlesystem@1.0.0\package.json" />
@@ -507,7 +507,7 @@
      <Folder Include="Library\PackageCache\com.unity.cinemachine@2.8.9\Gizmos" />
      <Folder Include="Assets\DesignElements\Models\Planets\v3.0\Planet_Texture\Water" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne.json" />
-     <None Include="Library\PackageCache\com.unity.inputsystem@1.4.3\ValidationExceptions.json" />
+     <None Include="Library\PackageCache\com.unity.inputsystem@1.7.0\ValidationExceptions.json" />
      <Folder Include="Assets\DesignElements\TextMesh Pro\Shaders" />
      <Folder Include="Assets\DesignElements\Models\Planets\v1.0\Texture Maps\CraterAlive" />
      <Folder Include="Assets\Models\Player\Suit\Textures" />
@@ -551,7 +551,7 @@
      <Folder Include="Assets\Scripts\Items" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\guihelp.ja.txt" />
      <Folder Include="Assets\DesignElements\Models\Planets\v1.0\OwenPlanets\TextureMaps\CrackedAlive-LAPTOP-F0TRU180" />
-     <Folder Include="Library\PackageCache\com.unity.ide.rider@3.0.16" />
+     <Folder Include="Library\PackageCache\com.unity.ide.rider@3.0.24" />
      <None Include="Library\PackageCache\com.unity.modules.unitywebrequestwww@1.0.0\package.json" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\mergetool.zh-Hans.txt" />
      <None Include="Assets\DesignElements\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
@@ -1565,6 +1565,10 @@
     <ProjectReference Include="Unity.VisualScripting.State.csproj">
       <Project>{b43b9a46-51ff-788c-73bd-204648fd3156}</Project>
       <Name>Unity.VisualScripting.State</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InputSystem.ForUI.csproj">
+      <Project>{a8745a00-1b41-3af4-0ce0-4d7d9e972d57}</Project>
+      <Name>Unity.InputSystem.ForUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
