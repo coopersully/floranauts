@@ -91,7 +91,7 @@ namespace Player
          score by the amount of Capture Points they currently own. */
         public void IncrementScore()
         {
-            score += (inventory.Count * 0.1);
+            score += inventory.Count;
             
             // If the player achieves the maximum score
             if (score >= PlayerManager.Instance.scoreboard.maxScore)

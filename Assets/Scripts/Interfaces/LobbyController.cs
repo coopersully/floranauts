@@ -9,9 +9,14 @@ using UnityEngine.Serialization;
 
 namespace Interfaces
 {
+    /// <summary>
+    /// The LobbyController class manages the player lobby, including player joining and leaving,
+    /// displaying player cards, starting the game countdown, and transitioning to the game scene.
+    /// </summary>
     public class LobbyController : MonoBehaviour
     {
-        private static readonly string[] Usernames = {
+        private static readonly string[] Usernames =
+        {
             "Alpha",
             "Bravo",
             "Charlie",
@@ -40,19 +45,18 @@ namespace Interfaces
             "Zulu"
         };
 
-        public List<PlayerCard> cards = new ();
-        
-        [Header("General & Upper")]
-        public TextMeshProUGUI captainName;
+        public List<PlayerCard> cards = new();
+
+        [Header("General & Upper")] public TextMeshProUGUI captainName;
         public TextMeshProUGUI numOccupants;
         public TextMeshProUGUI actionBar;
 
         [FormerlySerializedAs("playerCard")] [Header("Scroll View")]
         public PlayerCard playerCardPrefab;
+
         public Transform content;
 
-        [Header("Countdown UI")]
-        private bool _isCountingDown;
+        [Header("Countdown UI")] private bool _isCountingDown;
         public int countdownStart = 3;
         public GameObject countdownOverlay;
         public TextMeshProUGUI countdownTimer;
@@ -64,31 +68,31 @@ namespace Interfaces
         {
             PlayerInputManager.instance.EnableJoining();
         }
-        
+
         private PlayerCard CreatePlayerCard(PlayerInput playerInput)
         {
             var uid = playerInput.user.id;
             var index = playerInput.playerIndex;
             var indexDeco = (playerInput.playerIndex + 1).ToString();
-            
+
             var playerCard = Instantiate(playerCardPrefab, content, false);
-            
+
             // Update player's card information
             var alias = Usernames[index];
             playerCard.uid = uid;
             playerCard.index.SetText(indexDeco);
             playerCard.title.SetText(alias);
             playerCard.subtitle.SetText("USING " + playerInput.currentControlScheme);
-            
+
             // Update player's card colors
             var colorPrimary = PlayerColor.GetPrimary(index);
             var colorSecondary = PlayerColor.GetSecondary(index);
-            
+
             playerCard.background.color = colorPrimary;
             foreach (var icon in playerCard.icons) icon.color = colorSecondary;
-            
+
             Debug.Log("Card for player (UID " + uid + ") was created.");
-            
+
             cards.Add(playerCard);
             return playerCard;
         }
@@ -97,10 +101,10 @@ namespace Interfaces
         {
             var uid = playerInput.user.id;
             var playerCard = cards.Find(card => card.uid == uid);
-            
+
             Destroy(playerCard.gameObject);
             cards.Remove(playerCard);
-            
+
             Debug.Log("Card for player (UID " + uid + ") was removed.");
         }
 
@@ -119,11 +123,11 @@ namespace Interfaces
 
             // Register player in game session
             PlayerManager.Instance.RegisterPlayer(playerInput);
-            
+
             // Play "join" audio cue & update interface elements
             AudioManager.Instance.ui.Select03();
             RefreshUI();
-            
+
             // // If the maximum amount of players is met, begin the countdown
             // if (_players == _maxPlayers) StartCountdown();
         }
@@ -144,6 +148,7 @@ namespace Interfaces
             {
                 captainName.SetText(captain.name);
             }
+
             numOccupants.SetText(_players + "/" + _maxPlayers);
         }
 
@@ -153,7 +158,7 @@ namespace Interfaces
             {
                 StartCoroutine(SendActionBarMessage("Cannot start a new game- one is already starting!"));
                 Debug.Log("Captain failed to start game- already starting!");
-                
+
                 AudioManager.Instance.ui.Click01();
                 return;
             }
@@ -162,11 +167,11 @@ namespace Interfaces
             {
                 StartCoroutine(SendActionBarMessage("Cannot start a new game- not enough players!"));
                 Debug.Log("Captain failed to start game- not enough players!");
-                
+
                 AudioManager.Instance.ui.Click01();
                 //return;
             }
-            
+
             StartCoroutine(CountdownUntilGameStart());
         }
 
@@ -175,7 +180,7 @@ namespace Interfaces
             // Enable countdown overlay
             _isCountingDown = true;
             countdownOverlay.SetActive(true);
-            
+
             // Restrict new players from joining
             PlayerInputManager.instance.DisableJoining();
 
@@ -186,15 +191,15 @@ namespace Interfaces
                 countdownTimer.SetText(i.ToString("N0"));
                 yield return new WaitForSeconds(1.0f);
             }
-            
+
             // Disable everything including this component
             _isCountingDown = false;
 
-            // Begin counting scores
-            PlayerManager.Instance.scoreboard.RestartScoreTicking();
-            
             // Switch to game scene
             PlayerManager.Instance.CarryPlayersToScene(2, CheaplyEnableAllPlayers);
+
+            // Begin counting scores
+            PlayerManager.Instance.scoreboard.RestartScoreTicking();
         }
 
         private static void CheaplyEnableAllPlayers()
@@ -207,13 +212,13 @@ namespace Interfaces
             // Unlock cursors
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-            
+
             // // Destroy other objects
             // var playerManager = FindObjectOfType<PlayerManager>().gameObject;
             // var currentScene = SceneManager.GetActiveScene();
             // SceneManager.MoveGameObjectToScene(playerManager, currentScene);
             // PlayerInputManager.instance.
-            
+
             // Load main menu scene
             LoadingScreen.Instance.Load(0);
         }

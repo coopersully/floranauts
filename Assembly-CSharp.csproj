@@ -49,7 +49,7 @@
      <Compile Include="Assets\Scripts\Grass\SpawnGrass.cs" />
      <Compile Include="Assets\Scripts\Audio\FXAudioManager.cs" />
      <Compile Include="Assets\Scripts\Player\Cinemachine\CameraRotation.cs" />
-     <Compile Include="Assets\Scripts\Interfaces\ScoreManager.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\ScoreUIManager.cs" />
      <Compile Include="Assets\Scripts\Interfaces\CaptureTextPrompt.cs" />
      <Compile Include="Assets\Scripts\PedestalTeleporter.cs" />
      <Compile Include="Assets\DesignElements\Shaders\GrassShader\ToolComputeShader\CullingTreeNode.cs" />
@@ -111,6 +111,7 @@
      <Compile Include="Assets\Scripts\PersistentObject.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerColor.cs" />
      <Compile Include="Assets\DesignElements\Shaders\GrassShader\ToolComputeShader\GrassComputeScript.cs" />
+     <Compile Include="Assets\Scripts\Interfaces\PlayerScoreCard.cs" />
      <Folder Include="Assets" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\workspaceserver.zh-Hans.txt" />
      <None Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Lib\Editor\PlasticSCM\localization\cm-help.en.txt" />
