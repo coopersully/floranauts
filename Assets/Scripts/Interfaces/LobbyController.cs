@@ -164,7 +164,7 @@ namespace Interfaces
                 Debug.Log("Captain failed to start game- not enough players!");
                 
                 AudioManager.Instance.ui.Click01();
-                return;
+                //return;
             }
             
             StartCoroutine(CountdownUntilGameStart());
